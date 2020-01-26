@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>RSS feed title</title>
+        <link>Homepage link</link>
+        <description>RSS feed description</description>
+        <lastBuildDate>Sun, 26 Jan 2020 16:08:50 +0800</lastBuildDate>
+        <language>zh-cn</language>
+        
+        <item>
+            <title>Node.js简介</title>
+            <link>Homepage link/articles/nodejs.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
+            <guid>Homepage link/articles/nodejs.html</guid>
+            <author>Your E-mail Your name</author>
+            <pubDate>Sun, 26 Jan 2020 00:00:00 +0800</pubDate>
+            <description>&lt;h3 id=&quot;nodejs&quot;&gt;Node.js&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。 [1] &lt;/li&gt;
+&lt;li&gt;Node 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为与PHP、Python、Perl、Ruby 等服务端语言平起平坐的脚本语言。 [2]  发布于2009年5月，由Ryan Dahl开发，实质是对Chrome V8引擎进行了封装。&lt;/li&gt;
+&lt;li&gt;Node对一些特殊用例进行优化，提供替代的API，使得V8在非浏览器环境下运行得更好。V8引擎执行Javascript的速度非常快，性能非常好。Node是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行数据密集型的实时应用。&lt;/li&gt;
+&lt;li&gt;发布时间: 2009年5月&lt;/li&gt;
+&lt;li&gt;开发者: Ryan Dahl&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;发展史&quot;&gt;发展史&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;2009年2月，Ryan Dahl在博客上宣布准备基于V8创建一个轻量级的Web服务器并提供一套库。&lt;/li&gt;
+&lt;li&gt;2009年5月，Ryan Dahl在GitHub上发布了最初版本的部分Node包，随后几个月里，有人开始使用Node开发应用。&lt;/li&gt;
+&lt;li&gt;2009年11月和2010年4月，两届JSConf大会都安排了Node.js的讲座。&lt;/li&gt;
+&lt;li&gt;2010年年底，Node获得云计算服务商Joyent资助，创始人Ryan Dahl加入Joyent全职负责Node的发展。&lt;/li&gt;
+&lt;li&gt;2011年7月，Node在微软的支持下发布Windows版本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;特性&quot;&gt;特性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;V8引擎本身使用了一些最新的编译技术。这使得用Javascript这类脚本语言编写出来的代码运行速度获得了极大提升，又节省了开发成本。对性能的苛求是Node的一个关键因素。 Javascript是一个事件驱动语言，Node利用了这个优点，编写出可扩展性高的服务器。Node采用了一个称为“事件循环(event loop）”的架构，使得编写可扩展性高的服务器变得既容易又安全。提高服务器性能的技巧有多种多样。Node选择了一种既能提高性能，又能减低开发复杂度的架构。这是一个非常重要的特性。并发编程通常很复杂且布满地雷。Node绕过了这些，但仍提供很好的性能。
+Node采用一系列“非阻塞”库来支持事件循环的方式。本质上就是为文件系统、数据库之类的资源提供接口。向文件系统发送一个请求时，无需等待硬盘（寻址并检索文件），硬盘准备好的时候非阻塞接口会通知Node。该模型以可扩展的方式简化了对慢资源的访问， 直观，易懂。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://baike.baidu.com/item/node.js/7567977?fromtitle=nodejs&amp;fromid=11244313&amp;fr=aladdin&quot;&gt;摘自百度百科&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

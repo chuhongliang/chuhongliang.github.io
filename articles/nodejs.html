@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang - Node.js简介
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang</a></div>
+            <div id="subtitle">God closed the door for you and opened a window for you</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/nodejs.html">Node.js简介</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-01-26
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Node">Node</a>
+        
+        </div>
+        <div id="article-content">
+            <h3 id="nodejs">Node.js</h3>
+<ul>
+<li>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。 [1] </li>
+<li>Node 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为与PHP、Python、Perl、Ruby 等服务端语言平起平坐的脚本语言。 [2]  发布于2009年5月，由Ryan Dahl开发，实质是对Chrome V8引擎进行了封装。</li>
+<li>Node对一些特殊用例进行优化，提供替代的API，使得V8在非浏览器环境下运行得更好。V8引擎执行Javascript的速度非常快，性能非常好。Node是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行数据密集型的实时应用。</li>
+<li>发布时间: 2009年5月</li>
+<li>开发者: Ryan Dahl</li>
+</ul>
+<h3 id="发展史">发展史</h3>
+<ul>
+<li>2009年2月，Ryan Dahl在博客上宣布准备基于V8创建一个轻量级的Web服务器并提供一套库。</li>
+<li>2009年5月，Ryan Dahl在GitHub上发布了最初版本的部分Node包，随后几个月里，有人开始使用Node开发应用。</li>
+<li>2009年11月和2010年4月，两届JSConf大会都安排了Node.js的讲座。</li>
+<li>2010年年底，Node获得云计算服务商Joyent资助，创始人Ryan Dahl加入Joyent全职负责Node的发展。</li>
+<li>2011年7月，Node在微软的支持下发布Windows版本。</li>
+</ul>
+<hr>
+<h3 id="特性">特性</h3>
+<ul>
+<li>V8引擎本身使用了一些最新的编译技术。这使得用Javascript这类脚本语言编写出来的代码运行速度获得了极大提升，又节省了开发成本。对性能的苛求是Node的一个关键因素。 Javascript是一个事件驱动语言，Node利用了这个优点，编写出可扩展性高的服务器。Node采用了一个称为“事件循环(event loop）”的架构，使得编写可扩展性高的服务器变得既容易又安全。提高服务器性能的技巧有多种多样。Node选择了一种既能提高性能，又能减低开发复杂度的架构。这是一个非常重要的特性。并发编程通常很复杂且布满地雷。Node绕过了这些，但仍提供很好的性能。
+Node采用一系列“非阻塞”库来支持事件循环的方式。本质上就是为文件系统、数据库之类的资源提供接口。向文件系统发送一个请求时，无需等待硬盘（寻址并检索文件），硬盘准备好的时候非阻塞接口会通知Node。该模型以可扩展的方式简化了对慢资源的访问， 直观，易懂。</li>
+</ul>
+<p><a href="https://baike.baidu.com/item/node.js/7567977?fromtitle=nodejs&amp;fromid=11244313&amp;fr=aladdin">摘自百度百科</a></p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
