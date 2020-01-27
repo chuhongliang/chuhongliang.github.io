@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Mon, 27 Jan 2020 15:50:51 +0800</lastBuildDate>
+        <lastBuildDate>Mon, 27 Jan 2020 23:09:38 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -15,8 +15,8 @@
             <pubDate>Sun, 26 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h3 id=&quot;nodejs&quot;&gt;Node.js&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。 [1] &lt;/li&gt;
-&lt;li&gt;Node 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为与PHP、Python、Perl、Ruby 等服务端语言平起平坐的脚本语言。 [2]  发布于2009年5月，由Ryan Dahl开发，实质是对Chrome V8引擎进行了封装。&lt;/li&gt;
+&lt;li&gt;Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。 &lt;/li&gt;
+&lt;li&gt;Node 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为与PHP、Python、Perl、Ruby 等服务端语言平起平坐的脚本语言。 发布于2009年5月，由Ryan Dahl开发，实质是对Chrome V8引擎进行了封装。&lt;/li&gt;
 &lt;li&gt;Node对一些特殊用例进行优化，提供替代的API，使得V8在非浏览器环境下运行得更好。V8引擎执行Javascript的速度非常快，性能非常好。Node是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行数据密集型的实时应用。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;发展史&quot;&gt;发展史&lt;/h3&gt;
@@ -195,18 +195,200 @@ a 结束
 &lt;p&gt;JavaScript是一种属于网络的脚本语言,已经被广泛用于Web应用开发,常用来为网页添加各式各样的动态功能,为用户提供更流畅美观的浏览效果。通常JavaScript脚本是通过嵌入在HTML中来实现自身的功能的。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;是一种解释性脚本语言（代码不进行预编译）。 [6] &lt;/li&gt;
-&lt;li&gt;主要用来向HTML（标准通用标记语言下的一个应用）页面添加交互行为。 [6] &lt;/li&gt;
-&lt;li&gt;可以直接嵌入HTML页面，但写成单独的js文件有利于结构和行为的分离。 [6] &lt;/li&gt;
+&lt;li&gt;是一种解释性脚本语言（代码不进行预编译）。 &lt;/li&gt;
+&lt;li&gt;主要用来向HTML（标准通用标记语言下的一个应用）页面添加交互行为。 &lt;/li&gt;
+&lt;li&gt;可以直接嵌入HTML页面，但写成单独的js文件有利于结构和行为的分离。 &lt;/li&gt;
 &lt;li&gt;跨平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行（如Windows、Linux、Mac、Android、iOS等）。&lt;/li&gt;
 &lt;li&gt;Javascript脚本语言同其他语言一样，有它自身的基本数据类型，表达式和算术运算符及程序的基本程序框架。Javascript提供了四种基本的数据类型和两种特殊数据类型用来处理数据和文字。而变量提供存放信息的地方，表达式则可以完成较复杂的信息处理。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;历史&quot;&gt;历史&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;它最初由Netscape的Brendan Eich设计。JavaScript是甲骨文公司的注册商标。Ecma国际以JavaScript为基础制定了ECMAScript标准。JavaScript也可以用于其他场合，如服务器端编程。完整的JavaScript实现包含三个部分：ECMAScript，文档对象模型，浏览器对象模型。 [8] &lt;/li&gt;
-&lt;li&gt;Netscape在最初将其脚本语言命名为LiveScript，后来Netscape在与Sun合作之后将其改名为JavaScript。JavaScript最初受Java启发而开始设计的，目的之一就是“看上去像Java”，因此语法上有类似之处，一些名称和命名规范也借自Java。但JavaScript的主要设计原则源自Self和Scheme。JavaScript与Java名称上的近似，是当时Netscape为了营销考虑与Sun微系统达成协议的结果。为了取得技术优势，微软推出了JScript来迎战JavaScript的脚本语言。为了互用性，Ecma国际（前身为欧洲计算机制造商协会）创建了ECMA-262标准（ECMAScript）。两者都属于ECMAScript的实现。尽管JavaScript作为给非程序人员的脚本语言，而非作为给程序人员的脚本语言来推广和宣传，但是JavaScript具有非常丰富的特性。 [9] &lt;/li&gt;
+&lt;li&gt;它最初由Netscape的Brendan Eich设计。JavaScript是甲骨文公司的注册商标。Ecma国际以JavaScript为基础制定了ECMAScript标准。JavaScript也可以用于其他场合，如服务器端编程。完整的JavaScript实现包含三个部分：ECMAScript，文档对象模型，浏览器对象模型。  &lt;/li&gt;
+&lt;li&gt;Netscape在最初将其脚本语言命名为LiveScript，后来Netscape在与Sun合作之后将其改名为JavaScript。JavaScript最初受Java启发而开始设计的，目的之一就是“看上去像Java”，因此语法上有类似之处，一些名称和命名规范也借自Java。但JavaScript的主要设计原则源自Self和Scheme。JavaScript与Java名称上的近似，是当时Netscape为了营销考虑与Sun微系统达成协议的结果。为了取得技术优势，微软推出了JScript来迎战JavaScript的脚本语言。为了互用性，Ecma国际（前身为欧洲计算机制造商协会）创建了ECMA-262标准（ECMAScript）。两者都属于ECMAScript的实现。尽管JavaScript作为给非程序人员的脚本语言，而非作为给程序人员的脚本语言来推广和宣传，但是JavaScript具有非常丰富的特性。 &lt;/li&gt;
 &lt;li&gt;发展初期，JavaScript的标准并未确定，同期有Netscape的JavaScript，微软的JScript和CEnvi的ScriptEase三足鼎立。1997年，在ECMA（欧洲计算机制造商协会）的协调下，由Netscape、Sun、微软、Borland组成的工作组确定统一标准：ECMA-262。&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>JavaScript 类型</title>
+            <link>Homepage link/articles/javascript-type.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
+            <guid>Homepage link/articles/javascript-type.html</guid>
+            <author>Your E-mail Your name</author>
+            <pubDate>Tue, 28 Jan 2020 00:00:00 +0800</pubDate>
+            <description>&lt;h3 id=&quot;javascript-类型&quot;&gt;JavaScript 类型&lt;/h3&gt;
+&lt;h3 id=&quot;原始类型与引用类型&quot;&gt;原始类型与引用类型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;JavaScript原始类型: Undefined、Null、Boolean、Number、String、Symbol &lt;/li&gt;
+&lt;li&gt;JavaScript引用类型: Object &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;原始类型-基础类型-&quot;&gt;原始类型(基础类型)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;原始类型&lt;/strong&gt;又被称为&lt;strong&gt;基本类型&lt;/strong&gt;，原始类型保存的变量和值直接保存在&lt;strong&gt;栈内存&lt;/strong&gt;(Stack)中,且空间相互独立,通过值来访问&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let name = &#39;jane&#39;;
+let name1 = name;
+
+console.log(name === name1);//true
+
+name = &#39;tom&#39;;
+console.log(name);//tome
+console.log(name1);//jane
+&lt;/pre&gt;
+&lt;p&gt;可以看到name的值虽然改变，但是name1的值是独立存储的所以不受影响&lt;/p&gt;
+&lt;p&gt;虽然原始类型的值是储存在相对独立空间,但是它们之间的比较是按值比较的.&lt;/p&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;h4 id=&quot;引用类型&quot;&gt;引用类型&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;引用类型,即Object 类型,再往下细分，还可以分为：Object 类型、Array 类型、Date 类型、Function 类型 等。&lt;/li&gt;
+&lt;li&gt;与原始类型不同的是,引用类型的内容是保存在&lt;strong&gt;堆内存&lt;/strong&gt;中,而&lt;strong&gt;栈内存&lt;/strong&gt;(Heap)中会有一个&lt;strong&gt;堆内存地址&lt;/strong&gt;,通过这个地址变量被指向堆内存中&lt;code&gt;Object&lt;/code&gt;真正的值,因此引用类型是按照引用访问的.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let person1 = { name: &quot;tome&quot;, age: 20 };
+let person2 = person1;
+
+person1.name = &quot;jane&quot;;
+console.log(person2.name);    // jane
+person2.age = 22;
+console.log(person1.age);     // 22
+var person3 = {
+    name: &quot;jane&quot;,
+    age: 22
+};
+console.log(person1 === person3); //false
+
+&lt;/pre&gt;
+&lt;p&gt;person1和person2两个变量指向了同一个对象。因此，改变其中任何一个变量，都会相互影响&lt;/p&gt;
+&lt;p&gt;person3是新建了一个对象, 在堆内存中确实两个相互独立的Object,引用类型是按照引用比较,由于person1和person3引用的是不同的Object所以得到的结果是fasle.&lt;/p&gt;
+&lt;p&gt;&emsp;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&emsp;&lt;/p&gt;
+&lt;h3 id=&quot;类型中的坑&quot;&gt;类型中的坑&lt;/h3&gt;
+&lt;h4 id=&quot;1-稀疏数组-指的是含有空白或空缺单元的数组&quot;&gt;1. 稀疏数组:指的是含有空白或空缺单元的数组&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let arr = [];
+console.log(arr.length); //0
+
+arr[4] = arr[5];
+console.log(arr.length); //5
+
+arr.forEach(elem =&gt; {
+  console.log(elem); //undefined
+});
+console.log(arr); //[,,,,undefined]
+&lt;/pre&gt;
+&lt;p&gt;这里有几个坑需要注意:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开始建立的空数组a的长度为0,这可以理解,但是在a[4] = a[5]之后出现了问题,a的长度居然变成了5,此时a数组是[,,,,undefined]这种形态.&lt;/li&gt;
+&lt;li&gt;我们通过遍历,只得到了undefined这一个值,这个undefind是由于a[4] = a[5]赋值,由于a[5]没有定义值为undefined被赋给了a[4],可以等价为a[4] = undefined.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;2-字符串索引&quot;&gt;2. 字符串索引&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = [];
+a[0] = 1;
+a[&#39;name&#39;] = &#39;tom&#39;;
+console.log(a.length); //1
+console.log(a[&#39;name&#39;]); //tom
+console.log(a); //[ 1, name: &#39;tom&#39; ]
+&lt;/pre&gt;
+&lt;p&gt;数组不仅可以通过数字索引,也可以通过字符串索引,但值得注意的是,字符串索引的键值对并不算在数组的长度里.&lt;/p&gt;
+&lt;h4 id=&quot;3-数字中的坑-二进制浮点数&quot;&gt;3. 数字中的坑 二进制浮点数&lt;/h4&gt;
+&lt;p&gt;JavaScript 中的数字类型是基于“二进制浮点数”实现的,使用的是“双精度”格式,这就带来了一些反常的问题,我们那一道经典面试提来讲解下.&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 0.1 + 0.2;
+let b = 0.3;
+console.log(a === b); //false
+&lt;/pre&gt;
+&lt;p&gt;这是个出人意料的结果,实际上a的值约为0.30000000000000004这并不是一个整数值,这就是二进制浮点数带来的副作用.&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 0.1 + 0.2;
+let b = 0.3;
+console.log(a === b); //false
+console.log(Number.isInteger(a*10)); //false
+console.log(Number.isInteger(b*10)); //true
+console.log(a); //0.30000000000000004
+&lt;/pre&gt;
+&lt;p&gt;我们可以用Number.isInteger()来判断一个数字是否为整数.&lt;/p&gt;
+&lt;h4 id=&quot;4-nan&quot;&gt;4. NaN&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 1/new Object();
+console.log(typeof a); //Number
+console.log(a); //NaN
+console.log(isNaN(a)); //true
+&lt;/pre&gt;
+&lt;p&gt;NaN属于特殊的Number类型,我们可以把它理解为坏数值,因为它属于数值计算中的错误,更加特殊的是它自己都不等价于自己NaN === NaN //false,我们只能用isNaN()来检测一个数字是否为NaN.&lt;/p&gt;
+&lt;p&gt;&emsp;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&emsp;&lt;/p&gt;
+&lt;h3 id=&quot;类型判断&quot;&gt;类型判断&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;类型检测主要包括了: typeof、instanceof和toString的三种方式来判断变量的类型。&lt;/li&gt;
+&lt;li&gt;typeof: 用来检测基本类型&lt;/li&gt;
+&lt;li&gt;toString: typeof的增强,用来判断内置的数据类型,无法判断自己构造的对象.&lt;/li&gt;
+&lt;li&gt;instanceof: 用来检测是否为数组、对象、正则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;typeof&quot;&gt;typeof&lt;/h4&gt;
+&lt;p&gt;typeof接受一个值并返回它的类型，它有两种可能的语法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;typeof x&lt;/li&gt;
+&lt;li&gt;typeof(x)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当在primitive类型上使用typeof检测变量类型时，我们总能得到我们想要的结果，比如&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;typeof 1; // &quot;number&quot;
+typeof &quot;&quot;; // &quot;string&quot;
+typeof true; // &quot;boolean&quot;
+typeof bla; // &quot;undefined&quot;
+typeof undefined; // &quot;undefined&quot;
+&lt;/pre&gt;
+&lt;p&gt;而当在object类型上使用typeof检测时，有时可能并不能得到你想要的结果，比如：&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;typeof []; // &quot;object&quot;
+typeof null; // &quot;object&quot;
+typeof /regex/ // &quot;object&quot;
+typeof new String(&quot;&quot;); // &quot;object&quot;
+typeof function(){}; // &quot;function&quot;
+&lt;/pre&gt;
+&lt;p&gt;这里的[]返回的确却是object，这可能并不是你想要的，因为数组是一个特殊的对象，有时候这可能并不是你想要的结果。&lt;/p&gt;
+&lt;p&gt;对于这里的null返回的确却是object，wtf，有些人说null被认为是没有一个对象。&lt;/p&gt;
+&lt;p&gt;当你对于typeof检测数据类型不确定时，请谨慎使用。&lt;/p&gt;
+&lt;h4 id=&quot;tostring&quot;&gt;toString&lt;/h4&gt;
+&lt;p&gt;toString不管是对于object类型还是primitive类型，都能得到你想要的结果：&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let toClass = {}.toString;
+
+console.log(toClass.call(123));
+console.log(toClass.call(true));
+console.log(toClass.call(Symbol(&#39;foo&#39;)));
+console.log(toClass.call(&#39;some string&#39;));
+console.log(toClass.call([1, 2]));
+console.log(toClass.call(new Date()));
+console.log(toClass.call({
+    a: &#39;a&#39;
+}));
+
+// output
+[object Number]
+[object Boolean]
+[object Symbol]
+[object String]
+[object Array]
+[object Date]
+[object Object]
+&lt;/pre&gt;
+&lt;h4 id=&quot;instanceof&quot;&gt;instanceof&lt;/h4&gt;
+&lt;p&gt;对于使用构造函数创建的对象，我们通常使用instanceof来判断某一实例是否属于某种类型，例如：a instanceof Person，其内部原理实际上是判断Person.prototype是否在a实例的原型链中，其原理可以用下面的函数来表达：&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;function instance_of(V, F) {
+  let O = F.prototype;
+  V = V.__proto__;
+  while (true) {
+    if (V === null)
+      return false;
+    if (O === V)
+      return true;
+    V = V.__proto__;
+  }
+}
+
+// use
+function Person() {
+}
+let a = new Person();
+
+// true
+console.log(instance_of(a, Person));
+&lt;/pre&gt;
 </description>
         </item>
         

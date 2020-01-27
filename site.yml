@@ -10,7 +10,7 @@ meta:
   author: Content of author meta tag
 master:
   name: Your name
-  about: 一个普通程序员...
+  about: 一个喜欢编程的野生程序员...
   email: Your E-mail
 rss:
   title: RSS feed title
