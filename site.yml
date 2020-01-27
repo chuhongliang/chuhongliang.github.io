@@ -1,5 +1,5 @@
-title: chuhongliang
-subtitle: God closed the door for you and opened a window for you
+title: chuhongliang.github.io
+subtitle: learn coding, keep coding
 link: Homepage link
 meta:
   description: Content of description meta tag
@@ -10,7 +10,7 @@ meta:
   author: Content of author meta tag
 master:
   name: Your name
-  about: Introduce yourself here
+  about: 一个普通程序员...
   email: Your E-mail
 rss:
   title: RSS feed title

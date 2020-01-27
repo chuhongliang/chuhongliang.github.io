@@ -5,7 +5,7 @@
   author: chuhongliang
   tags:
     - Node
-  abstract: 快速了解Node.js
+  abstract: Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。Node 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为与PHP、Python、Perl、Ruby 等服务端语言平起平坐的脚本语言。 [2]  发布于2009年5月，由Ryan Dahl开发，实质是对Chrome V8引擎进行了封装。
 
 - id: node-module
   title: Node.js 模块
@@ -13,4 +13,12 @@
   author: chuhongliang
   tags:
     - Node
-  abstract: 快速了解 Node.js 模块机制
+  abstract: 在 Node.js 模块系统中，每个文件都被视为一个独立的模块.Node.js 模块机制采用了 Commonjs 规范，弥补了当前 JavaScript 开发大型应用没有标准的缺陷，类似于 Java 中的类文件，Python 中的 import 机制，Node.js 中可以通过 module.exports、require 来导出和引入一个模块.在模块加载机制中，Node.js 采用了延迟加载的策略，只有在用到的情况下，系统模块才会被加载，加载完成后会放到 binding_cache 中。
+
+- id: javascript
+  title: JavaScript 简介
+  postedOn: !!str 2020-01-27
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名的，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。

@@ -26,7 +26,7 @@
 
 #### &emsp;目录结构
 
-```
+```js
   ├── benchmark                         一些 Node.js 性能测试代码
   ├── deps                              Node.js 依赖
   ├── doc                               文档
