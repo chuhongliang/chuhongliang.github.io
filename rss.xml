@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Mon, 27 Jan 2020 12:06:24 +0800</lastBuildDate>
+        <lastBuildDate>Mon, 27 Jan 2020 12:19:47 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -75,36 +75,37 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
 &lt;hr&gt;
 &lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;h3 id=&quot;模块的分类&quot;&gt;模块的分类&lt;/h3&gt;
-&lt;h4 id=&quot;系统模块&quot;&gt;系统模块&lt;/h4&gt;
+&lt;h4 id=&quot;-emsp-系统模块&quot;&gt;&emsp;系统模块&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;C/C++ 模块，也叫 built-in 内建模块，一般用于 native 模块调用，在 require 出去&lt;/li&gt;
 &lt;li&gt;native 模块，在开发中使用的 Node.js 的 http、buffer、fs 等，底层也是调用的内建模块 (C/C++)。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;第三方模块&quot;&gt;第三方模块&lt;/h4&gt;
+&lt;h4 id=&quot;-emsp-第三方模块&quot;&gt;&emsp;第三方模块&lt;/h4&gt;
+&lt;blockquote&gt;
 &lt;p&gt;非 Node.js 自带的模块称为第三方模块，其实还分为路径形式的文件模块（以 &lt;code&gt;.&lt;/code&gt;、&lt;code&gt;..&lt;/code&gt;、&lt;code&gt;/&lt;/code&gt; 开头的）和自定义的模块（比如 express、koa 框架、moment.js 等）&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;javaScript 模块：例如 &lt;code&gt;hello.js&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;json 模块：例如 &lt;code&gt;hello.json&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;C/C++ 模块：编译之后扩展名为 .node 的模块，例如 &lt;code&gt;hello.node&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;目录结构&quot;&gt;目录结构&lt;/h4&gt;
-&lt;pre&gt;├── benchmark                         一些 Node.js 性能测试代码
-├── deps                              Node.js 依赖
-├── doc                               文档
-├── lib                               Node.js 对外暴露的 js 模块源码
-├── src                               Node.js 的 c/c++ 源码文件，内建模块
-├── test                              单元测试
-├── tools                             编译时用到的工具
-├── doc                               api 文档
-├── vcbuild.bat                       win 平台 makefile 文件
-├── node.gyp                          node-gyp 构建编译任务的配置文件               
-
+&lt;h4 id=&quot;-emsp-目录结构&quot;&gt;&emsp;目录结构&lt;/h4&gt;
+&lt;pre&gt;  ├── benchmark                         一些 Node.js 性能测试代码
+  ├── deps                              Node.js 依赖
+  ├── doc                               文档
+  ├── lib                               Node.js 对外暴露的 js 模块源码
+  ├── src                               Node.js 的 c/c++ 源码文件，内建模块
+  ├── test                              单元测试
+  ├── tools                             编译时用到的工具
+  ├── doc                               api 文档
+  ├── vcbuild.bat                       win 平台 makefile 文件
+  ├── node.gyp                          node-gyp 构建编译任务的配置文件               
 &lt;/pre&gt;&lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;h3 id=&quot;模块加载机制&quot;&gt;模块加载机制&lt;/h3&gt;
-&lt;p&gt;在 Node.js 中模块加载一般会经历 3 个步骤，&lt;code&gt;路径分析&lt;/code&gt;、&lt;code&gt;文件定位&lt;/code&gt;、&lt;code&gt;编译执行&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;按照模块的分类，按照以下顺序进行优先加载：&lt;/p&gt;
+&lt;p&gt;&emsp;在 Node.js 中模块加载一般会经历 3 个步骤，&lt;code&gt;路径分析&lt;/code&gt;、&lt;code&gt;文件定位&lt;/code&gt;、&lt;code&gt;编译执行&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&emsp;按照模块的分类，按照以下顺序进行优先加载：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;系统缓存&lt;/strong&gt;：模块被执行之后会会进行缓存，首先是先进行缓存加载，判断缓存中是否有值。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;系统模块&lt;/strong&gt;：也就是原生模块，这个优先级仅次于缓存加载，部分核心模块已经被编译成二进制，省略了 &lt;code&gt;路径分析&lt;/code&gt;、&lt;code&gt;文件定位&lt;/code&gt;，直接加载到了内存中，系统模块定义在 Node.js 源码的 lib 目录下，可以去查看。&lt;/li&gt;
@@ -122,15 +123,15 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
 &lt;li&gt;如果想要多次执行一个模块，可以导出一个函数，然后调用该函数。&lt;/li&gt;
 &lt;li&gt;Node.js 提供了 require.cache API 查看已缓存的模块，返回值为对象.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;为了验证，这里做一个简单的测试，如下所示：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;新建 test-module.js 文件&lt;/strong&gt;
-这里我导出一个变量和一个方法&lt;/p&gt;
+&lt;p&gt;&emsp;为了验证，这里做一个简单的测试，如下所示：&lt;/p&gt;
+&lt;p&gt;&emsp;&lt;strong&gt;新建 test-module.js 文件&lt;/strong&gt;
+&emsp;这里我导出一个变量和一个方法&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;module.exports = {
     a: 1,
     test: () =&gt; {}
 }
 &lt;/pre&gt;
-&lt;p&gt;&lt;strong&gt;新建 test.js 文件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&emsp;&lt;strong&gt;新建 test.js 文件&lt;/strong&gt;&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;require(&#39;./test-module.js&#39;);
 
 console.log(require.cache);
@@ -140,9 +141,9 @@ console.log(require.cache);
 &lt;hr&gt;
 &lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;h3 id=&quot;模块循环引用&quot;&gt;模块循环引用&lt;/h3&gt;
-&lt;p&gt;当循环调用 require() 时，一个模块可能在未完成执行时被返回。&lt;/p&gt;
-&lt;p&gt;例如以下情况:&lt;/p&gt;
-&lt;p&gt;a.js:&lt;/p&gt;
+&lt;p&gt;&emsp;当循环调用 require() 时，一个模块可能在未完成执行时被返回。&lt;/p&gt;
+&lt;p&gt;&emsp;例如以下情况:&lt;/p&gt;
+&lt;p&gt;&emsp;a.js:&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;console.log(&#39;a 开始&#39;);
 exports.done = false;
 const b = require(&#39;./b.js&#39;);
@@ -150,7 +151,7 @@ console.log(&#39;在 a 中，b.done = %j&#39;, b.done);
 exports.done = true;
 console.log(&#39;a 结束&#39;);
 &lt;/pre&gt;
-&lt;p&gt;b.js:&lt;/p&gt;
+&lt;p&gt;&emsp;b.js:&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;console.log(&#39;b 开始&#39;);
 exports.done = false;
 const a = require(&#39;./a.js&#39;);
@@ -158,13 +159,13 @@ console.log(&#39;在 b 中，a.done = %j&#39;, a.done);
 exports.done = true;
 console.log(&#39;b 结束&#39;);
 &lt;/pre&gt;
-&lt;p&gt;main.js:&lt;/p&gt;
+&lt;p&gt;&emsp;main.js:&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;console.log(&#39;main 开始&#39;);
 const a = require(&#39;./a.js&#39;);
 const b = require(&#39;./b.js&#39;);
 console.log(&#39;在 main 中，a.done=%j，b.done=%j&#39;, a.done, b.done);
 &lt;/pre&gt;
-&lt;p&gt;当 main.js 加载 a.js 时， a.js 又加载 b.js。 此时， b.js 会尝试去加载 a.js。 为了防止无限的循环，会返回一个 a.js 的 exports 对象的 未完成的副本 给 b.js 模块。 然后 b.js 完成加载，并将 exports 对象提供给 a.js 模块。&lt;/p&gt;
+&lt;p&gt;当 main.js 加载 a.js 时， a.js 又加载 b.js。 此时， b.js 会尝试去加载 a.js。 为了&amp;防止无限的循环，会返回一个 a.js 的 exports 对象的 未完成的副本 给 b.js 模块。 然后 &amp;b.js 完成加载，并将 exports 对象提供给 a.js 模块。&lt;/p&gt;
 &lt;p&gt;当 main.js 加载这两个模块时，它们都已经完成加载。 因此，该程序的输出会是：&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;$ node main.js
 main 开始
