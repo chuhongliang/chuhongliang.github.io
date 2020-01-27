@@ -1,8 +1,16 @@
 
 - id: nodejs
-  title: Node.js简介
+  title: Node.js 简介
   postedOn: !!str 2020-01-26
   author: chuhongliang
   tags:
     - Node
   abstract: 快速了解Node.js
+
+- id: node-module
+  title: Node.js 模块
+  postedOn: !!str 2020-01-27
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: 快速了解 Node.js 模块机制
