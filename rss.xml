@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Mon, 27 Jan 2020 12:19:47 +0800</lastBuildDate>
+        <lastBuildDate>Mon, 27 Jan 2020 12:25:37 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -165,7 +165,7 @@ const a = require(&#39;./a.js&#39;);
 const b = require(&#39;./b.js&#39;);
 console.log(&#39;在 main 中，a.done=%j，b.done=%j&#39;, a.done, b.done);
 &lt;/pre&gt;
-&lt;p&gt;当 main.js 加载 a.js 时， a.js 又加载 b.js。 此时， b.js 会尝试去加载 a.js。 为了&amp;防止无限的循环，会返回一个 a.js 的 exports 对象的 未完成的副本 给 b.js 模块。 然后 &amp;b.js 完成加载，并将 exports 对象提供给 a.js 模块。&lt;/p&gt;
+&lt;p&gt;当 main.js 加载 a.js 时， a.js 又加载 b.js。 此时， b.js 会尝试去加载 a.js。 为了防止无限的循环，会返回一个 a.js 的 exports 对象的 未完成的副本 给 b.js 模块。 然后 b.js 完成加载，并将 exports 对象提供给 a.js 模块。&lt;/p&gt;
 &lt;p&gt;当 main.js 加载这两个模块时，它们都已经完成加载。 因此，该程序的输出会是：&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;$ node main.js
 main 开始
