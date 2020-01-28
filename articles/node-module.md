@@ -83,7 +83,6 @@ module.exports = {
 
 ```js
 require('./test-module.js');
-
 console.log(require.cache);
 ```
 

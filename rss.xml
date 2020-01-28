@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Mon, 27 Jan 2020 23:30:56 +0800</lastBuildDate>
+        <lastBuildDate>Tue, 28 Jan 2020 11:45:17 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -131,7 +131,6 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
 &lt;/pre&gt;
 &lt;p&gt;&emsp;&lt;strong&gt;新建 test.js 文件&lt;/strong&gt;&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;require(&#39;./test-module.js&#39;);
-
 console.log(require.cache);
 &lt;/pre&gt;
 &lt;p&gt;在这个文件里加载 test-module.js 文件，在之后打印下 require.cache 看下里面返回的是什么？看到以下结果应该就很清晰了，模块的文件名、地址、导出数据都很清楚。&lt;/p&gt;
@@ -228,9 +227,7 @@ a 结束
 &lt;/ul&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let name = &#39;jane&#39;;
 let name1 = name;
-
 console.log(name === name1);//true
-
 name = &#39;tom&#39;;
 console.log(name);//tome
 console.log(name1);//jane
@@ -245,7 +242,6 @@ console.log(name1);//jane
 &lt;/ul&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let person1 = { name: &quot;tome&quot;, age: 20 };
 let person2 = person1;
-
 person1.name = &quot;jane&quot;;
 console.log(person2.name);    // jane
 person2.age = 22;
@@ -255,7 +251,6 @@ var person3 = {
     age: 22
 };
 console.log(person1 === person3); //false
-
 &lt;/pre&gt;
 &lt;p&gt;person1和person2两个变量指向了同一个对象。因此，改变其中任何一个变量，都会相互影响&lt;/p&gt;
 &lt;p&gt;person3是新建了一个对象, 在堆内存中确实两个相互独立的Object,引用类型是按照引用比较,由于person1和person3引用的是不同的Object所以得到的结果是fasle.&lt;/p&gt;
@@ -263,13 +258,11 @@ console.log(person1 === person3); //false
 &lt;hr&gt;
 &lt;p&gt;&emsp;&lt;/p&gt;
 &lt;h3 id=&quot;类型中的坑&quot;&gt;类型中的坑&lt;/h3&gt;
-&lt;h4 id=&quot;1-稀疏数组-指的是含有空白或空缺单元的数组&quot;&gt;1. 稀疏数组:指的是含有空白或空缺单元的数组&lt;/h4&gt;
+&lt;h4 id=&quot;1-稀疏数组-指的是含有空白或空缺单元的数组&quot;&gt;1. 稀疏数组: 指的是含有空白或空缺单元的数组&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let arr = [];
 console.log(arr.length); //0
-
 arr[4] = arr[5];
 console.log(arr.length); //5
-
 arr.forEach(elem =&gt; {
   console.log(elem); //undefined
 });
@@ -318,8 +311,8 @@ console.log(isNaN(a)); //true
 &lt;ul&gt;
 &lt;li&gt;类型检测主要包括了: typeof、instanceof和toString的三种方式来判断变量的类型。&lt;/li&gt;
 &lt;li&gt;typeof: 用来检测基本类型&lt;/li&gt;
-&lt;li&gt;toString: typeof的增强,用来判断内置的数据类型,无法判断自己构造的对象.&lt;/li&gt;
-&lt;li&gt;instanceof: 用来检测是否为数组、对象、正则&lt;/li&gt;
+&lt;li&gt;toString: typeof的增强,用来判断内置的数据类型,无法判断构造函数创建的对象.&lt;/li&gt;
+&lt;li&gt;instanceof: 用来判断使用构造函数创建的对象.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;typeof&quot;&gt;typeof&lt;/h4&gt;
 &lt;p&gt;typeof接受一个值并返回它的类型，它有两种可能的语法：&lt;/p&gt;
@@ -347,7 +340,6 @@ typeof function(){}; // &quot;function&quot;
 &lt;h4 id=&quot;tostring&quot;&gt;toString&lt;/h4&gt;
 &lt;p&gt;toString不管是对于object类型还是primitive类型，都能得到你想要的结果：&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let toClass = {}.toString;
-
 console.log(toClass.call(123));
 console.log(toClass.call(true));
 console.log(toClass.call(Symbol(&#39;foo&#39;)));
@@ -357,7 +349,6 @@ console.log(toClass.call(new Date()));
 console.log(toClass.call({
     a: &#39;a&#39;
 }));
-
 // output
 [object Number]
 [object Boolean]
@@ -380,14 +371,110 @@ console.log(toClass.call({
     V = V.__proto__;
   }
 }
-
 // use
 function Person() {
 }
 let a = new Person();
-
 // true
 console.log(instance_of(a, Person));
+&lt;/pre&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>JavaScript 字符串常用方法</title>
+            <link>Homepage link/articles/javascript-string.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
+            <guid>Homepage link/articles/javascript-string.html</guid>
+            <author>Your E-mail Your name</author>
+            <pubDate>Tue, 28 Jan 2020 00:00:00 +0800</pubDate>
+            <description>&lt;h3 id=&quot;javascript-字符串相关的常用方法&quot;&gt;JavaScript 字符串相关的常用方法&lt;/h3&gt;
+&lt;h4 id=&quot;1-code-stringprototypeindexof-code-从字符串对象中返回首个被发现的给定值的索引，没找到返回-1&quot;&gt;1. &lt;code&gt;String.prototype.indexOf()&lt;/code&gt; 从字符串对象中返回首个被发现的给定值的索引，没找到返回-1&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;abcde&#39;;
+let index = str.indexOf(&#39;c&#39;);
+console.log(index);//2
+&lt;/pre&gt;
+&lt;h4 id=&quot;2-code-stringprototypelastindexof-code-从字符串对象中返回最后一个被发现的给定值的索引，没找到返回-1&quot;&gt;2. &lt;code&gt;String.prototype.lastIndexOf()&lt;/code&gt; 从字符串对象中返回最后一个被发现的给定值的索引，没找到返回-1&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;dabcde&#39;;
+let index = str.lastIndexOf(&#39;d&#39;);
+console.log(index);//4
+&lt;/pre&gt;
+&lt;h4 id=&quot;3-code-stringprototypecharat-code-返回特定位置的字符&quot;&gt;3. &lt;code&gt;String.prototype.charAt()&lt;/code&gt; 返回特定位置的字符&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;dabcde&#39;;
+let char = str.charAt(3);
+console.log(char);//c
+&lt;/pre&gt;
+&lt;h4 id=&quot;4-code-stringprototypesplit-code-将字符串分割为数组&quot;&gt;4. &lt;code&gt;String.prototype.split()&lt;/code&gt; 将字符串分割为数组&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;dabcde&#39;;
+let arr = str.split(&#39;&#39;);
+console.log(arr);//[ &#39;d&#39;, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39; ]
+&lt;/pre&gt;
+&lt;h4 id=&quot;5-code-stringprototypeincludes-code-判断一个字符串是否包含某个字符&quot;&gt;5. &lt;code&gt;String.prototype.includes()&lt;/code&gt; 判断一个字符串是否包含某个字符&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;dabcde&#39;;
+let flag = str.includes(&#39;ab&#39;);
+console.log(flag);//true
+&lt;/pre&gt;
+&lt;h4 id=&quot;6-code-stringprototypeslice-code-摘取一个字符串区域，返回一个新字符串&quot;&gt;6. &lt;code&gt;String.prototype.slice()&lt;/code&gt; 摘取一个字符串区域，返回一个新字符串&lt;/h4&gt;
+&lt;p&gt;&emsp;&lt;strong&gt;参数&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;start&lt;/strong&gt;: number 起始位置(包括) 必需，可以是负整数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;end&lt;/strong&gt;: number 结束位置(不包括) 可选，可以是负整数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;dabcde&#39;;
+let newStr = str.slice(0, 3);
+console.log(newStr);//dab
+&lt;/pre&gt;
+&lt;h4 id=&quot;7-code-stringprototypesubstring-code-返回在字符串中指定两个下标之间的字符&quot;&gt;7. &lt;code&gt;String.prototype.substring()&lt;/code&gt; 返回在字符串中指定两个下标之间的字符&lt;/h4&gt;
+&lt;p&gt;&emsp;&lt;strong&gt;参数&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;start&lt;/strong&gt;: number 起始位置(包括) 必需，非负整数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;end&lt;/strong&gt;: number 结束位置(不包括) 可选，非负整数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;dabcde&#39;;
+let newStr = str.substring(0, 3);
+console.log(newStr);//dab
+&lt;/pre&gt;
+&lt;h4 id=&quot;8-code-stringprototypesubstr-code-通过指定字符数返回在指定位置开始的字符串中的字符。&quot;&gt;8. &lt;code&gt;String.prototype.substr()&lt;/code&gt; 通过指定字符数返回在指定位置开始的字符串中的字符。&lt;/h4&gt;
+&lt;p&gt;&emsp;&lt;strong&gt;参数&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;from&lt;/strong&gt;: number 起始位置 必需，可以是负整数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;length&lt;/strong&gt;: number 长度 可选，非负整数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;dabcde&#39;;
+let newStr = str.substr(0, 3);
+console.log(newStr);//dab
+&lt;/pre&gt;
+&lt;h4 id=&quot;9-code-stringprototypetrim-code-从字符串的开始和结尾去除空格&quot;&gt;9.  &lt;code&gt;String.prototype.trim()&lt;/code&gt; 从字符串的开始和结尾去除空格&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39; dabcde &#39;;
+let newStr = str.trim();
+console.log(newStr);//dabcde
+&lt;/pre&gt;
+&lt;h4 id=&quot;10-code-stringprototypeconcat-code-连接两个字符串，返回新字符串&quot;&gt;10. &lt;code&gt;String.prototype.concat()&lt;/code&gt; 连接两个字符串，返回新字符串&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str1 = &#39;dabcde&#39;;
+let str2 = &#39;fghijk&#39;;
+let str3 = str1.concat(str2);
+console.log(str3);//dabcdefghijk
+&lt;/pre&gt;
+&lt;h4 id=&quot;11-code-stringprototypematch-code-使用正则表达式&quot;&gt;11. &lt;code&gt;String.prototype.match()&lt;/code&gt; 使用正则表达式&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;cat, bat, fat, sat&#39;;
+let regExp = /.at/g;
+let result = str.match(regExp);
+console.log(result);//[ &#39;cat&#39;, &#39;bat&#39;, &#39;fat&#39;, &#39;sat&#39; ]
+&lt;/pre&gt;
+&lt;h4 id=&quot;12-code-stringprototypetest-code-用于检测一个字符串是否匹配某个模式&quot;&gt;12. &lt;code&gt;String.prototype.test()&lt;/code&gt; 用于检测一个字符串是否匹配某个模式&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;cat, bat, fat, sat&#39;;
+let regExp = /.at/g;
+let result = regExp.test(str);
+console.log(result);//true
+&lt;/pre&gt;
+&lt;h4 id=&quot;13-code-stringprototypetolowercase-code-把字符串转换为小写&quot;&gt;13. &lt;code&gt;String.prototype.toLowerCase()&lt;/code&gt; 把字符串转换为小写&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;CAT, BAT, FAT, SAT&#39;;
+let result = str.toLowerCase();
+console.log(result);//cat, bat, fat, sat
+&lt;/pre&gt;
+&lt;h4 id=&quot;14-code-stringprototypetouppercase-code-把字符串转换为大写&quot;&gt;14. &lt;code&gt;String.prototype.toUpperCase()&lt;/code&gt; 把字符串转换为大写&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;cat, bat, fat, sat&#39;;
+let result = str.toUpperCase();
+console.log(result);//CAT, BAT, FAT, SAT
 &lt;/pre&gt;
 </description>
         </item>

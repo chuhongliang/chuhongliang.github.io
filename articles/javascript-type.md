@@ -11,9 +11,7 @@
 ```js
 let name = 'jane';
 let name1 = name;
-
 console.log(name === name1);//true
-
 name = 'tom';
 console.log(name);//tome
 console.log(name1);//jane
@@ -31,7 +29,6 @@ console.log(name1);//jane
 ```js
 let person1 = { name: "tome", age: 20 };
 let person2 = person1;
-
 person1.name = "jane";
 console.log(person2.name);    // jane
 person2.age = 22;
@@ -41,7 +38,6 @@ var person3 = {
 	age: 22
 };
 console.log(person1 === person3); //false
-
 ```
 person1和person2两个变量指向了同一个对象。因此，改变其中任何一个变量，都会相互影响
 
@@ -53,15 +49,13 @@ person3是新建了一个对象, 在堆内存中确实两个相互独立的Objec
 &emsp;
 
 ### 类型中的坑
-#### 1. 稀疏数组:指的是含有空白或空缺单元的数组
+#### 1. 稀疏数组: 指的是含有空白或空缺单元的数组
 
 ```js
 let arr = [];
 console.log(arr.length); //0
-
 arr[4] = arr[5];
 console.log(arr.length); //5
-
 arr.forEach(elem => {
   console.log(elem); //undefined
 });
@@ -121,8 +115,8 @@ NaN属于特殊的Number类型,我们可以把它理解为坏数值,因为它属
 ### 类型判断
 - 类型检测主要包括了: typeof、instanceof和toString的三种方式来判断变量的类型。
 - typeof: 用来检测基本类型
-- toString: typeof的增强,用来判断内置的数据类型,无法判断自己构造的对象.
-- instanceof: 用来检测是否为数组、对象、正则
+- toString: typeof的增强,用来判断内置的数据类型,无法判断构造函数创建的对象.
+- instanceof: 用来判断使用构造函数创建的对象.
 
 #### typeof
 typeof接受一个值并返回它的类型，它有两种可能的语法：
@@ -155,7 +149,6 @@ typeof function(){}; // "function"
 toString不管是对于object类型还是primitive类型，都能得到你想要的结果：
 ```js
 let toClass = {}.toString;
-
 console.log(toClass.call(123));
 console.log(toClass.call(true));
 console.log(toClass.call(Symbol('foo')));
@@ -165,7 +158,6 @@ console.log(toClass.call(new Date()));
 console.log(toClass.call({
     a: 'a'
 }));
-
 // output
 [object Number]
 [object Boolean]
@@ -190,12 +182,10 @@ function instance_of(V, F) {
     V = V.__proto__;
   }
 }
-
 // use
 function Person() {
 }
 let a = new Person();
-
 // true
 console.log(instance_of(a, Person));
 ```

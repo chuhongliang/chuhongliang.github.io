@@ -123,7 +123,6 @@
 </pre>
 <p>&emsp;<strong>新建 test.js 文件</strong></p>
 <pre class="prettyprint linenums lang-js">require(&#39;./test-module.js&#39;);
-
 console.log(require.cache);
 </pre>
 <p>在这个文件里加载 test-module.js 文件，在之后打印下 require.cache 看下里面返回的是什么？看到以下结果应该就很清晰了，模块的文件名、地址、导出数据都很清楚。</p>
