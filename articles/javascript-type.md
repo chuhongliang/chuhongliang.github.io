@@ -1,4 +1,3 @@
-### JavaScript 类型
 
 ### 原始类型与引用类型
 - JavaScript原始类型: Undefined、Null、Boolean、Number、String、Symbol 

@@ -1,4 +1,4 @@
-### JavaScript 字符串相关的常用方法
+
 #### 1. ``String.prototype.indexOf()`` 从字符串对象中返回首个被发现的给定值的索引，没找到返回-1
 ```js
 let str = 'abcde';

@@ -47,3 +47,11 @@
     - JavaScript
   abstract: Object.assign(target,source1,source2,...) 通过复制一个或多个对象来创建一个新对象 Object.create(prototype,[propertiesObject]) 使用指定的原型对象和属性创建一个新对象
 
+- id: javascript-array
+  title: JavaScript 数组常用方法
+  postedOn: !!str 2020-01-29
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 这些方法会改变数组自身的值; Array.prototype.pop()删除数组的最后一个元素，并返回这个元素; Array.prototype.push() 在数组的末尾增加一个或多个元素，并返回数组长度
+

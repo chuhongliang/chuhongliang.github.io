@@ -1,4 +1,3 @@
-### Ojbect相关常用方法
 
 #### 1. ``Object.assign(target,source1,source2,...)`` 通过复制一个或多个对象来创建一个新对象
 ```js
