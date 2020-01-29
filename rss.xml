@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Wed, 29 Jan 2020 23:59:48 +0800</lastBuildDate>
+        <lastBuildDate>Thu, 30 Jan 2020 00:06:29 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -749,6 +749,9 @@ console.log(arr);// [ &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e
 arr.splice(0, 2);//删除
 console.log(arr);//[&#39;c&#39;, &#39;d&#39;, &#39;e&#39;]
 &lt;/pre&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;h3 id=&quot;-strong-下面这些方法不会改变数组自身的值，只会返回一个新的数组或者其他值：-strong-&quot;&gt;&lt;strong&gt;下面这些方法不会改变数组自身的值，只会返回一个新的数组或者其他值：&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&quot;1-code-arrayprototypeconcat-code-返回当前数组和其他若干数组或者若干个费数组值组合而成的新数组&quot;&gt;1. &lt;code&gt;Array.prototype.concat()&lt;/code&gt; 返回当前数组和其他若干数组或者若干个费数组值组合而成的新数组&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let arr1 = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
@@ -786,6 +789,9 @@ console.log(index);// 0
 let index = arr.lastIndexOf(&#39;a&#39;);
 console.log(index);// 6
 &lt;/pre&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;h3 id=&quot;-strong-遍历方法-strong-&quot;&gt;&lt;strong&gt;遍历方法:&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&quot;1-code-arrayprototypeforeach-code-为数组中每一个元素执行一次回调。&quot;&gt;1. &lt;code&gt;Array.prototype.forEach()&lt;/code&gt; 为数组中每一个元素执行一次回调。&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let arr = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;a&#39;]

@@ -37,7 +37,7 @@
   author: chuhongliang
   tags:
     - JavaScript
-  abstract: String.prototype.indexOf() 从字符串对象中返回首个被发现的给定值的索引，没找到返回-1  String.prototype.lastIndexOf() 从字符串对象中返回最后一个被发现的给定值的索引，没找到返回-1
+  abstract: String.prototype.indexOf()从字符串对象中返回首个被发现的给定值的索引，没找到返回-1;  String.prototype.lastIndexOf() 从字符串对象中返回最后一个被发现的给定值的索引，没找到返回-1
 
 - id: javascript-object
   title: JavaScript Object常用方法
@@ -45,7 +45,7 @@
   author: chuhongliang
   tags:
     - JavaScript
-  abstract: Object.assign(target,source1,source2,...) 通过复制一个或多个对象来创建一个新对象 Object.create(prototype,[propertiesObject]) 使用指定的原型对象和属性创建一个新对象
+  abstract: Object.assign()通过复制一个或多个对象来创建一个新对象; Object.create()使用指定的原型对象和属性创建一个新对象;Object.defineProperty()在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
 
 - id: javascript-array
   title: JavaScript 数组常用方法

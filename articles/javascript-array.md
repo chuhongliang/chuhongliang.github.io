@@ -58,6 +58,12 @@ arr.splice(0, 2);//删除
 console.log(arr);//['c', 'd', 'e']
 ```
 
+&nbsp;
+
+---
+
+&nbsp;
+
 ### **下面这些方法不会改变数组自身的值，只会返回一个新的数组或者其他值：**
 
 #### 1. ``Array.prototype.concat()`` 返回当前数组和其他若干数组或者若干个费数组值组合而成的新数组
@@ -110,6 +116,12 @@ let index = arr.lastIndexOf('a');
 console.log(index);// 6
 ```
    
+&nbsp;
+
+---
+
+&nbsp;
+
 ### **遍历方法:**
 
 #### 1. ``Array.prototype.forEach()`` 为数组中每一个元素执行一次回调。
