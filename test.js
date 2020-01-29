@@ -1,5 +1,6 @@
 
-let str = 'CAT, BAT, FAT, SAT';
-let result = str.toLowerCase();
-console.log(result);//cat, bat, fat, sat
-
+let obj = {
+	x: 1,
+};
+Object.seal(obj);
+console.log(Object.isSealed(obj)); // === true;
