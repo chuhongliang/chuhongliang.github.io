@@ -1,3 +1,4 @@
+>Object类是所有JavaScript类的基类(父类)，并提供了一种创建自定义对象的简单方式，Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。如果参数为空（或者为undefined和null），Object()返回一个空对象。
 
 #### 1. ``Object.assign(target,source1,source2,...)`` 通过复制一个或多个对象来创建一个新对象
 ```js

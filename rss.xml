@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Thu, 30 Jan 2020 00:06:29 +0800</lastBuildDate>
+        <lastBuildDate>Thu, 30 Jan 2020 20:27:16 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -483,7 +483,10 @@ console.log(result);//CAT, BAT, FAT, SAT
             <guid>Homepage link/articles/javascript-object.html</guid>
             <author>Your E-mail Your name</author>
             <pubDate>Wed, 29 Jan 2020 00:00:00 +0800</pubDate>
-            <description>&lt;h4 id=&quot;1-code-objectassign-target-source1-source2-code-通过复制一个或多个对象来创建一个新对象&quot;&gt;1. &lt;code&gt;Object.assign(target,source1,source2,...)&lt;/code&gt; 通过复制一个或多个对象来创建一个新对象&lt;/h4&gt;
+            <description>&lt;blockquote&gt;
+&lt;p&gt;Object类是所有JavaScript类的基类(父类)，并提供了一种创建自定义对象的简单方式，Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。如果参数为空（或者为undefined和null），Object()返回一个空对象。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;1-code-objectassign-target-source1-source2-code-通过复制一个或多个对象来创建一个新对象&quot;&gt;1. &lt;code&gt;Object.assign(target,source1,source2,...)&lt;/code&gt; 通过复制一个或多个对象来创建一个新对象&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let person1 = {
   name: &#39;tom&#39;,
   age: 20,
@@ -705,7 +708,10 @@ console.log(Object.isSealed(obj)); // === true;
             <guid>Homepage link/articles/javascript-array.html</guid>
             <author>Your E-mail Your name</author>
             <pubDate>Wed, 29 Jan 2020 00:00:00 +0800</pubDate>
-            <description>&lt;h3 id=&quot;-strong-下面这些方法会改变数组自身的值：-strong-&quot;&gt;&lt;strong&gt;下面这些方法会改变数组自身的值：&lt;/strong&gt;&lt;/h3&gt;
+            <description>&lt;blockquote&gt;
+&lt;p&gt;JavaScript 的数组是无类型的，数组元素可以是任意类型，同一个数组中的不同元素可能是对象或数组。数组元素的索引不一定要连续，元素之间可以有空隙，叫做稀疏数组 。每个数组都具有一个lengrh属性。针对非稀疏数组，length属性就是数组元素的个数，针对稀疏数组，元素的length属性比所有元素的索引要大。非稀疏是我们学习掌握的主要知识点。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;-strong-下面这些方法会改变数组自身的值：-strong-&quot;&gt;&lt;strong&gt;下面这些方法会改变数组自身的值：&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&quot;1-code-arrayprototypepop-code-删除数组的最后一个元素，并返回这个元素&quot;&gt;1. &lt;code&gt;Array.prototype.pop()&lt;/code&gt; 删除数组的最后一个元素，并返回这个元素&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let arr = [1, 2, 3];
 let value = arr.pop();
@@ -849,6 +855,72 @@ let result = arr.reduce((previousValue, currentValue) =&gt; {
   return previousValue + currentValue;//求和
 });
 console.log(result);// 9
+&lt;/pre&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>JavaScript Math常用方法</title>
+            <link>Homepage link/articles/javascript-math.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
+            <guid>Homepage link/articles/javascript-math.html</guid>
+            <author>Your E-mail Your name</author>
+            <pubDate>Thu, 30 Jan 2020 00:00:00 +0800</pubDate>
+            <description>&lt;blockquote&gt;
+&lt;p&gt;Math 是一个内置对象， 它具有数学常数和函数的属性和方法。不是一个函数对象。与其他全局对象不同的是，Math 不是一个构造器。 Math 的所有属性与方法都是静态的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;1-code-mathabs-x-code-返回绝对值&quot;&gt;1. &lt;code&gt;Math.abs(x)&lt;/code&gt; 返回绝对值&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = -1;
+console.log(Math.abs(a));// 1
+&lt;/pre&gt;
+&lt;h4 id=&quot;2-code-mathceil-x-code-返回x向上取整后的值&quot;&gt;2. &lt;code&gt;Math.ceil(x)&lt;/code&gt; 返回x向上取整后的值&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 1.5;
+let b = 1.4;
+console.log(Math.ceil(a));// 2
+console.log(Math.ceil(b));// 2
+&lt;/pre&gt;
+&lt;h4 id=&quot;3-code-mathfloor-x-code-返回x向下取整后的值&quot;&gt;3. &lt;code&gt;Math.floor(x)&lt;/code&gt; 返回x向下取整后的值&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 1.5;
+let b = 1.4;
+console.log(Math.floor(a));// 1
+console.log(Math.floor(b));// 1
+&lt;/pre&gt;
+&lt;h4 id=&quot;4-code-mathmin-x-code-返回最小值&quot;&gt;4. &lt;code&gt;Math.min(x)&lt;/code&gt;  返回最小值&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 3;
+let b = 1;
+let c = 2;
+let result = Math.min(a, b, c);
+console.log(result);// 1
+&lt;/pre&gt;
+&lt;h4 id=&quot;5-code-mathmax-x-code-返回最大值&quot;&gt;5. &lt;code&gt;Math.max(x)&lt;/code&gt; 返回最大值&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 3;
+let b = 1;
+let c = 2;
+let result = Math.max(a, b, c);
+console.log(result);// 3
+&lt;/pre&gt;
+&lt;h4 id=&quot;6-code-mathpow-x-y-code-返回x的y次幂&quot;&gt;6. &lt;code&gt;Math.pow(x, y)&lt;/code&gt; 返回x的y次幂&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 3;
+let b = 3;
+let result = Math.pow(a, b);
+console.log(result);// 27
+&lt;/pre&gt;
+&lt;h4 id=&quot;7-code-mathrandom-x-code-返回0-1之间的伪随机数&quot;&gt;7. &lt;code&gt;Math.random(x)&lt;/code&gt; 返回0-1之间的伪随机数&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let result = Math.floor(Math.random() * 10);
+console.log(result);// 10 以内的随机数
+&lt;/pre&gt;
+&lt;h4 id=&quot;8-code-mathround-x-code-返回四舍五入后的整数&quot;&gt;8. &lt;code&gt;Math.round(x)&lt;/code&gt; 返回四舍五入后的整数&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 1.5;
+let b = 1.4;
+console.log(Math.round(a));// 2
+console.log(Math.round(b));// 1
+&lt;/pre&gt;
+&lt;h4 id=&quot;9-code-mathsign-x-code-返回x的符号函数，判断x是正数、负数还是0&quot;&gt;9. &lt;code&gt;Math.sign(x)&lt;/code&gt; 返回x的符号函数，判断x是正数、负数还是0&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 1.5;
+let b = - 1.4;
+let c = 0;
+console.log(Math.sign(a));// 1
+console.log(Math.sign(b));// -1
+console.log(Math.sign(c));// 0
 &lt;/pre&gt;
 </description>
         </item>
