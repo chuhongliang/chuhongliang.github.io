@@ -45,7 +45,7 @@
         <div id="aboutme"><p>一个喜欢编程的野生程序员...</p></div>
         <div id="tag-cloud">
             
-            <a href="/tag.html#JavaScript">JavaScript<span class="count">×7</span></a>
+            <a href="/tag.html#JavaScript">JavaScript<span class="count">×8</span></a>
             
             <a href="/tag.html#Node">Node<span class="count">×2</span></a>
             
@@ -135,8 +135,18 @@
             
             <div class="article-block">
                 <p class="title"><a href="/articles/javascript-prototype.html">JavaScript 原型</a></p>
-                <p class="abstract">&lt;摘要&gt;: 绝大部分的函数(少数内建函数除外)都有一个`prototype`属性,这个属性是原型对象用来创建新对象实例,而所有被创建的对象都会共享原型对象,因此这些对象便可以访问原型对象的属性,例如`hasOwnProperty()`方法存在于Obejct原型对象中,它便可以被任何对象当做自己的方法使用.</p>
+                <p class="abstract">&lt;摘要&gt;: 我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象. 如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过__proto__来访问该属性.</p>
                 <p class="meta">作者 chuhongliang | 发布于 2020-01-30 | Tags 
+                    
+                    <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/javascript-function.html">JavaScript 匿名函数与闭包</a></p>
+                <p class="abstract">&lt;摘要&gt;: 闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-02-02 | Tags 
                     
                     <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
                     

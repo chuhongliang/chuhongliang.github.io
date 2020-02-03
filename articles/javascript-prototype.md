@@ -1,10 +1,10 @@
 
 ### **原型** prototype
->我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.
+- 我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.
 
->如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过__proto__来访问该属性.
+- 如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过__proto__来访问该属性.
 
->原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
+- 原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
 我们可以将对象中共有的内容，统一设置到原型对象中。
 当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，
 如果没有则会去原型对象中寻找，如果找到则直接使用
@@ -82,16 +82,14 @@ console.log(dog.__proto__.hasOwnProperty("hasOwnProperty")); //fasle
 console.log(pet.prototype.hasOwnProperty("hasOwnProperty")); //false
 console.log(dog.__proto__ === pet.prototype); //true
 
-/**
- * 在pet.prototype原型对象pet.prototype.__proto__
- * 即Object.prototype中寻找hasOwnProperty()方法
- * */
+// 在pet.prototype原型对象pet.prototype.__proto__ 即Object.prototypehasOwnProperty()方法
 console.log(pet.prototype.__proto__.hasOwnProperty("hasOwnProperty")); //true
 console.log(dog.__proto__.__proto__.hasOwnProperty("hasOwnProperty")); //true
 console.log(dog.__proto__.__proto__ === pet.prototype.__proto__); // true
 console.log(dog.__proto__.__proto__ === Object.prototype); // true
 ```
 
+&nbsp;
 
 ### ES6中的 `__proto__`
 >虽然`__proto__`在最新的ECMA标准中被纳入了规范,但是由于`__proto__`前后的双下划线，说明它本质上是一个内部属性，而不是一个正式的对外的 API.

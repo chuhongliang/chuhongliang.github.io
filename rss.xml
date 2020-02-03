@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Mon, 03 Feb 2020 16:45:16 +0800</lastBuildDate>
+        <lastBuildDate>Mon, 03 Feb 2020 17:16:45 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -932,19 +932,18 @@ console.log(Math.sign(c));// 0
             <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Thu, 30 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h3 id=&quot;-strong-原型-strong-prototype&quot;&gt;&lt;strong&gt;原型&lt;/strong&gt; prototype&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过&lt;strong&gt;proto&lt;/strong&gt;来访问该属性.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过&lt;strong&gt;proto&lt;/strong&gt;来访问该属性.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
 我们可以将对象中共有的内容，统一设置到原型对象中。
 当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，
 如果没有则会去原型对象中寻找，如果找到则直接使用
 以后我们创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中，这样不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法了&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;例如: &lt;code&gt;hasOwnProperty()&lt;/code&gt;方法存在于Obejct原型对象中,它便可以被任何对象当做自己的方法使用.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;object.hasOwnProperty( propertyName )&lt;/code&gt;
@@ -1005,15 +1004,13 @@ console.log(dog.__proto__.hasOwnProperty(&quot;hasOwnProperty&quot;)); //fasle
 console.log(pet.prototype.hasOwnProperty(&quot;hasOwnProperty&quot;)); //false
 console.log(dog.__proto__ === pet.prototype); //true
 
-/**
- * 在pet.prototype原型对象pet.prototype.__proto__
- * 即Object.prototype中寻找hasOwnProperty()方法
- * */
+// 在pet.prototype原型对象pet.prototype.__proto__ 即Object.prototypehasOwnProperty()方法
 console.log(pet.prototype.__proto__.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
 console.log(dog.__proto__.__proto__.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
 console.log(dog.__proto__.__proto__ === pet.prototype.__proto__); // true
 console.log(dog.__proto__.__proto__ === Object.prototype); // true
 &lt;/pre&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;h3 id=&quot;es6中的-code-__proto__-code-&quot;&gt;ES6中的 &lt;code&gt;__proto__&lt;/code&gt;&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;虽然&lt;code&gt;__proto__&lt;/code&gt;在最新的ECMA标准中被纳入了规范,但是由于&lt;code&gt;__proto__&lt;/code&gt;前后的双下划线，说明它本质上是一个内部属性，而不是一个正式的对外的 API.
@@ -1041,6 +1038,88 @@ let cat = new pet(&quot;猫&quot;);
 Object.setPrototypeOf(dog, { sound: &quot;汪汪&quot; });
 console.log(dog.sound); //汪汪
 console.log(cat.sound); //undefind
+&lt;/pre&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>JavaScript 匿名函数与闭包</title>
+            <link>Homepage link/articles/javascript-function.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
+            <guid>Homepage link/articles/javascript-function.html</guid>
+            <author>chl01003698@126.com chuhongliang</author>
+            <pubDate>Sun, 02 Feb 2020 00:00:00 +0800</pubDate>
+            <description>&lt;h3 id=&quot;匿名函数&quot;&gt;匿名函数&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;匿名函数就是没有名字的函数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;匿名函数的自我执行&quot;&gt;匿名函数的自我执行&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;(function(num){
+  return num;
+})(1) //1
+&lt;/pre&gt;
+&lt;h3 id=&quot;闭包&quot;&gt;闭包&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成&quot;定义在一个函数内部的函数&quot;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;function f1(){
+  var n = 999;
+  function f2(){
+    alert(n);
+  }
+  return f2;
+}
+var result = f1();
+result();//999
+&lt;/pre&gt;
+&lt;p&gt;f2()就是闭包&lt;/p&gt;
+&lt;h3 id=&quot;闭包的使用场景&quot;&gt;闭包的使用场景&lt;/h3&gt;
+&lt;h4 id=&quot;1-计数器&quot;&gt;1. 计数器&lt;/h4&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function test1(){
+  var a = 1;
+  return function(){
+    return ++a;
+  }
+}
+var test2 = test1();
+
+console.log(test2()); // 2
+console.log(test2()); // 3
+console.log(test2()); // 4
+
+//不能这样写,这样外层函数每次也会执行，从而age每次都会初始化
+console.log(test1()()); // 2
+console.log(test1()()); // 2
+console.log(test1()()); // 2
+&lt;/pre&gt;
+&lt;h4 id=&quot;2-循环中使用闭包&quot;&gt;2. 循环中使用闭包&lt;/h4&gt;
+&lt;p&gt;下例，循环中的每个迭代器在运行时都会给自己捕获一个i的副本，但是根据作用域的工作原理，尽管循环中的五个函数分别是在各个迭代器中分别定义的，但是它们都会被封闭在一个共享的全局作用域中，实际上只有一个i，结果每次都会输出6&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;for(var i=1; i &lt;= 5; i++){
+  setTimeout(function(){
+    console.log(i);
+  })
+}
+&lt;/pre&gt;
+&lt;p&gt;解决上面的问题，在每个循环迭代中都需要一个闭包作用域，下面示例，循环中的每个迭代器都会生成一个新的作用域。&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;for(var i=1; i &lt;= 5; i++){
+  (function(j){
+    setTimeout(function(){
+      console.log(j);
+    })
+  })(i)
+}
+&lt;/pre&gt;
+&lt;p&gt;也可以使用let解决，let声明，可以用来劫持块作用域，并且在这个块作用域中声明一个变量。&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;for(let i=1; i &lt;= 5; i++){
+  setTimeout(function(){
+    console.log(i);
+  })
+}
 &lt;/pre&gt;
 </description>
         </item>
