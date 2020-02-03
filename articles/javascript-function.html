@@ -46,7 +46,7 @@
             <a href="/articles/javascript-function.html">JavaScript 匿名函数与闭包</a>
         </div>
         <div id="article-meta">
-            作者 chuhongliang | 发布于 2020-02-02
+            作者 chuhongliang | 发布于 2020-02-01
         </div>
         <div id="article-tags">
         
@@ -55,24 +55,23 @@
         </div>
         <div id="article-content">
             <h3 id="匿名函数">匿名函数</h3>
-<blockquote>
-<p>匿名函数就是没有名字的函数</p>
-</blockquote>
-<h4 id="匿名函数的自我执行">匿名函数的自我执行</h4>
+<ul>
+<li>匿名函数就是没有名字的函数</li>
+</ul>
+<p>匿名函数的自我执行</p>
 <pre class="prettyprint linenums lang-javascript">(function(num){
   return num;
 })(1) //1
 </pre>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
 <h3 id="闭包">闭包</h3>
-<blockquote>
-<p>闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。</p>
-</blockquote>
-<blockquote>
-<p>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成&quot;定义在一个函数内部的函数&quot;。</p>
-</blockquote>
-<blockquote>
-<p>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</p>
-</blockquote>
+<ul>
+<li>闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。</li>
+<li>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成&quot;定义在一个函数内部的函数&quot;。</li>
+<li>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</li>
+</ul>
 <pre class="prettyprint linenums lang-js">function f1(){
   var n = 999;
   function f2(){
@@ -83,7 +82,8 @@
 var result = f1();
 result();//999
 </pre>
-<p>f2()就是闭包</p>
+<p><strong>f2()</strong> 就是闭包</p>
+<p>&nbsp;</p>
 <h3 id="闭包的使用场景">闭包的使用场景</h3>
 <h4 id="1-计数器">1. 计数器</h4>
 <pre class="prettyprint linenums lang-javascript">function test1(){

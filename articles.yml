@@ -73,8 +73,16 @@
 
 - id: javascript-function
   title: JavaScript 匿名函数与闭包
-  postedOn: !!str 2020-02-02
+  postedOn: !!str 2020-02-01
   author: chuhongliang
   tags:
     - JavaScript
   abstract: 闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。
+
+- id: javascript-eventloop
+  title: 浏览器中的 Event Loop
+  postedOn: !!str 2020-02-02
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 事件循环中的异步队列有两种：macro（宏任务）队列和 micro（微任务）队列。宏任务队列可以有多个，微任务队列只有一个

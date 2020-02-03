@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Mon, 03 Feb 2020 17:16:45 +0800</lastBuildDate>
+        <lastBuildDate>Mon, 03 Feb 2020 19:26:01 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -1047,26 +1047,25 @@ console.log(cat.sound); //undefind
             <link>Homepage link/articles/javascript-function.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-function.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
-            <pubDate>Sun, 02 Feb 2020 00:00:00 +0800</pubDate>
+            <pubDate>Sat, 01 Feb 2020 00:00:00 +0800</pubDate>
             <description>&lt;h3 id=&quot;匿名函数&quot;&gt;匿名函数&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;匿名函数就是没有名字的函数&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;匿名函数的自我执行&quot;&gt;匿名函数的自我执行&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;匿名函数就是没有名字的函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;匿名函数的自我执行&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;(function(num){
   return num;
 })(1) //1
 &lt;/pre&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;h3 id=&quot;闭包&quot;&gt;闭包&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成&quot;定义在一个函数内部的函数&quot;。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。&lt;/li&gt;
+&lt;li&gt;由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成&quot;定义在一个函数内部的函数&quot;。&lt;/li&gt;
+&lt;li&gt;所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;function f1(){
   var n = 999;
   function f2(){
@@ -1077,7 +1076,8 @@ console.log(cat.sound); //undefind
 var result = f1();
 result();//999
 &lt;/pre&gt;
-&lt;p&gt;f2()就是闭包&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;f2()&lt;/strong&gt; 就是闭包&lt;/p&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
 &lt;h3 id=&quot;闭包的使用场景&quot;&gt;闭包的使用场景&lt;/h3&gt;
 &lt;h4 id=&quot;1-计数器&quot;&gt;1. 计数器&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function test1(){
