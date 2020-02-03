@@ -62,3 +62,11 @@
   tags:
     - JavaScript
   abstract: Math 是一个内置对象， 它具有数学常数和函数的属性和方法。不是一个函数对象。与其他全局对象不同的是，Math 不是一个构造器。 Math 的所有属性与方法都是静态的。
+
+- id: javascript-prototype
+  title: JavaScript 原型
+  postedOn: !!str 2020-01-30
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 绝大部分的函数(少数内建函数除外)都有一个`prototype`属性,这个属性是原型对象用来创建新对象实例,而所有被创建的对象都会共享原型对象,因此这些对象便可以访问原型对象的属性,例如`hasOwnProperty()`方法存在于Obejct原型对象中,它便可以被任何对象当做自己的方法使用.

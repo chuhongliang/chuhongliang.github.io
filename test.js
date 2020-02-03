@@ -1,10 +1,11 @@
 
-let a = 1.5;
-let b = - 1.4;
-let c = 0;
-console.log(Math.sign(a));// 1
-console.log(Math.sign(b));// -1
-console.log(Math.sign(c));// 0
+function pet(name) {
+	this.name = name;
+}
+let dog = new pet("狗");
+// getPrototypeOf
+console.log(Object.getPrototypeOf(dog) === pet.prototype); //true
 
-// 做人树为模，本固任从枝叶动==
-// 立世钱为样，内方还要外边圆
+// setPrototypeOf
+Object.setPrototypeOf(dog, { sound: "汪汪" });
+console.log(dog.sound); //汪汪

@@ -117,7 +117,7 @@ NaN属于特殊的Number类型,我们可以把它理解为坏数值,因为它属
 - toString: typeof的增强,用来判断内置的数据类型,无法判断构造函数创建的对象.
 - instanceof: 用来判断使用构造函数创建的对象.
 
-#### **``typeof``**
+#### ** 1. ``typeof``**
 typeof接受一个值并返回它的类型，它有两种可能的语法：
 - typeof x
 - typeof(x)
@@ -144,7 +144,7 @@ typeof function(){}; // "function"
 
 当你对于typeof检测数据类型不确定时，请谨慎使用。
 
-#### **``toString``**
+#### ** 2. ``toString``**
 toString不管是对于object类型还是primitive类型，都能得到你想要的结果：
 ```js
 let toClass = {}.toString;
@@ -167,7 +167,7 @@ console.log(toClass.call({
 [object Object]
 ```
 
-#### **``instanceof``**
+#### ** 3. ``instanceof``**
 对于使用构造函数创建的对象，我们通常使用instanceof来判断某一实例是否属于某种类型，例如：a instanceof Person，其内部原理实际上是判断Person.prototype是否在a实例的原型链中，其原理可以用下面的函数来表达：
 ```js
 function instance_of(V, F) {

@@ -4,14 +4,14 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Thu, 30 Jan 2020 20:27:16 +0800</lastBuildDate>
+        <lastBuildDate>Mon, 03 Feb 2020 16:45:16 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
             <title>Node.js 简介</title>
             <link>Homepage link/articles/nodejs.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/nodejs.html</guid>
-            <author>Your E-mail Your name</author>
+            <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Sun, 26 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h3 id=&quot;nodejs&quot;&gt;Node.js&lt;/h3&gt;
 &lt;ul&gt;
@@ -60,7 +60,7 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
             <title>Node.js 模块</title>
             <link>Homepage link/articles/node-module.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/node-module.html</guid>
-            <author>Your E-mail Your name</author>
+            <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Mon, 27 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h3 id=&quot;nodejs-模块&quot;&gt;Node.js 模块&lt;/h3&gt;
 &lt;ul&gt;
@@ -181,7 +181,7 @@ a 结束
             <title>JavaScript 简介</title>
             <link>Homepage link/articles/javascript.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript.html</guid>
-            <author>Your E-mail Your name</author>
+            <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Mon, 27 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h3 id=&quot;javascript&quot;&gt;Javascript&lt;/h3&gt;
 &lt;ul&gt;
@@ -213,7 +213,7 @@ a 结束
             <title>JavaScript 类型</title>
             <link>Homepage link/articles/javascript-type.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-type.html</guid>
-            <author>Your E-mail Your name</author>
+            <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Tue, 28 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h3 id=&quot;原始类型与引用类型&quot;&gt;原始类型与引用类型&lt;/h3&gt;
 &lt;ul&gt;
@@ -313,7 +313,7 @@ console.log(isNaN(a)); //true
 &lt;li&gt;toString: typeof的增强,用来判断内置的数据类型,无法判断构造函数创建的对象.&lt;/li&gt;
 &lt;li&gt;instanceof: 用来判断使用构造函数创建的对象.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;-strong-code-typeof-code-strong-&quot;&gt;&lt;strong&gt;&lt;code&gt;typeof&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;-strong-1-code-typeof-code-strong-&quot;&gt;&lt;strong&gt; 1. &lt;code&gt;typeof&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
 &lt;p&gt;typeof接受一个值并返回它的类型，它有两种可能的语法：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;typeof x&lt;/li&gt;
@@ -336,7 +336,7 @@ typeof function(){}; // &quot;function&quot;
 &lt;p&gt;这里的[]返回的确却是object，这可能并不是你想要的，因为数组是一个特殊的对象，有时候这可能并不是你想要的结果。&lt;/p&gt;
 &lt;p&gt;对于这里的null返回的确却是object，wtf，有些人说null被认为是没有一个对象。&lt;/p&gt;
 &lt;p&gt;当你对于typeof检测数据类型不确定时，请谨慎使用。&lt;/p&gt;
-&lt;h4 id=&quot;-strong-code-tostring-code-strong-&quot;&gt;&lt;strong&gt;&lt;code&gt;toString&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;-strong-2-code-tostring-code-strong-&quot;&gt;&lt;strong&gt; 2. &lt;code&gt;toString&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
 &lt;p&gt;toString不管是对于object类型还是primitive类型，都能得到你想要的结果：&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let toClass = {}.toString;
 console.log(toClass.call(123));
@@ -357,7 +357,7 @@ console.log(toClass.call({
 [object Date]
 [object Object]
 &lt;/pre&gt;
-&lt;h4 id=&quot;-strong-code-instanceof-code-strong-&quot;&gt;&lt;strong&gt;&lt;code&gt;instanceof&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;-strong-3-code-instanceof-code-strong-&quot;&gt;&lt;strong&gt; 3. &lt;code&gt;instanceof&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
 &lt;p&gt;对于使用构造函数创建的对象，我们通常使用instanceof来判断某一实例是否属于某种类型，例如：a instanceof Person，其内部原理实际上是判断Person.prototype是否在a实例的原型链中，其原理可以用下面的函数来表达：&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;function instance_of(V, F) {
   let O = F.prototype;
@@ -384,7 +384,7 @@ console.log(instance_of(a, Person));
             <title>JavaScript 字符串常用方法</title>
             <link>Homepage link/articles/javascript-string.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-string.html</guid>
-            <author>Your E-mail Your name</author>
+            <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Tue, 28 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h4 id=&quot;1-code-stringprototypeindexof-code-从字符串对象中返回首个被发现的给定值的索引，没找到返回-1&quot;&gt;1. &lt;code&gt;String.prototype.indexOf()&lt;/code&gt; 从字符串对象中返回首个被发现的给定值的索引，没找到返回-1&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let str = &#39;abcde&#39;;
@@ -481,7 +481,7 @@ console.log(result);//CAT, BAT, FAT, SAT
             <title>JavaScript Object常用方法</title>
             <link>Homepage link/articles/javascript-object.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-object.html</guid>
-            <author>Your E-mail Your name</author>
+            <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Wed, 29 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;blockquote&gt;
 &lt;p&gt;Object类是所有JavaScript类的基类(父类)，并提供了一种创建自定义对象的简单方式，Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。如果参数为空（或者为undefined和null），Object()返回一个空对象。&lt;/p&gt;
@@ -706,7 +706,7 @@ console.log(Object.isSealed(obj)); // === true;
             <title>JavaScript 数组常用方法</title>
             <link>Homepage link/articles/javascript-array.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-array.html</guid>
-            <author>Your E-mail Your name</author>
+            <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Wed, 29 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;blockquote&gt;
 &lt;p&gt;JavaScript 的数组是无类型的，数组元素可以是任意类型，同一个数组中的不同元素可能是对象或数组。数组元素的索引不一定要连续，元素之间可以有空隙，叫做稀疏数组 。每个数组都具有一个lengrh属性。针对非稀疏数组，length属性就是数组元素的个数，针对稀疏数组，元素的length属性比所有元素的索引要大。非稀疏是我们学习掌握的主要知识点。&lt;/p&gt;
@@ -863,7 +863,7 @@ console.log(result);// 9
             <title>JavaScript Math常用方法</title>
             <link>Homepage link/articles/javascript-math.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-math.html</guid>
-            <author>Your E-mail Your name</author>
+            <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Thu, 30 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;blockquote&gt;
 &lt;p&gt;Math 是一个内置对象， 它具有数学常数和函数的属性和方法。不是一个函数对象。与其他全局对象不同的是，Math 不是一个构造器。 Math 的所有属性与方法都是静态的。&lt;/p&gt;
@@ -921,6 +921,126 @@ let c = 0;
 console.log(Math.sign(a));// 1
 console.log(Math.sign(b));// -1
 console.log(Math.sign(c));// 0
+&lt;/pre&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>JavaScript 原型</title>
+            <link>Homepage link/articles/javascript-prototype.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
+            <guid>Homepage link/articles/javascript-prototype.html</guid>
+            <author>chl01003698@126.com chuhongliang</author>
+            <pubDate>Thu, 30 Jan 2020 00:00:00 +0800</pubDate>
+            <description>&lt;h3 id=&quot;-strong-原型-strong-prototype&quot;&gt;&lt;strong&gt;原型&lt;/strong&gt; prototype&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过&lt;strong&gt;proto&lt;/strong&gt;来访问该属性.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
+我们可以将对象中共有的内容，统一设置到原型对象中。
+当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，
+如果没有则会去原型对象中寻找，如果找到则直接使用
+以后我们创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中，这样不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;例如: &lt;code&gt;hasOwnProperty()&lt;/code&gt;方法存在于Obejct原型对象中,它便可以被任何对象当做自己的方法使用.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;object.hasOwnProperty( propertyName )&lt;/code&gt;
+&lt;code&gt;hasOwnProperty()&lt;/code&gt;函数的返回值为&lt;code&gt;Boolean&lt;/code&gt;类型。如果对象&lt;code&gt;object&lt;/code&gt;具有名称为&lt;code&gt;propertyName&lt;/code&gt;的属性，则返回&lt;code&gt;true&lt;/code&gt;，否则返回&lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;let pet = {
+  name: &quot;狗&quot;,
+};
+console.log(pet.hasOwnProperty(&quot;name&quot;)); //true
+console.log(pet.hasOwnProperty(&quot;hasOwnProperty&quot;)); //false
+console.log(Object.prototype.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
+&lt;/pre&gt;
+&lt;p&gt;由以上代码可知,&lt;code&gt;hasOwnProperty()&lt;/code&gt;并不存在于&lt;code&gt;pet&lt;/code&gt;对象中,但是&lt;code&gt;pet&lt;/code&gt;依然可以拥有此方法.&lt;/p&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;h3 id=&quot;-code-__proto__-code-与-code-prototype-code-&quot;&gt;&lt;code&gt;__proto__&lt;/code&gt;与&lt;code&gt;prototype&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;实例对象的&lt;code&gt;__proto__&lt;/code&gt;属性,指向原型对象,我们便可以通过此属性找到原型对象.&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
+  this.name = name;
+}
+let dog = new pet(&#39;狗&#39;);
+console.log(dog.__proto__ === pet.prototype); //true
+&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;getPrototypeOf()&lt;/code&gt; 获取原型对象.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
+    this.name = name;
+}
+let dog = new pet(&#39;狗&#39;);
+console.log(Object.getPrototypeOf(dog) === pet.prototype); //true
+&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;isPrototypeOf&lt;/code&gt; 来检验某个对象是否是另一个对象的原型对象.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
+    this.name = name;
+}
+let dog = new pet(&#39;狗&#39;);
+console.log(pet.prototype.isPrototypeOf(dog)); //true
+&lt;/pre&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&nbsp;&lt;/p&gt;
+&lt;h3 id=&quot;-strong-原型链-strong-&quot;&gt;&lt;strong&gt;原型链&lt;/strong&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实例对象方法调用,是先在实例对象内部找,如果找到则立即返回调用,如果没有找到就顺着&lt;code&gt;__proto__&lt;/code&gt;向上寻找,如果找到该方法则调用,没有找到会直接报错,这便是&lt;strong&gt;原型链&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
+    this.name = name;
+}
+let dog = new pet(&quot;狗&quot;);
+// 先在dog对象实例中寻找`hasOwnProperty()`方法,发现不存在此方法
+console.log(dog.hasOwnProperty(&quot;hasOwnProperty&quot;)); //fasle
+// 在dog的原型对象dog.__proto__即pet.prototype中寻找hasOwnProperty()方法,依然没有找到
+console.log(dog.__proto__.hasOwnProperty(&quot;hasOwnProperty&quot;)); //fasle
+console.log(pet.prototype.hasOwnProperty(&quot;hasOwnProperty&quot;)); //false
+console.log(dog.__proto__ === pet.prototype); //true
+
+/**
+ * 在pet.prototype原型对象pet.prototype.__proto__
+ * 即Object.prototype中寻找hasOwnProperty()方法
+ * */
+console.log(pet.prototype.__proto__.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
+console.log(dog.__proto__.__proto__.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
+console.log(dog.__proto__.__proto__ === pet.prototype.__proto__); // true
+console.log(dog.__proto__.__proto__ === Object.prototype); // true
+&lt;/pre&gt;
+&lt;h3 id=&quot;es6中的-code-__proto__-code-&quot;&gt;ES6中的 &lt;code&gt;__proto__&lt;/code&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虽然&lt;code&gt;__proto__&lt;/code&gt;在最新的ECMA标准中被纳入了规范,但是由于&lt;code&gt;__proto__&lt;/code&gt;前后的双下划线，说明它本质上是一个内部属性，而不是一个正式的对外的 API.
+标准明确规定，只有浏览器必须部署这个属性，其他运行环境不一定需要部署，而且新的代码最好认为这个属性是不存在的。因此，无论从语义的角度，还是从兼容性的角度，都不要使用这个属性，而是使用下面的&lt;code&gt;Object.setPrototypeOf()&lt;/code&gt;（写操作）、&lt;code&gt;Object.getPrototypeOf()&lt;/code&gt;（读操作）代替。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
+    this.name = name;
+}
+let dog = new pet(&quot;狗&quot;);
+// getPrototypeOf
+console.log(Object.getPrototypeOf(dog) === pet.prototype); //true
+
+// setPrototypeOf
+Object.setPrototypeOf(dog, { sound: &quot;汪汪&quot; });
+console.log(dog.sound); //汪汪
+&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Object.setPrototypeOf()&lt;/code&gt; 只能生效当前实例;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
+    this.name = name;
+}
+let dog = new pet(&quot;狗&quot;);
+let cat = new pet(&quot;猫&quot;);
+Object.setPrototypeOf(dog, { sound: &quot;汪汪&quot; });
+console.log(dog.sound); //汪汪
+console.log(cat.sound); //undefind
 &lt;/pre&gt;
 </description>
         </item>

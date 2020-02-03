@@ -152,7 +152,7 @@ console.log(isNaN(a)); //true
 <li>toString: typeof的增强,用来判断内置的数据类型,无法判断构造函数创建的对象.</li>
 <li>instanceof: 用来判断使用构造函数创建的对象.</li>
 </ul>
-<h4 id="-strong-code-typeof-code-strong-"><strong><code>typeof</code></strong></h4>
+<h4 id="-strong-1-code-typeof-code-strong-"><strong> 1. <code>typeof</code></strong></h4>
 <p>typeof接受一个值并返回它的类型，它有两种可能的语法：</p>
 <ul>
 <li>typeof x</li>
@@ -175,7 +175,7 @@ typeof function(){}; // &quot;function&quot;
 <p>这里的[]返回的确却是object，这可能并不是你想要的，因为数组是一个特殊的对象，有时候这可能并不是你想要的结果。</p>
 <p>对于这里的null返回的确却是object，wtf，有些人说null被认为是没有一个对象。</p>
 <p>当你对于typeof检测数据类型不确定时，请谨慎使用。</p>
-<h4 id="-strong-code-tostring-code-strong-"><strong><code>toString</code></strong></h4>
+<h4 id="-strong-2-code-tostring-code-strong-"><strong> 2. <code>toString</code></strong></h4>
 <p>toString不管是对于object类型还是primitive类型，都能得到你想要的结果：</p>
 <pre class="prettyprint linenums lang-js">let toClass = {}.toString;
 console.log(toClass.call(123));
@@ -196,7 +196,7 @@ console.log(toClass.call({
 [object Date]
 [object Object]
 </pre>
-<h4 id="-strong-code-instanceof-code-strong-"><strong><code>instanceof</code></strong></h4>
+<h4 id="-strong-3-code-instanceof-code-strong-"><strong> 3. <code>instanceof</code></strong></h4>
 <p>对于使用构造函数创建的对象，我们通常使用instanceof来判断某一实例是否属于某种类型，例如：a instanceof Person，其内部原理实际上是判断Person.prototype是否在a实例的原型链中，其原理可以用下面的函数来表达：</p>
 <pre class="prettyprint linenums lang-js">function instance_of(V, F) {
   let O = F.prototype;

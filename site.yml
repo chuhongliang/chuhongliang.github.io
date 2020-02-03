@@ -9,9 +9,9 @@ meta:
     - keyword3
   author: Content of author meta tag
 master:
-  name: Your name
+  name: chuhongliang
   about: 一个喜欢编程的野生程序员...
-  email: Your E-mail
+  email: chl01003698@126.com
 rss:
   title: RSS feed title
   desc: RSS feed description
