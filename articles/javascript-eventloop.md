@@ -4,7 +4,7 @@
 
 - 常见的 macro-task（宏任务） 比如：setTimeout、setInterval、 setImmediate、script（整体代码）、 I/O 操作、UI 渲染等。
 - 常见的 micro-task（微任务） 比如: process.nextTick、new Promise().then(回调)、MutationObserver(html5 新特性) 等。
-- 每个macro-task（宏任务）结束后, 都要清空所有的micro-task（微任务）
+- 宏任务每次执行一个，微任务每次执行队列里所有的，直到微任务队列为空
 
 &nbsp;
 
@@ -67,7 +67,7 @@ timeout2
 timeout3
 ```
 
-> 同步代码包括 console.log，Promise的创建也属于同步代码
+注：同步代码包括 console.log，Promise的创建也属于同步代码
 
 - 执行同步代码，输出script start，生成宏任务setTimeout1，setTimeout2, 
 - 执行同步代码，输出promise1，生成宏任务setTimeout3, 生成微任务then1，

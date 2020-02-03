@@ -86,3 +86,11 @@
   tags:
     - JavaScript
   abstract: 事件循环中的异步队列有两种：macro（宏任务）队列和 micro（微任务）队列。宏任务队列可以有多个，微任务队列只有一个
+
+- id: node-eventloop
+  title: Node 中的 Event Loop
+  postedOn: !!str 2020-02-03
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计的libuv，libuv是一个基于事件驱动的跨平台抽象层，封装了不同操作系统一些底层特性，对外提供统一的API，事件循环机制也是它里面的实现。
