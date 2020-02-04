@@ -49,7 +49,7 @@
             
             <a href="/tag.html#Node">Node<span class="count">×4</span></a>
             
-            <a href="/tag.html#Redis">Redis<span class="count">×2</span></a>
+            <a href="/tag.html#Redis">Redis<span class="count">×4</span></a>
             
             <div style="clear:both;"></div>
         </div>
@@ -206,11 +206,41 @@
             </div>
             
             <div class="article-block">
-                <p class="title"><a href="/articles/redis-data.html">Redis的数据结构</a></p>
+                <p class="title"><a href="/articles/redis-data.html">Redis 的数据结构</a></p>
                 <p class="abstract">&lt;摘要&gt;: Redis本身采用key-value的方式存储数据， key的类型是string，value的类型包括5种：string set list zset(可排序，打分) hash</p>
                 <p class="meta">作者 chuhongliang | 发布于 2020-02-05 | Tags 
                     
                     <a class="tag" href="/tag.html#Redis">Redis</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/redis-concurrency.html">Redis 并发请求问题</a></p>
+                <p class="abstract">&lt;摘要&gt;: 在并发请求的情况下，如何处理Redis写竞争的问题？比如秒杀活动修改剩余奖品数量，转账修改账户余额、流量控制（同一用户1秒钟只能请求一次）等等。对于修改数值的场景，Redis提供了一系列原子计数器命令，类似MySQL的`update val = val + 10`对值直接更新。而对于复杂数据的修改，只能先读出，修改后再写入。于是就有了写竞争问题。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-02-06 | Tags 
+                    
+                    <a class="tag" href="/tag.html#Redis">Redis</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/redis-cache.html">Redis 缓存问题</a></p>
+                <p class="abstract">&lt;摘要&gt;: 缓存穿透，是指查询一个数据库一定不存在的数据。正常的使用缓存流程大致是，数据查询先进行缓存查询，如果key不存在或者key已经过期，再对数据库进行查询，并把查询到的对象，放进缓存。如果数据库查询对象为空，则不放进缓存。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-02-06 | Tags 
+                    
+                    <a class="tag" href="/tag.html#Redis">Redis</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/mysql.html">MySQL 简介</a></p>
+                <p class="abstract">&lt;摘要&gt;: MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-02-06 | Tags 
+                    
+                    <a class="tag" href="/tag.html#MySQL">MySQL</a>
                     
                 </p>
             </div>
