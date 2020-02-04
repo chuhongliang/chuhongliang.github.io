@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Redis的数据结构
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/redis-data.html">Redis的数据结构</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-05
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Redis">Redis</a>
+        
+        </div>
+        <div id="article-content">
+            <p>Redis的数据存储结构：<strong>Redis本身采用key-value的方式存储数据</strong></p>
+<ul>
+<li>key的类型是string                </li>
+<li>value的类型包括5种：string  set  list  zset(可排序，打分)  hash</li>
+</ul>
+<p>实际上Redis并<strong>没有直接使用</strong>这些数据结构来实现<code>key-value</code>数据库，而是<strong>基于</strong>这些数据结构创建了一个<strong>对象系统</strong>，redis数据库里面的每个键值对都是由对象组成的，其中</p>
+<ol>
+<li>数据库的键总是一个字符串对象</li>
+<li>数据库键对应的值可以是字符串对象，列表对象，哈希对象，集合对象，有序集合对象这五种对象中的一个</li>
+</ol>
+<p>也就是说：当我们执行了 <code>set username zhangsan</code> 命令之后，在redis内部会生成两个字符串对象，分别做 key 和 value 存储数据</p>
+<p>&nbsp;</p>
+<h3 id="redis的命令">Redis的命令</h3>
+<p>在命令行客户端中写入命令可以用来操作redis，常见的命令如下：</p>
+<ul>
+<li>Redis 命令参考：<a href="http://doc.redisfans.com/">http://doc.redisfans.com/</a></li>
+<li>try Redis(不用安装Redis即可体验Redis命令)：<a href="http://try.redis.io/">http://try.redis.io/</a></li>
+</ul>
+<p>&nbsp;</p>
+<h3 id="redis常用命令汇总">Redis常用命令汇总</h3>
+<p>value的数据结构不同，对应支持的命令不同</p>
+<h3 id="-strong-string-strong-"><strong>string</strong></h3>
+<pre class="prettyprint linenums lang-txt">| 命令   | 示例             | 作用                                           |
+| ------ | ---------------- | ---------------------------------------------- |
+| set    | set k v          | 添加一个key-value                              |
+| get    | get k            | 根据key获取value                               |
+| exists | exists k         | 判断key是否存在                                |
+| del    | del k            | 根据key删除对应数据该命令适用于其他4个数据结构 |
+| mset   | mset k1 v1 k2 v2 | 一次性设置多个key-value                        |
+| mget   | mget k1 k2       | 一次性根据多个key获取多个value                 |
+| incr   | incr k1          | 对该key对应的value(数字)，进行加1              |
+| decr   | decr k1          | 对该key对应的value(数字)，进行减1              |
+</pre>
+<p>应用场景：缓存查询结果(json或者序列化) 用户访问记录 例如：通过记录ip-访问次数来显示ip的访问 统计粉丝数、点击次数</p>
+<hr>
+<h3 id="-strong-set-strong-"><strong>set</strong></h3>
+<pre class="prettyprint linenums lang-txt">| 命令     | 示例         | 作用                                     |
+| -------- | ------------ | ---------------------------------------- |
+| sadd     | sadd k v     | 向key对应的set集合中添加一个元素         |
+| smembers | smembers k   | 获取set集合中所有元素                    |
+| scard    | scard k      | 获取set集合中元素个数                    |
+| spop     | spop k       | 删除set集合中任意一个元素                |
+| srem     | srem k v     | 删除set集合中指定元素                    |
+| sdiff    | sdiff k1 k2  | 返回k1对应集合中去重和k2对应集合重复部分 |
+| sinter   | sinter k1 k2 | 获取k1对应set集合和k2对应set集合交集     |
+| sunion   | sunion k1 k2 | 获取k1对应set集合和k2对应set集合的并集   |
+</pre>
+<p>应用场景：查找共同好友</p>
+<hr>
+<h3 id="-strong-zset-sorted_set-strong-"><strong>zset (sorted_set)</strong></h3>
+<pre class="prettyprint linenums lang-txt">| 命令      | 示例                   | 作用                                  |
+| --------- | ---------------------- | ------------------------------------- |
+| zadd      | zadd k 分数 v          | 在key对应的有序集合中添加一个新元素   |
+| zrevrange | zrevrange k start stop | 获取下标区间的元素，按照分数正向排名  |
+| zcard     | zcard k                | 返回key对应的zset集合元素个数         |
+| zrem      | zrem k v               | 删除key对应集合中value元素            |
+| zrevrank  | zrevrank k v           | 获取value在key对应集合中排名(从0开始) |
+| zscore    | zscore k v             | 获取value在key对应的zset集合中的分数  |
+| zincrby   | zincrby k n v          | 对key对应的set集合中的v进行加分操作   |
+</pre>
+<p>应用场景：排行榜</p>
+<hr>
+<h3 id="-strong-hash-strong-"><strong>hash</strong></h3>
+<pre class="prettyprint linenums lang-txt">| 命令    | 示例         | 作用                                |
+| ------- | ------------ | ----------------------------------- |
+| hset    | hset k k1 v1 | 向hash中添加一个k-v                 |
+| hget    | hget k k1    | 根据k获取hash,在根据k1从hash中获取v |
+| hgetall | hgetall k    | 获取k对应的hash中所有的k-v          |
+| hdel    | hdel k k1    | 删除k对应的hash中的k1数据           |
+| hkeys   | hkeys k      | 获取k对应hash中所有key              |
+| hvals   | hvals k      | 获取k对应hash中所有的value          |
+| hexists | hexists k k1 | 判断hash中是否存在对应的k           |
+</pre>
+<p>应用场景：存储对象，便于修改 分区缓存</p>
+<hr>
+<h3 id="-strong-list-strong-"><strong>list</strong></h3>
+<pre class="prettyprint linenums lang-txt">| 命令   | 示例                | 作用                          |
+| ------ | ------------------- | ----------------------------- |
+| rpush  | rpush k v           | 从list集合右侧添加一个元素    |
+| rpop   | rpop                | 删除list集合右侧的元素        |
+| lpush  | lpush k v           | 从list集合左侧添加一个元素    |
+| lpop   | lpop                | 删除list集合左侧的元素        |
+| llen   | llen k              | 获取list集合长度              |
+| lrange | lrange k start stop | 获取liist集合下标中范围的元素 |
+| lindex | lindex k 下标       | 获取list集合中某个下标的元素  |
+</pre>
+<p>应用场景：关注列表、消息队列</p>
+<hr>
+<h3 id="-strong-其他-strong-"><strong>其他</strong></h3>
+<pre class="prettyprint linenums lang-txt">| 命令                   | 示例        | 作用                                       |
+| ---------------------- | ----------- | ------------------------------------------ |
+| seletct database的编号 | select 0    | redis默认16个库选择指定库操作，默认从0开始 |
+| flushdb                | flushdb     | 清空当前操作的库                           |
+| flushall               | flushall    | 清空redis所有库                            |
+| expire key             | expire key  | 设置key存活时间的秒                        |
+| ttl key                | ttl key     | 查看key对应的数据的存活时间                |
+| pexpire key            | pexpire key | 存活时间的毫秒                             |
+| pttl key               | pttl key    | 查看key对应的数据的存活时间,毫秒单位       |
+| keys *                 | keys *      | 打印所有key                                |
+</pre>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
