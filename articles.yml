@@ -146,9 +146,32 @@
 
 - id: mysql
   title: MySQL 简介
-  postedOn: !!str 2020-02-06
+  postedOn: !!str 2020-02-07
   author: chuhongliang
   tags:
     - MySQL
   abstract: MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。
-  
+
+- id: mysql-basics
+  title: MySQL 基础知识
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - MySQL
+  abstract: 详细介绍了MySQL数据库的基础相关知识
+
+- id: mysql-index
+  title: MySQL 索引
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - MySQL
+  abstract: 数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 B_TREE。B_TREE 索引加速了数据访问，因为存储引擎不会再去扫描整张表得到需要的数据；相反，它从根节点开始，根节点保存了子节点的指针，存储引擎会根据指针快速寻找数据。
+
+- id: mysql-transaction
+  title: MySQL 事务
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - MySQL
+  abstract: 数据库事务(Database Transaction) ，是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行
