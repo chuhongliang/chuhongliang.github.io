@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Java 命名规范
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/java-name.html">Java 命名规范</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-07
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Java">Java</a>
+        
+        </div>
+        <div id="article-content">
+            <h3 id="一、项目名称">一、项目名称</h3>
+<p>&emsp;&emsp;最好用英文，所有单词全部用小写，如testjavaproject、studentmanagement等。</p>
+<p>&nbsp;</p>
+<h3 id="二、java-project中相关命名">二、Java project中相关命名</h3>
+<ol>
+<li><strong>包名</strong>: 包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词，最好用域名反过来写，不会冲突。如com.cnblogs.sun99bk.myutil等。另外需要注意的是包名最好统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。</li>
+<li><strong>类名</strong>: 类名使用 UpperCamelCase风格，必须遵从驼峰形式，即每个单词首字母均大写，且public类名应与所在项目名保持一致。</li>
+<li><strong>方法名、对象名和变量名</strong>: 方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase风格，即必须遵从驼峰形式除第一个单词首字母小写外（若只能一个单词，就全部小写），其余单词首字母均大写。方法名采用动词+名词或动词表示，如append()、getName()等。</li>
+<li><strong>属性名</strong>:和对象命名方法相同，采用名词或形容词+名词的形式表示，如name、dbClassName、dbUser、dbPassword、dbUrl等。</li>
+<li><strong>常量</strong>: 常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长，如MAX_STOCK_COUNT 等。</li>
+</ol>
+<p>&nbsp;</p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+

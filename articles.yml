@@ -175,3 +175,43 @@
   tags:
     - MySQL
   abstract: 数据库事务(Database Transaction) ，是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行
+
+- id: java
+  title: Java 简介
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程。
+
+- id: java-oop
+  title: Java 面向对象编程三大特性
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java 面向对象编程三大特性：封装、继承、多态；封装：封装的意义，在于明确标识出允许外部使用的所有成员函数和数据项，或者叫接口。继承：继承基类的方法，并做出自己的扩展；声明某个子类兼容于某基类（或者说，接口上完全兼容于基类），外部调用者可无需关注其差别（内部机制会自动把请求派发dispatch到合适的逻辑）。多态：基于对象所属类的不同，外部对同一个方法的调用，实际执行的逻辑不同
+
+- id: java-type
+  title: Java 数据类型
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java中的数据类型分两大类分别是基本数据类型和引用数据类型。基本数据类型分别是byte, short, int, long, char, float, double, boolean。 在Java中，除了基本数据类型以外，其余的全都属于引用数据类型。
+
+- id: java-name
+  title: Java 命名规范
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: 包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词，最好用域名反过来写，不会冲突。如com.cnblogs.sun99bk.myutil等。另外需要注意的是包名最好统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。
+
+- id: java-error
+  title: Java 异常
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java中有Error和Exception，它们都是继承自Throwable类。
