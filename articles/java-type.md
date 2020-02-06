@@ -32,3 +32,15 @@
 - **boolean**: 在JVM中并没有提供boolean专用的字节码指令，而boolean类型数据在经过编译后在JVM中会通过int类型来表示，此时boolean数据4字节32位，而boolean数组将会被编码成Java虚拟机的byte数组，此时每个boolean数据1字节占8bit.
 
 >仅有两个值true, false，变量初始化默认值false
+
+---
+
+### 自动装箱与拆箱
+- 装箱就是自动将基本数据类型转换为包装器类型；
+- 拆箱就是自动将包装器类型转换为基本数据类型；
+  
+需要装箱拆箱的类型：
+
+![](../assets/vendor/java-boxing.png)
+
+![](../assets/vendor/java-type.png)

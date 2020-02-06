@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Java String、StringBuilder、StringBuffer
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/java-stringbuilder.html">Java String、StringBuilder、StringBuffer</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-07
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Java">Java</a>
+        
+        </div>
+        <div id="article-content">
+            <p>String 类中使用 final 关键字修饰字符数组来保存字符串，private　final　char　value[]，所以 String 对象是不可变的。</p>
+<p>StringBuilder 与 StringBuffer 都继承自 AbstractStringBuilder 类，在 AbstractStringBuilder 中也是使用字符数组保存字符串char[]  value 但是没有用 final 关键字修饰，所以这两种对象都是可变的。</p>
+<p>StringBuilder 与 StringBuffer 的构造方法都是调用父类构造方法也就是 AbstractStringBuilder 实现的:</p>
+<pre class="prettyprint linenums lang-java">// AbstractStringBuilder.java
+abstract class AbstractStringBuilder implements Appendable, CharSequence {
+    char[] value;
+    int count;
+    AbstractStringBuilder() {
+    }
+    AbstractStringBuilder(int capacity) {
+        value = new char[capacity];
+    }
+</pre>
+<h3 id="线程安全性">线程安全性</h3>
+<p>String 中的对象是不可变的，也就可以理解为常量，线程安全。AbstractStringBuilder 是 StringBuilder 与 StringBuffer 的公共父类，定义了一些字符串的基本操作，如 expandCapacity、append、insert、indexOf 等公共方法。StringBuffer 对方法加了同步锁或者对调用的方法加了同步锁，所以是线程安全的。StringBuilder 并没有对方法进行加同步锁，所以是非线程安全的。　</p>
+<h3 id="性能">性能</h3>
+<p>每次对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象。StringBuffer 每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象并改变对象引用。相同情况下使用 StringBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险。</p>
+<p>对于三者使用的总结：</p>
+<ul>
+<li>操作少量的数据: 适用String</li>
+<li>单线程操作字符串缓冲区下操作大量数据: 适用StringBuilder</li>
+<li>多线程操作字符串缓冲区下操作大量数据: 适用StringBuffer</li>
+</ul>
+<p>主要区别：</p>
+<ul>
+<li>String是不可变字符序列，StringBuilder和StringBuffer是可变字符序列。</li>
+<li>执行速度StringBuilder &gt; StringBuffer &gt; String。</li>
+<li>StringBuilder是非线程安全的，StringBuffer是线程安全的。</li>
+</ul>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h4 id="string类是我们使用频率最高的类之一，也是面试官经常考察的题目，下面是一个小测验。">String类是我们使用频率最高的类之一，也是面试官经常考察的题目，下面是一个小测验。</h4>
+<pre class="prettyprint linenums lang-java">public static void main(String[] args) {
+    String s1 = &quot;AB&quot;;
+    String s2 = new String(&quot;AB&quot;);
+    String s3 = &quot;A&quot;;
+    String s4 = &quot;B&quot;;
+    String s5 = &quot;A&quot; + &quot;B&quot;;
+    String s6 = s3 + s4;
+    System.out.println(s1 == s2);
+    System.out.println(s1 == s5);
+    System.out.println(s1 == s6);
+    System.out.println(s1 == s6.intern());
+    System.out.println(s2 == s2.intern());
+}
+</pre>
+<p>运行结果：</p>
+<pre class="prettyprint linenums lang-java">false
+true
+false
+true
+false
+</pre>
+<p>解析：真正理解此题目需要清楚以下三点</p>
+<ul>
+<li>直接使用双引号声明出来的String对象会直接存储在常量池中；</li>
+<li>String对象的intern方法会得到字符串对象在常量池中对应的引用，如果常量池中没有对应的字符串，则该字符串将被添加到常量池中，然后返回常量池中字符串的引用；</li>
+<li>字符串的+操作其本质是创建了StringBuilder对象进行append操作，然后将拼接后的StringBuilder对象用toString方法处理成String对象，这一点可以用javap -c命令获得class文件对应的JVM字节码指令就可以看出来。</li>
+</ul>
+<p><img src="../assets/vendor/stringbuilder.png" alt=""></p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
