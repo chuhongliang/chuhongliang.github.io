@@ -242,11 +242,47 @@
 
 - id: java-genericity
   title: Java 泛型
-  postedOn: !!str 2020-02-07
+  postedOn: !!str 2020-02-08
   author: chuhongliang
   tags:
     - Java
   abstract: Java中的泛型基本上都是在编译器这个层次来实现的，在生成的Java字节代码中是不包含泛型中的类型信息的。使用泛型的时候加上的类型参数，会被编译器在编译的时候去掉，这个过程就称为类型擦除。如在代码中定义的List<Object>和List<String>等类型，在编译之后都会变成List。JVM看到的只是List，而由泛型附加的类型信息对JVM来说是不可见的。Java编译器会在编译时尽可能的发现可能出错的地方，但是仍然无法避免在运行时刻出现类型转换异常的情况。
+
+- id: java-list
+  title: Java 集合框架
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: 集合框架是一个用来代表和操纵集合的统一架构。所有的集合框架都包含如下内容：接口：是代表集合的抽象数据类型。例如 Collection、List、Set、Map 等。之所以定义多个接口，是为了以不同的方式操作集合对象; 实现（类）：是集合接口的具体实现。从本质上讲，它们是可重复使用的数据结构，例如：ArrayList、LinkedList、HashSet、HashMap。算法：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。
+
+- id: java-collection
+  title: Java Collection
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Collection接口是处理对象集合的根接口，其中定义了很多对元素进行操作的方法。Collection接口有两个主要的子接口List和Set，Map不是Collection的子接口。
+
+- id: java-map
+  title: Java Map
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它不能存在相同的key值，当然value值可以相同。
+
+- id: java-iterator
+  title: Java Iterator 与 ListIterator
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator.
+
+
+
+
 
 
   

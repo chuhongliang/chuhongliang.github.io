@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Java Iterator 与 ListIterator
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/java-iterator.html">Java Iterator 与 ListIterator</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-08
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Java">Java</a>
+        
+        </div>
+        <div id="article-content">
+            <h2 id="iterator-与-listiterator">Iterator 与 ListIterator</h2>
+<h3 id="1-iterator">1. Iterator</h3>
+<p>Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。Iterator提供的API接口如下：</p>
+<ul>
+<li>boolean hasNext()：判断集合里是否存在下一个元素。如果有，hasNext()方法返回 true。</li>
+<li>Object next()：返回集合里下一个元素。</li>
+<li>void remove()：删除集合里上一次next方法返回的元素。</li>
+</ul>
+<pre class="prettyprint linenums lang-java">public class IteratorExample {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; a = new ArrayList&lt;String&gt;();
+        a.add(&quot;aaa&quot;);
+        a.add(&quot;bbb&quot;);
+        a.add(&quot;ccc&quot;);
+        System.out.println(&quot;Before iterate : &quot; + a);
+        Iterator&lt;String&gt; it = a.iterator();
+        while (it.hasNext()) {
+            String t = it.next();
+            if (&quot;bbb&quot;.equals(t)) {
+                it.remove();
+            }
+        }
+        System.out.println(&quot;After iterate : &quot; + a);
+    }
+} 
+</pre>
+<p>输出结果如下：</p>
+<pre class="prettyprint linenums lang-java">Before iterate : [aaa, bbb, ccc]
+After iterate : [aaa, ccc] 
+</pre>
+<h4 id="注意：">注意：</h4>
+<ul>
+<li>Iterator只能单向移动。</li>
+<li>Iterator.remove()是唯一安全的方式来在迭代过程中修改集合；如果在迭代过程中以任何其它的方式修改了基本集合将会产生未知的行为。而且每调用一次next()方法，remove()方法只能被调用一次，如果违反这个规则将抛出一个异常。</li>
+</ul>
+<h3 id="2-listiterator">2. ListIterator</h3>
+<ul>
+<li>ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator.</li>
+</ul>
+<pre class="prettyprint linenums lang-java">public interface ListIterator&lt;E&gt; extends Iterator&lt;E&gt; {
+    boolean hasNext();
+    E next();
+    boolean hasPrevious();
+    E previous();
+    int nextIndex();
+    int previousIndex();
+    void remove();
+    void set(E e);
+    void add(E e);
+} 
+</pre>
+<p>由以上定义我们可以推出ListIterator可以:</p>
+<ul>
+<li>双向移动（向前/向后遍历）.</li>
+<li>产生相对于迭代器在列表中指向的当前位置的前一个和后一个元素的索引.</li>
+<li>可以使用set()方法替换它访问过的最后一个元素.</li>
+<li>可以使用add()方法在next()方法返回的元素之前或previous()方法返回的元素之后插入一个元素.</li>
+</ul>
+<p>使用示例：</p>
+<pre class="prettyprint linenums lang-java">public class ListIteratorExample {
+
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; a = new ArrayList&lt;String&gt;();
+        a.add(&quot;aaa&quot;);
+        a.add(&quot;bbb&quot;);
+        a.add(&quot;ccc&quot;);
+        System.out.println(&quot;Before iterate : &quot; + a);
+        ListIterator&lt;String&gt; it = a.listIterator();
+        while (it.hasNext()) {
+            System.out.println(it.next() + &quot;, &quot; + it.previousIndex() + &quot;, &quot; + it.nextIndex());
+        }
+        while (it.hasPrevious()) {
+            System.out.print(it.previous() + &quot; &quot;);
+        }
+        System.out.println();
+        it = a.listIterator(1);
+        while (it.hasNext()) {
+            String t = it.next();
+            System.out.println(t);
+            if (&quot;ccc&quot;.equals(t)) {
+                it.set(&quot;nnn&quot;);
+            } else {
+                it.add(&quot;kkk&quot;);
+            }
+        }
+        System.out.println(&quot;After iterate : &quot; + a);
+    }
+} 
+</pre>
+<p>输出结果如下：</p>
+<pre class="prettyprint linenums lang-java">Before iterate : [aaa, bbb, ccc]
+aaa, 0, 1
+bbb, 1, 2
+ccc, 2, 3
+ccc bbb aaa 
+bbb
+ccc
+After iterate : [aaa, bbb, kkk, nnn]
+</pre>
+<hr>
+<h3 id="iterator-和-listiterator-区别">Iterator 和 ListIterator 区别</h3>
+<p>我们在使用List，Set的时候，为了实现对其数据的遍历，我们经常使用到了Iterator(迭代器)。使用迭代器，你不需要干涉其遍历的过程，只需要每次取出一个你想要的数据进行处理就可以了。但是在使用的时候也是有不同的。List和Set都有iterator()来取得其迭代器。对List来说，你也可以通过listIterator()取得其迭代器，两种迭代器在有些时候是不能通用的，Iterator和ListIterator主要区别在以下方面：</p>
+<ul>
+<li>ListIterator有add()方法，可以向List中添加对象，而Iterator不能</li>
+<li>ListIterator和Iterator都有hasNext()和next()方法，可以实现顺序向后遍历，但是ListIterator有hasPrevious()和previous()方法，可以实现逆向（顺序向前）遍历。Iterator就不可以。</li>
+<li>ListIterator可以定位当前的索引位置，nextIndex()和previousIndex()可以实现。Iterator没有此功能。</li>
+<li>都可实现删除对象，但是ListIterator可以实现对象的修改，set()方法可以实现。Iierator仅能遍历，不能修改。</li>
+</ul>
+<p>因为ListIterator的这些功能，可以实现对LinkedList等List数据结构的操作。其实，数组对象也可以用迭代器来实现。</p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
