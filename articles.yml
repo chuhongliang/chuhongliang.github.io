@@ -288,7 +288,14 @@
     - Android
   abstract: Android是基于Linux系统的开源操作系统，是由Andy Rubin于2003年在美国加州创建，后被Google于2005年收购。在2008年的时候发布了第一部Android智能手机，随后Android不断发展更新，占据了全球大部分的手机市场。Android每一个版本都会用一个按照A-Z开头顺序的甜品来命名，但从Android P之后Google改变了这一传统的命名规则，可能是没有那么多让人熟知的甜品代号供使用以及甜品名字并不能让人直观的了解到哪一个甜品有什么特性，于是Google直接采用数字来命令系统，并且加深了logo的颜色，不再使用甜品作为代号。
 
-
+- id: android-component
+  title: Android 四大组件
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: 应用组件是 Android 应用的基本构建块。每个组件都是一个入口点，系统或用户可通过该入口点进入您的应用。有些组件会依赖于其他组件。
+  
 
 
 
