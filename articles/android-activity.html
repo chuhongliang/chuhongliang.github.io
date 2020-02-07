@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Android Activity组件
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/android-activity.html">Android Activity组件</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-08
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Android">Android</a>
+        
+        </div>
+        <div id="article-content">
+            <p>Activity 类是 Android 应用的关键组件，而 Activity 的启动和组合方式则是该平台应用模型的基本组成部分。在编程范式中，应用是通过 main() 方法启动的，而 Android 系统与此不同，它会调用与其生命周期特定阶段相对应的特定回调方法来启动 Activity 实例中的代码。</p>
+<h1 id="activity-生命周期">Activity 生命周期</h1>
+<p>为了在 Activity 生命周期的各个阶段之间导航转换，Activity 类提供六个核心回调：onCreate()、onStart()、onResume()、onPause()、onStop() 和 onDestroy()。当 Activity 进入新状态时，系统会调用每个回调。</p>
+<p>下图是对此范例的直观展现。</p>
+<p><img src="../assets/vendor/activity_lifecycle.png" alt=""></p>
+<h1 id="生命周期回调">生命周期回调</h1>
+<p>一个 Activity 在其生命周期中会经历多种状态。您可以使用一系列回调来处理状态之间的转换。下面几节将介绍这些回调。</p>
+<h2 id="oncreate-">onCreate()</h2>
+<p>已创建状态，Activity 对用户不可见</p>
+<p>在系统首次创建 Activity 时触发。在 onCreate() 方法中，执行基本应用启动逻辑，该逻辑在 Activity 的整个生命周期中只应发生一次。onCreate() 的实现可能会将数据绑定到列表，将 Activity 与 ViewModel 相关联，并实例化某些类范围变量。此方法接收 savedInstanceState 参数，后者是包含 Activity 先前保存状态的 Bundle 对象。如果 Activity 此前未曾存在，则 Bundle 对象的值为 null。</p>
+<p>onCreate() 方法完成执行后，Activity 进入已开始状态，系统会相继调用 onStart() 和 onResume() 方法。</p>
+<h2 id="onstart-">onStart()</h2>
+<p>已开始状态，Activity 对用户可见</p>
+<p>onStart() 方法会非常快速地完成，并且与“已创建”状态一样，Activity 不会一直处于“已开始”状态。一旦此回调结束，Activity 便会进入已恢复状态，系统将调用 onResume() 方法。</p>
+<h2 id="onresume-">onResume()</h2>
+<p>已恢复状态，Activity 对用户可见</p>
+<p>这是应用与用户交互的状态。应用会一直保持这种状态，直到某些事件发生，让焦点远离应用。此类事件包括接到来电、用户导航到另一个 Activity，或设备屏幕关闭。</p>
+<p>当 Activity 进入已恢复状态时，与 Activity 生命周期相关联的所有具有生命周期感知能力的组件都将收到 ON_RESUME 事件。这时，生命周期组件可以启动任何需要在组件可见，且位于前台时运行的功能，例如启动摄像头预览。</p>
+<p>当发生中断事件时，Activity 进入已暂停状态，系统调用 onPause() 回调。</p>
+<p>如果 Activity 从“已暂停”状态返回“已恢复”状态，系统将再次调用 onResume() 方法。因此，您应实现 onResume()，以初始化在 onPause() 期间释放的组件，并执行每次 Activity 进入“已恢复”状态时必须完成的任何其他初始化操作。</p>
+<h2 id="onpause-">onPause()</h2>
+<p>已暂停状态, Activity 仍然可见。</p>
+<p>此方法表示 Activity 不再位于前台（尽管如果用户处于多窗口模式，Activity 仍然可见）。使用 onPause() 方法暂停或调整当 Activity 处于“已暂停”状态时不应继续（或应有节制地继续）的操作，以及您希望很快恢复的操作。</p>
+<h2 id="onstop-">onStop()</h2>
+<p>已停止状态，Activity 不再对用户可见</p>
+<p>当 Activity 进入已停止状态时，与 Activity 生命周期相关联的所有具有生命周期感知能力的组件都将收到 ON_STOP 事件。这时，生命周期组件可以停止任何无需在组件未在屏幕上可见时运行的功能。</p>
+<p>在 onStop() 方法中，应用应释放或调整应用对用户不可见时的无用资源。例如，应用可以暂停动画效果，或从细粒度位置更新切换到粗粒度位置更新。使用 onStop() 而非 onPause() 可确保与界面相关的工作继续进行，即使用户在多窗口模式下查看您的 Activity 也能如此。</p>
+<h2 id="ondestroy-">onDestroy()</h2>
+<p>销毁 Ativity 之前，系统会先调用 onDestroy()。系统调用此回调的原因如下：</p>
+<ul>
+<li>Activity 正在结束（由于用户彻底关闭 Activity 或由于系统为 Activity 调用 finish()），或者</li>
+<li>由于配置变更（例如设备旋转或多窗口模式），系统暂时销毁 Activity</li>
+</ul>
+<p>当 Activity 进入已销毁状态时，与 Activity 生命周期相关联的所有具有生命周期感知能力的组件都将收到 ON_DESTROY 事件。此时，生命周期组件可以在 Activity 遭到销毁之前清理所需的任何数据。</p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
