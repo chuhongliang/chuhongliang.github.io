@@ -295,6 +295,14 @@
   tags:
     - Android
   abstract: 应用组件是 Android 应用的基本构建块。每个组件都是一个入口点，系统或用户可通过该入口点进入您的应用。有些组件会依赖于其他组件。
+
+- id: android-activity
+  title: Android Activity组件
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: Activity 类是 Android 应用的关键组件，而 Activity 的启动和组合方式则是该平台应用模型的基本组成部分。在编程范式中，应用是通过 main() 方法启动的，而 Android 系统与此不同，它会调用与其生命周期特定阶段相对应的特定回调方法来启动 Activity 实例中的代码。
   
 
 
