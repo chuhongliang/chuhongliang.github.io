@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Android BroadcastReceiver组件
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/android-broadcast.html">Android BroadcastReceiver组件</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-08
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Android">Android</a>
+        
+        </div>
+        <div id="article-content">
+            <p>广播是一种广泛运用的在应用程序之间传输信息的机制，主要用来监听系统或者应用发出的广播信息，然后根据广播信息作为相应的逻辑处理，也可以用来传输少量、频率低的数据。</p>
+<p>在实现开机启动服务和网络状态改变、电量变化、短信和来电时通过接收系统的广播让应用程序作出相应的处理。</p>
+<p>BroadcastReceiver 自身并不实现图形用户界面，但是当它收到某个通知后， BroadcastReceiver 可以通过启动 Service 、启动 Activity 或是 NotificationMananger 提醒用户。</p>
+<blockquote>
+<p>系统或应用发出广播时，将会扫描系统中的所有广播接收者，通过action匹配将广播发送给相应的接收者，接收者收到广播后将会产生一个广播接收者的实例，执行其中的onReceiver()这个方法；特别需要注意的是这个实例的生命周期只有10秒，如果10秒内没执行结束onReceiver()，系统将会报错。在onReceiver()执行完毕之后，该实例将会被销毁，所以不要在onReceiver()中执行耗时操作，也不要在里面创建子线程处理业务（因为可能子线程没处理完，接收者就被回收了，那么子线程也会跟着被回收掉）；正确的处理方法就是通过in调用activity或者service处理业务。</p>
+</blockquote>
+<hr>
+<h2 id="broadcastreceiver的分类">BroadcastReceiver的分类</h2>
+<ul>
+<li>无序广播（普通广播）</li>
+<li>系统广播：需要申请对应权限，注册对应广播接收者即可</li>
+<li>有序广播<ol>
+<li>发送出去的广播按照先后顺序进行接收</li>
+<li>通过设置priority属性值可以设置广播优先级，优先级相同，动态注册广播优先</li>
+<li>优先级高的广播可以通过调用BroadCastReceiver的abortBroadCast()方法终止广播，后面优先级低的则无法接收广播</li>
+<li>优先级高的广播可以通过setResultExtras(Bundle)将参数传递给优先级低的广播，低优</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="broadcastreceiver的注册">BroadcastReceiver的注册</h2>
+<p>BroadcastReceiver的注册方式有且只有两种，一种是静态注册（推荐使用），另外一种是动态注册，广播接收者在注册后就开始监听系统或者应用之间发送的广播消息。</p>
+<p>定义自己的BroadcastReceiver 类</p>
+<pre class="prettyprint linenums lang-java">public class MyBroadcastReceiver extends BroadcastReceiver {
+// action 名称
+String SMS_RECEIVED = &quot;android.provider.Telephony.SMS_RECEIVED&quot; ;
+    public void onReceive(Context context, Intent intent) {
+       if (intent.getAction().equals( SMS_RECEIVED )) {
+           // 一个receiver可以接收多个action的，即可以有多个intent-filter，需要在onReceive里面对intent.getAction(action name)进行判断。
+       }
+    }
+}
+</pre>
+<h3 id="1-静态方式">1. 静态方式</h3>
+<p>在AndroidManifest.xml的application里面定义receiver并设置要接收的action。</p>
+<pre class="prettyprint linenums lang-java">&lt; receiver android:name = &quot;.MyBroadcastReceiver&quot; &gt; 
+  &lt; intent-filter android:priority = &quot;777&quot; &gt;             
+    &lt;action android:name = &quot;android.provider.Telephony.SMS_RECEIVED&quot; /&gt;
+  &lt;/ intent-filter &gt; 
+&lt;/ receiver &gt;
+</pre>
+<p>这里的priority取值是　-1000到1000，值越大优先级越高，同时注意加上系统接收短信的限权。</p>
+<pre class="prettyprint linenums lang-java">&lt; uses-permission android:name =&quot;android.permission.RECEIVE_SMS&quot; /&gt;
+</pre>
+<p>静态注册的广播接收者是一个常驻在系统中的全局监听器，当你在应用中配置了一个静态的BroadcastReceiver，安装了应用后而无论应用是否处于运行状态，广播接收者都是已经常驻在系统中了。同时应用里的所有receiver都在清单文</p>
+<h3 id="2-动态方式">2. 动态方式</h3>
+<p>在Activity中声明BroadcastReceiver的扩展对象，在onResume中注册，onPause中卸载. 　　　</p>
+<pre class="prettyprint linenums lang-java">public class MainActivity extends Activity {
+    MyBroadcastReceiver receiver;
+    @Override
+     protected void onResume() {
+        // 动态注册广播 (代码执行到这才会开始监听广播消息，并对广播消息作为相应的处理)
+        receiver = new MyBroadcastReceiver();
+        IntentFilter intentFilter = new IntentFilter( &quot;android.provider.Telephony.SMS_RECEIVED&quot; );
+        registerReceiver( receiver , intentFilter);    
+        super.onResume();
+    }
+    @Override
+    protected void onPause() {  
+        // 撤销注册 (撤销注册后广播接收者将不会再监听系统的广播消息)
+        unregisterReceiver(receiver);
+        super.onPause();
+    }
+}
+</pre>
+<h2 id="静态注册和动态注册的区别">静态注册和动态注册的区别</h2>
+<ol>
+<li>静态注册的广播接收者一经安装就常驻在系统之中，不需要重新启动唤醒接收者； 　　动态注册的广播接收者随着应用的生命周期，由registerReceiver开始监听，由unregisterReceiver撤销监听，如果应用退出后，没有撤销已经注册的接收者应用应用将会报错。</li>
+<li>当广播接收者通过intent启动一个activity或者service时，如果intent中无法匹配到相应的组件。动态注册的广播接收者将会导致应用报错而静态注册的广播接收者将不会有任何报错，因为自从应用安装完成后，广播接收者跟应用已经脱离了关系。　</li>
+</ol>
+<hr>
+<h2 id="发送broadcastreceiver">发送BroadcastReceiver</h2>
+<p><strong>发送广播主要有三种类型：</strong></p>
+<h3 id="1-普通广播">1. 普通广播</h3>
+<p>普通广播是完全异步的，可以在同一时刻（逻辑上）被所有接收者接收到，所有满足条件的BroadcastReceiver 都会随机地执行其 onReceive() 方法。同级别接收是先后是随机的；级别低的收到广播；消息传递的效率比较高，并且无法中断广播的传播。</p>
+<p>应用在需要通知各个广播接收者的情况下使用，如开机启动:</p>
+<pre class="prettyprint linenums lang-java">Intent intent = new Intent(&quot;android.provider.Telephony.SMS_RECEIVED&quot;); 
+//通过intent传递少量数据
+intent.putExtra(&quot;data&quot;, &quot;finch&quot;); 
+// 发送普通广播
+sendBroadcast(Intent); 
+</pre>
+<h3 id="2-有序广播">2. 有序广播</h3>
+<p>在有序广播中，我们可以在前一个广播接收者将处理好的数据传送给后面的广播接收者，也可以调用abortBroadcast()来终结广播的传播。</p>
+<p>应用在需要有特定拦截的场景下使用，如黑名单短信、电话拦截。</p>
+<pre class="prettyprint linenums lang-java">//发送有序广播
+ sendOrderedBroadcast(intent, null);
+</pre>
+<p>高级别的广播收到该广播后，可以决定把该广播是否截断掉。同级别接收是先后是随机的，如果先接收到的把广播截断了，同级别的例外的接收者是无法收到该广播。</p>
+<pre class="prettyprint linenums lang-java">public void onReceive(Context arg0, Intent intent) {
+　　//获取上一个广播的bundle数据
+　　Bundle bundle = getResultExtras(true);//true：前一个广播没有结果时创建新的  Bundle；false：不创建Bundle
+　　bundle.putString(&quot;key&quot;, &quot;777&quot;);
+　　//将bundle数据放入广播中传给下一个广播接收者
+　　setResultExtras(bundle);　
+　　//终止广播传给下一个广播接收者
+　　abortBroadcast();
+}
+</pre>
+<h3 id="3-粘性广播">3. 粘性广播</h3>
+<p>可以发送给以后注册的接受者，意思是系统会将前面的粘性广播保存在AMS中，一旦注册了与以保存的粘性广播符合的广播，在注册结束后会立即收到广播，一般通过context. sendStickyBroadcast或context.sendStickyOrderedBroadcast来发送，从字面上看，可以看出来粘性广播也分为普通粘性广播和有序粘性广播。</p>
+<p>根据广播的类型，一般常用的就是普通广播和粘性广播，网络切换的广播就是一种粘性广播。</p>
+<h4 id="31-普通粘性广播">3.1 普通粘性广播</h4>
+<p>使用方法：sendStickyBroadcast():</p>
+<p>发出的Intent当接收Activity（动态注册）重新处于onResume状态之后就能重新接受到其Intent.（the Intent will be held to be re-broadcast to future receivers）。就是说sendStickyBroadcast发出的最后一个Intent会被保留，下次当Activity处于活跃的时候又会接受到它。
+发这个广播需要权限：</p>
+<pre class="prettyprint linenums lang-java">&lt;uses-permission android:name=&quot;android.permission.BROADCAST_STICKY&quot; /&gt;
+</pre>
+<p>卸载该广播：</p>
+<pre class="prettyprint linenums lang-java">removeStickyBroadcast(intent);
+</pre>
+<p>在卸载之前该intent会保留，接收者在可接收状态都能获得。</p>
+<h4 id="32-有序粘性广播">3.2 有序粘性广播</h4>
+<p>使用方法：</p>
+<pre class="prettyprint linenums lang-java">sendStickyOrderedBroadcast(intent, resultReceiver, scheduler, initialCode, initialData, initialExtras)
+// 需要限权：
+&lt;uses-permission android:name=&quot;android.permission.BROADCAST_STICKY&quot; /&gt; 
+</pre>
+<hr>
+<h3 id="总结">总结</h3>
+<ul>
+<li>静态广播接收的处理器是由PackageManagerService负责，当手机启动或者新安装了应用的时候，PackageManagerService会扫描手机中所有已安装的APP应用，将AndroidManifest.xml中有关注册广播的信息解析出来，存储至一个全局静态变量当中。</li>
+<li>动态广播接收的处理器是由ActivityManagerService负责，当APP的服务或者进程起来之后，执行了注册广播接收的代码逻辑，即进行加载，最后会存储在一个另外的全局静态变量中。需要注意的是：<ul>
+<li>这个并非是一成不变的，当程序被杀死之后，已注册的动态广播接收器也会被移出全局变量，直到下次程序启动，再进行动态广播的注册，当然这里面的顺序也已经变更了一次。<ul>
+<li>这里也并没完整的进行广播的排序，只记录的注册的先后顺序，并未有结合优先级的处理。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>广播发出的时候，广播接收者接收的顺序如下：<ul>
+<li>当广播为普通广播时接收顺序：无视优先、动态优先于静态、同优先级的动态广播接收器、先注册的大于后注册的、同优先级的静态广播接收器、先扫描的大于后扫描的。</li>
+<li>如果广播为有序广播，那么会将动态广播处理器和静态广播处理器合并在一起处理广播的消息，最终确定广播接收的顺序：优先级高的先接收、同优先级的动静态广播接收器、动态优先于静态、同优先级的动态广播接收器、先注册的大于后注册的、同优先级的静态广播接收器，先扫描的大于后扫描的　</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="一些常用的系统广播的action-和permission">一些常用的系统广播的action 和permission</h2>
+<pre class="prettyprint linenums lang-java">// 开机启动
+&lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt; 
+// 网络状态
+&lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot;/&gt;  
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;/&gt; 
+
+// 网络是否可用的方法：
+public static boolean isNetworkAvailable(Context context) {  
+    ConnectivityManager mgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);  
+    NetworkInfo[] info = mgr.getAllNetworkInfo();  
+    if (info != null) {  
+        for (int i = 0; i &lt; info.length; i++) {  
+            if (info[i].getState() == NetworkInfo.State.CONNECTED) {  
+                return true;  
+            }  
+        }  
+    }  
+    return false;  
+} 
+
+// 电量变化
+&lt;action android:name=&quot;android.intent.action.BATTERY_CHANGED&quot;/&gt;  
+
+// BroadcastReceiver 的onReceive方法：
+public void onReceive(Context context, Intent intent) {  
+    int currLevel = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);  //当前电量  　
+    int total = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 1);    //总电量  
+    int percent = currLevel * 100 / total;  
+    Log.i(TAG, &quot;battery: &quot; + percent + &quot;%&quot;);  
+}  
+</pre>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
