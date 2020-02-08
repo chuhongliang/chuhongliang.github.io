@@ -178,3 +178,6 @@ getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.L
 // 去除标题栏
 requestWindowFeature(Window.FEATURE_NO_TITLE);
 ```
+
+
+
