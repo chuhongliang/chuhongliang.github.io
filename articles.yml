@@ -334,9 +334,15 @@
   author: chuhongliang
   tags:
     - Android
-  abstract: 
+  abstract: Handler是用来接收和处理线程的消息队列里的message/runnable对象的工具。每个Handler实例关联一个单独的线程和这个的线程的消息队列，Handler实例会绑定到创建这个Handler的线程。从那一刻起，Handler会发送message/runnable到消息队列，然后在message/runnable从消息队列出来的时候处理它。
 
-
+- id: android-asynctask
+  title: Android AsyncTask
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: AsyncTask主要有二个部分：一个是与主线程的交互，另一个就是线程的管理调度。虽然可能多个AsyncTask的子类的实例，但是AsyncTask的内部Handler和ThreadPoolExecutor都是进程范围内共享的，其都是static的，也即属于类的，类的属性的作用范围是CLASSPATH，因为一个进程一个VM，所以是AsyncTask控制着进程范围内所有的子类实例。　
 
 
 
