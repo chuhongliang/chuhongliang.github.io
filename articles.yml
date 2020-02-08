@@ -328,7 +328,13 @@
     - Android
   abstract: ContentProvider（内容提供者）是Android的四大组件之一，管理android以结构化方式存放的数据，以相对安全的方式封装数据（表）并且提供简易的处理机制和统一的访问接口供其他程序调用。
   
-
+- id: android-handler
+  title: Android Handler
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: 
 
 
 

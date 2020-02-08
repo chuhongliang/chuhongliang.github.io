@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Android Handler
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/android-handler.html">Android Handler</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-08
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Android">Android</a>
+        
+        </div>
+        <div id="article-content">
+            <p>Handler是用来接收和处理线程的消息队列里的message/runnable对象的工具。每个Handler实例关联一个单独的线程和这个的线程的消息队列，Handler实例会绑定到创建这个Handler的线程。从那一刻起，Handler会发送message/runnable到消息队列，然后在message/runnable从消息队列出来的时候处理它。</p>
+<h2 id="handler的由来">Handler的由来</h2>
+<p>当程序第一次启动的时候，Android会同时启动一条主线程（ Main Thread）来负责处理与UI相关的事件，我们叫做UI线程。</p>
+<p>Android的UI操作并不是线程安全的（出于性能优化考虑），意味着如果多个线程并发操作UI线程，可能导致线程安全问题。</p>
+<p>为了解决Android应用多线程问题—Android平台只允许UI线程修改Activity里的UI组建，就会导致新启动的线程无法改变界面组建的属性值。</p>
+<p>当主线程队列处理一个消息超过5秒,android 就会抛出一个 ANP(无响应)的异常,所以,我们需要把一些要处理比较长的消息,放在一个单独线程里面处理,把处理以后的结果,返回给主线程运行,就需要用的Handler来进行线程建的通信。</p>
+<h2 id="handler的作用">Handler的作用</h2>
+<h3 id="让线程延时执行主要用到的两个方法：">让线程延时执行主要用到的两个方法：</h3>
+<pre class="prettyprint linenums lang-java">final boolean    postAtTime(Runnable r, long uptimeMillis)
+final boolean    postDelayed(Runnable r, long delayMillis)
+</pre>
+<h3 id="让任务在其他线程中执行并返回结果">让任务在其他线程中执行并返回结果</h3>
+<ul>
+<li><p>在新启动的线程中发送消息</p>
+<ul>
+<li>使用Handler对象的sendMessage()方法或者SendEmptyMessage()方法发送消息。</li>
+</ul>
+</li>
+<li><p>在主线程中获取处理消息</p>
+</li>
+</ul>
+<p>重写Handler类中处理消息的方法（void handleMessage(Message msg)），当新启动的线程发送消息时，消息发送到与之关联的MessageQueue。而Hanlder不断地从MessageQueue中获取并处理消息。</p>
+<h2 id="handler更新ui线程">Handler更新UI线程</h2>
+<p>首先要进行Handler 申明，复写handleMessage方法( 放在主线程中)</p>
+<pre class="prettyprint linenums lang-java">private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+              // TODO 接收消息并且去更新UI线程上的控件内容
+              if (msg.what == UPDATE) {
+                  // 更新界面上的textview
+                  tv.setText(String.valueOf(msg.obj));
+              }
+              super.handleMessage(msg);
+        }
+};
+</pre>
+<p>子线程发送Message给ui线程表示自己任务已经执行完成，主线程可以做相应的操作了。</p>
+<pre class="prettyprint linenums lang-java">new Thread() {
+        @Override
+        public void run() {
+              // TODO 子线程中通过handler发送消息给handler接收，由handler去更新TextView的值
+              try {
+                      //do something
+                        Message msg = new Message();
+                        msg.what = UPDATE;                    
+                        msg.obj = &quot;更新后的值&quot; ;
+                        handler.sendMessage(msg);
+                } catch (InterruptedException e) {
+                      e.printStackTrace();
+                }
+        }
+}.start();
+</pre>
+<h2 id="handler机制">Handler机制</h2>
+<p>Handler:</p>
+<ul>
+<li>发送消息，它能把消息发送给Looper管理的MessageQueue。</li>
+<li>处理消息，并负责处理Looper分给它的消息。</li>
+<li>Handler的构造方法，会首先得到当前线程中保存的Looper实例，进而与Looper实例中的MessageQueue想关联。</li>
+<li>Handler的sendMessage方法，会给msg的target赋值为handler自身，然后加入MessageQueue中。　　 　　　</li>
+</ul>
+<p>Looper:</p>
+<ul>
+<li>每个线程只有一个Looper，它负责管理对应的MessageQueue，会不断地从MessageQueue取出消息，并将消息分给对应的Hanlder处理。 　</li>
+<li>主线程中，系统已经初始化了一个Looper对象，因此可以直接创建Handler即可，就可以通过Handler来发送消息、处理消息。 程序自己启动的子线程，程序必须自己创建一个Looper对象，并启动它，调用Looper.prepare()方法。</li>
+<li>prapare()方法：保证每个线程最多只有一个Looper对象。 　</li>
+<li>looper()方法：启动Looper，使用一个死循环不断取出MessageQueue中的消息，并将取出的消息分给对应的Handler进行处理。</li>
+</ul>
+<p>MessageQueue:</p>
+<ul>
+<li>由Looper负责管理，它采用先进先出的方式来管理Message。</li>
+</ul>
+<p>Message:</p>
+<ul>
+<li>Handler接收和处理的消息对象。</li>
+</ul>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
