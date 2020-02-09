@@ -172,6 +172,8 @@ if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED){     
 }  
 ```
 
+---
+
 ## 网络存储
 网络存储方式，需要与Android 网络数据包打交道，Android提供了HttpUrlConnection。
 HttpUrlConnection是Java.net包中提供的API，我们知道Android SDK是基于Java的，所以当然优先考虑HttpUrlConnection这种最原始最基本的API，其实大多数开源的联网框架基本上也是基于JDK的HttpUrlConnection进行的封装
