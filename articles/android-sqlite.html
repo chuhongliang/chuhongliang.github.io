@@ -181,21 +181,17 @@ Cursor：返回值，相当于结果集ResultSet
 </pre>
 <p>这条语句会创建一个名为 user的表，表有一个列名为 _id，并且是主键，这列的值是会自动增长的整数。另外还有两列：username( 字符 ) 和 password( 字符 )。 SQLite 会自动为主键列创建索引。 　　通常情况下，第一次创建数据库时创建了表和索引。要 删除表和索引，需要使用 execSQL() 方法调用 DROP INDEX 和 DROP TABLE 语句。</p>
 <h2 id="添加数据　">添加数据　</h2>
-<p>有两种方法可以给表添加数据:</p>
-<ul>
-<li><p>可以使用 execSQL() 方法执行 INSERT, UPDATE, DELETE 等语句来更新表的数据。execSQL() 方法适用于所有不返回结果的 SQL 语句。例如：</p>
+<p>有两种方法可以给表添加数据:
+可以使用 execSQL() 方法执行 INSERT, UPDATE, DELETE 等语句来更新表的数据。execSQL() 方法适用于所有不返回结果的 SQL 语句。例如：</p>
 <pre class="prettyprint linenums lang-java">String sql = &quot;insert into user(username,password) values (&#39;finch&#39;,&#39;123456&#39;);//插入操作的SQL语句
 db.execSQL(sql);//执行SQL语句
 </pre>
-</li>
-<li><p>使用 SQLiteDatabase 对象的 insert()。</p>
+<p>使用 SQLiteDatabase 对象的 insert()。</p>
 <pre class="prettyprint linenums lang-java">ContentValues cv = new ContentValues();
 cv.put(&quot;username&quot;,&quot;finch&quot;);//添加用户名
 cv.put(&quot;password&quot;,&quot;123456&quot;); //添加密码
 db.insert(&quot;user&quot;,null,cv);//执行插入操作
 </pre>
-</li>
-</ul>
 <h2 id="更新数据（修改）">更新数据（修改）</h2>
 <p>使用SQLiteDatabase 对象的 update()方法。</p>
 <pre class="prettyprint linenums lang-java">ContentValues cv = new ContentValues();
@@ -204,32 +200,28 @@ String whereClause = &quot;username=?&quot;;//修改条件
 String[] whereArgs = {&quot;finch&quot;};//修改条件的参数
 db.update(&quot;user&quot;,cv,whereClause,whereArgs);//执行修改
 </pre>
-<p>该方法有四个参数：</p>
-<ul>
-<li>表名； 　　</li>
-<li>列名和值的 ContentValues 对象；　 　　</li>
-<li>可选的 WHERE 条件；　 　　</li>
-<li>可选的填充 WHERE 语句的字符串，这些字符串会替换 WHERE 条件中的“？”标记，update() 根据条件，更新指定列的值.　</li>
-</ul>
+<p>该方法有四个参数：
+表名； 　　
+列名和值的 ContentValues 对象；　 　　
+可选的 WHERE 条件；　 　　
+可选的填充 WHERE 语句的字符串，这些字符串会替换 WHERE 条件中的“？”标记，update() 根据条件，更新指定列的值.　</p>
 <p>使用execSQL方式的实现</p>
 <pre class="prettyprint linenums lang-java">String sql = &quot;update [user] set password = &#39;654321&#39; where username= &#39;finch&#39; &quot;;
 //修改的SQL语句
 db.execSQL(sql);//执行修改
 </pre>
 <h2 id="删除数据">删除数据</h2>
-<ul>
-<li>使用SQLiteDatabase 对象的delete()方法。<pre class="prettyprint linenums lang-java">String whereClause = &quot;username=?&quot;;//删除的条件
+<p>使用SQLiteDatabase 对象的delete()方法。</p>
+<pre class="prettyprint linenums lang-java">String whereClause = &quot;username=?&quot;;//删除的条件
 String[] whereArgs = {&quot;finch&quot;};//删除的条件参数
 db.delete(&quot;user&quot;,whereClause,whereArgs);//执行删除
 </pre>
-</li>
-<li>使用execSQL方式的实现<pre class="prettyprint linenums lang-java">String sql = &quot;delete from user where username=&#39;finch&#39; &quot;;//删除操作的SQL语句
+<p>使用execSQL方式的实现</p>
+<pre class="prettyprint linenums lang-java">String sql = &quot;delete from user where username=&#39;finch&#39; &quot;;//删除操作的SQL语句
 db.execSQL(sql);//执行删除操作
 </pre>
-</li>
-</ul>
 <h2 id="查询数据">查询数据</h2>
-<p>使用 rawQuery() 直接调用 SELECT 语句</p>
+<p>使用 rawQuery() 直接调用 SELECT 语句；</p>
 <pre class="prettyprint linenums lang-java">Cursor c = db.rawQuery(&quot;select * from user where username=?&quot;,new Stirng[]{&quot;finch&quot;});
 
 if(cursor.moveToFirst()) {
@@ -246,7 +238,7 @@ if(c.moveToFirst()){//判断游标是否为空
         String username = c.getString(c.getColumnIndex(&quot;username&quot;);
         String password = c.getString(c.getColumnIndex(&quot;password&quot;));
     }
-}
+}
 </pre>
 <h2 id="使用游标">使用游标</h2>
 <p>不管你如何执行查询，都会返回一个 Cursor，这是 Android 的 SQLite 数据库游标，使用游标，你可以：　　</p>

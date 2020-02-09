@@ -360,7 +360,15 @@
     - Android
   abstract: SQLite它是一个独立的，无需服务进程，支持事务处理，可以使用SQL语言的数据库。
   
+- id: android-intentservice
+  title: Android IntentService
+  postedOn: !!str 2020-02-09
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: IntentService继承与Service，用来处理异步请求。客户端可以通过startService(Intent)方法传递请求给IntentService。IntentService在onCreate()函数中通过HandlerThread单独开启一个线程来依次处理所有Intent请求对象所对应的任务。这样以免事务处理阻塞主线程（ＡＮＲ）。执行完所一个Intent请求对象所对应的工作之后，如果没有新的Intent请求达到，则自动停止Service；否则执行下一个Intent请求所对应的任务。IntentService在处理事务时，还是采用的Handler方式，创建一个名叫ServiceHandler的内部Handler，并把它直接绑定到HandlerThread所对应的子线程。
 
+  
 
 
 

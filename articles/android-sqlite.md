@@ -132,13 +132,13 @@ Cursor：返回值，相当于结果集ResultSet
 
 ## 添加数据　
 有两种方法可以给表添加数据:
-- 可以使用 execSQL() 方法执行 INSERT, UPDATE, DELETE 等语句来更新表的数据。execSQL() 方法适用于所有不返回结果的 SQL 语句。例如：
+可以使用 execSQL() 方法执行 INSERT, UPDATE, DELETE 等语句来更新表的数据。execSQL() 方法适用于所有不返回结果的 SQL 语句。例如：
 ```java
 String sql = "insert into user(username,password) values ('finch','123456');//插入操作的SQL语句
 db.execSQL(sql);//执行SQL语句
 ```
 
-- 使用 SQLiteDatabase 对象的 insert()。
+使用 SQLiteDatabase 对象的 insert()。
 ```java
 ContentValues cv = new ContentValues();
 cv.put("username","finch");//添加用户名
@@ -156,10 +156,10 @@ String[] whereArgs = {"finch"};//修改条件的参数
 db.update("user",cv,whereClause,whereArgs);//执行修改
 ```
 该方法有四个参数：
-- 表名； 　　
-- 列名和值的 ContentValues 对象；　 　　
-- 可选的 WHERE 条件；　 　　
-- 可选的填充 WHERE 语句的字符串，这些字符串会替换 WHERE 条件中的“？”标记，update() 根据条件，更新指定列的值.　
+表名； 　　
+列名和值的 ContentValues 对象；　 　　
+可选的 WHERE 条件；　 　　
+可选的填充 WHERE 语句的字符串，这些字符串会替换 WHERE 条件中的“？”标记，update() 根据条件，更新指定列的值.　
 
 使用execSQL方式的实现
 ```java
@@ -168,20 +168,20 @@ String sql = "update [user] set password = '654321' where username= 'finch' ";
 db.execSQL(sql);//执行修改
 ```
 ## 删除数据
-- 使用SQLiteDatabase 对象的delete()方法。
+使用SQLiteDatabase 对象的delete()方法。
 ```java
 String whereClause = "username=?";//删除的条件
 String[] whereArgs = {"finch"};//删除的条件参数
 db.delete("user",whereClause,whereArgs);//执行删除
 ```
-- 使用execSQL方式的实现
+使用execSQL方式的实现
 ```java
 String sql = "delete from user where username='finch' ";//删除操作的SQL语句
 db.execSQL(sql);//执行删除操作
 ```
 
 ## 查询数据
-使用 rawQuery() 直接调用 SELECT 语句
+使用 rawQuery() 直接调用 SELECT 语句；
 ```java
 Cursor c = db.rawQuery("select * from user where username=?",new Stirng[]{"finch"});
 
@@ -201,7 +201,7 @@ if(c.moveToFirst()){//判断游标是否为空
         String username = c.getString(c.getColumnIndex("username");
         String password = c.getString(c.getColumnIndex("password"));
     }
-}
+}
 ```
 
 ## 使用游标
