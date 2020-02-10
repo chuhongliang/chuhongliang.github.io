@@ -384,6 +384,15 @@
     - 网络
   abstract: 路由选择协议分为：静态的和动态的。Internet中使用的是动态路由选择协议，在Internet的概念中，将整个互联网划分为许多个小的自治系统（AS）。AS的最主要的特征：一个AS对其他AS表现出的是一个单一 和一致的路由选择策略。
 
+- id: network-tcp
+  title: TCP
+  postedOn: !!str 2020-02-10
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: TCP（Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793 定义。TCP旨在适应支持多网络应用的分层协议层次结构。 连接到不同但互连的计算机通信网络的主计算机中的成对进程之间依靠TCP提供可靠的通信服务。TCP假设它可以从较低级别的协议获得简单的，可能不可靠的数据报服务。 原则上，TCP应该能够在从硬线连接到分组交换或电路交换网络的各种通信系统之上操作。
+
+
 
   
   
