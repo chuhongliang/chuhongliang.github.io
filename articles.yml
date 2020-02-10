@@ -368,6 +368,24 @@
     - Android
   abstract: IntentService继承与Service，用来处理异步请求。客户端可以通过startService(Intent)方法传递请求给IntentService。IntentService在onCreate()函数中通过HandlerThread单独开启一个线程来依次处理所有Intent请求对象所对应的任务。这样以免事务处理阻塞主线程（ＡＮＲ）。执行完所一个Intent请求对象所对应的工作之后，如果没有新的Intent请求达到，则自动停止Service；否则执行下一个Intent请求所对应的任务。IntentService在处理事务时，还是采用的Handler方式，创建一个名叫ServiceHandler的内部Handler，并把它直接绑定到HandlerThread所对应的子线程。
 
+- id: network-osi
+  title: OSI 七层网络模型
+  postedOn: !!str 2020-02-10
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: OSI 七层网络模型
+
+- id: network-basics
+  title: 底层网络协议
+  postedOn: !!str 2020-02-10
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: 路由选择协议分为：静态的和动态的。Internet中使用的是动态路由选择协议，在Internet的概念中，将整个互联网划分为许多个小的自治系统（AS）。AS的最主要的特征：一个AS对其他AS表现出的是一个单一 和一致的路由选择策略。
+
+
+  
   
 
 
