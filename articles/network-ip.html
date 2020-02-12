@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - IP
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/network-ip.html">IP</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-11
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#网络">网络</a>
+        
+        </div>
+        <div id="article-content">
+            <p>IP是Internet Protocol（网际互连协议）的缩写，是TCP/IP体系中的网络层协议。设计IP的目的是提高网络的可扩展性：一是解决互联网问题，实现大规模、异构网络的互联互通；二是分割顶层网络应用和底层网络技术之间的耦合关系，以利于两者的独立发展。根据端到端的设计原则，IP只为主机提供一种无连接、不可靠的、尽力而为的数据报传输服务。</p>
+<h3 id="ip地址的结构">IP地址的结构</h3>
+<p>IP地址是用来识别网络上的设备，因此，IP地址是由网络地址与主机地址两部分所组成。</p>
+<ul>
+<li>网络地址可用来识别设备所在的网络，网络地址位于IP地址的前段。当组织或企业申请IP地址时，所获得的并非IP地址，而是取得一个唯一的、能够识别的网络地址。同一网络上的所有设备，都有相同的网络地址。IP路由的功能是根据IP地址中的网络地址，决定要将IP信息包送至所指明的那个网络。</li>
+<li>主机地址位于IP地址的后段，可用来识别网络上设备。同一网络上的设备都会有相同的网络地址，而各设备之间则是以主机地址来区别。</li>
+</ul>
+<p>由于各个网络的规模大小不一，大型的网络应该使用较短的网络地址，以便能使用较多的主机地址；反之，较小的网络则应该使用较长的网络地址。为了符合不同网络规模的需求，IP在设计时便根据网络地址的长度，设计与划分IP地址。</p>
+<h3 id="五种地址等级">五种地址等级</h3>
+<p>在设计IP时，着眼于路由与管理上的需求，因此制定了5种IP地址的等级。不过，一般最常用到的便是A、B、C类这三种等级的IP地址。5种等级分别使用不同长度的网络地址，因此适用于大、中，小型网络。IP地址的管理机构可根据申请者的网络规模，决定要赋予哪种等级</p>
+<ul>
+<li>A类：8位网络号，0_ _ _ _ _ _ _，1.0.0.0 ~ 126.0.0.0</li>
+<li>B类：16位网络号，10 _ _ ...，128.0.0.0 ~ 191.255.255.255</li>
+<li>C类：24位网络号，110_ _ _...，192.0.0.0 ~ 223.255.255.255</li>
+<li>D类：多播地址，1110_ _ _...</li>
+<li>E类：保留地址，1111_ _ _ ...</li>
+</ul>
+<h3 id="私有地址">私有地址</h3>
+<ul>
+<li>A类:10.0.0.0 ~ 10.255.255.255(长度相当于1个A类IP地址)</li>
+<li>B类:172.16.0.0 ~ 172.31.255.255(长度相当于16个连续的B类IP地址)</li>
+<li>C类:192.168.0.0 ~ 192.168.255.255(长度相当于256个连续的C类IP地址)</li>
+</ul>
+<h3 id="特殊的ip地址">特殊的IP地址</h3>
+<ul>
+<li><p>0.0.0.0：已经不是一个真正意义上的IP地址。它表示的是这样一个集合：所有不清楚的主机和目的网络。这里的“不清楚”是指在本机的路由表里没有特定条目指明如何到达。如果在网络设置中设置了缺省网关,那么系统会自动产生一个目的地址为0.0.0.0的缺省路由.对本机来说,它就是一个“收容所”,所有不认识的“三无”人员,一 律送进去。</p>
+</li>
+<li><p>255.255.255.255： 限制广播地址，对本机来说,这个地址指本网段内(同一广播域)的所有主机。这个地址不能被路由器转发。</p>
+</li>
+<li><p>127.0.0.1：本机地址主要用于测试。这样一个地址,是不能把它发到网络接口的。</p>
+</li>
+</ul>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
