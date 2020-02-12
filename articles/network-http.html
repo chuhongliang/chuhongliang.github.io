@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - HTTP
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/network-http.html">HTTP</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-12
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#网络">网络</a>
+        
+        </div>
+        <div id="article-content">
+            <p>HTTP是一个简单的请求-响应协议，它通常运行在TCP之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII码形式给出；而消息内容则具有一个类似MIME的格式。</p>
+<p>HTTP是应用层协议，同其他应用层协议一样，是为了实现某一类具体应用的协议，并由某一运行在用户空间的应用程序来实现其功能。HTTP是一种协议规范，这种规范记录在文档上，为真正通过HTTP协议进行通信的HTTP的实现程序。</p>
+<ul>
+<li>HTTP构建于TCP/IP协议之上，默认端口号是80。</li>
+<li>HTTP是 无连接无状态 的。</li>
+</ul>
+<p>无连接的含义是 限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。后来使用了Keep-Alive技术。</p>
+<p>无状态是指 协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态。即我们给服务器发送 HTTP 请求之后，服务器根据请求，会给我们发送数据过来，但是，发送完，不会记录任何信息。</p>
+<p>HTTP 协议这种特性有优点也有缺点，优点在于解放了服务器，每一次请求“点到为止”不会造成不必要连接占用，缺点在于每次请求会传输大量重复的内容信息。</p>
+<p>为了解决HTTP无状态的缺点，两种用于保持 HTTP 连接状态的技术就应运而生了，一个是 Cookie，而另一个则是 Session。Cookie在客户端记录状态，比如登录状态。Session在服务器记录状态。</p>
+<h2 id="http的报文结构">Http的报文结构</h2>
+<h3 id="http-请求报文头部">HTTP 请求报文头部</h3>
+<ul>
+<li>User-Agent：产生请求的浏览器类型。</li>
+<li>Accept：客户端可识别的响应内容类型列表;</li>
+<li>Accept-Language：客户端可接受的自然语言;</li>
+<li>Accept-Encoding：客户端可接受的编码压缩格式;</li>
+<li>Accept-Charset：可接受的应答的字符集;</li>
+<li>Host：请求的主机名，允许多个域名同处一个IP 地址，即虚拟主机;（必选）</li>
+<li>Connection：连接方式(close 或 keep-alive);</li>
+<li>Cookie：存储于客户端扩展字段，向同一域名的服务端发送属于该域的cookie;</li>
+<li>请求包体：在POST方法中使用。</li>
+<li>Referer：包含一个URL，用户从该URL代表的页面出发访问当前请求的页面。</li>
+<li>If-Modified-Since：文档的最后改动时间</li>
+</ul>
+<h3 id="http-响应头">HTTP 响应头</h3>
+<ul>
+<li>Allow    服务器支持哪些请求方法（如GET、POST等）。</li>
+<li>Content-Encoding    文档的编码（Encode）方法。</li>
+<li>Content-Length    表示内容长度。只有当浏览器使用持久HTTP连接时才需要这个数据。</li>
+<li>Content-Type    表示后面的文档属于什么MIME类型。</li>
+<li>Date    当前的GMT时间。你可以用setDateHeader来设置这个头以避免转换时间格式的麻烦。</li>
+<li>Expires    应该在什么时候认为文档已经过期，从而不再缓存它。</li>
+<li>Last-Modified    文档的最后改动时间。</li>
+<li>Refresh    表示浏览器应该在多少时间之后刷新文档，以秒计。</li>
+<li>Server    服务器名字。</li>
+<li>Set-Cookie    设置和页面关联的Cookie。</li>
+<li>ETag：被请求变量的实体值。ETag是一个可以与Web资源关联的记号（MD5值）。</li>
+<li>Cache-Control：这个字段用于指定所有缓存机制在整个请求/响应链中必须服从的指令。</li>
+</ul>
+<p>max-age：表示当访问此网页后的 x 秒内再次访问不会去服务器；no-cache，实际上Cache-Control: no-cache是会被缓存的，只不过每次在向客户端（浏览器）提供响应数据时，缓存都要向服务器评估缓存响应的有效性；no-store，这个才是响应不被缓存的意思；</p>
+<p>Last-Modified与If-Modified-Since都是用来记录页面的最后修改时间。当客户端访问页面时，服务器会将页面最后修改时间通过 Last-Modified 标识由服务器发往客户端，客户端记录修改时间，再次请求本地存在的cache页面时，客户端会通过 If-Modified-Since 头将先前服务器端发过来的最后修改时间戳发送回去，服务器端通过这个时间戳判断客户端的页面是否是最新的，如果不是最新的，则返回新的内容，如果是最新的，则返回 304。</p>
+<p>&nbsp;</p>
+<h2 id="http的状态码含义">Http的状态码含义</h2>
+<ul>
+<li>1**    信息，服务器收到请求，需要请求者继续执行操作</li>
+<li>2**    成功，操作被成功接收并处理</li>
+<li>3**    重定向，需要进一步的操作以完成请求<ul>
+<li>301 Moved Permanently。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</li>
+<li>302 Moved Temporarily。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</li>
+<li>304 Not Modified。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源。</li>
+</ul>
+</li>
+<li>4**    客户端错误，请求包含语法错误或无法完成请求<ul>
+<li>400 Bad Request 由于客户端请求有语法错误，不能被服务器所理解。</li>
+<li>401 Unauthorized 请求未经授权。这个状态代码必须和WWW-Authenticate报头域一起使用</li>
+<li>403 Forbidden 服务器收到请求，但是拒绝提供服务。服务器通常会在响应正文中给出不提供服务的原因</li>
+<li>404 Not Found 请求的资源不存在，例如，输入了错误的URL</li>
+</ul>
+</li>
+<li>5**    服务器错误，服务器在处理请求的过程中发生了错误<ul>
+<li>500 Internal Server Error 服务器发生不可预期的错误，导致无法完成客户端的请求。</li>
+<li>503 Service Unavailable 服务器当前不能够处理客户端的请求，在一段时间之后，服务器可能会恢复正常。</li>
+</ul>
+</li>
+</ul>
+<h2 id="http-request的几种类型">Http request的几种类型</h2>
+<ul>
+<li>GET    请求指定的页面信息，并返回实体主体。</li>
+<li>POST    向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</li>
+<li>PUT    从客户端向服务器传送的数据取代指定的文档的内容。</li>
+<li>DELETE    请求服务器删除指定的页面。</li>
+</ul>
+<p>GET可提交的数据量受到URL长度的限制，HTTP协议规范没有对URL长度进行限制。这个限制是特定的浏览器及服务器对它的限制</p>
+<p>理论上讲，POST是没有大小限制的，HTTP协议规范也没有进行大小限制，出于安全考虑，服务器软件在实现时会做一定限制</p>
+<h4 id="条件-get">条件 GET</h4>
+<p>HTTP条件GET 是 HTTP 协议为了减少不必要的带宽浪费，提出的一种方案。实际上就是利用If-Modified-Since做浏览器缓存。</p>
+<h2 id="持久连接">持久连接</h2>
+<p>我们知道 HTTP 协议采用请求-应答模式，当使用普通模式，即非 Keep-Alive 模式时，每个请求/应答客户和服务器都要新建一个连接，完成之后立即断开连接（HTTP协议为无连接的协议）；当使用 Keep-Alive 模式（又称持久连接、连接重用）时，Keep-Alive 功能使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive 功能避免了建立或者重新建立连接。</p>
+<p>在 HTTP 1.0 中, 没有官方的 keep alive 的操作。通常是在现有协议上添加一个指数。如果浏览器支持 keep-alive，它会在请求的包头中添加：</p>
+<pre class="prettyprint linenums lang-java">Connection: Keep-Alive
+</pre>
+<p>然后当服务器收到请求，作出回应的时候，它也添加一个头在响应中：</p>
+<pre class="prettyprint linenums lang-java">Connection: Keep-Alive
+</pre>
+<p>这样做，连接就不会中断（超过 Keep-Alive 规定的时间–服务器设置，意外断电等情况除外），而是保持连接。当客户端发送另一个请求时，它会使用同一个连接。这一直继续到客户端或服务器端认为会话已经结束，其中一方中断连接。</p>
+<p>在 HTTP 1.1 版本中，默认情况下所有连接都被保持，如果加入 “Connection: close” 才关闭。</p>
+<ul>
+<li>HTTP Keep-Alive 简单说就是保持当前的TCP连接，避免了重新建立连接。</li>
+<li>HTTP 长连接不可能一直保持，例如 Keep-Alive: timeout=5, max=100，表示这个TCP通道可以保持5秒，max=100，表示这个长连接最多接收100次请求就断开。</li>
+<li>HTTP是一个无状态协议，这意味着每个请求都是独立的，Keep-Alive没能改变这个结果。另外，Keep-Alive也不能保证客户端和服务器之间的连接一定是活跃的，在HTTP1.1版本中也如此。唯一能保证的就是当连接被关闭时你能得到一个通知，所以不应该让程序依赖于Keep-Alive的保持连接特性，否则会有意想不到的后果。</li>
+<li>使用长连接之后，客户端、服务端怎么知道本次传输结束呢？两部分：1. 判断传输数据是否达到了Content-Length 指示的大小；2. 动态生成的文件没有 Content-Length ，它是分块传输（chunked），这时候就要根据 chunked 编码来判断，chunked 编码的数据在最后有一个空 chunked 块，表明本次传输数据结束。</li>
+</ul>
+<h2 id="跨站攻击">跨站攻击</h2>
+<p>CSRF（Cross-site request forgery，跨站请求伪造）伪造请求，冒充用户在站内的正常操作，比如爬虫。</p>
+<h3 id="防范的方法">防范的方法</h3>
+<ul>
+<li>关键操作只接受POST请求</li>
+<li>验证码</li>
+<li>检测 Referer</li>
+<li>Token<ul>
+<li>Token 要足够随机——只有这样才算不可预测</li>
+<li>Token 是一次性的，即每次请求成功后要更新Token——这样可以增加攻击难度，增加预测难度</li>
+<li>Token 要注意保密性——敏感操作使用 post，防止 Token 出现在 URL 中</li>
+</ul>
+</li>
+</ul>
+<h2 id="断点续传">断点续传</h2>
+<p>要实现断点续传的功能，通常都需要客户端记录下当前的下载进度，并在需要续传的时候通知服务端本次需要下载的内容片段。</p>
+<p>HTTP1.1协议中定义了断点续传相关的HTTP头 Range 和 Content-Range 字段，一个最简单的断点续传实现大概如下：</p>
+<ol>
+<li>客户端下载一个1024K的文件，已经下载了其中512K</li>
+<li>网络中断，客户端请求续传，因此需要在HTTP头中申明本次需要续传的片段：Range:bytes=512000-，这个头通知服务端从文件的512K位置开始传输文件。</li>
+<li>服务端收到断点续传请求，从文件的512K位置开始传输，并且在HTTP头中增加：Content-Range:bytes 512000-/1024000，并且此时服务端返回的HTTP状态码应该是206，而不是200</li>
+</ol>
+<p>但是在实际场景中，会出现一种情况，即在终端发起续传请求时，URL对应的文件内容在服务端已经发生变化，此时续传的数据肯定是错误的。如何解决这个问题了？显然此时我们需要有一个标识文件唯一性的方法。在RFC2616中也有相应的定义，比如 实现Last-Modified来标识文件的最后修改时间，这样即可判断出续传文件时是否已经发生过改动。同时RFC2616中还定义有一个ETag的头，可以使用ETag头来放置文件的唯一标识，比如文件的MD5值。</p>
+<p>客户端在发起续传请求时应该在HTTP头中申明If-Match 或者 If-Modified-Since 字段，帮助服务端判别文件变化。</p>
+<h2 id="一次http请求">一次HTTP请求</h2>
+<ul>
+<li>域名解析 <ol>
+<li>浏览器缓存 </li>
+<li>系统缓存 </li>
+<li>hosts </li>
+<li>ISP DNS 缓存 </li>
+<li>DNS 服务器搜索</li>
+</ol>
+</li>
+<li>浏览器发送 HTTP 请求到目标服务器</li>
+<li>服务器永久重定向</li>
+<li>浏览器跟踪重定向地址</li>
+<li>服务器“处理”请求</li>
+<li>服务器发回一个HTML响应</li>
+<li>浏览器开始显示HTML</li>
+<li>浏览器请求获取嵌入在 HTML 中的对象（图片&amp;脚本等）</li>
+<li>浏览器发送异步（AJAX）请求</li>
+</ul>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
