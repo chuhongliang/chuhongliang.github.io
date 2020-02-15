@@ -55,3 +55,51 @@ Java线程模型定义了 6 种状态，在任意一个时间点，一个线程�
 - 结束（Terminated）：已终止的线程。
 
 ![](../assets/vendor/thread_status.jpg)
+
+---
+
+## Java线程的创建
+Java提供了java.lang.Thread类支持多线程编程，这是一种最简单的创建线程的方法，值得注意的是这里的类是继承了Thread父类的。
+
+```java
+public class ThreadDemo extends Thread{
+    @Override
+    public void run() {
+        for(int i=0;i<=20;i++){
+            System.out.println(i+".你好,来自线程"+
+        Thread.currentThread().getName());
+        }
+    }
+    public static void main(String[]args){
+    ThreadDemo t1=new ThreadDemo();
+    t1.start();//线程的启动方法
+    ThreadDemo t2=new ThreadDemo();
+    t2.start();
+    }
+}
+```
+
+除了使用直接继承Thread类以外，我们还可以定义MyRunnable类实现Runnable接口，然后完成以下四步操作即可:
+- 实现run()方法；
+- 编写线程执行体；
+- 创建线程对象；
+- 调用start()方法启动线程。
+
+```java
+public class RunnableDemo implements Runnable {
+    @Override
+    public void run() {
+        for(int i=0;i<=100;i++){
+            System.out.println(Thread.currentThread().getName()+"-->"+i);
+        }
+    }
+    public static void main(String[] args) {
+        RunnableDemo rd1=new RunnableDemo();
+        Thread t1=new Thread(rd1);
+        t1.start();
+        RunnableDemo rd2=new RunnableDemo();
+        Thread t2=new Thread(rd2);
+        t2.start();
+    }
+}
+```
