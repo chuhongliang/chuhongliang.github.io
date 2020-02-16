@@ -193,3 +193,17 @@ let result = arr.reduce((previousValue, currentValue) => {
 });
 console.log(result);// 9
 ```
+
+---
+
+## Array.sort()的底层实现及应用
+### V8 引擎的 array.js
+js中的sort()方法用于对数组元素进行排序，具体是如何实现的？查阅资料发现，V8 引擎 sort 函数只给出了两种排序 InsertionSort 和 QuickSort，数组长度小于等于 22 的用插入排序 InsertionSort，比22大的数组则使用快速排序 QuickSort。源码中这样写道：
+```js
+// In-place QuickSort algorithm. 
+// For short (length <= 22) arrays, insertion sort is used for efficiency.
+```
+
+### 其他引擎的sort实现方式
+- Mozilla/Firefox : 归并排序（jsarray.c 源码） 
+- Webkit ：底层实现用了 C++ 库中的 qsort() 方法（JSArray.cpp 源码）
