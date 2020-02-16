@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Sun, 16 Feb 2020 13:39:26 +0800</lastBuildDate>
+        <lastBuildDate>Sun, 16 Feb 2020 16:41:55 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -856,6 +856,18 @@ let result = arr.reduce((previousValue, currentValue) =&gt; {
 });
 console.log(result);// 9
 &lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;arrayprototypesort-的底层实现及应用&quot;&gt;Array.prototype.sort()的底层实现及应用&lt;/h2&gt;
+&lt;h3 id=&quot;v8-引擎的-arrayjs&quot;&gt;V8 引擎的 array.js&lt;/h3&gt;
+&lt;p&gt;js中的sort()方法用于对数组元素进行排序，具体是如何实现的？查阅资料发现，V8 引擎 sort 函数只给出了两种排序 InsertionSort 和 QuickSort，数组长度小于等于 22 的用插入排序 InsertionSort，比22大的数组则使用快速排序 QuickSort。源码中这样写道：&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;// In-place QuickSort algorithm. 
+// For short (length &lt;= 22) arrays, insertion sort is used for efficiency.
+&lt;/pre&gt;
+&lt;h3 id=&quot;其他引擎的sort实现方式&quot;&gt;其他引擎的sort实现方式&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Mozilla/Firefox : 归并排序（jsarray.c 源码） &lt;/li&gt;
+&lt;li&gt;Webkit ：底层实现用了 C++ 库中的 qsort() 方法（JSArray.cpp 源码）&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         
