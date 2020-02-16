@@ -448,7 +448,15 @@
     - 网络
   abstract: WebSocket 是一种与 HTTP 不同的协议。两者都位于 OSI 模型的应用层，并且都依赖于传输层的 TCP 协议。 虽然它们不同，但 RFC 6455 规定：WebSocket设计为通过 80 和 443 端口工作，以及支持HTTP代理和中介，从而使其与HTTP协议兼容。为了实现兼容性， WebSocket 握手使用 HTTP Upgrade 头从 HTTP 协议更改为 WebSocket 协议。
 
+- id: algorithm-sort
+  title: 排序算法
+  postedOn: !!str 2020-02-16
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: 排序算法可以分为内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的内部排序算法有：插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序、基数排序等。
 
+  
 
   
 
