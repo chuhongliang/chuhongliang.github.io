@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Node.js 全局对象
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/node-global.html">Node.js 全局对象</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-17
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Node">Node</a>
+        
+        </div>
+        <div id="article-content">
+            <p>JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。
+在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。</p>
+<p>在 Node.js 我们可以直接访问到 global 的属性，而不需要在应用中包含它。</p>
+<p>Node.js中的内置全局对象</p>
+<ul>
+<li><a href="#console"><strong>console</strong></a><ul>
+<li><a href="#console-%e6%96%b9%e6%b3%95"><strong>console</strong> 方法</a></li>
+</ul>
+</li>
+<li><a href="#filename"><strong>__filename</strong></a></li>
+<li><a href="#dirname"><strong>__dirname</strong></a></li>
+<li><a href="#settimeoutcb-ms"><strong>setTimeout(cb, ms)</strong></a></li>
+<li><a href="#cleartimeoutt"><strong>clearTimeout(t)</strong></a></li>
+<li><a href="#setintervalcb-ms"><strong>setInterval(cb, ms)</strong></a></li>
+</ul>
+<h2 id="-strong-console-strong-"><strong>console</strong></h2>
+<p>console 用于提供控制台标准输出，它是由 Internet Explorer 的 JScript 引擎提供的调试工具，后来逐渐成为浏览器的实施标准。
+Node.js 沿用了这个标准，提供与习惯行为一致的 console 对象，用于向标准输出流（stdout）或标准错误流（stderr）输出字符。</p>
+<h3 id="-strong-console-strong-方法"><strong>console</strong> 方法</h3>
+<ul>
+<li>console.log([data][, ...]):
+向标准输出流打印字符并以换行符结束。该方法接收若干 个参数，如果只有一个参数，则输出这个参数的字符串形式。如果有多个参数，则 以类似于C 语言 printf() 命令的格式输出。</li>
+<li>console.info([data][, ...]):
+该命令的作用是返回信息性消息，这个命令与console.log差别并不大，除了在chrome中只会输出文字外，其余的会显示一个蓝色的惊叹号。</li>
+<li>console.warn([data][, ...]):
+输出警告消息。控制台出现有黄色的惊叹号。</li>
+<li>console.dir(obj[, options]):
+用来对一个对象进行检查（inspect），并以易于阅读和打印的格式显示。</li>
+<li>console.time(label):
+输出时间，表示计时开始。</li>
+<li>console.timeEnd(label):
+结束时间，表示计时结束。</li>
+<li>console.trace(message[, ...]):
+当前执行的代码在堆栈中的调用路径，这个测试函数运行很有帮助，只要给想测试的函数里面加入 console.trace 就行了。</li>
+<li>console.assert(value[, message][, ...]):
+用于判断某个表达式或变量是否为真，接收两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。</li>
+</ul>
+<h2 id="-strong-__filename-strong-"><strong>__filename</strong></h2>
+<p>__filename 表示当前正在执行的脚本的文件名。它将输出文件所在位置的绝对路径，且和命令行参数所指定的文件名不一定相同。 如果在模块中，返回的值是模块文件的路径。</p>
+<h2 id="-strong-__dirname-strong-"><strong>__dirname</strong></h2>
+<p>__dirname 表示当前执行脚本所在的目录。</p>
+<h2 id="-strong-settimeout-cb-ms-strong-"><strong>setTimeout(cb, ms)</strong></h2>
+<p>setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。：setTimeout() 只执行一次指定函数。
+返回一个代表定时器的句柄值。</p>
+<h2 id="-strong-cleartimeout-t-strong-"><strong>clearTimeout(t)</strong></h2>
+<p>clearTimeout( t ) 全局函数用于停止一个之前通过 setTimeout() 创建的定时器。 参数 t 是通过 setTimeout() 函数创建的定时器。
+实例</p>
+<h2 id="-strong-setinterval-cb-ms-strong-"><strong>setInterval(cb, ms)</strong></h2>
+<p>setInterval(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。
+返回一个代表定时器的句柄值。可以使用 clearInterval(t) 函数来清除定时器。
+setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。</p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+

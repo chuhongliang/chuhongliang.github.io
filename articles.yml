@@ -464,6 +464,14 @@
     - css
   abstract: Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
   
+- id: node-global
+  title: Node.js 全局对象
+  postedOn: !!str 2020-02-17
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。
+
 
 
   
