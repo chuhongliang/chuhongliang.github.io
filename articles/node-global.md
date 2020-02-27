@@ -12,13 +12,18 @@ Node.js中的内置全局对象
 - [setInterval(cb, ms)](#setintervalcb-ms)
 - [setImmediate](#setimmediate)
 - [process](#process)
+  - [process.nextTick(callback[, ...args])](#processnexttickcallback-args)
+  - [process.argv](#processargv)
+  - [process.argv0](#processargv0)
+  - [process.title](#processtitle)
 - [exports](#exports)
 - [module.exports](#moduleexports)
 - [require(id)](#requireid)
+- [Buffer](#buffer)
 
 ---
 
-## console
+# console
 console 用于提供控制台标准输出，它是由 Internet Explorer 的 JScript 引擎提供的调试工具，后来逐渐成为浏览器的实施标准。
 Node.js 沿用了这个标准，提供与习惯行为一致的 console 对象，用于向标准输出流（stdout）或标准错误流（stderr）输出字符。
 
@@ -31,25 +36,35 @@ Node.js 沿用了这个标准，提供与习惯行为一致的 console 对象，
 
 ---
 
-## __filename
-__filename 表示当前正在执行的脚本的文件名。它将输出文件所在位置的绝对路径，且和命令行参数所指定的文件名不一定相同。 如果在模块中，返回的值是模块文件的路径。
+# __filename
+当前模块的文件名。 这是当前的模块文件的绝对路径（符号链接会被解析）。
+
+对于主程序，这不一定与命令行中使用的文件名相同。
+
+示例，从 /Users/mjr 运行 node example.js：
 
 ```js
-// 输出全局变量 __filename 的值
-console.log( __filename );
+console.log(__filename);
+// 打印: /Users/mjr/example.js
+console.log(__dirname);
+// 打印: /Users/mjr
 ```
 ---
 
-## __dirname
-__dirname 表示当前执行脚本所在的目录。
+# __dirname
+当前模块的目录名。 与 __filename 的 path.dirname() 相同。
+
+示例，从 /Users/mjr 运行 node example.js：
 
 ```js
-// 输出全局变量 __dirname 的值
-console.log( __dirname );
+console.log(__dirname);
+// 打印: /Users/mjr
+console.log(path.dirname(__filename));
+// 打印: /Users/mjr
 ```
 ---
 
-## setTimeout(cb, ms)
+# setTimeout(cb, ms)
 setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。：setTimeout() 只执行一次指定函数。
 返回一个代表定时器的句柄值。
 
@@ -62,7 +77,7 @@ setTimeout(function printHello(){
 
 ---
 
-## clearTimeout(t)
+# clearTimeout(t)
 clearTimeout( t ) 全局函数用于停止一个之前通过 setTimeout() 创建的定时器。 参数 t 是通过 setTimeout() 函数创建的定时器。
 
 ```js
@@ -74,7 +89,7 @@ clearTimeout(t);
 ```
 ---
 
-## setInterval(cb, ms)
+# setInterval(cb, ms)
 setInterval(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。
 返回一个代表定时器的句柄值。可以使用 clearInterval(t) 函数来清除定时器。
 setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
@@ -86,7 +101,9 @@ setInterval(function printHello(){
 }, 2000);
 ```
 
-## setImmediate
+---
+
+# setImmediate
 预定在 I/O 事件的回调之后立即执行的 callback。
 ```js
 // 两秒后执行以下函数
@@ -95,14 +112,134 @@ setImmediate(function printHello(){
 }, 2000);
 ```
 
-## process
-process 对象是一个全局变量，它提供有关当前 Node.js 进程的信息并对其进行控制。 作为一个全局变量，它始终可供 Node.js 应用程序使用，无需使用 require()。 
+---
 
-## exports
-这是一个对于 module.exports 的更简短的引用形式。查看关于 exports 快捷方式的章节，详细了解什么时候使用 exports、什么时候使用 module.exports。
+# process
+process 对象是一个全局变量，它提供有关当前 Node.js 进程的信息并对其进行控制。 作为一个全局变量，它始终可供 Node.js 应用程序使用，无需使用 require()。
 
-## module.exports
+常用方法:
+## process.nextTick(callback[, ...args])
+process.nextTick() 方法将 callback 添加到下一个时间点的队列。 在 JavaScript 堆栈上的当前操作运行完成之后以及允许事件循环继续之前，此队列会被完全耗尽。 如果要递归地调用 process.nextTick()，则可以创建无限的循环。 
+
+```js
+console.log('开始');
+process.nextTick(() => {
+  console.log('下一个时间点的回调');
+});
+console.log('调度');
+// 输出:
+// 开始
+// 调度
+// 下一个时间点的回调
+```
+
+## process.argv
+process.argv 属性返回一个数组，其中包含当启动 Node.js 进程时传入的命令行参数。 第一个元素是 process.execPath。 如果需要访问 argv[0] 的原始值，参阅 process.argv0。 第二个元素将是正在执行的 JavaScript 文件的路径。 其余元素将是任何其他命令行参数。
+```js
+// 打印 process.argv。
+process.argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`);
+});
+```
+
+## process.argv0
+process.argv0 属性保存当 Node.js 启动时传入的 argv[0] 的原始值的只读副本。
+
+## process.title
+process.title 属性返回当前进程标题（即返回 ps 的当前值）。 为 process.title 分配新值会修改 ps 的当前值。
+
+当分配新值时，不同的平台会对标题施加不同的最大长度限制。 通常这种限制是相当有限的。 例如，在 Linux 和 macOS 上， process.title 仅限于二进制名称的大小加上命令行参数的长度，因为设置 process.title 会覆盖进程的 argv 内存。 Node.js 的 v0.8, 通过覆盖 environ 允许内存较长的过程标题字符串，但是这在一些（相当模糊的）可能是不安全的并且令人困惑情况下。
+
+
+---
+
+# exports
+这是一个对于 module.exports 的更简短的引用形式。
+
+变量是在模块的文件级作用域内可用的，且在模块执行之前赋值给 module.exports。
+
+它允许使用快捷方式，因此 module.exports.f = ... 可以更简洁地写成 exports.f = ...。 但是，就像任何变量一样，如果为 exports 赋予了新值，则它将不再绑定到 module.exports：
+
+```js
+module.exports.hello = true; // 从模块的引用中导出。
+exports = { hello: false };  // 不导出，仅在模块中可用。
+```
+
+当 module.exports 属性被新对象完全替换时，通常也会重新赋值 exports：
+
+```js
+module.exports = exports = function Constructor() {
+  // ... 
+};
+```
+
+---
+
+# module.exports
 用于指定一个模块所导出的内容，即可以通过 require() 访问的内容。
 
-## require(id)
+module.exports 对象由 Module 系统创建。 有时这是不可接受的；许多人希望他们的模块成为某个类的实例。 为此，需要将期望导出的对象赋值给 module.exports。 将期望的对象赋值给 exports 会简单地重新绑定本地的 exports 变量，这可能不是所期望的。
+
+例如，假设正在创建一个名为 a.js 的模块：
+
+```js
+const EventEmitter = require('events');
+
+module.exports = new EventEmitter();
+
+// 处理一些工作，并在一段时间后从模块自身触发 'ready' 事件。
+setTimeout(() => {
+  module.exports.emit('ready');
+}, 1000);
+```
+然后，在另一个文件中可以这么做：
+
+```js
+const a = require('./a');
+a.on('ready', () => {
+  console.log('模块 a 已准备好');
+});
+```
+对 module.exports 的赋值必须立即完成。 不能在任何回调中完成。
+
+---
+
+# require(id)
 用于引入模块、 JSON、或本地文件。 可以从 node_modules 引入模块。 可以使用相对路径（例如 ./、 ./foo、 ./bar/baz、 ../foo）引入本地模块或 JSON 文件，路径会根据 __dirname 定义的目录名或当前工作目录进行处理。
+
+```js
+// 引入本地模块：
+const myLocalModule = require('./path/myLocalModule');
+// 引入 JSON 文件：
+const jsonData = require('./path/filename.json');
+// 引入 node_modules 模块或 Node.js 内置模块：
+const crypto = require('crypto');
+```
+
+---
+
+# Buffer
+Buffer 类是作为 Node.js API 的一部分引入的，用于在 TCP 流、文件系统操作、以及其他上下文中与八位字节流进行交互。
+
+```js
+// 创建一个长度为 10、且用零填充的 Buffer。
+const buf1 = Buffer.alloc(10);
+
+// 创建一个长度为 10、且用 0x1 填充的 Buffer。 
+const buf2 = Buffer.alloc(10, 1);
+
+// 创建一个长度为 10、且未初始化的 Buffer。
+// 这个方法比调用 Buffer.alloc() 更快，
+// 但返回的 Buffer 实例可能包含旧数据，
+// 因此需要使用 fill() 或 write() 重写。
+const buf3 = Buffer.allocUnsafe(10);
+
+// 创建一个包含 [0x1, 0x2, 0x3] 的 Buffer。
+const buf4 = Buffer.from([1, 2, 3]);
+
+// 创建一个包含 UTF-8 字节 [0x74, 0xc3, 0xa9, 0x73, 0x74] 的 Buffer。
+const buf5 = Buffer.from('tést');
+
+// 创建一个包含 Latin-1 字节 [0x74, 0xe9, 0x73, 0x74] 的 Buffer。
+const buf6 = Buffer.from('tést', 'latin1');
+```
