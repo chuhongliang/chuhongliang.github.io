@@ -1,4 +1,4 @@
-Android中五种布局方式分别是:线性布局（LiearLayout），相对布局（RelativeLayout），
+Android中六种布局方式分别是:线性布局（LiearLayout），相对布局（RelativeLayout），
 帧布局（FrameLayout），绝对布局（AbsoluteLayout），表格布局（TableLayout），网格布局（GridLayout）。
 
 - 线性布局（LiearLayout）: 屏幕垂直或水平方向布局。

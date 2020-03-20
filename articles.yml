@@ -342,7 +342,7 @@
   author: chuhongliang
   tags:
     - Android
-  abstract: 
+  abstract: Android中六种布局方式分别是:线性布局（LiearLayout），相对布局（RelativeLayout），帧布局（FrameLayout），绝对布局（AbsoluteLayout），表格布局（TableLayout），网格布局（GridLayout）。
 
 - id: android-handler
   title: Android Handler
