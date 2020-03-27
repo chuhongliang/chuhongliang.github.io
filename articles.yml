@@ -472,6 +472,29 @@
     - Node
   abstract: JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。
 
+- id: git
+  title: Git命令大全
+  postedOn: !!str 2020-03-27
+  author: chuhongliang
+  tags:
+    - Git
+  abstract: Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。 Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+
+- id: nginx
+  title: Nginx源码下载、编译和安装
+  postedOn: !!str 2020-03-27
+  author: chuhongliang
+  tags:
+    - Nginx
+  abstract: nginx下载地址：http://nginx.org/en/download.html
+
+- id: nginx-conf
+  title:  Nginx配置文件结构
+  postedOn: !!str 2020-03-27
+  author: chuhongliang
+  tags:
+    - Nginx
+  abstract:
 
 
   

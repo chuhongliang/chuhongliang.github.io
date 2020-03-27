@@ -1,6 +1,6 @@
 
-# nginx源码下载、编译和安装
-nginx下载地址：http://nginx.org/en/download.html
+# Nginx源码下载、编译和安装
+Nginx下载地址：http://nginx.org/en/download.html
 选择好下载的版本后，如果有浏览器可以直接点击下载，如果在终端可以选择命令下载：
 
 由于之前安装过1.15.9 有BUG

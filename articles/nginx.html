@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Nginx源码下载、编译和安装
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/nginx.html">Nginx源码下载、编译和安装</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-03-27
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Nginx">Nginx</a>
+        
+        </div>
+        <div id="article-content">
+            <h1 id="nginx源码下载、编译和安装">Nginx源码下载、编译和安装</h1>
+<p>Nginx下载地址：<a href="http://nginx.org/en/download.html">http://nginx.org/en/download.html</a>
+选择好下载的版本后，如果有浏览器可以直接点击下载，如果在终端可以选择命令下载：</p>
+<p>由于之前安装过1.15.9 有BUG
+推荐安装1.14.1</p>
+<pre class="prettyprint linenums lang-txt">wget http://nginx.org/download/nginx-1.14.1.tar.gz
+</pre>
+<p>下载完成后解压</p>
+<pre class="prettyprint linenums lang-txt">tar -zxvf nginx-1.14.1.tar.gz 
+</pre>
+<p>Linux系统分为两种：</p>
+<ul>
+<li>1.RedHat系列：Redhat、Centos、Fedora等</li>
+<li>2.Debian系列：Debian、Ubuntu等</li>
+</ul>
+<p>RedHat系列的包管理工具是yum</p>
+<p>Debian系列的包管理工具是apt-get</p>
+<p>安装openssl库</p>
+<pre class="prettyprint linenums lang-txt">sudo yum install openssl libssl-dev
+</pre>
+<p>安装pcre库</p>
+<pre class="prettyprint linenums lang-txt">sudo yum install libpcre3 libpcre3-dev
+</pre>
+<p>安装zlib库</p>
+<pre class="prettyprint linenums lang-txt">sudo yum install zlib1g-dev
+</pre>
+<p>安装完成后进入到nginx-1.14.1目录再次执行命令：</p>
+<pre class="prettyprint linenums lang-txt">./configure --prefix=/usr/local/nginx
+</pre>
+<p>然后执行以下命令开始编译和安装nginx：</p>
+<pre class="prettyprint linenums lang-txt">sudo make
+</pre>
+<pre>sudo make install
+</pre><p>安装完之后可以看到/usr/local/nginx目录下有以下文件：</p>
+<pre class="prettyprint linenums lang-txt">cert  client_body_temp  conf  fastcgi_temp  html  logs  proxy_temp  sbin  scgi_temp  uwsgi_temp
+</pre>
+<p>进入到/usr/local/nginx目录，启动nginx：</p>
+<pre class="prettyprint linenums lang-txt">sudo ./sbin/nginx
+</pre>
+<p>如果没有报错查看进程信息：</p>
+<pre class="prettyprint linenums lang-txt">ps -e | grep nginx
+</pre>
+<pre class="prettyprint linenums lang-txt">11943 ?        00:00:00 nginx
+15194 ?        00:00:00 nginx
+</pre>
+<p>在浏览器中直接输入127.0.0.1便可访问nginx</p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
