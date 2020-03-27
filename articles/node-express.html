@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Node.js express4.0源码解析
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/node-express.html">Node.js express4.0源码解析</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-02-17
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Node">Node</a>
+        
+        </div>
+        <div id="article-content">
+            <h1 id="express40源码解析">express4.0源码解析</h1>
+<p>express4.x 去除了connect的依赖，3.x基于connect的中间件基本全都不能用。需要手动安装依赖包或者用一些其它的中间件。</p>
+<h2 id="入口函数-createapplication-">入口函数: createApplication()</h2>
+<pre class="prettyprint linenums lang-js">var mixin = require(&#39;merge-descriptors&#39;);
+var proto = require(&#39;./application&#39;);
+
+function createApplication() {
+  var app = function(req, res, next) {
+    app.handle(req, res, next);
+  };
+
+  mixin(app, EventEmitter.prototype, false);
+  mixin(app, proto, false);
+
+  // expose the prototype that will get set on requests
+  app.request = Object.create(req, {
+    app: { configurable: true, enumerable: true, writable: true, value: app }
+  })
+
+  // expose the prototype that will get set on responses
+  app.response = Object.create(res, {
+    app: { configurable: true, enumerable: true, writable: true, value: app }
+  })
+
+  app.init();
+  return app;
+}
+</pre>
+<p>首先把事件的全部属性mix进app里，给app增加事件功能。</p>
+<p>然后把application模块的全部属性mix进app里。</p>
+<p>接着把req，res模块分别赋值给app, 这样this是可以直接调用request，response，</p>
+<p>最后具体执行过程是在app.init()函数里面。</p>
+<h2 id="appinit-">app.init()</h2>
+<pre class="prettyprint linenums lang-js">app.init = function init() {
+  this.cache = {};
+  this.engines = {};
+  this.settings = {};
+
+  this.defaultConfiguration();
+};
+</pre>
+<p>这里app对象增加了三个属性cache、engines、settings,然后调用了defaultConfiguration()函数。</p>
+<h2 id="defaultconfiguration-">defaultConfiguration()</h2>
+<p>这个函数比较长，我们逐行分析：</p>
+<pre class="prettyprint linenums lang-js">this.enable(&#39;x-powered-by&#39;);
+...
+app.enable = function enable(setting) {
+  return this.set(setting, true);
+};
+</pre>
+<p>enable函数里调用了set函数，set函数的第二个参数为Boolean类型; set函数里操作的对象是上面app新增的三个属性之一的settings对象，其实就是为settings对象设置属性。</p>
+<p>即设置x-powered-by 为true</p>
+<p>x-powered-by 是http请求时返回的响应头信息，会返回相应的服务器信息。对于网站来说暴露信息过多，是不安全的;</p>
+<pre class="prettyprint linenums lang-js">this.set(&#39;etag&#39;, &#39;weak&#39;);
+</pre>
+<p>这里处理etag的 Express依赖了一个叫etag的包</p>
+<pre class="prettyprint linenums lang-js">var env = process.env.NODE_ENV || &#39;development&#39;;
+this.set(&#39;env&#39;, env);
+this.set(&#39;query parser&#39;, &#39;extended&#39;);
+this.set(&#39;subdomain offset&#39;, 2);
+this.set(&#39;trust proxy&#39;, false);
+</pre>
+<p>这里继续设置属性</p>
+<pre class="prettyprint linenums lang-js">this.on(&#39;mount&#39;, function onmount(parent) {
+    // inherit trust proxy
+    if (this.settings[trustProxyDefaultSymbol] === true
+      &amp;&amp; typeof parent.settings[&#39;trust proxy fn&#39;] === &#39;function&#39;) {
+      delete this.settings[&#39;trust proxy&#39;];
+      delete this.settings[&#39;trust proxy fn&#39;];
+    }
+
+    // inherit protos
+    setPrototypeOf(this.request, parent.request)
+    setPrototypeOf(this.response, parent.response)
+    setPrototypeOf(this.engines, parent.engines)
+    setPrototypeOf(this.settings, parent.settings)
+  });
+</pre>
+<p>这里是用来挂载子应用的，可以监听同一个端口，转发给子应用</p>
+<p>下面是官方例子:</p>
+<pre class="prettyprint linenums lang-js">var admin = express()
+
+admin.on(&#39;mount&#39;, function (parent) {
+  console.log(&#39;Admin Mounted&#39;)
+  console.log(parent) // refers to the parent app
+})
+
+admin.get(&#39;/&#39;, function (req, res) {
+  res.send(&#39;Admin Homepage&#39;)
+})
+
+app.use(&#39;/admin&#39;, admin)
+</pre>
+<p>初始化流程到这里就结束了，下面我们来看看app.use()函数</p>
+<h2 id="appuse-">app.use()</h2>
+<p>注释中写道:&#39;Proxy <code>Router#use()</code> to add middleware to the app router&#39; 向路由添加中间件</p>
+<pre class="prettyprint linenums lang-js">app.use = function use(fn) {
+  var offset = 0;
+  var path = &#39;/&#39;;
+
+  // default path to &#39;/&#39;
+  // disambiguate app.use([fn])
+  if (typeof fn !== &#39;function&#39;) {
+    var arg = fn;
+
+    while (Array.isArray(arg) &amp;&amp; arg.length !== 0) {
+      arg = arg[0];
+    }
+
+    // first arg is the path
+    if (typeof arg !== &#39;function&#39;) {
+      offset = 1;
+      path = fn;
+    }
+  }
+
+  var fns = flatten(slice.call(arguments, offset));
+
+  if (fns.length === 0) {
+    throw new TypeError(&#39;app.use() requires a middleware function&#39;)
+  }
+
+  // setup router
+  this.lazyrouter();
+  var router = this._router;
+
+  fns.forEach(function (fn) {
+    // non-express app
+    if (!fn || !fn.handle || !fn.set) {
+      return router.use(path, fn);
+    }
+
+    debug(&#39;.use app under %s&#39;, path);
+    fn.mountpath = path;
+    fn.parent = this;
+
+    // restore .app property on req and res
+    router.use(path, function mounted_app(req, res, next) {
+      var orig = req.app;
+      fn.handle(req, res, function (err) {
+        setPrototypeOf(req, orig.request)
+        setPrototypeOf(res, orig.response)
+        next(err);
+      });
+    });
+
+    // mounted an app
+    fn.emit(&#39;mount&#39;, this);
+  }, this);
+
+  return this;
+};
+</pre>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
