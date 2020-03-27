@@ -461,7 +461,7 @@
   postedOn: !!str 2020-02-17
   author: chuhongliang
   tags:
-    - css
+    - CSS
   abstract: Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
   
 - id: node-global

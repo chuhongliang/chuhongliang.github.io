@@ -47,8 +47,6 @@ sudo yum install zlib1g-dev
 然后执行以下命令开始编译和安装nginx：
 ```txt
 sudo make
-```
-```
 sudo make install
 ```
 
