@@ -494,8 +494,24 @@
   author: chuhongliang
   tags:
     - Nginx
-  abstract:
+  abstract: Nginx配置文件分为全局块, events块, http块, server块,location块
 
+- id: nginx-command
+  title:  Nginx常用命令
+  postedOn: !!str 2020-03-28
+  author: chuhongliang
+  tags:
+    - Nginx
+  abstract: Nginx 常用命令介绍
+
+- id: nginx-ssl
+  title:  Nginx配置SSL
+  postedOn: !!str 2020-03-28
+  author: chuhongliang
+  tags:
+    - Nginx
+  abstract: Nginx如何配置SSL证书
+  
 
   
   
