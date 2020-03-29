@@ -71,6 +71,14 @@
     - JavaScript
   abstract: 我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象. 如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过__proto__来访问该属性.
 
+- id: javascript-this
+  title: JavaScript this
+  postedOn: !!str 2020-01-30
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: javascript中this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象.
+
 - id: javascript-function
   title: JavaScript 匿名函数与闭包
   postedOn: !!str 2020-02-01
@@ -529,8 +537,13 @@
     - 网络
   abstract: Google Protocol Buffer( 简称 Protobuf) 是 Google 公司内部的混合语言数据标准，目前已经正在使用的有超过 48,162 种报文格式定义和超过 12,183 个 .proto 文件。他们用于 RPC 系统和持续数据存储系统。Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，或者说序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。
 
-
-
+- id: network-byte
+  title:  字节序
+  postedOn: !!str 2020-03-29
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: 计算机硬件有两种储存数据的方式：大端字节序（big endian）和小端字节序（little endian）
   
 
   
