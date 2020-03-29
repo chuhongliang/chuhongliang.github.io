@@ -5,7 +5,7 @@ ISO为了更好的使网络应用更为普及，推出了OSI参考模型。其�
 OSI定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层、应用层），即ISO开放互连系统参考模型。
 
 
-### 七层网络模型
+# 七层网络模型
 
 - 应用层:	网络进程到应用程序。针对特定应用规定各层协议、时序、表示等，进行封装 。在端系统中用软件来实现，如HTTP等
 - 表示层:	数据表示形式，加密和解密，把机器相关的数据转换成独立于机器的数据。规定数据
@@ -15,4 +15,26 @@ OSI定义了网络互连的七层框架（物理层、数据链路层、网络�
 - 数据链路层:	一个可靠的点对点数据直链。检错与纠错（CRC码）；多路访问；寻址
 - 物理层:	一个（不一定可靠的）点对点数据直链。定义机械特性；电气特性；功能特性；规程特性
 
-&emsp;
+# 各层常用协议
+- 应用层 ：FTP，WWW，Telnet，NFS，SMTP，Gateway，SNMP
+- 表示层 ：TIFF，GIF，JPEG，PICT，ASCII，EBCDIC，encryption，MPEG，MIDI，HTML
+- 会话层 ：RPC，SQL，NFS，NetBIOS，names，AppleTalk，ASP，DECnet，SCP
+- 传输层 ：TCP，UDP，SPX
+- 网络层 ：IP，IPX，AppleTalk DDP
+- 数据链路层：Frame Relay，HDLC，PPP，IEEE802.3 / 802.2，FDDI，ATM，IEEE802.5 / 802.2
+- 物理层：EIA / TIA - 232，EIA / TIA - 499，V.35，V.24，RJ45，Ethernet，802.3，802.5，FDDI，NRZI，NRZ，B8ZS
+
+# TCP / IP模型：
+- 应用层：Telnet，FTP，SMTP，SNMP
+- 传输层：TCP，UDP，UGP
+- 网络层： IP，ICMP，IGMP
+- 数据链路层：ARP，RARP
+
+# 各层的功能
+- 物理层：实现计算机系统与网络间的物理连接
+- 数据链路层：进行数据打包与解包，形成信息帧
+- 网络层：提供数据通过的路由
+- 传输层：提供传输顺序信息与响应
+- 会话层：建立和中止连接
+- 表示层：数据转换、确认数据格式
+- 应用层：提供用户程序接口

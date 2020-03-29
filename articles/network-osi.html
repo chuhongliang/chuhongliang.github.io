@@ -57,7 +57,7 @@
             <p>OSI（Open System Interconnect），即开放式系统互联。 一般都叫OSI参考模型，是ISO（国际标准化组织）组织在1985年研究的网络互连模型。</p>
 <p>ISO为了更好的使网络应用更为普及，推出了OSI参考模型。其含义就是推荐所有公司使用这个规范来控制网络。这样所有公司都有相同的规范，就能互联了。</p>
 <p>OSI定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层、应用层），即ISO开放互连系统参考模型。</p>
-<h3 id="七层网络模型">七层网络模型</h3>
+<h1 id="七层网络模型">七层网络模型</h1>
 <ul>
 <li>应用层:    网络进程到应用程序。针对特定应用规定各层协议、时序、表示等，进行封装 。在端系统中用软件来实现，如HTTP等</li>
 <li>表示层:    数据表示形式，加密和解密，把机器相关的数据转换成独立于机器的数据。规定数据</li>
@@ -67,7 +67,33 @@
 <li>数据链路层:    一个可靠的点对点数据直链。检错与纠错（CRC码）；多路访问；寻址</li>
 <li>物理层:    一个（不一定可靠的）点对点数据直链。定义机械特性；电气特性；功能特性；规程特性</li>
 </ul>
-<p>&emsp;</p>
+<h1 id="各层常用协议">各层常用协议</h1>
+<ul>
+<li>应用层 ：FTP，WWW，Telnet，NFS，SMTP，Gateway，SNMP</li>
+<li>表示层 ：TIFF，GIF，JPEG，PICT，ASCII，EBCDIC，encryption，MPEG，MIDI，HTML</li>
+<li>会话层 ：RPC，SQL，NFS，NetBIOS，names，AppleTalk，ASP，DECnet，SCP</li>
+<li>传输层 ：TCP，UDP，SPX</li>
+<li>网络层 ：IP，IPX，AppleTalk DDP</li>
+<li>数据链路层：Frame Relay，HDLC，PPP，IEEE802.3 / 802.2，FDDI，ATM，IEEE802.5 / 802.2</li>
+<li>物理层：EIA / TIA - 232，EIA / TIA - 499，V.35，V.24，RJ45，Ethernet，802.3，802.5，FDDI，NRZI，NRZ，B8ZS</li>
+</ul>
+<h1 id="tcp-ip模型：">TCP / IP模型：</h1>
+<ul>
+<li>应用层：Telnet，FTP，SMTP，SNMP</li>
+<li>传输层：TCP，UDP，UGP</li>
+<li>网络层： IP，ICMP，IGMP</li>
+<li>数据链路层：ARP，RARP</li>
+</ul>
+<h1 id="各层的功能">各层的功能</h1>
+<ul>
+<li>物理层：实现计算机系统与网络间的物理连接</li>
+<li>数据链路层：进行数据打包与解包，形成信息帧</li>
+<li>网络层：提供数据通过的路由</li>
+<li>传输层：提供传输顺序信息与响应</li>
+<li>会话层：建立和中止连接</li>
+<li>表示层：数据转换、确认数据格式</li>
+<li>应用层：提供用户程序接口</li>
+</ul>
 
         </div>
         
