@@ -57,24 +57,16 @@
             <p>Java中有Error和Exception，它们都是继承自Throwable类。</p>
 <h2 id="二者的不同之处">二者的不同之处</h2>
 <h3 id="exception：">Exception：</h3>
-<ul>
-<li>可以是可被控制(checked) 或不可控制的(unchecked)。</li>
-<li>表示一个由程序员导致的错误。</li>
-<li>应该在应用程序级被处理。</li>
-</ul>
+<p>可以是可被控制(checked) 或不可控制的(unchecked)。</p>
+<p>表示一个由程序员导致的错误。</p>
+<p>应该在应用程序级被处理。</p>
 <h3 id="error：">Error：</h3>
-<ul>
-<li>总是不可控制的(unchecked)。</li>
-<li>经常用来用于表示系统错误或低层资源的错误。</li>
-<li>如何可能的话，应该在系统级被捕捉。</li>
-</ul>
+<p>总是不可控制的(unchecked)。</p>
+<p>经常用来用于表示系统错误或低层资源的错误。</p>
+<p>如何可能的话，应该在系统级被捕捉。</p>
 <h2 id="异常的分类">异常的分类</h2>
-<ul>
-<li><p>Checked exception: 这类异常都是Exception的子类。异常的向上抛出机制进行处理，假如子类可能产生A异常，那么在父类中也必须throws A异常。可能导致的问题：代码效率低，耦合度过高。</p>
-</li>
-<li><p>Unchecked exception: 这类异常都是RuntimeException的子类，虽然RuntimeException同样也是Exception的子类，但是它们是非凡的，它们不能通过client code来试图解决，所以称为Unchecked exception 。</p>
-</li>
-</ul>
+<p>Checked exception: 这类异常都是Exception的子类。异常的向上抛出机制进行处理，假如子类可能产生A异常，那么在父类中也必须throws A异常。可能导致的问题：代码效率低，耦合度过高。</p>
+<p>Unchecked exception: 这类异常都是RuntimeException的子类，虽然RuntimeException同样也是Exception的子类，但是它们是非凡的，它们不能通过client code来试图解决，所以称为Unchecked exception 。</p>
 
         </div>
         
