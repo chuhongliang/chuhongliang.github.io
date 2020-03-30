@@ -489,7 +489,7 @@
   abstract: Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。 Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
 
 - id: nginx
-  title: Nginx源码下载、编译和安装
+  title: Nginx 源码下载、编译和安装
   postedOn: !!str 2020-03-27
   author: chuhongliang
   tags:
@@ -497,7 +497,7 @@
   abstract: nginx下载地址：http://nginx.org/en/download.html
 
 - id: nginx-conf
-  title:  Nginx配置文件结构
+  title:  Nginx 配置文件结构
   postedOn: !!str 2020-03-27
   author: chuhongliang
   tags:
@@ -505,7 +505,7 @@
   abstract: Nginx配置文件分为全局块, events块, http块, server块,location块
 
 - id: nginx-command
-  title:  Nginx常用命令
+  title:  Nginx 常用命令
   postedOn: !!str 2020-03-28
   author: chuhongliang
   tags:
@@ -513,7 +513,7 @@
   abstract: Nginx 常用命令介绍
 
 - id: nginx-ssl
-  title:  Nginx配置SSL
+  title:  Nginx 配置SSL
   postedOn: !!str 2020-03-28
   author: chuhongliang
   tags:
