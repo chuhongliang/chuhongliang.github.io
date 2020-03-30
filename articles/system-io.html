@@ -7,7 +7,7 @@
         <meta name="keywords" content="keyword1,keyword2,keyword3"/>
         <meta name="author" content="Content of author meta tag"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-        <title>chuhongliang.github.io - 字节序
+        <title>chuhongliang.github.io - I/O 模型
 </title>
         <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
         <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
@@ -43,38 +43,36 @@
             <div style="clear:both;"></div>
         </div>
         <div id="article-title">
-            <a href="/articles/network-byte.html">字节序</a>
+            <a href="/articles/system-io.html">I/O 模型</a>
         </div>
         <div id="article-meta">
             作者 chuhongliang | 发布于 2020-03-29
         </div>
         <div id="article-tags">
         
-        <a class="tag" href="/tag.html#网络">网络</a>
+        <a class="tag" href="/tag.html#System">System</a>
         
         </div>
         <div id="article-content">
-            <h1 id="字节序">字节序</h1>
-<p>计算机硬件有两种储存数据的方式：大端字节序（big endian）和小端字节序（little endian）。</p>
-<p>举例来说，数值0x2211使用两个字节储存：高位字节是0x22，低位字节是0x11。</p>
+            <h1 id="i-o模型">I/O模型</h1>
+<p>主要涉及四个概念，同步，异步，阻塞，非阻塞</p>
+<p>同步/异步：针对的被调用者的状态。也就是fun函数。（也就是上面的烧水壶）</p>
 <ul>
-<li>大端字节序：高位字节在前，低位字节在后，这是人类读写数值的方法。</li>
-<li>小端字节序：低位字节在前，高位字节在后，即以0x1122形式储存。</li>
+<li>同步是指fun如果没有结果就不会返回，除非有结果了。</li>
+<li>异步是指fun在被调用之后就立即返回了。返回结果之后再通知调用者（可以用信号、回调之类的实现）。</li>
 </ul>
-<h2 id="字节序的处理">字节序的处理</h2>
-<p>只有读取的时候，才必须区分字节序，其他情况都不用考虑。</p>
-<p>计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的。所以，计算机的内部处理都是小端字节序。</p>
-<p>计算机处理字节序的时候，不知道什么是高位字节，什么是低位字节。它只知道按顺序读取字节，先读第一个字节，再读第二个字节。</p>
-<p>如果是大端字节序，先读到的就是高位字节，后读到的就是低位字节。小端字节序正好相反。</p>
-<p>处理器读取外部数据的时候，必须知道数据的字节序，将其转成正确的值。然后，就正常使用这个值，完全不用再考虑字节序。</p>
-<p>即使是向外部设备写入数据，也不用考虑字节序，正常写入一个值即可。外部设备会自己处理字节序的问题。</p>
-<h2 id="为什么会有大小端之分">为什么会有大小端之分</h2>
-<ol>
-<li><p>一开始是由于不同架构的CPU处理多个字节数据的顺序不一样，比如x86的是小段模式，KEIL C51是大端模式。但是后来互联网流行，TCP/IP协议规定为大端模式，为了跨平台通信，还专门出了网络字节序和主机字节序之间的转换接口（ntohs、htons、ntohl、htonl）</p>
+<p>阻塞/非阻塞：主要是针对调用者的，是指程序在等待结果时的状态。（也就是上面的老张在等水开时的状态）</p>
+<ul>
+<li>阻塞是指调用线程会被挂起，不做什么别的事情。在得到结果之后才会返回。</li>
+<li>非阻塞是指不能立即得到结果，当前线程不会被挂起，还可以做别的事情。</li>
+</ul>
+<h2 id="同步与异步的区别：">同步与异步的区别：</h2>
+<ul>
+<li>同步与异步关注的是消息通信机制，所谓同步，就是由“调用者”主动等待这个“调用”的结果。</li>
+<li><p>而异步则相反：“调用”在发出之后，这个调用就直接返回了，所以没有返回结果。换句话说，当一个异步过程调用发出后，调用者不会立即得到结果。而是在“发出后”，“被调用者“通过状态，来通知调用者，或通过回调函数处理这个调用。</p>
+<p>阻塞、非阻塞、多路IO复用，都是同步IO，异步必定是非阻塞的，所以不存在异步阻塞和异步非阻塞的说法。真正的异步IO需要CPU的深度参与。换句话说，只有用户线程在操作IO的时候根本不去考虑IO的执行全部都交给CPU去完成，而自己只等待一个完成信号的时候，才是真正的异步IO。所以，拉一个子线程去轮询、去死循环，或者使用select、poll、epool，都不是异步。</p>
 </li>
-<li><p>大小端模式各有优势：小端模式强制转换类型时不需要调整字节内容，直接截取低字节即可；大端模式由于符号位为第一个字节，很方便判断正负。</p>
-</li>
-</ol>
+</ul>
 
         </div>
         

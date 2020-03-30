@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - JavaScript 垃圾回收
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/javascript-gc.html">JavaScript 垃圾回收</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-03-29
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
+        
+        </div>
+        <div id="article-content">
+            <h1 id="垃圾回收">垃圾回收</h1>
+<p>垃圾回收算法主要依赖于引用的概念。在内存管理的环境中，一个对象如果有访问另一个对象的权限（隐式或者显式），叫做一个对象引用另一个对象。例如，一个Javascript对象具有对它原型的引用（隐式引用）和对它属性的引用（显式引用）。</p>
+<p>在这里，“对象”的概念不仅特指 JavaScript 对象，还包括函数作用域（或者全局词法作用域）。</p>
+<h2 id="引用计数垃圾收集">引用计数垃圾收集</h2>
+<p>这是最初级的垃圾收集算法。此算法把“对象是否不再需要”简化定义为“对象有没有其他对象引用到它”。如果没有引用指向该对象（零引用），对象将被垃圾回收机制回收。</p>
+<h3 id="示例：">示例：</h3>
+<pre class="prettyprint linenums lang-js">let o = { 
+  a: {
+    b:2
+  }
+}; 
+// 两个对象被创建，一个作为另一个的属性被引用，另一个被分配给变量o
+// 很显然，没有一个可以被垃圾收集
+let o2 = o; // o2变量是第二个对“这个对象”的引用
+o = 1;      // 现在，“这个对象”只有一个o2变量的引用了，“这个对象”的原始引用o已经没有
+let oa = o2.a; // 引用“这个对象”的a属性
+               // 现在，“这个对象”有两个引用了，一个是o2，一个是oa
+o2 = &quot;yo&quot;; // 虽然最初的对象现在已经是零引用了，可以被垃圾回收了
+           // 但是它的属性a的对象还在被oa引用，所以还不能回收
+oa = null; // a属性的那个对象现在也是零引用了
+           // 它可以被垃圾回收了
+</pre>
+<h3 id="限制：循环引用">限制：循环引用</h3>
+<p>该算法有个限制：无法处理循环引用的事例。在下面的例子中，两个对象被创建，并互相引用，形成了一个循环。它们被调用之后会离开函数作用域，所以它们已经没有用了，可以被回收了。然而，引用计数算法考虑到它们互相都有至少一次引用，所以它们不会被回收。</p>
+<pre class="prettyprint linenums lang-js">function f(){
+  var o = {};
+  var o2 = {};
+  o.a = o2; // o 引用 o2
+  o2.a = o; // o2 引用 o
+
+  return &quot;azerty&quot;;
+}
+
+f();
+</pre>
+<h3 id="实际例子">实际例子</h3>
+<p>IE 6, 7 使用引用计数方式对 DOM 对象进行垃圾回收。该方式常常造成对象被循环引用时内存发生泄漏：</p>
+<pre class="prettyprint linenums lang-js">let div;
+window.onload = function(){
+  div = document.getElementById(&quot;myDivElement&quot;);
+  div.circularReference = div;
+  div.lotsOfData = new Array(10000).join(&quot;*&quot;);
+};
+</pre>
+<p>在上面的例子里，myDivElement 这个 DOM 元素里的 circularReference 属性引用了 myDivElement，造成了循环引用。如果该属性没有显示移除或者设为 null，引用计数式垃圾收集器将总是且至少有一个引用，并将一直保持在内存里的 DOM 元素，即使其从DOM 树中删去了。如果这个 DOM 元素拥有大量的数据 (如上的 lotsOfData 属性)，而这个数据占用的内存将永远不会被释放。</p>
+<h2 id="标记-清除算法">标记-清除算法</h2>
+<p>这个算法把“对象是否不再需要”简化定义为“对象是否可以获得”。</p>
+<p>这个算法假定设置一个叫做根（root）的对象（在Javascript里，根是全局对象）。垃圾回收器将定期从根开始，找所有从根开始引用的对象，然后找这些对象引用的对象……从根开始，垃圾回收器将找到所有可以获得的对象和收集所有不能获得的对象。</p>
+<p>这个算法比前一个要好，因为“有零引用的对象”总是不可获得的，但是相反却不一定，参考“循环引用”。</p>
+<p>从2012年起，所有现代浏览器都使用了标记-清除垃圾回收算法。所有对JavaScript垃圾回收算法的改进都是基于标记-清除算法的改进，并没有改进标记-清除算法本身和它对“对象是否不再需要”的简化定义。</p>
+<h3 id="循环引用不再是问题了">循环引用不再是问题了</h3>
+<p>在上面的示例中，函数调用返回之后，两个对象从全局对象出发无法获取。因此，他们将会被垃圾回收器回收。第二个示例同样，一旦 div 和其事件处理无法从根获取到，他们将会被垃圾回收器回收。
+限制: 那些无法从根对象查询到的对象都将被清除
+尽管这是一个限制，但实践中我们很少会碰到类似的情况，所以开发者不太会去关心垃圾回收机制。</p>
+<hr>
+<p>参考: <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management">内存管理 - JavaScript | MDN</a></p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
