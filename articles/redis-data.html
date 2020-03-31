@@ -54,28 +54,21 @@
         
         </div>
         <div id="article-content">
-            <p>Redis的数据存储结构：<strong>Redis本身采用key-value的方式存储数据</strong></p>
-<ul>
-<li>key的类型是string                </li>
-<li>value的类型包括5种：string  set  list  zset(可排序，打分)  hash</li>
-</ul>
-<p>实际上Redis并<strong>没有直接使用</strong>这些数据结构来实现<code>key-value</code>数据库，而是<strong>基于</strong>这些数据结构创建了一个<strong>对象系统</strong>，redis数据库里面的每个键值对都是由对象组成的，其中</p>
-<ol>
-<li>数据库的键总是一个字符串对象</li>
-<li>数据库键对应的值可以是字符串对象，列表对象，哈希对象，集合对象，有序集合对象这五种对象中的一个</li>
-</ol>
-<p>也就是说：当我们执行了 <code>set username zhangsan</code> 命令之后，在redis内部会生成两个字符串对象，分别做 key 和 value 存储数据</p>
-<p>&nbsp;</p>
-<h3 id="redis的命令">Redis的命令</h3>
-<p>在命令行客户端中写入命令可以用来操作redis，常见的命令如下：</p>
-<ul>
-<li>Redis 命令参考：<a href="http://doc.redisfans.com/">http://doc.redisfans.com/</a></li>
-<li>try Redis(不用安装Redis即可体验Redis命令)：<a href="http://try.redis.io/">http://try.redis.io/</a></li>
-</ul>
-<p>&nbsp;</p>
-<h3 id="redis常用命令汇总">Redis常用命令汇总</h3>
+            <h1 id="redis的数据存储结构">Redis的数据存储结构</h1>
+<h3 id="-strong-redis本身采用key-value的方式存储数据-strong-"><strong>Redis本身采用key-value的方式存储数据</strong></h3>
+<p>key的类型是string                </p>
+<p>value的类型包括5种：string  set  list  zset(可排序，打分)  hash</p>
+<h3 id="实际上redis并-strong-没有直接使用-strong-这些数据结构来实现-code-key-value-code-数据库，而是-strong-基于-strong-这些数据结构创建了一个-strong-对象系统-strong-，redis数据库里面的每个键值对都是由对象组成的，其中-">实际上Redis并<strong>没有直接使用</strong>这些数据结构来实现<code>key-value</code>数据库，而是<strong>基于</strong>这些数据结构创建了一个<strong>对象系统</strong>，redis数据库里面的每个键值对都是由对象组成的，其中:</h3>
+<p>数据库的键总是一个字符串对象</p>
+<p>数据库键对应的值可以是字符串对象，列表对象，哈希对象，集合对象，有序集合对象这五种对象中的一个</p>
+<h4 id="也就是说：当我们执行了-code-set-username-zhangsan-code-命令之后，在redis内部会生成两个字符串对象，分别做-key-和-value-存储数据">也就是说：当我们执行了 <code>set username zhangsan</code> 命令之后，在redis内部会生成两个字符串对象，分别做 key 和 value 存储数据</h4>
+<h1 id="redis的命令">Redis的命令</h1>
+<h3 id="在命令行客户端中写入命令可以用来操作redis，常见的命令如下：">在命令行客户端中写入命令可以用来操作redis，常见的命令如下：</h3>
+<p>Redis 命令参考：<a href="http://doc.redisfans.com/">http://doc.redisfans.com/</a></p>
+<p>try Redis(不用安装Redis即可体验Redis命令)：<a href="http://try.redis.io/">http://try.redis.io/</a></p>
+<h2 id="redis常用命令汇总">Redis常用命令汇总</h2>
 <p>value的数据结构不同，对应支持的命令不同</p>
-<h3 id="-strong-string-strong-"><strong>string</strong></h3>
+<h2 id="-strong-string-strong-"><strong>string</strong></h2>
 <pre class="prettyprint linenums lang-txt">| 命令   | 示例             | 作用                                           |
 | ------ | ---------------- | ---------------------------------------------- |
 | set    | set k v          | 添加一个key-value                              |
@@ -89,7 +82,7 @@
 </pre>
 <p>应用场景：缓存查询结果(json或者序列化) 用户访问记录 例如：通过记录ip-访问次数来显示ip的访问 统计粉丝数、点击次数</p>
 <hr>
-<h3 id="-strong-set-strong-"><strong>set</strong></h3>
+<h2 id="-strong-set-strong-"><strong>set</strong></h2>
 <pre class="prettyprint linenums lang-txt">| 命令     | 示例         | 作用                                     |
 | -------- | ------------ | ---------------------------------------- |
 | sadd     | sadd k v     | 向key对应的set集合中添加一个元素         |
@@ -103,7 +96,7 @@
 </pre>
 <p>应用场景：查找共同好友</p>
 <hr>
-<h3 id="-strong-zset-sorted_set-strong-"><strong>zset (sorted_set)</strong></h3>
+<h2 id="-strong-zset-sorted_set-strong-"><strong>zset (sorted_set)</strong></h2>
 <pre class="prettyprint linenums lang-txt">| 命令      | 示例                   | 作用                                  |
 | --------- | ---------------------- | ------------------------------------- |
 | zadd      | zadd k 分数 v          | 在key对应的有序集合中添加一个新元素   |
@@ -116,7 +109,7 @@
 </pre>
 <p>应用场景：排行榜</p>
 <hr>
-<h3 id="-strong-hash-strong-"><strong>hash</strong></h3>
+<h2 id="-strong-hash-strong-"><strong>hash</strong></h2>
 <pre class="prettyprint linenums lang-txt">| 命令    | 示例         | 作用                                |
 | ------- | ------------ | ----------------------------------- |
 | hset    | hset k k1 v1 | 向hash中添加一个k-v                 |
@@ -129,7 +122,7 @@
 </pre>
 <p>应用场景：存储对象，便于修改 分区缓存</p>
 <hr>
-<h3 id="-strong-list-strong-"><strong>list</strong></h3>
+<h2 id="-strong-list-strong-"><strong>list</strong></h2>
 <pre class="prettyprint linenums lang-txt">| 命令   | 示例                | 作用                          |
 | ------ | ------------------- | ----------------------------- |
 | rpush  | rpush k v           | 从list集合右侧添加一个元素    |
@@ -142,7 +135,7 @@
 </pre>
 <p>应用场景：关注列表、消息队列</p>
 <hr>
-<h3 id="-strong-其他-strong-"><strong>其他</strong></h3>
+<h2 id="-strong-其他-strong-"><strong>其他</strong></h2>
 <pre class="prettyprint linenums lang-txt">| 命令                   | 示例        | 作用                                       |
 | ---------------------- | ----------- | ------------------------------------------ |
 | seletct database的编号 | select 0    | redis默认16个库选择指定库操作，默认从0开始 |

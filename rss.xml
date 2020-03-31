@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Mon, 30 Mar 2020 23:03:46 +0800</lastBuildDate>
+        <lastBuildDate>Tue, 31 Mar 2020 08:52:23 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -63,13 +63,10 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
             <guid>Homepage link/articles/node-module.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Mon, 27 Jan 2020 00:00:00 +0800</pubDate>
-            <description>&lt;h2 id=&quot;nodejs-模块&quot;&gt;Node.js 模块&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;在 Node.js 模块系统中，每个文件都被视为一个独立的模块&lt;/li&gt;
-&lt;li&gt;Node.js 模块机制采用了 Commonjs 规范，弥补了当前 JavaScript 开发大型应用没有标准的缺陷，类似于 Java 中的类文件，Python 中的 import 机制，Node.js 中可以通过 module.exports、require 来导出和引入一个模块.&lt;/li&gt;
-&lt;li&gt;在模块加载机制中，Node.js 采用了延迟加载的策略，只有在用到的情况下，系统模块才会被加载，加载完成后会放到 binding_cache 中。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
+            <description>&lt;h1 id=&quot;nodejs-模块&quot;&gt;Node.js 模块&lt;/h1&gt;
+&lt;p&gt;在 Node.js 模块系统中，每个文件都被视为一个独立的模块&lt;/p&gt;
+&lt;p&gt;Node.js 模块机制采用了 Commonjs 规范，弥补了当前 JavaScript 开发大型应用没有标准的缺陷，类似于 Java 中的类文件，Python 中的 import 机制，Node.js 中可以通过 module.exports、require 来导出和引入一个模块.&lt;/p&gt;
+&lt;p&gt;在模块加载机制中，Node.js 采用了延迟加载的策略，只有在用到的情况下，系统模块才会被加载，加载完成后会放到 binding_cache 中。&lt;/p&gt;
 &lt;h2 id=&quot;模块的分类&quot;&gt;模块的分类&lt;/h2&gt;
 &lt;h3 id=&quot;系统模块&quot;&gt;系统模块&lt;/h3&gt;
 &lt;ul&gt;
@@ -77,9 +74,7 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
 &lt;li&gt;native 模块，在开发中使用的 Node.js 的 http、buffer、fs 等，底层也是调用的内建模块 (C/C++)。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;第三方模块&quot;&gt;第三方模块&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;非 Node.js 自带的模块称为第三方模块，其实还分为路径形式的文件模块（以 &lt;code&gt;.&lt;/code&gt;、&lt;code&gt;..&lt;/code&gt;、&lt;code&gt;/&lt;/code&gt; 开头的）和自定义的模块（比如 express、koa 框架、moment.js 等）&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h4 id=&quot;非-nodejs-自带的模块称为第三方模块，其实还分为路径形式的文件模块（以-code-code-、-code-code-、-code-code-开头的）和自定义的模块（比如-express、koa-框架、momentjs-等）&quot;&gt;非 Node.js 自带的模块称为第三方模块，其实还分为路径形式的文件模块（以 &lt;code&gt;.&lt;/code&gt;、&lt;code&gt;..&lt;/code&gt;、&lt;code&gt;/&lt;/code&gt; 开头的）和自定义的模块（比如 express、koa 框架、moment.js 等）&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;javaScript 模块：例如 &lt;code&gt;hello.js&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;json 模块：例如 &lt;code&gt;hello.json&lt;/code&gt;&lt;/li&gt;
@@ -100,7 +95,7 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
 &lt;hr&gt;
 &lt;h2 id=&quot;模块加载机制&quot;&gt;模块加载机制&lt;/h2&gt;
 &lt;p&gt;在 Node.js 中模块加载一般会经历 3 个步骤，&lt;code&gt;路径分析&lt;/code&gt;、&lt;code&gt;文件定位&lt;/code&gt;、&lt;code&gt;编译执行&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;按照模块的分类，按照以下顺序进行优先加载：&lt;/p&gt;
+&lt;h4 id=&quot;按照模块的分类，按照以下顺序进行优先加载：&quot;&gt;按照模块的分类，按照以下顺序进行优先加载：&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;系统缓存&lt;/strong&gt;：模块被执行之后会会进行缓存，首先是先进行缓存加载，判断缓存中是否有值。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;系统模块&lt;/strong&gt;：也就是原生模块，这个优先级仅次于缓存加载，部分核心模块已经被编译成二进制，省略了 &lt;code&gt;路径分析&lt;/code&gt;、&lt;code&gt;文件定位&lt;/code&gt;，直接加载到了内存中，系统模块定义在 Node.js 源码的 lib 目录下，可以去查看。&lt;/li&gt;
@@ -108,15 +103,12 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
 &lt;li&gt;&lt;strong&gt;目录做为模块&lt;/strong&gt;：这种情况发生在文件模块加载过程中，也没有找到，但是发现是一个目录的情况，这个时候会将这个目录当作一个 &lt;code&gt;包&lt;/code&gt; 来处理，Node 这块采用了 Commonjs 规范，先会在项目根目录查找 package.json 文件，取出文件中定义的 main 属性 &lt;code&gt;(&quot;main&quot;: &quot;lib/hello.js&quot;)&lt;/code&gt; 描述的入口文件进行加载，也没加载到，则会抛出默认错误: Error: Cannot find module &#39;lib/hello.js&#39;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;node_modules 目录加载&lt;/strong&gt;：对于系统模块、路径文件模块都找不到，Node.js 会从当前模块的父目录进行查找，直到系统的根目录&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
 &lt;h2 id=&quot;模块缓存&quot;&gt;模块缓存&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;模块在第一次加载后会被缓存。 这也意味着（类似其他缓存机制）如果每次调用 require(&#39;foo&#39;) 都解析到同一文件，则返回相同的对象。&lt;/li&gt;
-&lt;li&gt;多次调用 require(foo) 不会导致模块的代码被执行多次。 这是一个重要的特性。 借助它, 可以返回“部分完成”的对象，从而允许加载依赖的依赖, 即使它们会导致循环依赖。&lt;/li&gt;
-&lt;li&gt;如果想要多次执行一个模块，可以导出一个函数，然后调用该函数。&lt;/li&gt;
-&lt;li&gt;Node.js 提供了 require.cache API 查看已缓存的模块，返回值为对象.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;为了验证，这里做一个简单的测试，如下所示：&lt;/p&gt;
+&lt;p&gt;模块在第一次加载后会被缓存。 这也意味着（类似其他缓存机制）如果每次调用 require(&#39;foo&#39;) 都解析到同一文件，则返回相同的对象。&lt;/p&gt;
+&lt;p&gt;多次调用 require(foo) 不会导致模块的代码被执行多次。 这是一个重要的特性。 借助它, 可以返回“部分完成”的对象，从而允许加载依赖的依赖, 即使它们会导致循环依赖。&lt;/p&gt;
+&lt;p&gt;如果想要多次执行一个模块，可以导出一个函数，然后调用该函数。&lt;/p&gt;
+&lt;p&gt;Node.js 提供了 require.cache API 查看已缓存的模块，返回值为对象.&lt;/p&gt;
+&lt;h4 id=&quot;为了验证，这里做一个简单的测试，如下所示：&quot;&gt;为了验证，这里做一个简单的测试，如下所示：&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;新建 test-module.js 文件&lt;/strong&gt;
 这里我导出一个变量和一个方法&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;module.exports = {
@@ -129,7 +121,6 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
 console.log(require.cache);
 &lt;/pre&gt;
 &lt;p&gt;在这个文件里加载 test-module.js 文件，在之后打印下 require.cache 看下里面返回的是什么？看到以下结果应该就很清晰了，模块的文件名、地址、导出数据都很清楚。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h2 id=&quot;模块循环引用&quot;&gt;模块循环引用&lt;/h2&gt;
 &lt;p&gt;当循环调用 require() 时，一个模块可能在未完成执行时被返回。&lt;/p&gt;
 &lt;p&gt;例如以下情况:&lt;/p&gt;
@@ -208,15 +199,15 @@ a 结束
             <guid>Homepage link/articles/javascript-type.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Tue, 28 Jan 2020 00:00:00 +0800</pubDate>
-            <description>&lt;h3 id=&quot;原始类型与引用类型&quot;&gt;原始类型与引用类型&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;JavaScript原始类型: Undefined、Null、Boolean、Number、String、Symbol &lt;/li&gt;
-&lt;li&gt;JavaScript引用类型: Object &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;原始类型-基础类型-&quot;&gt;原始类型(基础类型)&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;原始类型&lt;/strong&gt;又被称为&lt;strong&gt;基本类型&lt;/strong&gt;，原始类型保存的变量和值直接保存在&lt;strong&gt;栈内存&lt;/strong&gt;(Stack)中,且空间相互独立,通过值来访问&lt;/li&gt;
-&lt;/ul&gt;
+            <description>&lt;h1 id=&quot;原始类型与引用类型&quot;&gt;原始类型与引用类型&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JavaScript原始类型: Undefined、Null、Boolean、Number、String、Symbol &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JavaScript引用类型: Object &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;原始类型-基础类型-&quot;&gt;原始类型(基础类型)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;原始类型&lt;/strong&gt;又被称为&lt;strong&gt;基本类型&lt;/strong&gt;，原始类型保存的变量和值直接保存在&lt;strong&gt;栈内存&lt;/strong&gt;(Stack)中,且空间相互独立,通过值来访问&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let name = &#39;jane&#39;;
 let name1 = name;
 console.log(name === name1);//true
@@ -226,12 +217,9 @@ console.log(name1);//jane
 &lt;/pre&gt;
 &lt;p&gt;可以看到name的值虽然改变，但是name1的值是独立存储的所以不受影响&lt;/p&gt;
 &lt;p&gt;虽然原始类型的值是储存在相对独立空间,但是它们之间的比较是按值比较的.&lt;/p&gt;
-&lt;p&gt;&nbsp;&lt;/p&gt;
-&lt;h4 id=&quot;引用类型&quot;&gt;引用类型&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;引用类型,即Object 类型,再往下细分，还可以分为：Object 类型、Array 类型、Date 类型、Function 类型 等。&lt;/li&gt;
-&lt;li&gt;与原始类型不同的是,引用类型的内容是保存在&lt;strong&gt;堆内存&lt;/strong&gt;中,而&lt;strong&gt;栈内存&lt;/strong&gt;(Heap)中会有一个&lt;strong&gt;堆内存地址&lt;/strong&gt;,通过这个地址变量被指向堆内存中&lt;code&gt;Object&lt;/code&gt;真正的值,因此引用类型是按照引用访问的.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;引用类型&quot;&gt;引用类型&lt;/h2&gt;
+&lt;p&gt;引用类型,即Object 类型,再往下细分，还可以分为：Object 类型、Array 类型、Date 类型、Function 类型 等。&lt;/p&gt;
+&lt;p&gt;与原始类型不同的是,引用类型的内容是保存在&lt;strong&gt;堆内存&lt;/strong&gt;中,而&lt;strong&gt;栈内存&lt;/strong&gt;(Heap)中会有一个&lt;strong&gt;堆内存地址&lt;/strong&gt;,通过这个地址变量被指向堆内存中&lt;code&gt;Object&lt;/code&gt;真正的值,因此引用类型是按照引用访问的.&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let person1 = { name: &quot;tome&quot;, age: 20 };
 let person2 = person1;
 person1.name = &quot;jane&quot;;
@@ -246,11 +234,8 @@ console.log(person1 === person3); //false
 &lt;/pre&gt;
 &lt;p&gt;person1和person2两个变量指向了同一个对象。因此，改变其中任何一个变量，都会相互影响&lt;/p&gt;
 &lt;p&gt;person3是新建了一个对象, 在堆内存中确实两个相互独立的Object,引用类型是按照引用比较,由于person1和person3引用的是不同的Object所以得到的结果是fasle.&lt;/p&gt;
-&lt;p&gt;&emsp;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&emsp;&lt;/p&gt;
-&lt;h3 id=&quot;类型中的坑&quot;&gt;类型中的坑&lt;/h3&gt;
-&lt;h4 id=&quot;1-稀疏数组-指的是含有空白或空缺单元的数组&quot;&gt;1. 稀疏数组: 指的是含有空白或空缺单元的数组&lt;/h4&gt;
+&lt;h2 id=&quot;类型中的坑&quot;&gt;类型中的坑&lt;/h2&gt;
+&lt;h3 id=&quot;稀疏数组-指的是含有空白或空缺单元的数组&quot;&gt;稀疏数组: 指的是含有空白或空缺单元的数组&lt;/h3&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let arr = [];
 console.log(arr.length); //0
 arr[4] = arr[5];
@@ -260,12 +245,10 @@ arr.forEach(elem =&gt; {
 });
 console.log(arr); //[,,,,undefined]
 &lt;/pre&gt;
-&lt;p&gt;这里有几个坑需要注意:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;开始建立的空数组a的长度为0,这可以理解,但是在a[4] = a[5]之后出现了问题,a的长度居然变成了5,此时a数组是[,,,,undefined]这种形态.&lt;/li&gt;
-&lt;li&gt;我们通过遍历,只得到了undefined这一个值,这个undefind是由于a[4] = a[5]赋值,由于a[5]没有定义值为undefined被赋给了a[4],可以等价为a[4] = undefined.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;2-字符串索引&quot;&gt;2. 字符串索引&lt;/h4&gt;
+&lt;h4 id=&quot;这里有几个坑需要注意-&quot;&gt;这里有几个坑需要注意:&lt;/h4&gt;
+&lt;p&gt;开始建立的空数组a的长度为0,这可以理解,但是在a[4] = a[5]之后出现了问题,a的长度居然变成了5,此时a数组是[,,,,undefined]这种形态.&lt;/p&gt;
+&lt;p&gt;我们通过遍历,只得到了undefined这一个值,这个undefind是由于a[4] = a[5]赋值,由于a[5]没有定义值为undefined被赋给了a[4],可以等价为a[4] = undefined.&lt;/p&gt;
+&lt;h3 id=&quot;字符串索引&quot;&gt;字符串索引&lt;/h3&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = [];
 a[0] = 1;
 a[&#39;name&#39;] = &#39;tom&#39;;
@@ -274,7 +257,7 @@ console.log(a[&#39;name&#39;]); //tom
 console.log(a); //[ 1, name: &#39;tom&#39; ]
 &lt;/pre&gt;
 &lt;p&gt;数组不仅可以通过数字索引,也可以通过字符串索引,但值得注意的是,字符串索引的键值对并不算在数组的长度里.&lt;/p&gt;
-&lt;h4 id=&quot;3-数字中的坑-二进制浮点数&quot;&gt;3. 数字中的坑 二进制浮点数&lt;/h4&gt;
+&lt;h3 id=&quot;数字中的坑-二进制浮点数&quot;&gt;数字中的坑 二进制浮点数&lt;/h3&gt;
 &lt;p&gt;JavaScript 中的数字类型是基于“二进制浮点数”实现的,使用的是“双精度”格式,这就带来了一些反常的问题,我们那一道经典面试提来讲解下.&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 0.1 + 0.2;
 let b = 0.3;
@@ -289,24 +272,21 @@ console.log(Number.isInteger(b*10)); //true
 console.log(a); //0.30000000000000004
 &lt;/pre&gt;
 &lt;p&gt;我们可以用Number.isInteger()来判断一个数字是否为整数.&lt;/p&gt;
-&lt;h4 id=&quot;4-nan&quot;&gt;4. NaN&lt;/h4&gt;
+&lt;h3 id=&quot;nan&quot;&gt;NaN&lt;/h3&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let a = 1/new Object();
 console.log(typeof a); //Number
 console.log(a); //NaN
 console.log(isNaN(a)); //true
 &lt;/pre&gt;
 &lt;p&gt;NaN属于特殊的Number类型,我们可以把它理解为坏数值,因为它属于数值计算中的错误,更加特殊的是它自己都不等价于自己NaN === NaN //false,我们只能用isNaN()来检测一个数字是否为NaN.&lt;/p&gt;
-&lt;p&gt;&emsp;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&emsp;&lt;/p&gt;
-&lt;h3 id=&quot;类型判断&quot;&gt;类型判断&lt;/h3&gt;
+&lt;h1 id=&quot;类型判断&quot;&gt;类型判断&lt;/h1&gt;
+&lt;h3 id=&quot;类型检测主要包括了-typeof、instanceof和tostring的三种方式来判断变量的类型。&quot;&gt;类型检测主要包括了: typeof、instanceof和toString的三种方式来判断变量的类型。&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;类型检测主要包括了: typeof、instanceof和toString的三种方式来判断变量的类型。&lt;/li&gt;
 &lt;li&gt;typeof: 用来检测基本类型&lt;/li&gt;
 &lt;li&gt;toString: typeof的增强,用来判断内置的数据类型,无法判断构造函数创建的对象.&lt;/li&gt;
 &lt;li&gt;instanceof: 用来判断使用构造函数创建的对象.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;-strong-1-code-typeof-code-strong-&quot;&gt;&lt;strong&gt; 1. &lt;code&gt;typeof&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;h2 id=&quot;typeof&quot;&gt;typeof&lt;/h2&gt;
 &lt;p&gt;typeof接受一个值并返回它的类型，它有两种可能的语法：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;typeof x&lt;/li&gt;
@@ -329,7 +309,7 @@ typeof function(){}; // &quot;function&quot;
 &lt;p&gt;这里的[]返回的确却是object，这可能并不是你想要的，因为数组是一个特殊的对象，有时候这可能并不是你想要的结果。&lt;/p&gt;
 &lt;p&gt;对于这里的null返回的确却是object，wtf，有些人说null被认为是没有一个对象。&lt;/p&gt;
 &lt;p&gt;当你对于typeof检测数据类型不确定时，请谨慎使用。&lt;/p&gt;
-&lt;h4 id=&quot;-strong-2-code-tostring-code-strong-&quot;&gt;&lt;strong&gt; 2. &lt;code&gt;toString&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;h2 id=&quot;tostring&quot;&gt;toString&lt;/h2&gt;
 &lt;p&gt;toString不管是对于object类型还是primitive类型，都能得到你想要的结果：&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;let toClass = {}.toString;
 console.log(toClass.call(123));
@@ -350,7 +330,7 @@ console.log(toClass.call({
 [object Date]
 [object Object]
 &lt;/pre&gt;
-&lt;h4 id=&quot;-strong-3-code-instanceof-code-strong-&quot;&gt;&lt;strong&gt; 3. &lt;code&gt;instanceof&lt;/code&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;h2 id=&quot;instanceof&quot;&gt;instanceof&lt;/h2&gt;
 &lt;p&gt;对于使用构造函数创建的对象，我们通常使用instanceof来判断某一实例是否属于某种类型，例如：a instanceof Person，其内部原理实际上是判断Person.prototype是否在a实例的原型链中，其原理可以用下面的函数来表达：&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-js&quot;&gt;function instance_of(V, F) {
   let O = F.prototype;
@@ -936,19 +916,14 @@ console.log(Math.sign(c));// 0
             <guid>Homepage link/articles/javascript-prototype.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Thu, 30 Jan 2020 00:00:00 +0800</pubDate>
-            <description>&lt;h3 id=&quot;-strong-原型-strong-prototype&quot;&gt;&lt;strong&gt;原型&lt;/strong&gt; prototype&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过&lt;strong&gt;proto&lt;/strong&gt;来访问该属性.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
+            <description>&lt;h1 id=&quot;-strong-原型-strong-prototype&quot;&gt;&lt;strong&gt;原型&lt;/strong&gt; prototype&lt;/h1&gt;
+&lt;p&gt;我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.&lt;/p&gt;
+&lt;p&gt;如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过&lt;strong&gt;proto&lt;/strong&gt;来访问该属性.&lt;/p&gt;
+&lt;p&gt;原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
 我们可以将对象中共有的内容，统一设置到原型对象中。
 当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，
 如果没有则会去原型对象中寻找，如果找到则直接使用
 以后我们创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中，这样不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法了&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;p&gt;例如: &lt;code&gt;hasOwnProperty()&lt;/code&gt;方法存在于Obejct原型对象中,它便可以被任何对象当做自己的方法使用.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;object.hasOwnProperty( propertyName )&lt;/code&gt;
@@ -962,10 +937,7 @@ console.log(pet.hasOwnProperty(&quot;hasOwnProperty&quot;)); //false
 console.log(Object.prototype.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
 &lt;/pre&gt;
 &lt;p&gt;由以上代码可知,&lt;code&gt;hasOwnProperty()&lt;/code&gt;并不存在于&lt;code&gt;pet&lt;/code&gt;对象中,但是&lt;code&gt;pet&lt;/code&gt;依然可以拥有此方法.&lt;/p&gt;
-&lt;p&gt;&nbsp;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&nbsp;&lt;/p&gt;
-&lt;h3 id=&quot;-code-__proto__-code-与-code-prototype-code-&quot;&gt;&lt;code&gt;__proto__&lt;/code&gt;与&lt;code&gt;prototype&lt;/code&gt;&lt;/h3&gt;
+&lt;h2 id=&quot;-code-__proto__-code-与-code-prototype-code-&quot;&gt;&lt;code&gt;__proto__&lt;/code&gt;与&lt;code&gt;prototype&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;实例对象的&lt;code&gt;__proto__&lt;/code&gt;属性,指向原型对象,我们便可以通过此属性找到原型对象.&lt;/p&gt;
 &lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
   this.name = name;
@@ -973,31 +945,22 @@ console.log(Object.prototype.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
 let dog = new pet(&#39;狗&#39;);
 console.log(dog.__proto__ === pet.prototype); //true
 &lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;getPrototypeOf()&lt;/code&gt; 获取原型对象.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h4 id=&quot;-code-getprototypeof-code-获取原型对象&quot;&gt;&lt;code&gt;getPrototypeOf()&lt;/code&gt; 获取原型对象.&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
     this.name = name;
 }
 let dog = new pet(&#39;狗&#39;);
 console.log(Object.getPrototypeOf(dog) === pet.prototype); //true
 &lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;isPrototypeOf&lt;/code&gt; 来检验某个对象是否是另一个对象的原型对象.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h4 id=&quot;-code-isprototypeof-code-来检验某个对象是否是另一个对象的原型对象&quot;&gt;&lt;code&gt;isPrototypeOf&lt;/code&gt; 来检验某个对象是否是另一个对象的原型对象.&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
     this.name = name;
 }
 let dog = new pet(&#39;狗&#39;);
 console.log(pet.prototype.isPrototypeOf(dog)); //true
 &lt;/pre&gt;
-&lt;p&gt;&nbsp;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&nbsp;&lt;/p&gt;
-&lt;h3 id=&quot;-strong-原型链-strong-&quot;&gt;&lt;strong&gt;原型链&lt;/strong&gt;&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&quot;-strong-原型链-strong-&quot;&gt;&lt;strong&gt;原型链&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;实例对象方法调用,是先在实例对象内部找,如果找到则立即返回调用,如果没有找到就顺着&lt;code&gt;__proto__&lt;/code&gt;向上寻找,如果找到该方法则调用,没有找到会直接报错,这便是&lt;strong&gt;原型链&lt;/strong&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
     this.name = name;
 }
@@ -1015,12 +978,9 @@ console.log(dog.__proto__.__proto__.hasOwnProperty(&quot;hasOwnProperty&quot;));
 console.log(dog.__proto__.__proto__ === pet.prototype.__proto__); // true
 console.log(dog.__proto__.__proto__ === Object.prototype); // true
 &lt;/pre&gt;
-&lt;p&gt;&nbsp;&lt;/p&gt;
-&lt;h3 id=&quot;es6中的-code-__proto__-code-&quot;&gt;ES6中的 &lt;code&gt;__proto__&lt;/code&gt;&lt;/h3&gt;
-&lt;blockquote&gt;
+&lt;h2 id=&quot;es6中的-code-__proto__-code-&quot;&gt;ES6中的 &lt;code&gt;__proto__&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;虽然&lt;code&gt;__proto__&lt;/code&gt;在最新的ECMA标准中被纳入了规范,但是由于&lt;code&gt;__proto__&lt;/code&gt;前后的双下划线，说明它本质上是一个内部属性，而不是一个正式的对外的 API.
 标准明确规定，只有浏览器必须部署这个属性，其他运行环境不一定需要部署，而且新的代码最好认为这个属性是不存在的。因此，无论从语义的角度，还是从兼容性的角度，都不要使用这个属性，而是使用下面的&lt;code&gt;Object.setPrototypeOf()&lt;/code&gt;（写操作）、&lt;code&gt;Object.getPrototypeOf()&lt;/code&gt;（读操作）代替。&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
     this.name = name;
 }
@@ -1032,9 +992,7 @@ console.log(Object.getPrototypeOf(dog) === pet.prototype); //true
 Object.setPrototypeOf(dog, { sound: &quot;汪汪&quot; });
 console.log(dog.sound); //汪汪
 &lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;Object.setPrototypeOf()&lt;/code&gt; 只能生效当前实例;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h4 id=&quot;-code-objectsetprototypeof-code-只能生效当前实例-&quot;&gt;&lt;code&gt;Object.setPrototypeOf()&lt;/code&gt; 只能生效当前实例;&lt;/h4&gt;
 &lt;pre class=&quot;prettyprint linenums lang-javascript&quot;&gt;function pet(name) {
     this.name = name;
 }
