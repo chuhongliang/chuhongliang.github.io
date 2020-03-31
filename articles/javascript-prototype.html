@@ -54,19 +54,14 @@
         
         </div>
         <div id="article-content">
-            <h3 id="-strong-原型-strong-prototype"><strong>原型</strong> prototype</h3>
-<ul>
-<li><p>我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.</p>
-</li>
-<li><p>如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过<strong>proto</strong>来访问该属性.</p>
-</li>
-<li><p>原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
+            <h1 id="-strong-原型-strong-prototype"><strong>原型</strong> prototype</h1>
+<p>我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象.</p>
+<p>如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过<strong>proto</strong>来访问该属性.</p>
+<p>原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象，
 我们可以将对象中共有的内容，统一设置到原型对象中。
 当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，
 如果没有则会去原型对象中寻找，如果找到则直接使用
 以后我们创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中，这样不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法了</p>
-</li>
-</ul>
 <p>例如: <code>hasOwnProperty()</code>方法存在于Obejct原型对象中,它便可以被任何对象当做自己的方法使用.</p>
 <blockquote>
 <p><code>object.hasOwnProperty( propertyName )</code>
@@ -80,10 +75,7 @@ console.log(pet.hasOwnProperty(&quot;hasOwnProperty&quot;)); //false
 console.log(Object.prototype.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
 </pre>
 <p>由以上代码可知,<code>hasOwnProperty()</code>并不存在于<code>pet</code>对象中,但是<code>pet</code>依然可以拥有此方法.</p>
-<p>&nbsp;</p>
-<hr>
-<p>&nbsp;</p>
-<h3 id="-code-__proto__-code-与-code-prototype-code-"><code>__proto__</code>与<code>prototype</code></h3>
+<h2 id="-code-__proto__-code-与-code-prototype-code-"><code>__proto__</code>与<code>prototype</code></h2>
 <p>实例对象的<code>__proto__</code>属性,指向原型对象,我们便可以通过此属性找到原型对象.</p>
 <pre class="prettyprint linenums lang-javascript">function pet(name) {
   this.name = name;
@@ -91,31 +83,22 @@ console.log(Object.prototype.hasOwnProperty(&quot;hasOwnProperty&quot;)); //true
 let dog = new pet(&#39;狗&#39;);
 console.log(dog.__proto__ === pet.prototype); //true
 </pre>
-<blockquote>
-<p><code>getPrototypeOf()</code> 获取原型对象.</p>
-</blockquote>
+<h4 id="-code-getprototypeof-code-获取原型对象"><code>getPrototypeOf()</code> 获取原型对象.</h4>
 <pre class="prettyprint linenums lang-javascript">function pet(name) {
     this.name = name;
 }
 let dog = new pet(&#39;狗&#39;);
 console.log(Object.getPrototypeOf(dog) === pet.prototype); //true
 </pre>
-<blockquote>
-<p><code>isPrototypeOf</code> 来检验某个对象是否是另一个对象的原型对象.</p>
-</blockquote>
+<h4 id="-code-isprototypeof-code-来检验某个对象是否是另一个对象的原型对象"><code>isPrototypeOf</code> 来检验某个对象是否是另一个对象的原型对象.</h4>
 <pre class="prettyprint linenums lang-javascript">function pet(name) {
     this.name = name;
 }
 let dog = new pet(&#39;狗&#39;);
 console.log(pet.prototype.isPrototypeOf(dog)); //true
 </pre>
-<p>&nbsp;</p>
-<hr>
-<p>&nbsp;</p>
-<h3 id="-strong-原型链-strong-"><strong>原型链</strong></h3>
-<blockquote>
+<h2 id="-strong-原型链-strong-"><strong>原型链</strong></h2>
 <p>实例对象方法调用,是先在实例对象内部找,如果找到则立即返回调用,如果没有找到就顺着<code>__proto__</code>向上寻找,如果找到该方法则调用,没有找到会直接报错,这便是<strong>原型链</strong>.</p>
-</blockquote>
 <pre class="prettyprint linenums lang-javascript">function pet(name) {
     this.name = name;
 }
@@ -133,12 +116,9 @@ console.log(dog.__proto__.__proto__.hasOwnProperty(&quot;hasOwnProperty&quot;));
 console.log(dog.__proto__.__proto__ === pet.prototype.__proto__); // true
 console.log(dog.__proto__.__proto__ === Object.prototype); // true
 </pre>
-<p>&nbsp;</p>
-<h3 id="es6中的-code-__proto__-code-">ES6中的 <code>__proto__</code></h3>
-<blockquote>
+<h2 id="es6中的-code-__proto__-code-">ES6中的 <code>__proto__</code></h2>
 <p>虽然<code>__proto__</code>在最新的ECMA标准中被纳入了规范,但是由于<code>__proto__</code>前后的双下划线，说明它本质上是一个内部属性，而不是一个正式的对外的 API.
 标准明确规定，只有浏览器必须部署这个属性，其他运行环境不一定需要部署，而且新的代码最好认为这个属性是不存在的。因此，无论从语义的角度，还是从兼容性的角度，都不要使用这个属性，而是使用下面的<code>Object.setPrototypeOf()</code>（写操作）、<code>Object.getPrototypeOf()</code>（读操作）代替。</p>
-</blockquote>
 <pre class="prettyprint linenums lang-javascript">function pet(name) {
     this.name = name;
 }
@@ -150,9 +130,7 @@ console.log(Object.getPrototypeOf(dog) === pet.prototype); //true
 Object.setPrototypeOf(dog, { sound: &quot;汪汪&quot; });
 console.log(dog.sound); //汪汪
 </pre>
-<blockquote>
-<p><code>Object.setPrototypeOf()</code> 只能生效当前实例;</p>
-</blockquote>
+<h4 id="-code-objectsetprototypeof-code-只能生效当前实例-"><code>Object.setPrototypeOf()</code> 只能生效当前实例;</h4>
 <pre class="prettyprint linenums lang-javascript">function pet(name) {
     this.name = name;
 }

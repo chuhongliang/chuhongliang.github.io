@@ -54,24 +54,17 @@
         
         </div>
         <div id="article-content">
-            <h3 id="匿名函数">匿名函数</h3>
-<ul>
-<li>匿名函数就是没有名字的函数</li>
-</ul>
+            <h2 id="匿名函数">匿名函数</h2>
+<p>匿名函数就是没有名字的函数</p>
 <p>匿名函数的自我执行</p>
 <pre class="prettyprint linenums lang-javascript">(function(num){
   return num;
 })(1) //1
 </pre>
-<p>&nbsp;</p>
-<hr>
-<p>&nbsp;</p>
-<h3 id="闭包">闭包</h3>
-<ul>
-<li>闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。</li>
-<li>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成&quot;定义在一个函数内部的函数&quot;。</li>
-<li>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</li>
-</ul>
+<h2 id="闭包">闭包</h2>
+<p>闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。</p>
+<p>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成&quot;定义在一个函数内部的函数&quot;。</p>
+<h4 id="所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。">所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</h4>
 <pre class="prettyprint linenums lang-js">function f1(){
   var n = 999;
   function f2(){
@@ -83,9 +76,8 @@ var result = f1();
 result();//999
 </pre>
 <p><strong>f2()</strong> 就是闭包</p>
-<p>&nbsp;</p>
-<h3 id="闭包的使用场景">闭包的使用场景</h3>
-<h4 id="1-计数器">1. 计数器</h4>
+<h2 id="闭包的使用场景">闭包的使用场景</h2>
+<h3 id="1-计数器">1. 计数器</h3>
 <pre class="prettyprint linenums lang-javascript">function test1(){
   var a = 1;
   return function(){
@@ -103,7 +95,7 @@ console.log(test1()()); // 2
 console.log(test1()()); // 2
 console.log(test1()()); // 2
 </pre>
-<h4 id="2-循环中使用闭包">2. 循环中使用闭包</h4>
+<h3 id="2-循环中使用闭包">2. 循环中使用闭包</h3>
 <p>下例，循环中的每个迭代器在运行时都会给自己捕获一个i的副本，但是根据作用域的工作原理，尽管循环中的五个函数分别是在各个迭代器中分别定义的，但是它们都会被封闭在一个共享的全局作用域中，实际上只有一个i，结果每次都会输出6</p>
 <pre class="prettyprint linenums lang-javascript">for(var i=1; i &lt;= 5; i++){
   setTimeout(function(){

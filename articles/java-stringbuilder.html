@@ -67,9 +67,9 @@ abstract class AbstractStringBuilder implements Appendable, CharSequence {
         value = new char[capacity];
     }
 </pre>
-<h3 id="线程安全性">线程安全性</h3>
+<h2 id="线程安全性">线程安全性</h2>
 <p>String 中的对象是不可变的，也就可以理解为常量，线程安全。AbstractStringBuilder 是 StringBuilder 与 StringBuffer 的公共父类，定义了一些字符串的基本操作，如 expandCapacity、append、insert、indexOf 等公共方法。StringBuffer 对方法加了同步锁或者对调用的方法加了同步锁，所以是线程安全的。StringBuilder 并没有对方法进行加同步锁，所以是非线程安全的。　</p>
-<h3 id="性能">性能</h3>
+<h2 id="性能">性能</h2>
 <p>每次对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象。StringBuffer 每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象并改变对象引用。相同情况下使用 StringBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险。</p>
 <p>对于三者使用的总结：</p>
 <ul>
@@ -83,10 +83,7 @@ abstract class AbstractStringBuilder implements Appendable, CharSequence {
 <li>执行速度StringBuilder &gt; StringBuffer &gt; String。</li>
 <li>StringBuilder是非线程安全的，StringBuffer是线程安全的。</li>
 </ul>
-<p>&nbsp;</p>
-<hr>
-<p>&nbsp;</p>
-<h4 id="string类是我们使用频率最高的类之一，也是面试官经常考察的题目，下面是一个小测验。">String类是我们使用频率最高的类之一，也是面试官经常考察的题目，下面是一个小测验。</h4>
+<h3 id="string类是我们使用频率最高的类之一，也是面试官经常考察的题目，下面是一个小测验。">String类是我们使用频率最高的类之一，也是面试官经常考察的题目，下面是一个小测验。</h3>
 <pre class="prettyprint linenums lang-java">public static void main(String[] args) {
     String s1 = &quot;AB&quot;;
     String s2 = new String(&quot;AB&quot;);
@@ -108,7 +105,7 @@ false
 true
 false
 </pre>
-<p>解析：真正理解此题目需要清楚以下三点</p>
+<h3 id="解析：真正理解此题目需要清楚以下三点">解析：真正理解此题目需要清楚以下三点</h3>
 <ul>
 <li>直接使用双引号声明出来的String对象会直接存储在常量池中；</li>
 <li>String对象的intern方法会得到字符串对象在常量池中对应的引用，如果常量池中没有对应的字符串，则该字符串将被添加到常量池中，然后返回常量池中字符串的引用；</li>

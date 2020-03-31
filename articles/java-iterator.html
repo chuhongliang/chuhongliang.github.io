@@ -56,11 +56,9 @@
         <div id="article-content">
             <h2 id="1-iterator">1. Iterator</h2>
 <p>Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。Iterator提供的API接口如下：</p>
-<ul>
-<li>boolean hasNext()：判断集合里是否存在下一个元素。如果有，hasNext()方法返回 true。</li>
-<li>Object next()：返回集合里下一个元素。</li>
-<li>void remove()：删除集合里上一次next方法返回的元素。</li>
-</ul>
+<p>boolean hasNext()：判断集合里是否存在下一个元素。如果有，hasNext()方法返回 true。</p>
+<p>Object next()：返回集合里下一个元素。</p>
+<p>void remove()：删除集合里上一次next方法返回的元素。</p>
 <pre class="prettyprint linenums lang-java">public class IteratorExample {
     public static void main(String[] args) {
         ArrayList&lt;String&gt; a = new ArrayList&lt;String&gt;();
@@ -84,14 +82,10 @@
 After iterate : [aaa, ccc] 
 </pre>
 <h3 id="注意：">注意：</h3>
-<ul>
-<li>Iterator只能单向移动。</li>
-<li>Iterator.remove()是唯一安全的方式来在迭代过程中修改集合；如果在迭代过程中以任何其它的方式修改了基本集合将会产生未知的行为。而且每调用一次next()方法，remove()方法只能被调用一次，如果违反这个规则将抛出一个异常。</li>
-</ul>
+<p>Iterator只能单向移动。</p>
+<p>Iterator.remove()是唯一安全的方式来在迭代过程中修改集合；如果在迭代过程中以任何其它的方式修改了基本集合将会产生未知的行为。而且每调用一次next()方法，remove()方法只能被调用一次，如果违反这个规则将抛出一个异常。</p>
 <h2 id="2-listiterator">2. ListIterator</h2>
-<ul>
-<li>ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator.</li>
-</ul>
+<p>ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator.</p>
 <pre class="prettyprint linenums lang-java">public interface ListIterator&lt;E&gt; extends Iterator&lt;E&gt; {
     boolean hasNext();
     E next();
@@ -104,7 +98,7 @@ After iterate : [aaa, ccc]
     void add(E e);
 } 
 </pre>
-<p>由以上定义我们可以推出ListIterator可以:</p>
+<h3 id="由以上定义我们可以推出listiterator可以-">由以上定义我们可以推出ListIterator可以:</h3>
 <ul>
 <li>双向移动（向前/向后遍历）.</li>
 <li>产生相对于迭代器在列表中指向的当前位置的前一个和后一个元素的索引.</li>
@@ -142,7 +136,7 @@ After iterate : [aaa, ccc]
     }
 } 
 </pre>
-<p>输出结果如下：</p>
+<h4 id="输出结果如下：">输出结果如下：</h4>
 <pre class="prettyprint linenums lang-java">Before iterate : [aaa, bbb, ccc]
 aaa, 0, 1
 bbb, 1, 2
@@ -152,7 +146,6 @@ bbb
 ccc
 After iterate : [aaa, bbb, kkk, nnn]
 </pre>
-<hr>
 <h2 id="iterator-和-listiterator-区别">Iterator 和 ListIterator 区别</h2>
 <p>我们在使用List，Set的时候，为了实现对其数据的遍历，我们经常使用到了Iterator(迭代器)。使用迭代器，你不需要干涉其遍历的过程，只需要每次取出一个你想要的数据进行处理就可以了。但是在使用的时候也是有不同的。List和Set都有iterator()来取得其迭代器。对List来说，你也可以通过listIterator()取得其迭代器，两种迭代器在有些时候是不能通用的，Iterator和ListIterator主要区别在以下方面：</p>
 <ul>
@@ -161,7 +154,7 @@ After iterate : [aaa, bbb, kkk, nnn]
 <li>ListIterator可以定位当前的索引位置，nextIndex()和previousIndex()可以实现。Iterator没有此功能。</li>
 <li>都可实现删除对象，但是ListIterator可以实现对象的修改，set()方法可以实现。Iierator仅能遍历，不能修改。</li>
 </ul>
-<p>因为ListIterator的这些功能，可以实现对LinkedList等List数据结构的操作。其实，数组对象也可以用迭代器来实现。</p>
+<h4 id="因为listiterator的这些功能，可以实现对linkedlist等list数据结构的操作。其实，数组对象也可以用迭代器来实现。">因为ListIterator的这些功能，可以实现对LinkedList等List数据结构的操作。其实，数组对象也可以用迭代器来实现。</h4>
 
         </div>
         
