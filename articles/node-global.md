@@ -1,9 +1,9 @@
 JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。
 在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。
 
->在 Node.js 我们可以直接访问到 global 的属性，而不需要在应用中包含它。
+#### 在 Node.js 我们可以直接访问到 global 的属性，而不需要在应用中包含它。
 
-Node.js中的内置全局对象
+### Node.js中的内置全局对象
 - [console](#console)
 - [__filename](#filename)
 - [__dirname](#dirname)
@@ -21,20 +21,17 @@ Node.js中的内置全局对象
 - [require(id)](#requireid)
 - [Buffer](#buffer)
 
----
 
 # console
 console 用于提供控制台标准输出，它是由 Internet Explorer 的 JScript 引擎提供的调试工具，后来逐渐成为浏览器的实施标准。
 Node.js 沿用了这个标准，提供与习惯行为一致的 console 对象，用于向标准输出流（stdout）或标准错误流（stderr）输出字符。
 
-常用方法:
+#### 常用方法:
 - console.log([data][, ...])  普通日志
 - console.info([data][, ...]) 信息日志
 - console.warn([data][, ...]) 警告日志
 - console.error([data][, ...]) 错误日志
 - console.trace(message[, ...]): 当前执行的代码在堆栈中的调用路径
-
----
 
 # __filename
 当前模块的文件名。 这是当前的模块文件的绝对路径（符号链接会被解析）。
@@ -49,12 +46,11 @@ console.log(__filename);
 console.log(__dirname);
 // 打印: /Users/mjr
 ```
----
 
 # __dirname
 当前模块的目录名。 与 __filename 的 path.dirname() 相同。
 
-示例，从 /Users/mjr 运行 node example.js：
+#### 示例，从 /Users/mjr 运行 node example.js：
 
 ```js
 console.log(__dirname);
@@ -62,7 +58,6 @@ console.log(__dirname);
 console.log(path.dirname(__filename));
 // 打印: /Users/mjr
 ```
----
 
 # setTimeout(cb, ms)
 setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。：setTimeout() 只执行一次指定函数。
@@ -75,7 +70,6 @@ setTimeout(function printHello(){
 }, 2000);
 ```
 
----
 
 # clearTimeout(t)
 clearTimeout( t ) 全局函数用于停止一个之前通过 setTimeout() 创建的定时器。 参数 t 是通过 setTimeout() 函数创建的定时器。
@@ -87,7 +81,6 @@ let t = setTimeout(function printHello(){
 // 清除定时器
 clearTimeout(t);
 ```
----
 
 # setInterval(cb, ms)
 setInterval(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。
@@ -101,8 +94,6 @@ setInterval(function printHello(){
 }, 2000);
 ```
 
----
-
 # setImmediate
 预定在 I/O 事件的回调之后立即执行的 callback。
 ```js
@@ -111,8 +102,6 @@ setImmediate(function printHello(){
    console.log( "Hello, World!");
 }, 2000);
 ```
-
----
 
 # process
 process 对象是一个全局变量，它提供有关当前 Node.js 进程的信息并对其进行控制。 作为一个全局变量，它始终可供 Node.js 应用程序使用，无需使用 require()。
@@ -151,8 +140,6 @@ process.title 属性返回当前进程标题（即返回 ps 的当前值）。 �
 当分配新值时，不同的平台会对标题施加不同的最大长度限制。 通常这种限制是相当有限的。 例如，在 Linux 和 macOS 上， process.title 仅限于二进制名称的大小加上命令行参数的长度，因为设置 process.title 会覆盖进程的 argv 内存。 Node.js 的 v0.8, 通过覆盖 environ 允许内存较长的过程标题字符串，但是这在一些（相当模糊的）可能是不安全的并且令人困惑情况下。
 
 
----
-
 # exports
 这是一个对于 module.exports 的更简短的引用形式。
 
@@ -172,8 +159,6 @@ module.exports = exports = function Constructor() {
   // ... 
 };
 ```
-
----
 
 # module.exports
 用于指定一个模块所导出的内容，即可以通过 require() 访问的内容。
@@ -202,7 +187,6 @@ a.on('ready', () => {
 ```
 对 module.exports 的赋值必须立即完成。 不能在任何回调中完成。
 
----
 
 # require(id)
 用于引入模块、 JSON、或本地文件。 可以从 node_modules 引入模块。 可以使用相对路径（例如 ./、 ./foo、 ./bar/baz、 ../foo）引入本地模块或 JSON 文件，路径会根据 __dirname 定义的目录名或当前工作目录进行处理。
@@ -215,8 +199,6 @@ const jsonData = require('./path/filename.json');
 // 引入 node_modules 模块或 Node.js 内置模块：
 const crypto = require('crypto');
 ```
-
----
 
 # Buffer
 Buffer 类是作为 Node.js API 的一部分引入的，用于在 TCP 流、文件系统操作、以及其他上下文中与八位字节流进行交互。
