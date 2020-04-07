@@ -587,7 +587,7 @@
   
 - id: javascript-promise
   title:  JavaScript Promise
-  postedOn: !!str 2020-03-30
+  postedOn: !!str 2020-04-07
   author: chuhongliang
   tags:
     - JavaScript
