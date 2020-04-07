@@ -55,19 +55,13 @@
         </div>
         <div id="article-content">
             <h1 id="v8的垃圾回收机制与内存限制">V8的垃圾回收机制与内存限制</h1>
-<p>Node与V8</p>
-<blockquote>
+<h2 id="node与v8">Node与V8</h2>
 <p>Node选择了V8引擎，基于事件驱动、非阻塞I/O模型。</p>
-</blockquote>
-<p>V8的内存限制</p>
-<blockquote>
+<h2 id="v8的内存限制">V8的内存限制</h2>
 <p>64位系统约为1.4GB，32位系统约为0.7GB，在这样限制下，将会导致Node无法直接操作大内存对象，比如无法将一个2GB的文件读入内存中进行字符串分析处理，即使物理内存有32GB，这样在单个Node进程的情况下，计算机的内存资源无法得到充足的使用。要知晓V8为何限制了内存的用量，则需要回归到V8在内存使用上的策略。</p>
-</blockquote>
-<p>V8的对象分配</p>
-<blockquote>
+<h2 id="v8的对象分配">V8的对象分配</h2>
 <p>在V8中，所有的JS对象都是通过堆来进行分配的。</p>
-</blockquote>
-<h3 id="node提供v8内存使用量查看方式：">Node提供V8内存使用量查看方式：</h3>
+<h2 id="node提供v8内存使用量查看方式：">Node提供V8内存使用量查看方式：</h2>
 <pre class="prettyprint linenums lang-js">$ node
 $ process.memoryUsage();
 {
