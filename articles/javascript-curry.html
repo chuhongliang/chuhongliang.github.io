@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - JavaScript 柯里化
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/javascript-curry.html">JavaScript 柯里化</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-04-08
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
+        
+        </div>
+        <div id="article-content">
+            <h1 id="javascript-柯里化（currying）">JavaScript 柯里化（Currying）</h1>
+<p>在计算机科学中，柯里化（Currying）是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数且返回结果的新函数的技术。这个技术由 Christopher Strachey 以逻辑学家 Haskell Curry 命名的，尽管它是 Moses Schnfinkel 和 Gottlob Frege 发明的。</p>
+<h2 id="柯里化示例：">柯里化示例：</h2>
+<pre class="prettyprint linenums lang-js">// 正常正则验证字符串 reg.test(txt)
+// 函数封装后
+function check(reg, txt) {
+    return reg.test(txt)
+}
+
+check(/\d+/g, &#39;test&#39;)       //false
+check(/[a-z]+/g, &#39;test&#39;)    //true
+
+// Currying后
+function curryingCheck(reg) {
+    return function(txt) {
+        return reg.test(txt)
+    }
+}
+
+var hasNumber = curryingCheck(/\d+/g)
+var hasLetter = curryingCheck(/[a-z]+/g)
+
+hasNumber(&#39;test1&#39;)      // true
+hasNumber(&#39;testtest&#39;)   // false
+hasLetter(&#39;21212&#39;)      // false
+</pre>
+<p>这里表明的是一种“预加载”函数的能力，通过传递一到两个参数调用函数，就能得到一个记住了这些参数的新函数。</p>
+<p>只传给函数一部分参数通常也叫做局部调用（partial application），能够大量减少样板文件代码.</p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
