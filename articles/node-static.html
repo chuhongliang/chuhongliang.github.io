@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - Node 实现简单的静态服务器
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/node-static.html">Node 实现简单的静态服务器</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-04-11
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#Node">Node</a>
+        
+        </div>
+        <div id="article-content">
+            <h1 id="node-实现简单的静态服务器">Node 实现简单的静态服务器</h1>
+<blockquote>
+<p>Node里面是没有Web容器的概念, 所以URL上的路径跟实际文件的路径并不一致。</p>
+</blockquote>
+<p>这里我们手动实现一个简单的原生静态服务，让Node能够找到路径的文件，实现静态服务器功能。文件夹的任何文件都能被找到。</p>
+<pre class="prettyprint linenums lang-js">const http = require(&quot;http&quot;);
+const url = require(&quot;url&quot;);
+const fs = require(&quot;fs&quot;);
+const path = require(&quot;path&quot;);
+
+http.createServer(function (req, res) {
+    //得到用户的路径
+    let pathname = url.parse(req.url).pathname;
+    if (pathname == &quot;/&quot;) {
+        pathname = &quot;index.html&quot;;
+    }
+    //拓展名
+    let extname = path.extname(pathname);
+    //读取文件
+    fs.readFile(&quot;./public/&quot; + pathname, function (err, data) {
+        //data是一个Buffer，二进制的数据流
+        if (err) {
+            //如果文件不存在，就返回404
+            fs.readFile(&quot;./public/404.html&quot;, function (err, data) {
+                res.writeHead(404, { &quot;Content-type&quot;: &quot;text/html;chaset=utf-8&quot; });
+                res.end(data);
+            });
+            return;
+        }
+        //MIME类型，就是
+        let mime = getMIME(extname)
+        res.writeHead(200, { &quot;Content-type&quot;: mime });
+        res.end(data);
+    })
+}).listen(3000, &quot;127.0.0.1&quot;, function () {
+    console.log(&#39;http://127.0.0.1:3000&#39;);
+});
+</pre>
+<h4 id="对不同的文件进行不同的响应头处理">对不同的文件进行不同的响应头处理</h4>
+<pre class="prettyprint linenums lang-js">function getMIME(extname) {
+    switch (extname) {
+        case &quot;.html&quot;:
+            return &quot;text/html;chaset=utf-8&quot;;
+        case &quot;.jpg&quot;:
+            return &quot;image/jpg&quot;;
+        case &quot;.css&quot;:
+            return &quot;text/css&quot;;
+    }
+}
+</pre>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
