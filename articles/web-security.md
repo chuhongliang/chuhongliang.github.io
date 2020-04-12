@@ -99,7 +99,7 @@ Content-Security-Policy: img-src https://*
 ```js
 Content-Security-Policy: child-src 'none'
 ```
-#### 如需了解更多属性，请查看[Content-Security-Policy文档]()
+#### 如需了解更多属性，请查看[Content-Security-Policy文档](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy)
 对于这种方式来说，只要开发者配置了正确的规则，那么即使网站存在漏洞，攻击者也不能执行它的攻击代码，并且 CSP 的兼容性也不错。
 
 ### 转义字符
