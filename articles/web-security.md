@@ -8,7 +8,6 @@
 - OS命令注入攻击
 
 下面来讲解每种攻击的原理以及防御的方法：
-
 # 一、XSS
 XSS (Cross-Site Scripting)，跨站脚本攻击，因为缩写和 CSS重叠，所以只能叫 XSS。跨站脚本攻击是指通过存在安全漏洞的Web网站注册用户的浏览器内运行非法的HTML标签或JavaScript进行的一种攻击。
 
@@ -33,19 +32,11 @@ XSS主要分为两类：非持久型(反射型), 持久型(存储型)
 - 盗取用户敏感保密信息
 
 #### 例如：
-```html
-<select>
-    <script>
-        document.write(''
-            + '<option value=1>'
-            +     location.href.substring(location.href.indexOf('default=') + 8)
-            + '</option>'
-        );
-        document.write('<option value=2>English</option>');
-    </script>
-</select>
+
+攻击者可以直接通过URL注入可执行的脚本代码。不过一些浏览器如Chrome其内置了一些XSS过滤器，可以防止大部分反射型XSS攻击。
+```txt
+https://xxx.com/xxx?default=<script>alert(document.cookie)</script>
 ```
-攻击者可以直接通过 URL (类似：https://xxx.com/xxx?default=<script>alert(document.cookie)</script>) 注入可执行的脚本代码。不过一些浏览器如Chrome其内置了一些XSS过滤器，可以防止大部分反射型XSS攻击。
 
 ### 为了防止出现非持久型 XSS 漏洞，需要确保这么几件事情：
 - Web 页面渲染的所有内容或者渲染的数据都必须来自于服务端。
@@ -58,7 +49,7 @@ XSS主要分为两类：非持久型(反射型), 持久型(存储型)
 持久型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如文章留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。
 
 对于评论功能来说，就得防范持久型 XSS 攻击，因为我可以在评论中输入以下内容：
-```html
+```txt
 <script>alert(1)</script>
 ```
 
@@ -132,6 +123,7 @@ console.log(html)
 
 ---
 
+
 # 二、CSRF
 CSRF(Cross Site Request Forgery)，即跨站请求伪造，是一种常见的Web攻击，它利用用户已登录的身份，在用户毫不知情的情况下，以用户的名义完成非法操作。
 
@@ -144,7 +136,7 @@ CSRF(Cross Site Request Forgery)，即跨站请求伪造，是一种常见的Web
 我们来看一个例子： 当我们登入转账页面后，突然眼前一亮惊现"XXX隐私照片，不看后悔一辈子"的链接，耐不住内心躁动，立马点击了该危险的网站（页面代码如下图所示），但当这页面一加载，便会执行submitForm这个方法来提交转账请求，从而将10块转给黑客。
 
 ## 防御
-### 防范 CSRF 攻击可以遵循以下几种规则：
+### 防范 CSRF 攻击可以遵循以下几种规则：z
 - Get 请求不对数据进行修改
 - 不让第三方网站访问到用户 Cookie
 - 阻止第三方网站请求接口
@@ -178,7 +170,7 @@ HTTP Referer是header的一部分，当浏览器向web服务器发送请求时�
 ## 点击劫持的原理
 用户在登陆 A 网站的系统后，被攻击者诱惑打开第三方网站，而第三方网站通过 iframe 引入了 A 网站的页面内容，用户在第三方网站中点击某个按钮（被装饰的按钮），实际上是点击了 A 网站的按钮。
 接下来我们举个例子：我在优酷发布了很多视频，想让更多的人关注它，就可以通过点击劫持来实现
-```html
+```txt
 iframe {
   width: 1440px;
   height: 900px;
@@ -218,7 +210,7 @@ X-FRAME-OPTIONS是一个 HTTP 响应头，在现代浏览器有一个很好的�
 
 ### JavaScript 防御
 对于某些远古浏览器来说，并不能支持上面的这种方式，那我们只有通过 JS 的方式来防御点击劫持了。
-```html
+```txt
 <head>
   <style id="click-jack">
     html {

@@ -86,18 +86,9 @@
 <li>盗取用户敏感保密信息</li>
 </ul>
 <h4 id="例如：">例如：</h4>
-<pre class="prettyprint linenums lang-html">&lt;select&gt;
-    &lt;script&gt;
-        document.write(&#39;&#39;
-            + &#39;&lt;option value=1&gt;&#39;
-            +     location.href.substring(location.href.indexOf(&#39;default=&#39;) + 8)
-            + &#39;&lt;/option&gt;&#39;
-        );
-        document.write(&#39;&lt;option value=2&gt;English&lt;/option&gt;&#39;);
-    &lt;/script&gt;
-&lt;/select&gt;
+<p>攻击者可以直接通过URL注入可执行的脚本代码。不过一些浏览器如Chrome其内置了一些XSS过滤器，可以防止大部分反射型XSS攻击。</p>
+<pre class="prettyprint linenums lang-txt">https://xxx.com/xxx?default=&lt;script&gt;alert(document.cookie)&lt;/script&gt;
 </pre>
-<p>攻击者可以直接通过 URL (类似：<a href="https://xxx.com/xxx?default=">https://xxx.com/xxx?default=</a><script>alert(document.cookie)</script>) 注入可执行的脚本代码。不过一些浏览器如Chrome其内置了一些XSS过滤器，可以防止大部分反射型XSS攻击。</p>
 <h3 id="为了防止出现非持久型-xss-漏洞，需要确保这么几件事情：">为了防止出现非持久型 XSS 漏洞，需要确保这么几件事情：</h3>
 <ul>
 <li>Web 页面渲染的所有内容或者渲染的数据都必须来自于服务端。</li>
@@ -109,7 +100,7 @@
 <h2 id="持久型-xss">持久型 XSS</h2>
 <p>持久型 XSS 漏洞，一般存在于 Form 表单提交等交互功能，如文章留言，提交文本信息等，黑客利用的 XSS 漏洞，将内容经正常功能提交进入数据库持久保存，当前端页面获得后端从数据库中读出的注入代码时，恰好将其渲染执行。</p>
 <p>对于评论功能来说，就得防范持久型 XSS 攻击，因为我可以在评论中输入以下内容：</p>
-<pre class="prettyprint linenums lang-html">&lt;script&gt;alert(1)&lt;/script&gt;
+<pre class="prettyprint linenums lang-txt">&lt;script&gt;alert(1)&lt;/script&gt;
 </pre>
 <p>主要注入页面方式和非持久型 XSS 漏洞类似，只不过持久型的不是来源于 URL，referer，forms 等，而是来源于后端从数据库中读出来的数据 。持久型 XSS 攻击不需要诱骗点击，黑客只需要在提交表单的地方完成注入即可，但是这种 XSS 攻击的成本相对还是很高。</p>
 <h3 id="攻击成功需要同时满足以下几个条件：">攻击成功需要同时满足以下几个条件：</h3>
@@ -143,7 +134,7 @@
 <p>允许加载任何来源框架</p>
 <pre class="prettyprint linenums lang-js">Content-Security-Policy: child-src &#39;none&#39;
 </pre>
-<h4 id="如需了解更多属性，请查看-a-href-content-security-policy文档-a-">如需了解更多属性，请查看<a href="">Content-Security-Policy文档</a></h4>
+<h4 id="如需了解更多属性，请查看-a-href-https-developermozillaorg-zh-cn-docs-web-http-headers-content-security-policy-content-security-policy文档-a-">如需了解更多属性，请查看<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy">Content-Security-Policy文档</a></h4>
 <p>对于这种方式来说，只要开发者配置了正确的规则，那么即使网站存在漏洞，攻击者也不能执行它的攻击代码，并且 CSP 的兼容性也不错。</p>
 <h3 id="转义字符">转义字符</h3>
 <p>用户的输入永远不可信任的，最普遍的做法就是转义输入输出的内容，对于引号、尖括号、斜杠进行转义</p>
@@ -179,7 +170,7 @@ console.log(html)
 </ul>
 <p>我们来看一个例子： 当我们登入转账页面后，突然眼前一亮惊现&quot;XXX隐私照片，不看后悔一辈子&quot;的链接，耐不住内心躁动，立马点击了该危险的网站（页面代码如下图所示），但当这页面一加载，便会执行submitForm这个方法来提交转账请求，从而将10块转给黑客。</p>
 <h2 id="防御">防御</h2>
-<h3 id="防范-csrf-攻击可以遵循以下几种规则：">防范 CSRF 攻击可以遵循以下几种规则：</h3>
+<h3 id="防范-csrf-攻击可以遵循以下几种规则：z">防范 CSRF 攻击可以遵循以下几种规则：z</h3>
 <ul>
 <li>Get 请求不对数据进行修改</li>
 <li>不让第三方网站访问到用户 Cookie</li>
@@ -208,7 +199,7 @@ console.log(html)
 <h2 id="点击劫持的原理">点击劫持的原理</h2>
 <p>用户在登陆 A 网站的系统后，被攻击者诱惑打开第三方网站，而第三方网站通过 iframe 引入了 A 网站的页面内容，用户在第三方网站中点击某个按钮（被装饰的按钮），实际上是点击了 A 网站的按钮。
 接下来我们举个例子：我在优酷发布了很多视频，想让更多的人关注它，就可以通过点击劫持来实现</p>
-<pre class="prettyprint linenums lang-html">iframe {
+<pre class="prettyprint linenums lang-txt">iframe {
   width: 1440px;
   height: 900px;
   position: absolute;
@@ -245,7 +236,7 @@ button {
 </ul>
 <h3 id="javascript-防御">JavaScript 防御</h3>
 <p>对于某些远古浏览器来说，并不能支持上面的这种方式，那我们只有通过 JS 的方式来防御点击劫持了。</p>
-<pre class="prettyprint linenums lang-html">&lt;head&gt;
+<pre class="prettyprint linenums lang-txt">&lt;head&gt;
   &lt;style id=&quot;click-jack&quot;&gt;
     html {
       display: none !important;
