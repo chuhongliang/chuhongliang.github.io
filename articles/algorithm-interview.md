@@ -2,28 +2,22 @@
 
 ### 简单的字符串压缩：aaaabbbcccdd => a4b3c3d2
 ```js
+let str = 'aaaabbbcccdd';
 let strArr = str.split('');
-let length = strArr.length;
-let count = 0;
-let tempStr = '';
-let result = '';
-for (let x = 0; x < length; x++) {
-  if(tempStr === ''){
-    tempStr = strArr[x];
-    count ++;
-   continue;
-  }
-  if (tempStr !== strArr[x]) {
-    result += `${tempStr}${count}`;
-    tempStr = strArr[x];
-    count = 1;
-  } else {
-    count ++;
-  }
-  if(x === length - 1){
-    result += `${tempStr}${count}`;
-  }
+let obj = {};
+strArr.forEach(function (item) {
+	if (item in obj) {
+		obj[item]++;
+	} else {
+		obj[item] = 1;
+	}
+});
+
+let sb = '';
+for (let key in obj) {
+	sb = `${sb}${key}${obj[key]}`;
 }
+console.log('sb=>', sb);//a4b3c3d2
 ```
 
 ### 实现把数组里的值排成最大值：[3, 45, 67, 90, 22, 101] => 906745322101
