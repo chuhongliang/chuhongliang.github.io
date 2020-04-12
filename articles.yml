@@ -610,7 +610,14 @@
   abstract: Node里面是没有Web容器的概念, 所以URL上的路径跟实际文件的路径并不一致。这里我们手动实现一个简单的原生静态服务，让Node能够找到路径的文件，实现静态服务器功能。文件夹的任何文件都能被找到。
   
   
-
+- id: web-security
+  title:  常见web安全攻防总结
+  postedOn: !!str 2020-04-11=2
+  author: chuhongliang
+  tags:
+    - Web安全
+  abstract: 常见的Web攻击类型有以下几种；XSS，CSRF，点击劫持，URL跳转漏洞，SQL注入，OS命令注入攻击
+  
 
 
   
