@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Content of description meta tag"/>
+        <meta name="keywords" content="keyword1,keyword2,keyword3"/>
+        <meta name="author" content="Content of author meta tag"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <title>chuhongliang.github.io - JavaScript Generator函数
+</title>
+        <link rel="stylesheet" href="/assets/vendor/normalize.css"/>
+        <link rel="stylesheet" href="/assets/vendor/prettify-night.css"/>
+        <link rel="stylesheet" href="/assets/themes/default/main.css"/>
+        <link rel="shortcut icon" href="/fav.ico"/>
+        <script type="text/javascript" src="/assets/vendor/prettify.js"></script>
+        
+    </head>
+    <body onload="prettyPrint()">
+    <div id="header">
+        <div id="header-inner">
+            <div id="title"><a href="/">chuhongliang.github.io</a></div>
+            <div id="subtitle">learn coding, keep coding</div>
+        </div>
+    </div>
+
+<div id="main">
+    <div id="main-inner">
+        <div id="topnav">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li class="sep"> | </li>
+                <li><a href="/tag.html">标签</a></li>
+                
+<li class="sep"> | </li>
+<li><a href="/pages/about-me.html" target="_self">关于我</a></li>
+
+<li class="sep"> | </li>
+<li><a href="https://github.com/chuhongliang" target="_blank">github</a></li>
+
+
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="article-title">
+            <a href="/articles/javascript-generator.html">JavaScript Generator函数</a>
+        </div>
+        <div id="article-meta">
+            作者 chuhongliang | 发布于 2020-04-20
+        </div>
+        <div id="article-tags">
+        
+        <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
+        
+        </div>
+        <div id="article-content">
+            <h1 id="generator-函数的含义与用法">Generator 函数的含义与用法</h1>
+<p>Generator 函数是协程在 ES6 的实现，最大特点就是可以交出函数的执行权（即暂停执行）。</p>
+<p>Generator 对象是由一个 generator function 返回的,并且它符合可迭代协议和迭代器协议。</p>
+<h2 id="语法-">语法:</h2>
+<pre class="prettyprint linenums lang-js">function* gen() { 
+  yield 1;
+  yield 2;
+  yield 3;
+}
+let g = gen(); 
+// &quot;Generator { }&quot;
+</pre>
+<p>不同于普通函数，Generator 函数是可以暂停执行的，所以函数名之前要加星号，以示区别。</p>
+<p>整个 Generator 函数就是一个封装的异步任务，或者说是异步任务的容器。异步操作需要暂停的地方，都用 yield 语句注明。</p>
+<h2 id="方法-">方法:</h2>
+<pre class="prettyprint linenums lang-js">Generator.prototype.next()   //返回一个由 yield表达式生成的值。
+Generator.prototype.return() //返回给定的值并结束生成器。
+Generator.prototype.throw()  //向生成器抛出一个错误。
+</pre>
+<h2 id="generator-函数的执行方法">Generator 函数的执行方法</h2>
+<pre class="prettyprint linenums lang-js">function* gen(x){
+  var y = yield x + 2;
+  return y;
+}
+
+var g = gen(1);
+g.next() // { value: 3, done: false }
+g.next() // { value: undefined, done: true }
+</pre>
+<p>上面代码中，调用 Generator 函数，会返回一个内部指针（即遍历器 ）g 。这是 Generator 函数不同于普通函数的另一个地方，即执行它不会返回结果，返回的是指针对象。调用指针 g 的 next 方法，会移动内部指针（即执行异步任务的第一段），指向第一个遇到的 yield 语句，上例是执行到 x + 2 为止。</p>
+<p>换言之，next 方法的作用是分阶段执行 Generator 函数。每次调用 next 方法，会返回一个对象，表示当前阶段的信息（ value 属性和 done 属性）。value 属性是 yield 语句后面表达式的值，表示当前阶段的值；done 属性是一个布尔值，表示 Generator 函数是否执行完毕，即是否还有下一个阶段。</p>
+<h2 id="generator-函数的数据交换和错误处理">Generator 函数的数据交换和错误处理</h2>
+<p>Generator 函数可以暂停执行和恢复执行，这是它能封装异步任务的根本原因。除此之外，它还有两个特性，使它可以作为异步编程的完整解决方案：函数体内外的数据交换和错误处理机制。</p>
+<p>next 方法返回值的 value 属性，是 Generator 函数向外输出数据；next 方法还可以接受参数，这是向 Generator 函数体内输入数据。</p>
+<pre class="prettyprint linenums lang-js">function* gen(x){
+    var y = yield x + 2;
+  return y;
+}
+
+var g = gen(1);
+g.next() // { value: 3, done: false }
+g.next(2) // { value: 2, done: true }
+</pre>
+<p>上面代码中，第一个 next 方法的 value 属性，返回表达式 x + 2 的值（3）。第二个 next 方法带有参数2，这个参数可以传入 Generator 函数，作为上个阶段异步任务的返回结果，被函数体内的变量 y 接收。因此，这一步的 value 属性，返回的就是2（变量 y 的值）。
+Generator 函数内部还可以部署错误处理代码，捕获函数体外抛出的错误。</p>
+<p>Generator 函数内部还可以部署错误处理代码，捕获函数体外抛出的错误。</p>
+<pre class="prettyprint linenums lang-js">function* gen(x){
+  try {
+    var y = yield x + 2;
+  } catch (e){ 
+    console.log(e);
+  }
+  return y;
+}
+
+var g = gen(1);
+g.next();
+g.throw（&#39;出错了&#39;）;
+// 出错了
+</pre>
+<p>上面代码的最后一行，Generator 函数体外，使用指针对象的 throw 方法抛出的错误，可以被函数体内的 try ... catch 代码块捕获。这意味着，出错的代码与处理错误的代码，实现了时间和空间上的分离，这对于异步编程无疑是很重要的。</p>
+<h2 id="generator-函数的用法">Generator 函数的用法</h2>
+<p>下面看看如何使用 Generator 函数，执行一个真实的异步任务。</p>
+<pre class="prettyprint linenums lang-js">var fetch = require(&#39;node-fetch&#39;);
+
+function* gen(){
+  var url = &#39;https://api.github.com/users/github&#39;;
+  var result = yield fetch(url);
+  console.log(result.bio);
+}
+</pre>
+<p>上面代码中，Generator 函数封装了一个异步操作，该操作先读取一个远程接口，然后从 JSON 格式的数据解析信息。就像前面说过的，这段代码非常像同步操作，除了加上了 yield 命令。</p>
+<p>执行这段代码的方法如下。</p>
+<pre class="prettyprint linenums lang-js">var g = gen();
+var result = g.next();
+
+result.value.then(function(data){
+  return data.json();
+}).then(function(data){
+  g.next(data);
+});
+</pre>
+<p>上面代码中，首先执行 Generator 函数，获取遍历器对象，然后使用 next 方法（第二行），执行异步任务的第一阶段。由于 Fetch 模块返回的是一个 Promise 对象，因此要用 then 方法调用下一个next 方法。</p>
+
+        </div>
+        
+    </div>
+</div>
+        <div id="footer">
+            <div id="footer-inner">
+                <p id="copyright">Copyright (c) 2019-至今 Copyrighter</p>
+            </div>
+        </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+    </body>
+</html>
+
