@@ -45,21 +45,23 @@
         <div id="aboutme"><p>一个喜欢编程的野生程序员...</p></div>
         <div id="tag-cloud">
             
+            <a href="/tag.html#JavaScript">JavaScript<span class="count">×15</span></a>
+            
             <a href="/tag.html#Java">Java<span class="count">×14</span></a>
             
             <a href="/tag.html#Android">Android<span class="count">×12</span></a>
             
-            <a href="/tag.html#JavaScript">JavaScript<span class="count">×11</span></a>
-            
             <a href="/tag.html#网络">网络<span class="count">×11</span></a>
             
-            <a href="/tag.html#Node">Node<span class="count">×8</span></a>
+            <a href="/tag.html#Node">Node<span class="count">×10</span></a>
             
             <a href="/tag.html#Redis">Redis<span class="count">×4</span></a>
             
             <a href="/tag.html#MySQL">MySQL<span class="count">×4</span></a>
             
             <a href="/tag.html#Nginx">Nginx<span class="count">×4</span></a>
+            
+            <a href="/tag.html#算法">算法<span class="count">×2</span></a>
             
             <div style="clear:both;"></div>
         </div>
@@ -779,6 +781,86 @@
                 <p class="title"><a href="/articles/node-memoryleak.html">Node.js 内存泄漏</a></p>
                 <p class="abstract">&lt;摘要&gt;: 在V8的垃圾回收机制下，在通常的代码编写中，很少会出现内存泄漏的情况。但是内存泄漏通常产生于无意间，较难排查。尽管内存泄漏的情况不尽相同，但其实质只有一个，那就是应当回收的对象出现意外而没有被回收，变成了常驻在老生代中的对象</p>
                 <p class="meta">作者 chuhongliang | 发布于 2020-03-30 | Tags 
+                    
+                    <a class="tag" href="/tag.html#Node">Node</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/algorithm-interview.html">面试遇到的算法</a></p>
+                <p class="abstract">&lt;摘要&gt;: 面试过程中遇到的算法，仅作记录</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-03-30 | Tags 
+                    
+                    <a class="tag" href="/tag.html#算法">算法</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/javascript-promise.html">JavaScript Promise</a></p>
+                <p class="abstract">&lt;摘要&gt;: Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-04-07 | Tags 
+                    
+                    <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/javascript-curry.html">JavaScript 柯里化</a></p>
+                <p class="abstract">&lt;摘要&gt;: 在计算机科学中，柯里化（Currying）是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数且返回结果的新函数的技术。这个技术由 Christopher Strachey 以逻辑学家 Haskell Curry 命名的，尽管它是 Moses Schnfinkel 和 Gottlob Frege 发明的。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-04-08 | Tags 
+                    
+                    <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/node-static.html">Node.js 实现简单的静态服务器</a></p>
+                <p class="abstract">&lt;摘要&gt;: Node里面是没有Web容器的概念, 所以URL上的路径跟实际文件的路径并不一致。这里我们手动实现一个简单的原生静态服务，让Node能够找到路径的文件，实现静态服务器功能。文件夹的任何文件都能被找到。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-04-11 | Tags 
+                    
+                    <a class="tag" href="/tag.html#Node">Node</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/web-security.html">常见web安全攻防总结</a></p>
+                <p class="abstract">&lt;摘要&gt;: 常见的Web攻击类型有以下几种；XSS，CSRF，点击劫持，URL跳转漏洞，SQL注入，OS命令注入攻击</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-04-13 | Tags 
+                    
+                    <a class="tag" href="/tag.html#Web安全">Web安全</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/javascript-generator.html">JavaScript Generator函数</a></p>
+                <p class="abstract">&lt;摘要&gt;: Generator 函数是协程在 ES6 的实现，最大特点就是可以交出函数的执行权（即暂停执行）。Generator 对象是由一个 generator function 返回的,并且它符合可迭代协议和迭代器协议。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-04-20 | Tags 
+                    
+                    <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/javascript-thunk.html">JavaScript Thunk 函数</a></p>
+                <p class="abstract">&lt;摘要&gt;: Thunk函数的定义，它是&quot;传名调用&quot;的一种实现策略，用来替换某个表达式。JavaScript 语言是传值调用，它的 Thunk 函数含义有所不同。在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成单参数的版本，且只接受回调函数作为参数。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-04-20 | Tags 
+                    
+                    <a class="tag" href="/tag.html#JavaScript">JavaScript</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/node-co.html">Node.js co 函数</a></p>
+                <p class="abstract">&lt;摘要&gt;: co 函数库是著名程序员 TJ Holowaychuk 于2013年6月发布的一个小工具，用于 Generator 函数的自动执行。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-04-21 | Tags 
                     
                     <a class="tag" href="/tag.html#Node">Node</a>
                     

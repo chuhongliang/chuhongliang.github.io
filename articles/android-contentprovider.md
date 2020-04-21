@@ -1,8 +1,9 @@
+# Android ContentProvider
 ContentProvider（内容提供者）是Android的四大组件之一，管理android以结构化方式存放的数据，以相对安全的方式封装数据（表）并且提供简易的处理机制和统一的访问接口供其他程序调用。　 　　 
 
 Android的数据存储方式总共有五种，分别是：Shared Preferences、网络存储、文件存储、外储存储、SQLite。但一般这些存储都只是在单独的一个应用程序之中达到一个数据的共享，有时候我们需要操作其他应用程序的一些数据，就会用到ContentProvider。而且Android为常见的一些数据提供了默认的ContentProvider（包括音频、视频、图片和通讯录等）。
 
->ContentProvider它也只是一个中间人，真正操作的数据源可能是数据库，也可以是文件、xml或网络等其他存储方式。
+ContentProvider它也只是一个中间人，真正操作的数据源可能是数据库，也可以是文件、xml或网络等其他存储方式。
 
 
 
@@ -10,12 +11,11 @@ Android的数据存储方式总共有五种，分别是：Shared Preferences、�
 URL（统一资源标识符）代表要操作的数据，可以用来标识每个ContentProvider，这样你就可以通过指定的URI找到想要的ContentProvider,从中获取或修改数据。 
 
 ![](../assets/vendor/uri.png)
-- 主题(Schema): URL的前缀，已经由Android所规定为" content:// "
-- 授权信息(Authority): 唯一标示符
-- 表名(Path): 指向数据库中的某个表名
-- 记录(ID): 表中的记录（若无指定，则返回全部记录）
+#### 主题(Schema): URL的前缀，已经由Android所规定为" content:// "
+#### 授权信息(Authority): 唯一标示符
+#### 表名(Path): 指向数据库中的某个表名
+#### 记录(ID): 表中的记录（若无指定，则返回全部记录）
 
----
 
 ## MIME
 MIME是指定某个扩展名的文件用一种应用程序来打开，就像你用浏览器查看PDF格式的文件，浏览器会选择合适的应用来打开一样。Android中的工作方式跟HTTP类似，ContentProvider会根据URI来返回MIME类型，ContentProvider会返回一个包含两部分的字符串。MIME类型一般包含两部分，类型和子类型：
@@ -27,7 +27,7 @@ MIME是指定某个扩展名的文件用一种应用程序来打开，就像你�
 | text/plain                              | .txt   |
 | video/mp4                               | .mp4   |
 
-#### 每个内容类型的Android MIME类型有两种形式：多条记录（集合）和单条记录。
+### 每个内容类型的Android MIME类型有两种形式：多条记录（集合）和单条记录。
 ```java
 // 集合记录：
 vnd.android.cursor.dir/自定义
@@ -35,8 +35,8 @@ vnd.android.cursor.dir/自定义
 vnd.android.cursor.item/自定义
 ```
 
-### Android系统提供了两个用于操作Uri的工具类：ContentUris和UriMatcher
-#### ContentUris
+>Android系统提供了两个用于操作Uri的工具类：ContentUris和UriMatcher
+## ContentUris
 ContetnUris包含一个便利的函数withAppendedId()来向URI追加一个id。
 ```java
 Uri uri = Uri.parse("content://cn.scu.myprovider/user")
@@ -50,10 +50,10 @@ long personid = ContentUris.parseId(uri);
 //获取的结果为:7
 ```
 
-#### UriMatcher
+## UriMatcher
 UriMatcher本质上是一个文本过滤器，用在contentProvider中帮助我们过滤，分辨出查询者想要查询哪个数据表。
 
-用法如下:
+#### 用法如下:
 ```java
 // 初始化：
 UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -82,7 +82,6 @@ public String getType(Uri uri) {
 } 
 ```
 
----
 
 ## ContentProvider的主要方法
 ```java
@@ -105,7 +104,6 @@ public Cursor query(Uri uri, String[] projection, String selection, String[] sel
 public String getType(Uri uri);
 ```
 
----
 
 ## ContentResolver
 ContentResolver通过URI来查询ContentProvider中提供的数据。除了URI以 外，还必须知道需要获取的数据段的名称，以及此数据段的数据类型。如果你需要获取一个特定的记录，你就必须知道当前记录的ID，也就是URI中D部分。
@@ -147,7 +145,7 @@ resolver.update(updateIdUri, updateValues, null, null);
 Uri deleteIdUri = ContentUris.withAppendedId(uri, 2);
 resolver.delete(deleteIdUri, null, null);
 ```
----
+
 
 ## ContentObserver
 ContentObserver(内容观察者)，目的是观察特定Uri引起的数据库的变化，继而做一些相应的处理，它类似于数据库技术中的触发器(Trigger)，当ContentObserver所观察的Uri发生变化时，便会触发它.
@@ -197,7 +195,6 @@ public class UserContentProvider extends ContentProvider {
 }
 ```
 
----
 
 ## 以下为实例代码
 Constant.java（储存一些常量）
@@ -214,7 +211,7 @@ public class Constant {
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTOHORITY + "/user");  
 }  
 ```
-DBHelper.java(操作数据库)
+### DBHelper.java(操作数据库)
 ```java
 public class DBHelper extends SQLiteOpenHelper {  
     private static final String DATABASE_NAME = "finch.db";    
@@ -238,7 +235,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }  
 }  
 ```
-MyProvider.java(自定义的ContentProvider)
+### MyProvider.java(自定义的ContentProvider)
 ```java
 public class MyProvider extends ContentProvider {    
     DBHelper mDbHelper = null;    
@@ -324,7 +321,7 @@ public class MyProvider extends ContentProvider {
     
 }    
 ```
-MainActivity.java(ContentResolver操作)
+### MainActivity.java(ContentResolver操作)
 ```java
 public class MainActivity extends Activity {
     private ContentResolver mContentResolver = null; 
@@ -355,7 +352,7 @@ public class MainActivity extends Activity {
          
 }  
 ```
-最后在manifest申明
+### 最后在manifest申明
 ```java
 <provider android:name="MyProvider" android:authorities="cn.scu.myprovider"
 ```

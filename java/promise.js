@@ -108,14 +108,14 @@ class NewPromise {
 
       // 获取到promise执行成功的结果，将这个结果作为finally返回的新的promise的值
       res => NewPromise.resolve(callback())
-          .then(() => {
-            return res
-          }),
+        .then(() => {
+          return res
+        }),
       // 获取执行失败的结果。原理同上
       error => NewPromise.resolve(callback())
-          .then(() => {
-            throw error
-          })
+        .then(() => {
+          throw error
+        })
     )
   }
   static allSettled(instanceList) {
@@ -226,3 +226,6 @@ class NewPromise {
     })
   }
 }
+
+
+

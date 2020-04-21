@@ -1,6 +1,6 @@
+# Iterator 与 ListIterator
 
-
-## 1. Iterator
+## Iterator
 Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。Iterator提供的API接口如下：
 
 boolean hasNext()：判断集合里是否存在下一个元素。如果有，hasNext()方法返回 true。
@@ -39,7 +39,7 @@ Iterator只能单向移动。
 
 Iterator.remove()是唯一安全的方式来在迭代过程中修改集合；如果在迭代过程中以任何其它的方式修改了基本集合将会产生未知的行为。而且每调用一次next()方法，remove()方法只能被调用一次，如果违反这个规则将抛出一个异常。
   
-## 2. ListIterator
+## ListIterator
 ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator.
 
 ```java

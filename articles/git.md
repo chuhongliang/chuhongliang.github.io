@@ -21,7 +21,9 @@ git stash -u -k // 提交部分文件内容 到仓库 例如本地有3个文件 
 git commit -m "提交的备注信息"  // 提交到仓库
 若已经有若干文件放入仓库，再次提交可以不用git add和git commit -m "备注信息" 这2步， 直接用
 git commit -am "备注信息" // 将内容放至仓库 也可用git commit -a -m "备注信息"
-* git commit中的备注信息尽量完善 养成良好提交习惯 例如 git commit -m "变更(范围)：变更的内容"
+// git commit中的备注信息尽量完善 养成良好提交习惯 例如 git commit -m "变更(范围)：变更的内容"
+git pull --tags // 把远程仓库的标签也拉取下来
+git push -f -u origin 分支名 //所有内容都回撤完了 将回撤后的操作强制推送到远程分支
 ```
 
 ## 存储密码凭证 设置别名 获取config信息以及配置
@@ -77,8 +79,6 @@ git reset HEAD --soft 回撤提交到暂存区
 git reset HEAD --hard // 回撤提交 放弃变更 (慎用)
 git reset HEAD^  // 回撤仓库最后一次提交
 git reset --hard commitid // 回撤到该次提交id的位置
- 
-git push -f -u origin 分支名 所有内容都回撤完了 将回撤后的操作强制推送到远程分支
 ```
 
 ## 分支

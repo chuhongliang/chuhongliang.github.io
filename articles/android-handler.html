@@ -54,7 +54,8 @@
         
         </div>
         <div id="article-content">
-            <p>Handler是用来接收和处理线程的消息队列里的message/runnable对象的工具。每个Handler实例关联一个单独的线程和这个的线程的消息队列，Handler实例会绑定到创建这个Handler的线程。从那一刻起，Handler会发送message/runnable到消息队列，然后在message/runnable从消息队列出来的时候处理它。</p>
+            <h1 id="android-handler">Android Handler</h1>
+<p>Handler是用来接收和处理线程的消息队列里的message/runnable对象的工具。每个Handler实例关联一个单独的线程和这个的线程的消息队列，Handler实例会绑定到创建这个Handler的线程。从那一刻起，Handler会发送message/runnable到消息队列，然后在message/runnable从消息队列出来的时候处理它。</p>
 <h2 id="handler的由来">Handler的由来</h2>
 <p>当程序第一次启动的时候，Android会同时启动一条主线程（ Main Thread）来负责处理与UI相关的事件，我们叫做UI线程。</p>
 <p>Android的UI操作并不是线程安全的（出于性能优化考虑），意味着如果多个线程并发操作UI线程，可能导致线程安全问题。</p>
@@ -108,28 +109,20 @@ final boolean    postDelayed(Runnable r, long delayMillis)
 }.start();
 </pre>
 <h2 id="handler机制">Handler机制</h2>
-<p>Handler:</p>
-<ul>
-<li>发送消息，它能把消息发送给Looper管理的MessageQueue。</li>
-<li>处理消息，并负责处理Looper分给它的消息。</li>
-<li>Handler的构造方法，会首先得到当前线程中保存的Looper实例，进而与Looper实例中的MessageQueue想关联。</li>
-<li>Handler的sendMessage方法，会给msg的target赋值为handler自身，然后加入MessageQueue中。　　 　　　</li>
-</ul>
-<p>Looper:</p>
-<ul>
-<li>每个线程只有一个Looper，它负责管理对应的MessageQueue，会不断地从MessageQueue取出消息，并将消息分给对应的Hanlder处理。 　</li>
-<li>主线程中，系统已经初始化了一个Looper对象，因此可以直接创建Handler即可，就可以通过Handler来发送消息、处理消息。 程序自己启动的子线程，程序必须自己创建一个Looper对象，并启动它，调用Looper.prepare()方法。</li>
-<li>prapare()方法：保证每个线程最多只有一个Looper对象。 　</li>
-<li>looper()方法：启动Looper，使用一个死循环不断取出MessageQueue中的消息，并将取出的消息分给对应的Handler进行处理。</li>
-</ul>
-<p>MessageQueue:</p>
-<ul>
-<li>由Looper负责管理，它采用先进先出的方式来管理Message。</li>
-</ul>
-<p>Message:</p>
-<ul>
-<li>Handler接收和处理的消息对象。</li>
-</ul>
+<h3 id="handler-">Handler:</h3>
+<p>发送消息，它能把消息发送给Looper管理的MessageQueue。</p>
+<p>处理消息，并负责处理Looper分给它的消息。</p>
+<p>Handler的构造方法，会首先得到当前线程中保存的Looper实例，进而与Looper实例中的MessageQueue想关联。</p>
+<p>Handler的sendMessage方法，会给msg的target赋值为handler自身，然后加入MessageQueue中。　　 　　　</p>
+<h3 id="looper-">Looper:</h3>
+<p>每个线程只有一个Looper，它负责管理对应的MessageQueue，会不断地从MessageQueue取出消息，并将消息分给对应的Hanlder处理。 　</p>
+<p>主线程中，系统已经初始化了一个Looper对象，因此可以直接创建Handler即可，就可以通过Handler来发送消息、处理消息。 程序自己启动的子线程，程序必须自己创建一个Looper对象，并启动它，调用Looper.prepare()方法。</p>
+<p>prapare()方法：保证每个线程最多只有一个Looper对象。 　</p>
+<p>looper()方法：启动Looper，使用一个死循环不断取出MessageQueue中的消息，并将取出的消息分给对应的Handler进行处理。</p>
+<h3 id="messagequeue-">MessageQueue:</h3>
+<p>由Looper负责管理，它采用先进先出的方式来管理Message。</p>
+<h3 id="message-">Message:</h3>
+<p>Handler接收和处理的消息对象。</p>
 
         </div>
         

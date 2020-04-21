@@ -56,10 +56,8 @@
         <div id="article-content">
             <p>JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。
 在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。</p>
-<blockquote>
-<p>在 Node.js 我们可以直接访问到 global 的属性，而不需要在应用中包含它。</p>
-</blockquote>
-<p>Node.js中的内置全局对象</p>
+<h4 id="在-nodejs-我们可以直接访问到-global-的属性，而不需要在应用中包含它。">在 Node.js 我们可以直接访问到 global 的属性，而不需要在应用中包含它。</h4>
+<h3 id="nodejs中的内置全局对象">Node.js中的内置全局对象</h3>
 <ul>
 <li><a href="#console">console</a></li>
 <li><a href="#filename">__filename</a></li>
@@ -80,11 +78,10 @@
 <li><a href="#requireid">require(id)</a></li>
 <li><a href="#buffer">Buffer</a></li>
 </ul>
-<hr>
 <h1 id="console">console</h1>
 <p>console 用于提供控制台标准输出，它是由 Internet Explorer 的 JScript 引擎提供的调试工具，后来逐渐成为浏览器的实施标准。
 Node.js 沿用了这个标准，提供与习惯行为一致的 console 对象，用于向标准输出流（stdout）或标准错误流（stderr）输出字符。</p>
-<p>常用方法:</p>
+<h4 id="常用方法-">常用方法:</h4>
 <ul>
 <li>console.log([data][, ...])  普通日志</li>
 <li>console.info([data][, ...]) 信息日志</li>
@@ -92,7 +89,6 @@ Node.js 沿用了这个标准，提供与习惯行为一致的 console 对象，
 <li>console.error([data][, ...]) 错误日志</li>
 <li>console.trace(message[, ...]): 当前执行的代码在堆栈中的调用路径</li>
 </ul>
-<hr>
 <h1 id="__filename">__filename</h1>
 <p>当前模块的文件名。 这是当前的模块文件的绝对路径（符号链接会被解析）。</p>
 <p>对于主程序，这不一定与命令行中使用的文件名相同。</p>
@@ -102,16 +98,14 @@ Node.js 沿用了这个标准，提供与习惯行为一致的 console 对象，
 console.log(__dirname);
 // 打印: /Users/mjr
 </pre>
-<hr>
 <h1 id="__dirname">__dirname</h1>
 <p>当前模块的目录名。 与 __filename 的 path.dirname() 相同。</p>
-<p>示例，从 /Users/mjr 运行 node example.js：</p>
+<h4 id="示例，从-users-mjr-运行-node-examplejs：">示例，从 /Users/mjr 运行 node example.js：</h4>
 <pre class="prettyprint linenums lang-js">console.log(__dirname);
 // 打印: /Users/mjr
 console.log(path.dirname(__filename));
 // 打印: /Users/mjr
 </pre>
-<hr>
 <h1 id="settimeout-cb-ms-">setTimeout(cb, ms)</h1>
 <p>setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。：setTimeout() 只执行一次指定函数。
 返回一个代表定时器的句柄值。</p>
@@ -120,7 +114,6 @@ setTimeout(function printHello(){
    console.log( &quot;Hello, World!&quot;);
 }, 2000);
 </pre>
-<hr>
 <h1 id="cleartimeout-t-">clearTimeout(t)</h1>
 <p>clearTimeout( t ) 全局函数用于停止一个之前通过 setTimeout() 创建的定时器。 参数 t 是通过 setTimeout() 函数创建的定时器。</p>
 <pre class="prettyprint linenums lang-js">let t = setTimeout(function printHello(){
@@ -129,7 +122,6 @@ setTimeout(function printHello(){
 // 清除定时器
 clearTimeout(t);
 </pre>
-<hr>
 <h1 id="setinterval-cb-ms-">setInterval(cb, ms)</h1>
 <p>setInterval(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。
 返回一个代表定时器的句柄值。可以使用 clearInterval(t) 函数来清除定时器。
@@ -139,7 +131,6 @@ setInterval(function printHello(){
    console.log( &quot;Hello, World!&quot;);
 }, 2000);
 </pre>
-<hr>
 <h1 id="setimmediate">setImmediate</h1>
 <p>预定在 I/O 事件的回调之后立即执行的 callback。</p>
 <pre class="prettyprint linenums lang-js">// 两秒后执行以下函数
@@ -147,7 +138,6 @@ setImmediate(function printHello(){
    console.log( &quot;Hello, World!&quot;);
 }, 2000);
 </pre>
-<hr>
 <h1 id="process">process</h1>
 <p>process 对象是一个全局变量，它提供有关当前 Node.js 进程的信息并对其进行控制。 作为一个全局变量，它始终可供 Node.js 应用程序使用，无需使用 require()。</p>
 <p>常用方法:</p>
@@ -175,7 +165,6 @@ process.argv.forEach((val, index) =&gt; {
 <h2 id="processtitle">process.title</h2>
 <p>process.title 属性返回当前进程标题（即返回 ps 的当前值）。 为 process.title 分配新值会修改 ps 的当前值。</p>
 <p>当分配新值时，不同的平台会对标题施加不同的最大长度限制。 通常这种限制是相当有限的。 例如，在 Linux 和 macOS 上， process.title 仅限于二进制名称的大小加上命令行参数的长度，因为设置 process.title 会覆盖进程的 argv 内存。 Node.js 的 v0.8, 通过覆盖 environ 允许内存较长的过程标题字符串，但是这在一些（相当模糊的）可能是不安全的并且令人困惑情况下。</p>
-<hr>
 <h1 id="exports">exports</h1>
 <p>这是一个对于 module.exports 的更简短的引用形式。</p>
 <p>变量是在模块的文件级作用域内可用的，且在模块执行之前赋值给 module.exports。</p>
@@ -188,7 +177,6 @@ exports = { hello: false };  // 不导出，仅在模块中可用。
   // ... 
 };
 </pre>
-<hr>
 <h1 id="moduleexports">module.exports</h1>
 <p>用于指定一个模块所导出的内容，即可以通过 require() 访问的内容。</p>
 <p>module.exports 对象由 Module 系统创建。 有时这是不可接受的；许多人希望他们的模块成为某个类的实例。 为此，需要将期望导出的对象赋值给 module.exports。 将期望的对象赋值给 exports 会简单地重新绑定本地的 exports 变量，这可能不是所期望的。</p>
@@ -209,7 +197,6 @@ a.on(&#39;ready&#39;, () =&gt; {
 });
 </pre>
 <p>对 module.exports 的赋值必须立即完成。 不能在任何回调中完成。</p>
-<hr>
 <h1 id="require-id-">require(id)</h1>
 <p>用于引入模块、 JSON、或本地文件。 可以从 node_modules 引入模块。 可以使用相对路径（例如 ./、 ./foo、 ./bar/baz、 ../foo）引入本地模块或 JSON 文件，路径会根据 __dirname 定义的目录名或当前工作目录进行处理。</p>
 <pre class="prettyprint linenums lang-js">// 引入本地模块：
@@ -219,7 +206,6 @@ const jsonData = require(&#39;./path/filename.json&#39;);
 // 引入 node_modules 模块或 Node.js 内置模块：
 const crypto = require(&#39;crypto&#39;);
 </pre>
-<hr>
 <h1 id="buffer">Buffer</h1>
 <p>Buffer 类是作为 Node.js API 的一部分引入的，用于在 TCP 流、文件系统操作、以及其他上下文中与八位字节流进行交互。</p>
 <pre class="prettyprint linenums lang-js">// 创建一个长度为 10、且用零填充的 Buffer。

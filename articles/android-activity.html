@@ -54,13 +54,16 @@
         
         </div>
         <div id="article-content">
-            <p>Activity 类是 Android 应用的关键组件，而 Activity 的启动和组合方式则是该平台应用模型的基本组成部分。在编程范式中，应用是通过 main() 方法启动的，而 Android 系统与此不同，它会调用与其生命周期特定阶段相对应的特定回调方法来启动 Activity 实例中的代码。</p>
+            <h1 id="android-activity">Android Activity</h1>
+<p>Activity 类是 Android 应用的关键组件，而 Activity 的启动和组合方式则是该平台应用模型的基本组成部分。在编程范式中，应用是通过 main() 方法启动的，而 Android 系统与此不同，它会调用与其生命周期特定阶段相对应的特定回调方法来启动 Activity 实例中的代码。</p>
 <h1 id="activity-生命周期">Activity 生命周期</h1>
 <p>为了在 Activity 生命周期的各个阶段之间导航转换，Activity 类提供六个核心回调：onCreate()、onStart()、onResume()、onPause()、onStop() 和 onDestroy()。当 Activity 进入新状态时，系统会调用每个回调。</p>
 <p>下图是对此范例的直观展现。</p>
 <p><img src="../assets/vendor/activity_lifecycle.png" alt=""></p>
-<h1 id="生命周期回调">生命周期回调</h1>
+<h3 id="生命周期回调">生命周期回调</h3>
+<blockquote>
 <p>一个 Activity 在其生命周期中会经历多种状态。您可以使用一系列回调来处理状态之间的转换。下面几节将介绍这些回调。</p>
+</blockquote>
 <h2 id="oncreate-">onCreate()</h2>
 <p>已创建状态，Activity 对用户不可见</p>
 <p>在系统首次创建 Activity 时触发。在 onCreate() 方法中，执行基本应用启动逻辑，该逻辑在 Activity 的整个生命周期中只应发生一次。onCreate() 的实现可能会将数据绑定到列表，将 Activity 与 ViewModel 相关联，并实例化某些类范围变量。此方法接收 savedInstanceState 参数，后者是包含 Activity 先前保存状态的 Bundle 对象。如果 Activity 此前未曾存在，则 Bundle 对象的值为 null。</p>
@@ -88,69 +91,51 @@
 <li>由于配置变更（例如设备旋转或多窗口模式），系统暂时销毁 Activity</li>
 </ul>
 <p>当 Activity 进入已销毁状态时，与 Activity 生命周期相关联的所有具有生命周期感知能力的组件都将收到 ON_DESTROY 事件。此时，生命周期组件可以在 Activity 遭到销毁之前清理所需的任何数据。</p>
-<hr>
 <h2 id="acticity-生命周期调用顺序">Acticity 生命周期调用顺序</h2>
-<h4 id="打开一个新的activity实例的时候，系统会依次调用：">打开一个新的activity实例的时候，系统会依次调用：</h4>
-<ul>
-<li>onCreate（) -&gt; onStart() -&gt; onResume() 然后开始running</li>
-</ul>
-<h4 id="用户回到桌面或是打开其他activity，系统会调用：">用户回到桌面或是打开其他activity，系统会调用：</h4>
-<ul>
-<li>onPause() -&gt; onStop() 进入停止状态</li>
-</ul>
-<h4 id="如果用户返回到onstop-状态的activity（又显示在前台了），系统会调用：">如果用户返回到onStop()状态的activity（又显示在前台了），系统会调用：</h4>
-<ul>
-<li>onRestart() -&gt; onStart() -&gt; onResume() 然后重新running</li>
-</ul>
-<hr>
-<h2 id="activity-四种启动模式">Activity 四种启动模式</h2>
+<h3 id="打开一个新的activity实例的时候，系统会依次调用：">打开一个新的activity实例的时候，系统会依次调用：</h3>
+<blockquote>
+<p>onCreate（) -&gt; onStart() -&gt; onResume() 然后开始running</p>
+</blockquote>
+<h3 id="用户回到桌面或是打开其他activity，系统会调用：">用户回到桌面或是打开其他activity，系统会调用：</h3>
+<blockquote>
+<p>onPause() -&gt; onStop() 进入停止状态</p>
+</blockquote>
+<h3 id="如果用户返回到onstop-状态的activity（又显示在前台了），系统会调用：">如果用户返回到onStop()状态的activity（又显示在前台了），系统会调用：</h3>
+<blockquote>
+<p>onRestart() -&gt; onStart() -&gt; onResume() 然后重新running</p>
+</blockquote>
+<h1 id="activity-四种启动模式">Activity 四种启动模式</h1>
 <p>Android中的activity全都归属于task管理 。task 是多个 activity 的集合，这些 activity 按照启动顺序排队存入一个栈（即“back stack”）。android默认会为每个App维持一个task来存放该app的所有activity，task的默认name为该app的packagename。</p>
-<h4 id="启动模式是定义activity-实例与task-的关联方式。-　　">启动模式是定义activity 实例与task 的关联方式。 　　</h4>
-<ul>
-<li><strong>standard</strong> （默认模式）　<ul>
-<li>当通过这种模式来启动Activity时,　Android总会为目标 Activity创建一个新的实例,并将该Activity添加到当前Task栈中。这种方式不会启动新的Task,只是将新的 Activity添加到原有的Task中。　</li>
-</ul>
-</li>
-<li><strong>singleTop</strong><ul>
-<li>该模式和standard模式基本一致,但有一点不同:当将要被启动的Activity已经位于Task栈顶时,系统不会重新创建目标Activity实例,而是直接复用Task栈顶的Activity。</li>
-</ul>
-</li>
-<li><strong>singleTask</strong><ul>
-<li>Activity在同一个Task内只有一个实例。如果将要启动的Activity不存在,那么系统将会创建该实例,并将其加入Task栈顶；　</li>
-<li>如果将要启动的Activity已存在,且存在栈顶,直接复用Task栈顶的Activity。</li>
-<li>如果Activity存在但是没有位于栈顶,那么此时系统会把位于该Activity上面的所有其他Activity全部移出Task,从而使得该目标Activity位于栈顶。</li>
-</ul>
-</li>
-<li><strong>singleInstance</strong><ul>
-<li>无论从哪个Task中启动目标Activity,只会创建一个目标Activity实例且会用一个全新的Task栈来装载该Activity实例（全局单例）.</li>
-<li>如果将要启动的Activity不存在,那么系统将会先创建一个全新的Task,再创建目标Activity实例并将该Activity实例放入此全新的Task中。</li>
-<li>如果将要启动的Activity已存在,那么无论它位于哪个应用程序,哪个Task中;系统都会把该Activity所在的Task转到前台,从而使该Activity显示出来。</li>
-</ul>
-</li>
-</ul>
-<h3 id="两种定义启动模式方法-">两种定义启动模式方法:</h3>
-<h4 id="1-使用-intent-标志">1. 使用 Intent 标志</h4>
+<blockquote>
+<p>启动模式是定义activity 实例与task 的关联方式。 　　</p>
+</blockquote>
+<h2 id="-strong-standard-strong-（默认模式）　"><strong>standard</strong> （默认模式）　</h2>
+<p>当通过这种模式来启动Activity时,　Android总会为目标 Activity创建一个新的实例,并将该Activity添加到当前Task栈中。这种方式不会启动新的Task,只是将新的 Activity添加到原有的Task中。　</p>
+<h2 id="-strong-singletop-strong-"><strong>singleTop</strong></h2>
+<p>该模式和standard模式基本一致,但有一点不同:当将要被启动的Activity已经位于Task栈顶时,系统不会重新创建目标Activity实例,而是直接复用Task栈顶的Activity。</p>
+<h2 id="-strong-singletask-strong-"><strong>singleTask</strong></h2>
+<p>Activity在同一个Task内只有一个实例。如果将要启动的Activity不存在,那么系统将会创建该实例,并将其加入Task栈顶；　</p>
+<p>如果将要启动的Activity已存在,且存在栈顶,直接复用Task栈顶的Activity。</p>
+<p>如果Activity存在但是没有位于栈顶,那么此时系统会把位于该Activity上面的所有其他Activity全部移出Task,从而使得该目标Activity位于栈顶。</p>
+<h2 id="-strong-singleinstance-strong-"><strong>singleInstance</strong></h2>
+<p>无论从哪个Task中启动目标Activity,只会创建一个目标Activity实例且会用一个全新的Task栈来装载该Activity实例（全局单例）.</p>
+<p>如果将要启动的Activity不存在,那么系统将会先创建一个全新的Task,再创建目标Activity实例并将该Activity实例放入此全新的Task中。</p>
+<p>如果将要启动的Activity已存在,那么无论它位于哪个应用程序,哪个Task中;系统都会把该Activity所在的Task转到前台,从而使该Activity显示出来。</p>
+<h1 id="两种定义启动模式方法-">两种定义启动模式方法:</h1>
+<h2 id="1-使用-intent-标志">1. 使用 Intent 标志</h2>
 <p>在要启动 activity 时，你可以在传给 startActivity() 的 intent 中包含相应标志，以修改 activity 与 task 的默认关系。</p>
 <pre class="prettyprint linenums lang-java">Intent i = new Intent(this,ＮewActivity.class);
 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 startActivity(i);
 </pre>
-<h4 id="通过标志修改的模式">通过标志修改的模式</h4>
-<ul>
-<li>Intent.FLAG_ACTIVITY_NEW_TASK<ul>
-<li>与&quot;singleTask&quot;模式相同，在新的 task 中启动 activity。如果要启动的 activity 已经运行于某 task 中，则那个 task 将调入前台。</li>
-</ul>
-</li>
-<li>Intent.FLAG_ACTIVITY_SINGLE_TOP<ul>
-<li>与 &quot;singleTop&quot;模式相同，如果要启动的 activity位于back stack 顶，系统不会重新创建目标Activity实例,而是直接复用Task栈顶的Activity。</li>
-</ul>
-</li>
-<li>FLAG_ACTIVITY_CLEAR_TOP<ul>
-<li>此种模式在launchMode中没有对应的属性值。如果要启动的 activity 已经在当前 task 中运行，则不再启动一个新的实例，且所有在其上面的 activity 将被销毁。</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-在manifest-文件中声明">2. 在manifest 文件中声明</h4>
+<h3 id="通过标志修改的模式">通过标志修改的模式</h3>
+<h4 id="intentflag_activity_new_task">Intent.FLAG_ACTIVITY_NEW_TASK</h4>
+<p>与&quot;singleTask&quot;模式相同，在新的 task 中启动 activity。如果要启动的 activity 已经运行于某 task 中，则那个 task 将调入前台。</p>
+<h4 id="intentflag_activity_single_top">Intent.FLAG_ACTIVITY_SINGLE_TOP</h4>
+<p>与 &quot;singleTop&quot;模式相同，如果要启动的 activity位于back stack 顶，系统不会重新创建目标Activity实例,而是直接复用Task栈顶的Activity。</p>
+<h4 id="flag_activity_clear_top">FLAG_ACTIVITY_CLEAR_TOP</h4>
+<p>此种模式在launchMode中没有对应的属性值。如果要启动的 activity 已经在当前 task 中运行，则不再启动一个新的实例，且所有在其上面的 activity 将被销毁。</p>
+<h2 id="2-在manifest-文件中声明">2. 在manifest 文件中声明</h2>
 <p>在 manifest 文件中 activity 声明时，利用 activity 元素的 launchMode 属性来设定 activity 与 task 的关系。</p>
 <pre class="prettyprint linenums lang-java">&lt;activity
   ．．．．．．
@@ -163,21 +148,13 @@ startActivity(i);
 <p>一般不要改变 activity 和 task 默认的工作方式。 如果你确定有必要修改默认方式，请保持谨慎，并确保 activity 在启动和从其它 activity 返回时的可用性，多做测试和安全方面的工作。</p>
 <h2 id="intent-filter">Intent Filter</h2>
 <p>在 Android 的 AndroidManifest.xml 配置文件中可以通过 intent-filter 节点为一个 Activity 指定其 Intent Filter，以便告诉系统该 Activity 可以响应什么类型的 Intent。</p>
-<h3 id="intent-filter-的三大属性">intent-filter 的三大属性</h3>
-<ul>
-<li>Action <ul>
-<li>一个 Intent Filter 可以包含多个 Action，Action 列表用于标示 Activity 所能接受的“动作”，它是一个用户自定义的字符串。</li>
-</ul>
-</li>
-<li>URL<ul>
-<li>在 intent-filter 节点中，通过 data节点匹配外部数据，也就是通过 URI 携带外部数据给目标组件。</li>
-</ul>
-</li>
-<li>Category<ul>
-<li>为组件定义一个 类别列表，当 Intent 中包含这个类别列表的所有项目时才会匹配成功。</li>
-</ul>
-</li>
-</ul>
+<h3 id="-strong-intent-filter-strong-的三大属性"><strong>intent-filter</strong> 的三大属性</h3>
+<h4 id="-strong-action-strong-"><strong>Action</strong></h4>
+<p>一个 Intent Filter 可以包含多个 Action，Action 列表用于标示 Activity 所能接受的“动作”，它是一个用户自定义的字符串。</p>
+<h4 id="-strong-url-strong-"><strong>URL</strong></h4>
+<p>在 intent-filter 节点中，通过 data节点匹配外部数据，也就是通过 URI 携带外部数据给目标组件。</p>
+<h4 id="-strong-category-strong-"><strong>Category</strong></h4>
+<p>为组件定义一个 类别列表，当 Intent 中包含这个类别列表的所有项目时才会匹配成功。</p>
 <p>以下为具体用法：</p>
 <pre class="prettyprint linenums lang-java">&lt;intent-filter &gt; 
     &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
@@ -204,32 +181,22 @@ i.setAction(&quot;com.scu.amazing7Action&quot;);
 <li>去掉Category匹配失败的Intent Filter</li>
 <li>判断剩下的Intent Filter数目是否为0。如果为0查找失败返回异常；如果大于0，就按优先级排序，返回最高优先级的Intent Filter</li>
 </ul>
-<hr>
 <h2 id="开发中使用activity注意事项">开发中使用Activity注意事项</h2>
-<ul>
-<li><p>一般设置Activity为非公开的</p>
-<ul>
-<li>非公开的Activity不能设置intent-filter，以免被其他activity唤醒（如果拥有相同的intent-filter）。<pre class="prettyprint linenums lang-java">&lt;activity  
+<p>一般设置Activity为非公开的</p>
+<p>非公开的Activity不能设置intent-filter，以免被其他activity唤醒（如果拥有相同的intent-filter）。</p>
+<pre class="prettyprint linenums lang-java">&lt;activity  
 ．．．．．． 
 android:exported=&quot;false&quot; /&gt; 
 </pre>
-</li>
-</ul>
-</li>
-<li><p>不要指定activity的taskAffinity属性</p>
-</li>
-<li>不要设置activity的LaunchMode（保持默认）</li>
-<li>在匿名内部类中使用this时加上activity类名（类名.this,不一定是当前activity）</li>
-<li>设置activity全屏<ul>
-<li>在其 onCreate()方法中加入：<pre class="prettyprint linenums lang-java">// 设置全屏模式
+<p>不要指定activity的taskAffinity属性</p>
+<p>不要设置activity的LaunchMode（保持默认）</p>
+<p>在匿名内部类中使用this时加上activity类名（类名.this,不一定是当前activity）</p>
+<p>设置activity全屏,在其 onCreate()方法中加入：</p>
+<pre class="prettyprint linenums lang-java">// 设置全屏模式
 getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); 
 // 去除标题栏
 requestWindowFeature(Window.FEATURE_NO_TITLE);
 </pre>
-</li>
-</ul>
-</li>
-</ul>
 
         </div>
         

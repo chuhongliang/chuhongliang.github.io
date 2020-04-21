@@ -1,3 +1,5 @@
+# Android AsyncTask
+
 在Android中实现异步任务机制有两种方式，Handler和AsyncTask。
 
 AsyncTask比Handler更轻量级一些（只是代码上轻量一些，而实际上要比handler更耗资源），适用于简单的异步处理。Android之所以有Handler和AsyncTask，都是为了不阻塞主线程（UI线程），因为UI的更新只能在主线程中完成，因此异步处理是不可避免的。
@@ -8,7 +10,7 @@ AsyncTask内部会创建一个进程作用域的线程池来管理要运行的�
 
 使用AsyncTask分为两步：
 
-### 1. 继承AsyncTask类实现自己的类
+## 1. 继承AsyncTask类实现自己的类
    
 ```java
 /**
@@ -19,19 +21,18 @@ AsyncTask内部会创建一个进程作用域的线程池来管理要运行的�
 public abstract class AsyncTask<Params, Progress, Result> {}
 ```
 
-### 2. 复写方法
-- doInBackground(Params…)
-   - 在子线程（其他方法都在主线程执行）中执行比较耗时的操作，不能更新ＵＩ，可以在该方法中调用publishProgress(Progress…)来更新任务的进度。Progress方法是AsycTask中一个final方法只能调用不能重写。
-- onPostExecute(Result)
-   - 使用在doInBackground 得到的结果处理操作UI， 在主线程执行，任务执行的结果作为此方法的参数返回。 　　 有时根据需求还要实现以下三个方法：
-- onProgressUpdate(Progress…)
-   - 可以使用进度条增加用户体验度。 此方法在主线程执行，用于显示任务执行的进度。
-- onPreExecute()
-   - 这里是最终用户调用Excute时的接口，当任务执行之前开始调用此方法，可以在这里显示进度对话框。
-- onCancelled()
-   - 用户调用取消时，要做的操作
+## 2. 复写方法
+### doInBackground(Params…)
+在子线程（其他方法都在主线程执行）中执行比较耗时的操作，不能更新ＵＩ，可以在该方法中调用publishProgress(Progress…)来更新任务的进度。Progress方法是AsycTask中一个final方法只能调用不能重写。
+### onPostExecute(Result)
+使用在doInBackground 得到的结果处理操作UI， 在主线程执行，任务执行的结果作为此方法的参数返回。 　　 有时根据需求还要实现以下三个方法：
+### onProgressUpdate(Progress…)
+可以使用进度条增加用户体验度。 此方法在主线程执行，用于显示任务执行的进度。
+### onPreExecute()
+这里是最终用户调用Excute时的接口，当任务执行之前开始调用此方法，可以在这里显示进度对话框。
+### onCancelled()
+用户调用取消时，要做的操作
 
----
 
 ## AsyncTask示例
 ```java
@@ -72,20 +73,19 @@ public class MyTask extends AsyncTask<String, Integer, String> {
     }  
 }
 ```
-在主线程申明该类的对象，调用对象的execute（）函数开始执行。
+#### 在主线程申明该类的对象，调用对象的execute（）函数开始执行。
 ```java
 MyTask ｔ= new MyTask();
 t.execute();//这里没有参数
 ```
----
 
-## 使用AsyncTask需要注意的地方
-- AsnycTask内部的Handler需要和主线程交互，所以AsyncTask的实例必须在UI线程中创建
+# 使用AsyncTask需要注意的地方
+AsnycTask内部的Handler需要和主线程交互，所以AsyncTask的实例必须在UI线程中创建
 
-- AsyncTaskResult的doInBackground(mParams)方法执行异步任务运行在子线程中，其他方法运行在主线程中，可以操作UI组件。
+AsyncTaskResult的doInBackground(mParams)方法执行异步任务运行在子线程中，其他方法运行在主线程中，可以操作UI组件。
 
-- 一个AsyncTask任务只能被执行一次。
+一个AsyncTask任务只能被执行一次。
 
-- 运行中可以随时调用AsnycTask对象的cancel(boolean)方法取消任务，如果成功，调用isCancelled()会返回true，并且不会执行 onPostExecute() 方法了，而是执行 onCancelled() 方法。
+运行中可以随时调用AsnycTask对象的cancel(boolean)方法取消任务，如果成功，调用isCancelled()会返回true，并且不会执行 onPostExecute() 方法了，而是执行 onCancelled() 方法。
 
-- 对于想要立即开始执行的异步任务，要么直接使用Thread，要么单独创建线程池提供给AsyncTask。默认的AsyncTask不一定会立即执行你的任务，除非你提供给他一个单独的线程池。如果不与主线程交互，直接创建一个Thread就可以了。
+对于想要立即开始执行的异步任务，要么直接使用Thread，要么单独创建线程池提供给AsyncTask。默认的AsyncTask不一定会立即执行你的任务，除非你提供给他一个单独的线程池。如果不与主线程交互，直接创建一个Thread就可以了。

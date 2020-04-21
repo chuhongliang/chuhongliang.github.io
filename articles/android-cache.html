@@ -54,7 +54,8 @@
         
         </div>
         <div id="article-content">
-            <p>Android提供了5种方式来让用户保存持久化应用程序数据。根据自己的需求来做选择，比如数据是否是应用程序私有的，是否能被其他程序访问，需要多少数据存储空间等，分别是：　 　　 </p>
+            <h1 id="android-数据存储">Android 数据存储</h1>
+<p>Android提供了5种方式来让用户保存持久化应用程序数据。根据自己的需求来做选择，比如数据是否是应用程序私有的，是否能被其他程序访问，需要多少数据存储空间等，分别是：　 　　 </p>
 <ul>
 <li>使用SharedPreferences存储数据　</li>
 <li>文件存储数据</li>
@@ -67,17 +68,13 @@
 <p>SharedPreference类提供了一个总体框架，使您可以保存和检索的任何基本数据类型（ boolean, float, int, long, string）的持久键-值对（基于XML文件存储的“key-value”键值对数据）。</p>
 <p>通常用来存储程序的一些配置信息。其存储在“data/data/程序包名/shared_prefs“目录下。</p>
 <p>我们可以通过以下两种方法获取SharedPreferences对象:</p>
-<ol>
-<li><p>如果你的Activity中只需要一个SharedPreferences的时候使用。</p>
+<p>如果你的Activity中只需要一个SharedPreferences的时候使用。</p>
 <pre class="prettyprint linenums lang-java">getPreferences (int mode)
 </pre>
-</li>
-<li><p>当我们有多个SharedPreferences的时候，根据第一个参数name获得相应的SharedPreferences对象。</p>
+<p>当我们有多个SharedPreferences的时候，根据第一个参数name获得相应的SharedPreferences对象。</p>
 <pre class="prettyprint linenums lang-java">getSharedPreferences (String name, int mode)
 </pre>
-</li>
-</ol>
-<p>这里的mode有四个选项：</p>
+<h4 id="这里的mode有四个选项：">这里的mode有四个选项：</h4>
 <ul>
 <li>Context.MODE_PRIVATE: 该SharedPreferences数据只能被本应用程序读、写。</li>
 <li>Context.MODE_WORLD_READABLE: 该SharedPreferences数据能被其他应用程序读，但不能写。</li>
@@ -102,10 +99,11 @@ editor.remove(String key)
 /* 移除所有键值对 */
 editor.clear()
 </pre>
-<hr>
 <h2 id="文件存储">文件存储</h2>
+<blockquote>
 <p>文件存储分为内部存储和外部存储</p>
-<h3 id="1-内部存储">1. 内部存储</h3>
+</blockquote>
+<h3 id="内部存储">内部存储</h3>
 <p>当文件被保存在内部存储中时，默认情况下，文件是应用程序私有的，其他应用不能访问。当用户卸载应用程序时这些文件也跟着被删除。</p>
 <p>文件默认存储位置：/data/data/包名/files/文件名。</p>
 <p>创建和写入一个内部存储的私有文件:</p>
@@ -119,7 +117,7 @@ try {
     e.printStackTrace();
 }
 </pre>
-<p>mode参数：用于指定操作模式，分为四种：</p>
+<h4 id="mode参数：用于指定操作模式，分为四种：">mode参数：用于指定操作模式，分为四种：</h4>
 <ul>
 <li>Context.MODE_PRIVATE = 0<ul>
 <li>为默认操作模式，代表该文件是私有数据，只能被应用本身访问，在该模式下，写入的内容会覆盖原文件的内容。</li>
@@ -153,21 +151,21 @@ try {
     e.printStackTrace();
 }
 </pre>
-<p>其他一些经常用到的方法：</p>
+<h4 id="其他一些经常用到的方法：">其他一些经常用到的方法：</h4>
 <ul>
 <li>getFilesDir(): 得到内存储文件的绝对路径</li>
 <li>getDir(): 在内存储空间中创建或打开一个已经存在的目录</li>
 <li>deleteFile(): 删除保存在内部存储的文件</li>
 <li>fileList(): 返回当前由应用程序保存的文件的数组(内存储目录下的全部文件)</li>
 </ul>
-<h3 id="保存编译时的静态文件">保存编译时的静态文件</h3>
+<h4 id="保存编译时的静态文件">保存编译时的静态文件</h4>
 <p>如果你想在应用编译时保存静态文件，应该把文件保存在项目的　res/raw/　目录下，你可以通过 openRawResource()方法去打开它（传入参数R.raw.filename），这个方法返回一个 InputStream流对象你可以读取文件但是不能修改原始文件。</p>
 <pre class="prettyprint linenums lang-java">InputStream is = this.getResources().openRawResource(R.raw.filename);
 </pre>
-<h3 id="保存内存缓存文件">保存内存缓存文件</h3>
+<h4 id="保存内存缓存文件">保存内存缓存文件</h4>
 <p>有时候我们只想缓存一些数据而不是持久化保存，可以使用getCacheDir（）去打开一个文件，文件的存储目录（ /data/data/包名/cache ）是一个应用专门来保存临时缓存文件的内存目录。</p>
 <p>当设备的内部存储空间比较低的时候，Android可能会删除这些缓存文件来恢复空间，但是你不应该依赖系统来回收，要自己维护这些缓存文件把它们的大小限制在一个合理的范围内，比如1ＭＢ．当你卸载应用的时候这些缓存文件也会被移除。</p>
-<h3 id="2-使用外部存储（sdcard）">2. 使用外部存储（sdcard）</h3>
+<h3 id="外部存储（sdcard）">外部存储（sdcard）</h3>
 <p>因为内部存储容量限制，有时候需要存储数据比较大的时候需要用到外部存储，使用外部存储分为以下几个步骤：</p>
 <ul>
 <li>添加外部存储访问限权</li>
@@ -222,7 +220,6 @@ if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED){     
     }
 }  
 </pre>
-<hr>
 <h2 id="网络存储">网络存储</h2>
 <p>网络存储方式，需要与Android 网络数据包打交道，Android提供了HttpUrlConnection。
 HttpUrlConnection是Java.net包中提供的API，我们知道Android SDK是基于Java的，所以当然优先考虑HttpUrlConnection这种最原始最基本的API，其实大多数开源的联网框架基本上也是基于JDK的HttpUrlConnection进行的封装</p>
