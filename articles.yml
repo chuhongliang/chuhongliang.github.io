@@ -1,625 +1,11 @@
 
-- id: node-co
-  title:  Node.js co 函数
-  postedOn: !!str 2020-04-21
+- id: nodejs
+  title: Node.js 简介
+  postedOn: !!str 2020-01-26
   author: chuhongliang
   tags:
     - Node
-  abstract: co 函数库是著名程序员 TJ Holowaychuk 于2013年6月发布的一个小工具，用于 Generator 函数的自动执行。
-  
-- id: javascript-thunk
-  title:  JavaScript Thunk 函数
-  postedOn: !!str 2020-04-20
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: Thunk函数的定义，它是"传名调用"的一种实现策略，用来替换某个表达式。JavaScript 语言是传值调用，它的 Thunk 函数含义有所不同。在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成单参数的版本，且只接受回调函数作为参数。
-
-- id: javascript-generator
-  title:  JavaScript Generator函数
-  postedOn: !!str 2020-04-20
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: Generator 函数是协程在 ES6 的实现，最大特点就是可以交出函数的执行权（即暂停执行）。Generator 对象是由一个 generator function 返回的,并且它符合可迭代协议和迭代器协议。
-
-- id: web-security
-  title:  常见web安全攻防总结
-  postedOn: !!str 2020-04-13
-  author: chuhongliang
-  tags:
-    - Web安全
-  abstract: 常见的Web攻击类型有以下几种；XSS，CSRF，点击劫持，URL跳转漏洞，SQL注入，OS命令注入攻击
-  
-- id: node-static
-  title:  Node.js 实现简单的静态服务器
-  postedOn: !!str 2020-04-11
-  author: chuhongliang
-  tags:
-    - Node
-  abstract: Node里面是没有Web容器的概念, 所以URL上的路径跟实际文件的路径并不一致。这里我们手动实现一个简单的原生静态服务，让Node能够找到路径的文件，实现静态服务器功能。文件夹的任何文件都能被找到。
-  
-- id: javascript-curry
-  title:  JavaScript 柯里化
-  postedOn: !!str 2020-04-08
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: 在计算机科学中，柯里化（Currying）是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数且返回结果的新函数的技术。这个技术由 Christopher Strachey 以逻辑学家 Haskell Curry 命名的，尽管它是 Moses Schnfinkel 和 Gottlob Frege 发明的。
-
-- id: javascript-promise
-  title:  JavaScript Promise
-  postedOn: !!str 2020-04-07
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。
-
-- id: algorithm-interview
-  title:  面试遇到的算法
-  postedOn: !!str 2020-03-30
-  author: chuhongliang
-  tags:
-    - 算法
-  abstract: 面试过程中遇到的算法，仅作记录
-  
-- id: node-memoryleak
-  title:  Node.js 内存泄漏
-  postedOn: !!str 2020-03-30
-  author: chuhongliang
-  tags:
-    - Node
-  abstract: 在V8的垃圾回收机制下，在通常的代码编写中，很少会出现内存泄漏的情况。但是内存泄漏通常产生于无意间，较难排查。尽管内存泄漏的情况不尽相同，但其实质只有一个，那就是应当回收的对象出现意外而没有被回收，变成了常驻在老生代中的对象
-
-- id: node-memory
-  title:  Node.js 内存控制
-  postedOn: !!str 2020-03-30
-  author: chuhongliang
-  tags:
-    - Node
-  abstract: 如何触发垃圾回收，第一个要介绍的是作用域（scope）。在js中能形成作用域的有函数调用、with以及全局作用域。
-
-- id: node-gc
-  title:  Node.js 垃圾回收
-  postedOn: !!str 2020-03-30
-  author: chuhongliang
-  tags:
-    - Node
-  abstract: V8垃圾回收策略主要基于分代式垃圾回收机制。现代的垃圾回收算法中按对象的存活时间将内存的垃圾回收进行不同的分代，然后分别对不同分代的内存施以更高效的算法。
-
-- id: javascript-gc
-  title:  JavaScript 垃圾回收
-  postedOn: !!str 2020-03-29
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: 垃圾回收算法主要依赖于引用的概念。在内存管理的环境中，一个对象如果有访问另一个对象的权限（隐式或者显式），叫做一个对象引用另一个对象。例如，一个Javascript对象具有对它原型的引用（隐式引用）和对它属性的引用（显式引用）。
-
-- id: network-byte
-  title:  字节序
-  postedOn: !!str 2020-03-29
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: 计算机硬件有两种储存数据的方式：大端字节序（big endian）和小端字节序（little endian）
-
-- id: protobuf
-  title:  Protobuf
-  postedOn: !!str 2020-03-29
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: Google Protocol Buffer( 简称 Protobuf) 是 Google 公司内部的混合语言数据标准，目前已经正在使用的有超过 48,162 种报文格式定义和超过 12,183 个 .proto 文件。他们用于 RPC 系统和持续数据存储系统。Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，或者说序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。
-
-- id: data-portol
-  title:  通信中使用的数据格式
-  postedOn: !!str 2020-03-29
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: 数据格式分为两大类:文本格式，二进制格式。
-
-- id: nginx-ssl
-  title:  Nginx 配置SSL
-  postedOn: !!str 2020-03-28
-  author: chuhongliang
-  tags:
-    - Nginx
-  abstract: Nginx如何配置SSL证书
-
-- id: nginx-command
-  title:  Nginx 常用命令
-  postedOn: !!str 2020-03-28
-  author: chuhongliang
-  tags:
-    - Nginx
-  abstract: Nginx 常用命令介绍
-- id: nginx-conf
-  title:  Nginx 配置文件结构
-  postedOn: !!str 2020-03-27
-  author: chuhongliang
-  tags:
-    - Nginx
-  abstract: Nginx配置文件分为全局块, events块, http块, server块,location块
-
-- id: nginx
-  title: Nginx 源码下载、编译和安装
-  postedOn: !!str 2020-03-27
-  author: chuhongliang
-  tags:
-    - Nginx
-  abstract: nginx下载地址：http://nginx.org/en/download.html
-
-- id: git
-  title: Git命令大全
-  postedOn: !!str 2020-03-27
-  author: chuhongliang
-  tags:
-    - Git
-  abstract: Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。 Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
-
-- id: node-global
-  title: Node.js 全局对象
-  postedOn: !!str 2020-02-17
-  author: chuhongliang
-  tags:
-    - Node
-  abstract: JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。
-
-- id: html-flex
-  title: Flex 弹性布局
-  postedOn: !!str 2020-02-17
-  author: chuhongliang
-  tags:
-    - CSS
-  abstract: Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
-  
-- id: algorithm-sort
-  title: 排序算法
-  postedOn: !!str 2020-02-16
-  author: chuhongliang
-  tags:
-    - 算法
-  abstract: 排序算法可以分为内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的内部排序算法有：插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序、基数排序等。
-
-- id: network-websocket
-  title: WebSocket
-  postedOn: !!str 2020-02-13
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: WebSocket 是一种与 HTTP 不同的协议。两者都位于 OSI 模型的应用层，并且都依赖于传输层的 TCP 协议。 虽然它们不同，但 RFC 6455 规定：WebSocket设计为通过 80 和 443 端口工作，以及支持HTTP代理和中介，从而使其与HTTP协议兼容。为了实现兼容性， WebSocket 握手使用 HTTP Upgrade 头从 HTTP 协议更改为 WebSocket 协议。
-
-- id: network-https
-  title: HTTPS
-  postedOn: !!str 2020-02-13
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: HTTPS 是一种通过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用 SSL/TLS 来加密数据包。 HTTPS 开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。
-
-- id: network-http
-  title: HTTP
-  postedOn: !!str 2020-02-12
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: HTTP是一个简单的请求-响应协议，它通常运行在TCP之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII码形式给出；而消息内容则具有一个类似MIME的格式。
-
-- id: network-ip
-  title: IP
-  postedOn: !!str 2020-02-12
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: IP是Internet Protocol（网际互连协议）的缩写，是TCP/IP体系中的网络层协议。设计IP的目的是提高网络的可扩展性：一是解决互联网问题，实现大规模、异构网络的互联互通；二是分割顶层网络应用和底层网络技术之间的耦合关系，以利于两者的独立发展。根据端到端的设计原则，IP只为主机提供一种无连接、不可靠的、尽力而为的数据报传输服务。
-
-- id: network-udp
-  title: UDP
-  postedOn: !!str 2020-02-11
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: UDP 是User Datagram Protocol的简称， 中文名是用户数据报协议，是OSI（Open System Interconnection，开放式系统互联） 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务，IETF RFC 768 是UDP的正式规范。UDP在IP报文的协议号是17。UDP是传输层的协议，功能即为在IP的数据报服务之上增加了最基本的服务：复用和分用以及差错检测。
-
-- id: network-tcp
-  title: TCP
-  postedOn: !!str 2020-02-10
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: TCP（Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793 定义。TCP旨在适应支持多网络应用的分层协议层次结构。 连接到不同但互连的计算机通信网络的主计算机中的成对进程之间依靠TCP提供可靠的通信服务。TCP假设它可以从较低级别的协议获得简单的，可能不可靠的数据报服务。 原则上，TCP应该能够在从硬线连接到分组交换或电路交换网络的各种通信系统之上操作。
-
-- id: network-basics
-  title: 底层网络协议
-  postedOn: !!str 2020-02-10
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: 路由选择协议分为：静态的和动态的。Internet中使用的是动态路由选择协议，在Internet的概念中，将整个互联网划分为许多个小的自治系统（AS）。AS的最主要的特征：一个AS对其他AS表现出的是一个单一 和一致的路由选择策略。
-
-- id: network-osi
-  title: OSI 参考模型
-  postedOn: !!str 2020-02-10
-  author: chuhongliang
-  tags:
-    - 网络
-  abstract: OSI（Open System Interconnect），即开放式系统互联。 一般都叫OSI参考模型，是ISO（国际标准化组织）组织在1985年研究的网络互连模型。OSI定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层、应用层），即ISO开放互连系统参考模型。
-
-- id: android-intentservice
-  title: Android IntentService
-  postedOn: !!str 2020-02-09
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: IntentService继承与Service，用来处理异步请求。客户端可以通过startService(Intent)方法传递请求给IntentService。IntentService在onCreate()函数中通过HandlerThread单独开启一个线程来依次处理所有Intent请求对象所对应的任务。这样以免事务处理阻塞主线程（ＡＮＲ）。执行完所一个Intent请求对象所对应的工作之后，如果没有新的Intent请求达到，则自动停止Service；否则执行下一个Intent请求所对应的任务。IntentService在处理事务时，还是采用的Handler方式，创建一个名叫ServiceHandler的内部Handler，并把它直接绑定到HandlerThread所对应的子线程。
-
-- id: android-sqlite
-  title: Android SQLite
-  postedOn: !!str 2020-02-09
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: SQLite它是一个独立的，无需服务进程，支持事务处理，可以使用SQL语言的数据库。
-  
-- id: android-cache
-  title: Android 数据存储
-  postedOn: !!str 2020-02-09
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: Android提供了5种方式来让用户保存持久化应用程序数据。根据自己的需求来做选择，比如数据是否是应用程序私有的，是否能被其他程序访问，需要多少数据存储空间等，分别是：使用SharedPreferences存储数据,文件存储数据,SQLite数据库存储数据,使用ContentProvider存储数据,网络存储数据　
-
-- id: android-asynctask
-  title: Android AsyncTask
-  postedOn: !!str 2020-02-09
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: AsyncTask主要有二个部分：一个是与主线程的交互，另一个就是线程的管理调度。虽然可能多个AsyncTask的子类的实例，但是AsyncTask的内部Handler和ThreadPoolExecutor都是进程范围内共享的，其都是static的，也即属于类的，类的属性的作用范围是CLASSPATH，因为一个进程一个VM，所以是AsyncTask控制着进程范围内所有的子类实例。　
-
-- id: android-handler
-  title: Android Handler
-  postedOn: !!str 2020-02-09
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: Handler是用来接收和处理线程的消息队列里的message/runnable对象的工具。每个Handler实例关联一个单独的线程和这个的线程的消息队列，Handler实例会绑定到创建这个Handler的线程。从那一刻起，Handler会发送message/runnable到消息队列，然后在message/runnable从消息队列出来的时候处理它。
-
-- id: android-layout
-  title: Android 六大布局
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: Android中六种布局方式分别是:线性布局（LiearLayout），相对布局（RelativeLayout），帧布局（FrameLayout），绝对布局（AbsoluteLayout），表格布局（TableLayout），网格布局（GridLayout）。
-
-- id: android-contentprovider
-  title: Android ContentProvider组件
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: ContentProvider（内容提供者）是Android的四大组件之一，管理android以结构化方式存放的数据，以相对安全的方式封装数据（表）并且提供简易的处理机制和统一的访问接口供其他程序调用。
-
-- id: android-broadcast
-  title: Android BroadcastReceiver组件
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: 广播是一种广泛运用的在应用程序之间传输信息的机制，主要用来监听系统或者应用发出的广播信息，然后根据广播信息作为相应的逻辑处理，也可以用来传输少量、频率低的数据。实现开机启动服务和网络状态改变、电量变化、短信和来电时通过接收系统的广播让应用程序作出相应的处理。BroadcastReceiver 自身并不实现图形用户界面，但是当它收到某个通知后， BroadcastReceiver 可以通过启动 Service 、启动 Activity 或是 NotificationMananger 提醒用户。
-
-- id: android-service
-  title: Android Service组件
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: Service 是一种可在后台执行长时间运行操作而不提供界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。此外，组件可通过绑定到服务与之进行交互，甚至是执行进程间通信 (IPC)。例如，服务可在后台处理网络事务、播放音乐，执行文件 I/O 或与内容提供程序进行交互。
-
-- id: android-activity
-  title: Android Activity组件
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: Activity 类是 Android 应用的关键组件，而 Activity 的启动和组合方式则是该平台应用模型的基本组成部分。在编程范式中，应用是通过 main() 方法启动的，而 Android 系统与此不同，它会调用与其生命周期特定阶段相对应的特定回调方法来启动 Activity 实例中的代码。
-
-- id: android-component
-  title: Android 四大组件
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: 应用组件是 Android 应用的基本构建块。每个组件都是一个入口点，系统或用户可通过该入口点进入您的应用。有些组件会依赖于其他组件。共有四种不同的应用组件类型 Activity, Service, BroadcastReceiver, ContentProvider.每种组件都有不同的用途和生命周期.
-
-- id: android
-  title: Android 简介
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Android
-  abstract: Android是基于Linux系统的开源操作系统，是由Andy Rubin于2003年在美国加州创建，后被Google于2005年收购。在2008年的时候发布了第一部Android智能手机，随后Android不断发展更新，占据了全球大部分的手机市场。Android每一个版本都会用一个按照A-Z开头顺序的甜品来命名，但从Android P之后Google改变了这一传统的命名规则，可能是没有那么多让人熟知的甜品代号供使用以及甜品名字并不能让人直观的了解到哪一个甜品有什么特性，于是Google直接采用数字来命令系统，并且加深了logo的颜色，不再使用甜品作为代号。
-
-- id: java-thread
-  title: Java 线程
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: 线程(Thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。在Unix System V及SunOS中也被称为轻量进程（lightweight processes），但轻量进程更多指内核线程（kernel thread），而把用户线程（user thread）称为线程。
-
-- id: java-iterator
-  title: Java Iterator 与 ListIterator
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator.
-
-- id: java-map
-  title: Java Map
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它不能存在相同的key值，当然value值可以相同。
-
-- id: java-collection
-  title: Java Collection
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: Collection接口是处理对象集合的根接口，其中定义了很多对元素进行操作的方法。Collection接口有两个主要的子接口List和Set，Map不是Collection的子接口。
-
-- id: java-list
-  title: Java 集合框架
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: 集合框架是一个用来代表和操纵集合的统一架构。所有的集合框架都包含如下内容：接口：是代表集合的抽象数据类型。例如 Collection、List、Set、Map 等。之所以定义多个接口，是为了以不同的方式操作集合对象; 实现（类）：是集合接口的具体实现。从本质上讲，它们是可重复使用的数据结构，例如：ArrayList、LinkedList、HashSet、HashMap。算法：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。
-
-- id: java-genericity
-  title: Java 泛型
-  postedOn: !!str 2020-02-08
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: Java中的泛型基本上都是在编译器这个层次来实现的，在生成的Java字节代码中是不包含泛型中的类型信息的。使用泛型的时候加上的类型参数，会被编译器在编译的时候去掉，这个过程就称为类型擦除。如在代码中定义的List<Object>和List<String>等类型，在编译之后都会变成List。JVM看到的只是List，而由泛型附加的类型信息对JVM来说是不可见的。Java编译器会在编译时尽可能的发现可能出错的地方，但是仍然无法避免在运行时刻出现类型转换异常的情况。
-
-- id: java-error
-  title: Java 异常
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: Java中有Error和Exception，它们都是继承自Throwable类。
-
-- id: java-interface
-  title: Java 接口和抽象类
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: 对于面向对象编程来说，抽象是它的一大特征之一。在 Java 中，可以通过两种形式来体现 OOP 的抽象：接口和抽象类。
-
-- id: java-oop
-  title: Java 面向对象编程三大特性
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: Java 面向对象编程三大特性：封装、继承、多态；封装：封装的意义，在于明确标识出允许外部使用的所有成员函数和数据项，或者叫接口。继承：继承基类的方法，并做出自己的扩展；声明某个子类兼容于某基类（或者说，接口上完全兼容于基类），外部调用者可无需关注其差别（内部机制会自动把请求派发dispatch到合适的逻辑）。多态：基于对象所属类的不同，外部对同一个方法的调用，实际执行的逻辑不同
-
-- id: java-stringbuilder
-  title: Java String、StringBuilder、StringBuffer
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: String 类中使用 final 关键字修饰字符数组来保存字符串，private　final　char　value[]，所以 String 对象是不可变的。StringBuilder 与 StringBuffer 都继承自 AbstractStringBuilder 类，在 AbstractStringBuilder 中也是使用字符数组保存字符串char[] value 但是没有用 final 关键字修饰，所以这两种对象都是可变的。
-
-- id: java-string
-  title: Java String类
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: 在Java语言中，所有类似“ABC”的字面值，都是String类的实例；String类位于java.lang包下，是Java语言的核心类，提供了字符串的比较、查找、截取、大小写转换等操作；Java语言为“+”连接符（字符串连接符）以及对象转换为字符串提供了特殊的支持，字符串对象可以使用“+”连接其他对象。
-
-- id: java-type
-  title: Java 数据类型
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: Java中的数据类型分两大类分别是基本数据类型和引用数据类型。基本数据类型分别是byte, short, int, long, char, float, double, boolean。 在Java中，除了基本数据类型以外，其余的全都属于引用数据类型。
-
-- id: java-name
-  title: Java 命名规范
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: 包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词，最好用域名反过来写，不会冲突。如com.cnblogs.sun99bk.myutil等。另外需要注意的是包名最好统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。
-
-- id: java
-  title: Java 简介
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - Java
-  abstract: Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程。
-
-- id: mysql-transaction
-  title: MySQL 事务
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - MySQL
-  abstract: 数据库事务(Database Transaction) ，是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行
-
-- id: mysql-index
-  title: MySQL 索引
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - MySQL
-  abstract: 数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 B_TREE。B_TREE 索引加速了数据访问，因为存储引擎不会再去扫描整张表得到需要的数据；相反，它从根节点开始，根节点保存了子节点的指针，存储引擎会根据指针快速寻找数据。
-
-- id: mysql-basics
-  title: MySQL 基础知识
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - MySQL
-  abstract: 详细介绍了MySQL数据库的基础相关知识
-- id: mysql
-  title: MySQL 简介
-  postedOn: !!str 2020-02-07
-  author: chuhongliang
-  tags:
-    - MySQL
-  abstract: MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。
-
-- id: redis-cache
-  title: Redis 缓存问题
-  postedOn: !!str 2020-02-06
-  author: chuhongliang
-  tags:
-    - Redis
-  abstract: 缓存穿透，是指查询一个数据库一定不存在的数据。正常的使用缓存流程大致是，数据查询先进行缓存查询，如果key不存在或者key已经过期，再对数据库进行查询，并把查询到的对象，放进缓存。如果数据库查询对象为空，则不放进缓存。
-
-- id: redis-concurrency
-  title: Redis 并发请求问题
-  postedOn: !!str 2020-02-06
-  author: chuhongliang
-  tags:
-    - Redis
-  abstract: 在并发请求的情况下，如何处理Redis写竞争的问题？比如秒杀活动修改剩余奖品数量，转账修改账户余额、流量控制（同一用户1秒钟只能请求一次）等等。对于修改数值的场景，Redis提供了一系列原子计数器命令，类似MySQL的`update val = val + 10`对值直接更新。而对于复杂数据的修改，只能先读出，修改后再写入。于是就有了写竞争问题。
-
-- id: redis-data
-  title: Redis 的数据结构
-  postedOn: !!str 2020-02-05
-  author: chuhongliang
-  tags:
-    - Redis
-  abstract: Redis本身采用key-value的方式存储数据， key的类型是string，value的类型包括5种：string set list zset(可排序，打分) hash
-
-- id: redis
-  title: Redis 简介
-  postedOn: !!str 2020-02-05
-  author: chuhongliang
-  tags:
-    - Redis
-  abstract: Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。 它支持多种类型的数据结构，如 字符串（strings）， 散列（hashes）， 列表（lists）， 集合（sets）， 有序集合（sorted sets） 与范围查询， bitmaps， hyperloglogs 和 地理空间（geospatial） 索引半径查询。 Redis 内置了 复制（replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（transactions） 和不同级别的 磁盘持久化（persistence）， 并通过 Redis哨兵（Sentinel）和自动 分区（Cluster）提供高可用性（high availability）。
-
-- id: system-eventloop
-  title: 操作系统的轮询技术演进
-  postedOn: !!str 2020-02-04
-  author: chuhongliang
-  tags:
-    - System
-  abstract: 很多I/O设备都有一个状态寄存器，用于描述设备当前的工作状态，每当设备状态发生改变时，设备将修改相应状态寄存器位。通过不断查询设备的状态寄存器，CPU就可以了解设备的状态，从而进行必要的I/O操作。为了节约CPU资源，查询工作往往不是连续的，而是定时进行。轮询方式具有简单、易实现、易控制等优势，在很多小型系统中有大量应用。对那些实时敏感性不高、具有大量CPU资源的系统来说，轮询方式有很广泛的应用。最典型的用途就是在那些任务比较单一的单片机上，嵌入式系统中也有应用。
-
-- id: node-onethread
-  title: Node.js 单线程模型
-  postedOn: !!str 2020-02-04
-  author: chuhongliang
-  tags:
-    - Node
-  abstract: Node.js采用 事件驱动 和 异步I/O 的方式，实现了一个单线程、高并发的运行时环境，而单线程就意味着同一时间只能做一件事，那么Node.js如何利用单线程来实现高并发和异步I/O？
-
-- id: node-eventloop
-  title: Node.js 中的 Event Loop
-  postedOn: !!str 2020-02-03
-  author: chuhongliang
-  tags:
-    - Node
-  abstract: Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计的libuv，libuv是一个基于事件驱动的跨平台抽象层，封装了不同操作系统一些底层特性，对外提供统一的API，事件循环机制也是它里面的实现。
-
-- id: javascript-eventloop
-  title: 浏览器中的 Event Loop
-  postedOn: !!str 2020-02-02
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: 事件循环中的异步队列有两种：macro（宏任务）队列和 micro（微任务）队列。宏任务队列可以有多个，微任务队列只有一个
-
-- id: javascript-function
-  title: JavaScript 匿名函数与闭包
-  postedOn: !!str 2020-02-01
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: 闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。
-
-- id: javascript-this
-  title: JavaScript this
-  postedOn: !!str 2020-01-30
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: javascript中this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象.
-
-- id: javascript-prototype
-  title: JavaScript 原型
-  postedOn: !!str 2020-01-30
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: 我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象. 如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过__proto__来访问该属性.
-
-- id: javascript-math
-  title: JavaScript Math常用方法
-  postedOn: !!str 2020-01-30
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: Math 是一个内置对象， 它具有数学常数和函数的属性和方法。不是一个函数对象。与其他全局对象不同的是，Math 不是一个构造器。 Math 的所有属性与方法都是静态的。
-
-- id: javascript-array
-  title: JavaScript 数组常用方法
-  postedOn: !!str 2020-01-29
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: JavaScript的数组是无类型的，数组元素可以是任意类型，同一个数组中的不同元素可能是对象或数组。数组元素的索引不一定要连续，元素之间可以有空隙，叫做稀疏数组 。每个数组都具有一个lengrh属性。针对非稀疏数组，length属性就是数组元素的个数，针对稀疏数组，元素的length属性比所有元素的索引要大。非稀疏是我们学习掌握的主要知识点。
-
-- id: javascript-object
-  title: JavaScript Object常用方法
-  postedOn: !!str 2020-01-29
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: Object类是所有JavaScript类的基类(父类)，并提供了一种创建自定义对象的简单方式，Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。如果参数为空（或者为undefined和null），Object()返回一个空对象。
-
-- id: javascript-string
-  title: JavaScript 字符串常用方法
-  postedOn: !!str 2020-01-28
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: String 全局对象是一个用于字符串或一个字符序列的构造函数。并提供了相关静态方法用于处理字符串。
-
-- id: javascript-type
-  title: JavaScript 类型
-  postedOn: !!str 2020-01-28
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: 原始类型又被称为基本类型，原始类型保存的变量和值直接保存在栈内存(Stack)中,且空间相互独立,通过值来访问.引用类型,即Object 类型,再往下细分，还可以分为：Object 类型、Array 类型、Date 类型、Function 类型 等。
-
-- id: javascript
-  title: JavaScript 简介
-  postedOn: !!str 2020-01-27
-  author: chuhongliang
-  tags:
-    - JavaScript
-  abstract: JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名的，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。
+  abstract: Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。Node 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为与PHP、Python、Perl、Ruby 等服务端语言平起平坐的脚本语言。 [2]  发布于2009年5月，由Ryan Dahl开发，实质是对Chrome V8引擎进行了封装。
 
 - id: node-module
   title: Node.js 模块
@@ -629,43 +15,632 @@
     - Node
   abstract: 在 Node.js 模块系统中，每个文件都被视为一个独立的模块.Node.js 模块机制采用了 Commonjs 规范，弥补了当前 JavaScript 开发大型应用没有标准的缺陷，类似于 Java 中的类文件，Python 中的 import 机制，Node.js 中可以通过 module.exports、require 来导出和引入一个模块.在模块加载机制中，Node.js 采用了延迟加载的策略，只有在用到的情况下，系统模块才会被加载，加载完成后会放到 binding_cache 中。
 
-- id: nodejs
-  title: Node.js 简介
-  postedOn: !!str 2020-01-26
+- id: javascript
+  title: JavaScript 简介
+  postedOn: !!str 2020-01-27
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名的，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。
+
+- id: javascript-type
+  title: JavaScript 类型
+  postedOn: !!str 2020-01-28
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 原始类型又被称为基本类型，原始类型保存的变量和值直接保存在栈内存(Stack)中,且空间相互独立,通过值来访问.引用类型,即Object 类型,再往下细分，还可以分为：Object 类型、Array 类型、Date 类型、Function 类型 等。
+
+- id: javascript-string
+  title: JavaScript 字符串常用方法
+  postedOn: !!str 2020-01-28
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: String 全局对象是一个用于字符串或一个字符序列的构造函数。并提供了相关静态方法用于处理字符串。
+
+- id: javascript-object
+  title: JavaScript Object常用方法
+  postedOn: !!str 2020-01-29
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: Object类是所有JavaScript类的基类(父类)，并提供了一种创建自定义对象的简单方式，Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。如果参数为空（或者为undefined和null），Object()返回一个空对象。
+
+- id: javascript-array
+  title: JavaScript 数组常用方法
+  postedOn: !!str 2020-01-29
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: JavaScript的数组是无类型的，数组元素可以是任意类型，同一个数组中的不同元素可能是对象或数组。数组元素的索引不一定要连续，元素之间可以有空隙，叫做稀疏数组 。每个数组都具有一个lengrh属性。针对非稀疏数组，length属性就是数组元素的个数，针对稀疏数组，元素的length属性比所有元素的索引要大。非稀疏是我们学习掌握的主要知识点。
+
+- id: javascript-math
+  title: JavaScript Math常用方法
+  postedOn: !!str 2020-01-30
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: Math 是一个内置对象， 它具有数学常数和函数的属性和方法。不是一个函数对象。与其他全局对象不同的是，Math 不是一个构造器。 Math 的所有属性与方法都是静态的。
+
+- id: javascript-prototype
+  title: JavaScript 原型
+  postedOn: !!str 2020-01-30
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype，这个属性对应着一个对象，这个对象就是我们所谓的原型对象. 如果函数作为普通函数调用prototype没有任何作用, 当函数以构造函数的形式调用时，它所创建的对象中都会有一个隐含的属性，指向该构造函数的原型对象，我们可以通过__proto__来访问该属性.
+
+- id: javascript-this
+  title: JavaScript this
+  postedOn: !!str 2020-01-30
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: javascript中this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象.
+
+- id: javascript-function
+  title: JavaScript 匿名函数与闭包
+  postedOn: !!str 2020-02-01
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 闭包是可访问一个函数作用域里变量的函数，由于闭包作用域返回的局部变量资源不会被立刻销毁回收，所以可能会占用更多的内存。过度使用闭包会导致性能下降，建议在非常有必要的时候才使用闭包。
+
+- id: javascript-eventloop
+  title: 浏览器中的 Event Loop
+  postedOn: !!str 2020-02-02
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 事件循环中的异步队列有两种：macro（宏任务）队列和 micro（微任务）队列。宏任务队列可以有多个，微任务队列只有一个
+
+- id: node-eventloop
+  title: Node.js 中的 Event Loop
+  postedOn: !!str 2020-02-03
   author: chuhongliang
   tags:
     - Node
-  abstract: Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。Node 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为与PHP、Python、Perl、Ruby 等服务端语言平起平坐的脚本语言。 [2]  发布于2009年5月，由Ryan Dahl开发，实质是对Chrome V8引擎进行了封装。
+  abstract: Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计的libuv，libuv是一个基于事件驱动的跨平台抽象层，封装了不同操作系统一些底层特性，对外提供统一的API，事件循环机制也是它里面的实现。
+
+- id: node-onethread
+  title: Node.js 单线程模型
+  postedOn: !!str 2020-02-04
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: Node.js采用 事件驱动 和 异步I/O 的方式，实现了一个单线程、高并发的运行时环境，而单线程就意味着同一时间只能做一件事，那么Node.js如何利用单线程来实现高并发和异步I/O？
 
 
+- id: system-eventloop
+  title: 操作系统的轮询技术演进
+  postedOn: !!str 2020-02-04
+  author: chuhongliang
+  tags:
+    - System
+  abstract: 很多I/O设备都有一个状态寄存器，用于描述设备当前的工作状态，每当设备状态发生改变时，设备将修改相应状态寄存器位。通过不断查询设备的状态寄存器，CPU就可以了解设备的状态，从而进行必要的I/O操作。为了节约CPU资源，查询工作往往不是连续的，而是定时进行。轮询方式具有简单、易实现、易控制等优势，在很多小型系统中有大量应用。对那些实时敏感性不高、具有大量CPU资源的系统来说，轮询方式有很广泛的应用。最典型的用途就是在那些任务比较单一的单片机上，嵌入式系统中也有应用。
+
+- id: redis
+  title: Redis 简介
+  postedOn: !!str 2020-02-05
+  author: chuhongliang
+  tags:
+    - Redis
+  abstract: Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。 它支持多种类型的数据结构，如 字符串（strings）， 散列（hashes）， 列表（lists）， 集合（sets）， 有序集合（sorted sets） 与范围查询， bitmaps， hyperloglogs 和 地理空间（geospatial） 索引半径查询。 Redis 内置了 复制（replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（transactions） 和不同级别的 磁盘持久化（persistence）， 并通过 Redis哨兵（Sentinel）和自动 分区（Cluster）提供高可用性（high availability）。
+
+- id: redis-data
+  title: Redis 的数据结构
+  postedOn: !!str 2020-02-05
+  author: chuhongliang
+  tags:
+    - Redis
+  abstract: Redis本身采用key-value的方式存储数据， key的类型是string，value的类型包括5种：string set list zset(可排序，打分) hash
+
+- id: redis-concurrency
+  title: Redis 并发请求问题
+  postedOn: !!str 2020-02-06
+  author: chuhongliang
+  tags:
+    - Redis
+  abstract: 在并发请求的情况下，如何处理Redis写竞争的问题？比如秒杀活动修改剩余奖品数量，转账修改账户余额、流量控制（同一用户1秒钟只能请求一次）等等。对于修改数值的场景，Redis提供了一系列原子计数器命令，类似MySQL的`update val = val + 10`对值直接更新。而对于复杂数据的修改，只能先读出，修改后再写入。于是就有了写竞争问题。
+
+- id: redis-cache
+  title: Redis 缓存问题
+  postedOn: !!str 2020-02-06
+  author: chuhongliang
+  tags:
+    - Redis
+  abstract: 缓存穿透，是指查询一个数据库一定不存在的数据。正常的使用缓存流程大致是，数据查询先进行缓存查询，如果key不存在或者key已经过期，再对数据库进行查询，并把查询到的对象，放进缓存。如果数据库查询对象为空，则不放进缓存。
+
+- id: mysql
+  title: MySQL 简介
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - MySQL
+  abstract: MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。
+
+- id: mysql-basics
+  title: MySQL 基础知识
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - MySQL
+  abstract: 详细介绍了MySQL数据库的基础相关知识
+
+- id: mysql-index
+  title: MySQL 索引
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - MySQL
+  abstract: 数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 B_TREE。B_TREE 索引加速了数据访问，因为存储引擎不会再去扫描整张表得到需要的数据；相反，它从根节点开始，根节点保存了子节点的指针，存储引擎会根据指针快速寻找数据。
+
+- id: mysql-transaction
+  title: MySQL 事务
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - MySQL
+  abstract: 数据库事务(Database Transaction) ，是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行
+
+- id: java
+  title: Java 简介
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程。
+
+- id: java-name
+  title: Java 命名规范
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: 包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词，最好用域名反过来写，不会冲突。如com.cnblogs.sun99bk.myutil等。另外需要注意的是包名最好统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。
+
+- id: java-type
+  title: Java 数据类型
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java中的数据类型分两大类分别是基本数据类型和引用数据类型。基本数据类型分别是byte, short, int, long, char, float, double, boolean。 在Java中，除了基本数据类型以外，其余的全都属于引用数据类型。
+
+- id: java-string
+  title: Java String类
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: 在Java语言中，所有类似“ABC”的字面值，都是String类的实例；String类位于java.lang包下，是Java语言的核心类，提供了字符串的比较、查找、截取、大小写转换等操作；Java语言为“+”连接符（字符串连接符）以及对象转换为字符串提供了特殊的支持，字符串对象可以使用“+”连接其他对象。
+
+- id: java-stringbuilder
+  title: Java String、StringBuilder、StringBuffer
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: String 类中使用 final 关键字修饰字符数组来保存字符串，private　final　char　value[]，所以 String 对象是不可变的。StringBuilder 与 StringBuffer 都继承自 AbstractStringBuilder 类，在 AbstractStringBuilder 中也是使用字符数组保存字符串char[] value 但是没有用 final 关键字修饰，所以这两种对象都是可变的。
+
+- id: java-oop
+  title: Java 面向对象编程三大特性
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java 面向对象编程三大特性：封装、继承、多态；封装：封装的意义，在于明确标识出允许外部使用的所有成员函数和数据项，或者叫接口。继承：继承基类的方法，并做出自己的扩展；声明某个子类兼容于某基类（或者说，接口上完全兼容于基类），外部调用者可无需关注其差别（内部机制会自动把请求派发dispatch到合适的逻辑）。多态：基于对象所属类的不同，外部对同一个方法的调用，实际执行的逻辑不同
+
+- id: java-interface
+  title: Java 接口和抽象类
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: 对于面向对象编程来说，抽象是它的一大特征之一。在 Java 中，可以通过两种形式来体现 OOP 的抽象：接口和抽象类。
+
+- id: java-error
+  title: Java 异常
+  postedOn: !!str 2020-02-07
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java中有Error和Exception，它们都是继承自Throwable类。
+
+- id: java-genericity
+  title: Java 泛型
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Java中的泛型基本上都是在编译器这个层次来实现的，在生成的Java字节代码中是不包含泛型中的类型信息的。使用泛型的时候加上的类型参数，会被编译器在编译的时候去掉，这个过程就称为类型擦除。如在代码中定义的List<Object>和List<String>等类型，在编译之后都会变成List。JVM看到的只是List，而由泛型附加的类型信息对JVM来说是不可见的。Java编译器会在编译时尽可能的发现可能出错的地方，但是仍然无法避免在运行时刻出现类型转换异常的情况。
+
+- id: java-list
+  title: Java 集合框架
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: 集合框架是一个用来代表和操纵集合的统一架构。所有的集合框架都包含如下内容：接口：是代表集合的抽象数据类型。例如 Collection、List、Set、Map 等。之所以定义多个接口，是为了以不同的方式操作集合对象; 实现（类）：是集合接口的具体实现。从本质上讲，它们是可重复使用的数据结构，例如：ArrayList、LinkedList、HashSet、HashMap。算法：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。
+
+- id: java-collection
+  title: Java Collection
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Collection接口是处理对象集合的根接口，其中定义了很多对元素进行操作的方法。Collection接口有两个主要的子接口List和Set，Map不是Collection的子接口。
+
+- id: java-map
+  title: Java Map
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Map与List、Set接口不同，它是由一系列键值对组成的集合，提供了key到Value的映射。同时它也没有继承Collection。在Map中它保证了key与value之间的一一对应关系。也就是说一个key对应一个value，所以它不能存在相同的key值，当然value值可以相同。
+
+- id: java-iterator
+  title: Java Iterator 与 ListIterator
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口,只能用于各种List类型的访问。可以通过调用listIterator()方法产生一个指向List开始处的ListIterator, 还可以调用listIterator(n)方法创建一个一开始就指向列表索引为n的元素处的ListIterator.
+
+- id: java-thread
+  title: Java 线程
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Java
+  abstract: 线程(Thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。在Unix System V及SunOS中也被称为轻量进程（lightweight processes），但轻量进程更多指内核线程（kernel thread），而把用户线程（user thread）称为线程。
+
+- id: android
+  title: Android 简介
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: Android是基于Linux系统的开源操作系统，是由Andy Rubin于2003年在美国加州创建，后被Google于2005年收购。在2008年的时候发布了第一部Android智能手机，随后Android不断发展更新，占据了全球大部分的手机市场。Android每一个版本都会用一个按照A-Z开头顺序的甜品来命名，但从Android P之后Google改变了这一传统的命名规则，可能是没有那么多让人熟知的甜品代号供使用以及甜品名字并不能让人直观的了解到哪一个甜品有什么特性，于是Google直接采用数字来命令系统，并且加深了logo的颜色，不再使用甜品作为代号。
+
+- id: android-component
+  title: Android 四大组件
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: 应用组件是 Android 应用的基本构建块。每个组件都是一个入口点，系统或用户可通过该入口点进入您的应用。有些组件会依赖于其他组件。共有四种不同的应用组件类型 Activity, Service, BroadcastReceiver, ContentProvider.每种组件都有不同的用途和生命周期.
+
+- id: android-activity
+  title: Android Activity组件
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: Activity 类是 Android 应用的关键组件，而 Activity 的启动和组合方式则是该平台应用模型的基本组成部分。在编程范式中，应用是通过 main() 方法启动的，而 Android 系统与此不同，它会调用与其生命周期特定阶段相对应的特定回调方法来启动 Activity 实例中的代码。
+
+- id: android-service
+  title: Android Service组件
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: Service 是一种可在后台执行长时间运行操作而不提供界面的应用组件。服务可由其他应用组件启动，而且即使用户切换到其他应用，服务仍将在后台继续运行。此外，组件可通过绑定到服务与之进行交互，甚至是执行进程间通信 (IPC)。例如，服务可在后台处理网络事务、播放音乐，执行文件 I/O 或与内容提供程序进行交互。
+
+- id: android-broadcast
+  title: Android BroadcastReceiver组件
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: 广播是一种广泛运用的在应用程序之间传输信息的机制，主要用来监听系统或者应用发出的广播信息，然后根据广播信息作为相应的逻辑处理，也可以用来传输少量、频率低的数据。实现开机启动服务和网络状态改变、电量变化、短信和来电时通过接收系统的广播让应用程序作出相应的处理。BroadcastReceiver 自身并不实现图形用户界面，但是当它收到某个通知后， BroadcastReceiver 可以通过启动 Service 、启动 Activity 或是 NotificationMananger 提醒用户。
+
+- id: android-contentprovider
+  title: Android ContentProvider组件
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: ContentProvider（内容提供者）是Android的四大组件之一，管理android以结构化方式存放的数据，以相对安全的方式封装数据（表）并且提供简易的处理机制和统一的访问接口供其他程序调用。
+
+- id: android-layout
+  title: Android 六大布局
+  postedOn: !!str 2020-02-08
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: Android中六种布局方式分别是:线性布局（LiearLayout），相对布局（RelativeLayout），帧布局（FrameLayout），绝对布局（AbsoluteLayout），表格布局（TableLayout），网格布局（GridLayout）。
+
+- id: android-handler
+  title: Android Handler
+  postedOn: !!str 2020-02-09
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: Handler是用来接收和处理线程的消息队列里的message/runnable对象的工具。每个Handler实例关联一个单独的线程和这个的线程的消息队列，Handler实例会绑定到创建这个Handler的线程。从那一刻起，Handler会发送message/runnable到消息队列，然后在message/runnable从消息队列出来的时候处理它。
+
+- id: android-asynctask
+  title: Android AsyncTask
+  postedOn: !!str 2020-02-09
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: AsyncTask主要有二个部分：一个是与主线程的交互，另一个就是线程的管理调度。虽然可能多个AsyncTask的子类的实例，但是AsyncTask的内部Handler和ThreadPoolExecutor都是进程范围内共享的，其都是static的，也即属于类的，类的属性的作用范围是CLASSPATH，因为一个进程一个VM，所以是AsyncTask控制着进程范围内所有的子类实例。　
+
+- id: android-cache
+  title: Android 数据存储
+  postedOn: !!str 2020-02-09
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: Android提供了5种方式来让用户保存持久化应用程序数据。根据自己的需求来做选择，比如数据是否是应用程序私有的，是否能被其他程序访问，需要多少数据存储空间等，分别是：使用SharedPreferences存储数据,文件存储数据,SQLite数据库存储数据,使用ContentProvider存储数据,网络存储数据　
+
+- id: android-sqlite
+  title: Android SQLite
+  postedOn: !!str 2020-02-09
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: SQLite它是一个独立的，无需服务进程，支持事务处理，可以使用SQL语言的数据库。
+  
+- id: android-intentservice
+  title: Android IntentService
+  postedOn: !!str 2020-02-09
+  author: chuhongliang
+  tags:
+    - Android
+  abstract: IntentService继承与Service，用来处理异步请求。客户端可以通过startService(Intent)方法传递请求给IntentService。IntentService在onCreate()函数中通过HandlerThread单独开启一个线程来依次处理所有Intent请求对象所对应的任务。这样以免事务处理阻塞主线程（ＡＮＲ）。执行完所一个Intent请求对象所对应的工作之后，如果没有新的Intent请求达到，则自动停止Service；否则执行下一个Intent请求所对应的任务。IntentService在处理事务时，还是采用的Handler方式，创建一个名叫ServiceHandler的内部Handler，并把它直接绑定到HandlerThread所对应的子线程。
+
+- id: network-osi
+  title: OSI 参考模型
+  postedOn: !!str 2020-02-10
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: OSI（Open System Interconnect），即开放式系统互联。 一般都叫OSI参考模型，是ISO（国际标准化组织）组织在1985年研究的网络互连模型。OSI定义了网络互连的七层框架（物理层、数据链路层、网络层、传输层、会话层、表示层、应用层），即ISO开放互连系统参考模型。
+
+- id: network-basics
+  title: 底层网络协议
+  postedOn: !!str 2020-02-10
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: 路由选择协议分为：静态的和动态的。Internet中使用的是动态路由选择协议，在Internet的概念中，将整个互联网划分为许多个小的自治系统（AS）。AS的最主要的特征：一个AS对其他AS表现出的是一个单一 和一致的路由选择策略。
+
+- id: network-tcp
+  title: TCP
+  postedOn: !!str 2020-02-10
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: TCP（Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793 定义。TCP旨在适应支持多网络应用的分层协议层次结构。 连接到不同但互连的计算机通信网络的主计算机中的成对进程之间依靠TCP提供可靠的通信服务。TCP假设它可以从较低级别的协议获得简单的，可能不可靠的数据报服务。 原则上，TCP应该能够在从硬线连接到分组交换或电路交换网络的各种通信系统之上操作。
+
+- id: network-udp
+  title: UDP
+  postedOn: !!str 2020-02-11
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: UDP 是User Datagram Protocol的简称， 中文名是用户数据报协议，是OSI（Open System Interconnection，开放式系统互联） 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务，IETF RFC 768 是UDP的正式规范。UDP在IP报文的协议号是17。UDP是传输层的协议，功能即为在IP的数据报服务之上增加了最基本的服务：复用和分用以及差错检测。
+
+- id: network-ip
+  title: IP
+  postedOn: !!str 2020-02-12
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: IP是Internet Protocol（网际互连协议）的缩写，是TCP/IP体系中的网络层协议。设计IP的目的是提高网络的可扩展性：一是解决互联网问题，实现大规模、异构网络的互联互通；二是分割顶层网络应用和底层网络技术之间的耦合关系，以利于两者的独立发展。根据端到端的设计原则，IP只为主机提供一种无连接、不可靠的、尽力而为的数据报传输服务。
+
+- id: network-http
+  title: HTTP
+  postedOn: !!str 2020-02-12
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: HTTP是一个简单的请求-响应协议，它通常运行在TCP之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII码形式给出；而消息内容则具有一个类似MIME的格式。
+
+- id: network-https
+  title: HTTPS
+  postedOn: !!str 2020-02-13
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: HTTPS 是一种通过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用 SSL/TLS 来加密数据包。 HTTPS 开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。
+
+- id: network-websocket
+  title: WebSocket
+  postedOn: !!str 2020-02-13
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: WebSocket 是一种与 HTTP 不同的协议。两者都位于 OSI 模型的应用层，并且都依赖于传输层的 TCP 协议。 虽然它们不同，但 RFC 6455 规定：WebSocket设计为通过 80 和 443 端口工作，以及支持HTTP代理和中介，从而使其与HTTP协议兼容。为了实现兼容性， WebSocket 握手使用 HTTP Upgrade 头从 HTTP 协议更改为 WebSocket 协议。
+
+- id: algorithm-sort
+  title: 排序算法
+  postedOn: !!str 2020-02-16
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: 排序算法可以分为内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的内部排序算法有：插入排序、希尔排序、选择排序、冒泡排序、归并排序、快速排序、堆排序、基数排序等。
+
+- id: html-flex
+  title: Flex 弹性布局
+  postedOn: !!str 2020-02-17
+  author: chuhongliang
+  tags:
+    - CSS
+  abstract: Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
+  
+- id: node-global
+  title: Node.js 全局对象
+  postedOn: !!str 2020-02-17
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。
+
+- id: git
+  title: Git命令大全
+  postedOn: !!str 2020-03-27
+  author: chuhongliang
+  tags:
+    - Git
+  abstract: Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。 Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+
+- id: nginx
+  title: Nginx 源码下载、编译和安装
+  postedOn: !!str 2020-03-27
+  author: chuhongliang
+  tags:
+    - Nginx
+  abstract: nginx下载地址：http://nginx.org/en/download.html
+
+- id: nginx-conf
+  title:  Nginx 配置文件结构
+  postedOn: !!str 2020-03-27
+  author: chuhongliang
+  tags:
+    - Nginx
+  abstract: Nginx配置文件分为全局块, events块, http块, server块,location块
+
+- id: nginx-command
+  title:  Nginx 常用命令
+  postedOn: !!str 2020-03-28
+  author: chuhongliang
+  tags:
+    - Nginx
+  abstract: Nginx 常用命令介绍
+
+- id: nginx-ssl
+  title:  Nginx 配置SSL
+  postedOn: !!str 2020-03-28
+  author: chuhongliang
+  tags:
+    - Nginx
+  abstract: Nginx如何配置SSL证书
+
+- id: data-portol
+  title:  通信中使用的数据格式
+  postedOn: !!str 2020-03-29
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: 数据格式分为两大类:文本格式，二进制格式。
+  
+
+- id: protobuf
+  title:  Protobuf
+  postedOn: !!str 2020-03-29
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: Google Protocol Buffer( 简称 Protobuf) 是 Google 公司内部的混合语言数据标准，目前已经正在使用的有超过 48,162 种报文格式定义和超过 12,183 个 .proto 文件。他们用于 RPC 系统和持续数据存储系统。Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，或者说序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。
+
+- id: network-byte
+  title:  字节序
+  postedOn: !!str 2020-03-29
+  author: chuhongliang
+  tags:
+    - 网络
+  abstract: 计算机硬件有两种储存数据的方式：大端字节序（big endian）和小端字节序（little endian）
+
+- id: javascript-gc
+  title:  JavaScript 垃圾回收
+  postedOn: !!str 2020-03-29
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 垃圾回收算法主要依赖于引用的概念。在内存管理的环境中，一个对象如果有访问另一个对象的权限（隐式或者显式），叫做一个对象引用另一个对象。例如，一个Javascript对象具有对它原型的引用（隐式引用）和对它属性的引用（显式引用）。
+
+- id: node-gc
+  title:  Node.js 垃圾回收
+  postedOn: !!str 2020-03-30
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: V8垃圾回收策略主要基于分代式垃圾回收机制。现代的垃圾回收算法中按对象的存活时间将内存的垃圾回收进行不同的分代，然后分别对不同分代的内存施以更高效的算法。
+
+- id: node-memory
+  title:  Node.js 内存控制
+  postedOn: !!str 2020-03-30
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: 如何触发垃圾回收，第一个要介绍的是作用域（scope）。在js中能形成作用域的有函数调用、with以及全局作用域。
+
+- id: node-memoryleak
+  title:  Node.js 内存泄漏
+  postedOn: !!str 2020-03-30
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: 在V8的垃圾回收机制下，在通常的代码编写中，很少会出现内存泄漏的情况。但是内存泄漏通常产生于无意间，较难排查。尽管内存泄漏的情况不尽相同，但其实质只有一个，那就是应当回收的对象出现意外而没有被回收，变成了常驻在老生代中的对象
+
+- id: algorithm-interview
+  title:  面试遇到的算法
+  postedOn: !!str 2020-03-30
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: 面试过程中遇到的算法，仅作记录
+  
+- id: javascript-promise
+  title:  JavaScript Promise
+  postedOn: !!str 2020-04-07
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。
+
+- id: javascript-curry
+  title:  JavaScript 柯里化
+  postedOn: !!str 2020-04-08
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: 在计算机科学中，柯里化（Currying）是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数且返回结果的新函数的技术。这个技术由 Christopher Strachey 以逻辑学家 Haskell Curry 命名的，尽管它是 Moses Schnfinkel 和 Gottlob Frege 发明的。
+
+- id: node-static
+  title:  Node.js 实现简单的静态服务器
+  postedOn: !!str 2020-04-11
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: Node里面是没有Web容器的概念, 所以URL上的路径跟实际文件的路径并不一致。这里我们手动实现一个简单的原生静态服务，让Node能够找到路径的文件，实现静态服务器功能。文件夹的任何文件都能被找到。
+  
+  
+- id: web-security
+  title:  常见web安全攻防总结
+  postedOn: !!str 2020-04-13
+  author: chuhongliang
+  tags:
+    - Web安全
+  abstract: 常见的Web攻击类型有以下几种；XSS，CSRF，点击劫持，URL跳转漏洞，SQL注入，OS命令注入攻击
+  
+
+- id: javascript-generator
+  title:  JavaScript Generator函数
+  postedOn: !!str 2020-04-20
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: Generator 函数是协程在 ES6 的实现，最大特点就是可以交出函数的执行权（即暂停执行）。Generator 对象是由一个 generator function 返回的,并且它符合可迭代协议和迭代器协议。
+
+- id: javascript-thunk
+  title:  JavaScript Thunk 函数
+  postedOn: !!str 2020-04-20
+  author: chuhongliang
+  tags:
+    - JavaScript
+  abstract: Thunk函数的定义，它是"传名调用"的一种实现策略，用来替换某个表达式。JavaScript 语言是传值调用，它的 Thunk 函数含义有所不同。在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成单参数的版本，且只接受回调函数作为参数。
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- id: node-co
+  title:  Node.js co 函数
+  postedOn: !!str 2020-04-21
+  author: chuhongliang
+  tags:
+    - Node
+  abstract: co 函数库是著名程序员 TJ Holowaychuk 于2013年6月发布的一个小工具，用于 Generator 函数的自动执行。
+  
