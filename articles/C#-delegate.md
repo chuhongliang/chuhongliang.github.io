@@ -26,12 +26,12 @@ class Timer{
 class TimerExample{
 
     public onClick(){
-        Timer.onStart += click;
+        Timer.onStart += start;
         Timer.onStrop += stop;
         Timer.start();
     }
 
-    public click(){
+    public start(){
         //todo
     }
 
