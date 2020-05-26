@@ -481,7 +481,7 @@
   abstract: JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。
 
 - id: git
-  title: Git命令大全
+  title: Git 命令大全
   postedOn: !!str 2020-03-27
   author: chuhongliang
   tags:
@@ -644,3 +644,50 @@
     - Node
   abstract: co 函数库是著名程序员 TJ Holowaychuk 于2013年6月发布的一个小工具，用于 Generator 函数的自动执行。
   
+- id: C#
+  title:  C# 简介
+  postedOn: !!str 2020-05-26
+  author: chuhongliang
+  tags:
+    - C#
+  abstract: C#是微软公司发布的一种由C和C++衍生出来的面向对象的编程语言、运行于.NET Framework和.NET Core(完全开源，跨平台)之上的高级程序设计语言。它在继承C和C++强大功能的同时去掉了一些它们的复杂特性（例如没有宏以及不允许多重继承）。C#综合了VB简单的可视化操作和C++的高运行效率，以其强大的操作能力、优雅的语法风格、创新的语言特性和便捷的面向组件编程的支持成为.NET开发的首选语言。C# 使得C++程序员可以高效的开发程序，且因可调用由 C/C++ 编写的本机原生函数，而绝不损失C/C++原有的强大的功能。因为这种继承关系，C#与C/C++具有极大的相似性，熟悉类似语言的开发者可以很快的转向C#。
+
+- id: C#-struct
+  title:  C# 程序结构
+  postedOn: !!str 2020-05-26
+  author: chuhongliang
+  tags:
+    - C#
+  abstract: C# 中的关键组织结构概念包括程序、命名空间、类型、成员和程序集。 C# 程序由一个或多个源文件组成。 程序声明类型，而类型则包含成员，并被整理到命名空间中。 类型示例包括类和接口。 成员示例包括字段、方法、属性和事件。 编译完的 C# 程序实际上会打包到程序集中。 程序集的文件扩展名通常为 .exe 或 .dll，具体取决于实现的是应用程序还是库。
+
+- id: C#-type
+  title:  C# 类型和变量
+  postedOn: !!str 2020-05-26
+  author: chuhongliang
+  tags:
+    - C#
+  abstract: C# 有两种类型：值类型和引用类型。 值类型的变量直接包含数据，而引用类型的变量则存储对数据（称为“对象”）的引用。 对于引用类型，两个变量可以引用同一对象；因此，对一个变量执行的运算可能会影响另一个变量引用的对象。 借助值类型，每个变量都有自己的数据副本；因此，对一个变量执行的运算不会影响另一个变量（ref 和 out 参数变量除外）。
+
+- id: C#-control
+  title:  C# 控制语句
+  postedOn: !!str 2020-05-26
+  author: chuhongliang
+  tags:
+    - C#
+  abstract: 程序操作使用语句进行表示。 C# 支持几种不同的语句，其中许多语句是从嵌入语句的角度来定义的。
+
+- id: C#-class
+  title:  C# 类和对象
+  postedOn: !!str 2020-05-26
+  author: chuhongliang
+  tags:
+    - C#
+  abstract: 类是最基本的 C# 类型。 类是一种数据结构，可在一个单元中就将状态（字段）和操作（方法和其他函数成员）结合起来。 类为动态创建的类实例（亦称为“对象”）提供了定义。 类支持继承和多形性，即派生类可以扩展和专门针对基类的机制。
+
+- id: C#-delegate
+  title:  C# 委托
+  postedOn: !!str 2020-05-26
+  author: chuhongliang
+  tags:
+    - C#
+  abstract: 委托类型表示对具有特定参数列表和返回类型的方法的引用。 通过委托，可以将方法视为可分配给变量并可作为参数传递的实体。 委托还类似于其他一些语言中存在的“函数指针”概念。 与函数指针不同，委托是面向对象且类型安全的。
