@@ -1,0 +1,185 @@
+ 
+ 数据结构与算法是为了解决 “快” 和 “省”的问题
+
+2. 评估 “快” 和 “省”方法就是 “复杂度分析”
+
+3. “复杂度分析” 分为 “时间复杂度” 和 “空间复杂度”
+
+4. “时间复杂度” 指的是：代码执行时间 随着 数据规模 的增长变化趋势
+
+5. “空间复杂度” 指的是：存储空间 与 数据规模 的增长变化趋势
+
+6. 复杂度分析过程
+
+const findCat = (n) => {
+    // 定义变量
+    let name = '石兴龙';
+    let animal = '猫';
+    let cat_number = 0
+    // n 越大，循环的次数越多
+    for (let i = 0; i < n; i++) {
+        cat_number++;
+    }
+    console.log(`${name} 有 ${cat_number} 只猫`)
+}
+findCat(1)     // 石兴龙 有 1 只猫
+findCat(10)    // 石兴龙 有 10 只猫
+findCat(n)     // 石兴龙 有 n 只猫
+先来看看执行过程。先定义了 3 个变量、其次 for 循环、最后一行打印。假设每一行的执行时间为 x 。那么总的执行时间为：
+
+T(n) = 3x + for(n) + x
+
+其中 3x 和 x 的执行时间是不会变的，和 n 没有关系，我们忽略不计。那么现在的执行时间是：
+
+T(n) = for(n) = O(n)
+
+find 函数的复杂度完全依赖变量 n 的大小，所以就是 O(n)
+
+
+复杂度大概分为5种：
+复杂度	执行速度
+O(1)	最快
+O(logn)	快
+O(n)	慢
+O(nLong)	很慢
+O(n次方)	最慢
+```js
+// 最快的代码 O(1)
+let findCat = () => {
+    let name = '石兴龙';
+    let animal = '猫';
+    let cat_number = 0
+    let n = 10
+    for (let i = 0; i < n; i++) {
+        cat_number++;
+    }
+    console.log(`${name} 有 ${cat_number} 只猫`)
+}
+findCat() // 石兴龙 有 10 只猫 
+// 虽然也有 for 循环，但是执行时间是固定的
+
+// 快的代码 O(logn)
+findCat = (n) => {
+    let name = '石兴龙';
+    let animal = '猫';
+    let cat_number = 0
+    for (let i = 0; i < n; i++) {
+        if (i % 2 === 0) {
+            cat_number++;
+        }
+    }
+    console.log(`${name} 有 ${cat_number} 只猫`)
+}
+findCat(10) // 石兴龙 有 5 只猫
+// logn 函数产生的值 < n
+
+// 慢的代码 O(n)
+findCat = (n) => {
+    let name = '石兴龙';
+    let animal = '猫';
+    let cat_number = 0
+    for (let i = 0; i < n; i++) {
+        cat_number++;
+    }
+    console.log(`${name} 有 ${cat_number} 只猫`)
+}
+findCat(10) // 石兴龙 有 10 只猫
+// 执行的时间 和 n 成正比
+
+// 很慢的代码 O(nLong)
+findCat = (n) => {
+    let name = '石兴龙';
+    let animal = '猫';
+    let cat_number = 0
+    for (let i = 0; i < n;) {
+        i += 0.5;
+        cat_number += 1;
+    }
+    console.log(`${name} 有 ${cat_number} 只猫`)
+}
+findCat(10) // 石兴龙 有 20 只猫
+// logn 函数产生的值 > n
+
+// 最慢的代码 O(n次方)
+findCat = (n) => {
+    let name = '石兴龙';
+    let animal = '猫';
+    let cat_number = 0
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            cat_number++;
+        }
+    }
+    console.log(`${name} 有 ${cat_number} 只猫`)
+}
+findCat(10) // 石兴龙 有 100 只猫
+// for 循环的执行次数是 n 的平方，甚至更大
+```
+针对某一个算法的复杂度分析又分为四种情况: 最快O(1)，最慢O(n)，均摊O(1)，和随机O(n)
+
+最快，最慢，随机
+```js
+let cats = ['钢蛋儿', '灰灰', '三花', '豆芽']
+findCat = (catName) => {
+    let name = '石兴龙';
+    let animal = '猫';
+    let cat_number = 0
+    for (let i = 0; i < cats.length; i++) {
+        if (cats[i] === catName) {
+            console.log(`${catName} 排行第 ${i}`)
+            break;
+        }
+    }
+    console.log(`${catName} 不是你的猫`)
+}
+findCat('钢蛋儿') // 钢蛋儿 排行第 1
+// 执行效率最快 O(1)
+
+findCat('豆芽') // 豆芽 排行第 4
+// 执行效率最慢 O(n)
+
+findCat(parseInt(Math.random() * cats.length))
+// 平均执行效率为 O(n)，因为是随机的
+```
+
+均摊 O(1)：循环有规律的出现，并且能被抵消掉。
+```js
+// 插入猫，扩容数组
+let index = 4
+let insertCat = (newCatName) => {
+    if (index === cats.length) {
+        let newCats = []
+        for (let i = 0; i < cats.length; i++) {
+            newCats.push(cats[i])
+        }
+        cats = newCats
+    }
+    index++;
+    cats.push(newCatName)
+}
+insertCat('金渐层') // 复杂度：O(n)
+insertCat('海双布偶') // 复杂度：O(1)
+insertCat('蓝白高地') // 复杂度：O(1)
+/*
+    均摊：虽然有循环，但是循环是有规律的。
+    每一次 O(n) 的后面都跟着 n - 1 次 O(1)
+*/
+```
+
+ 
+ 数组是“线性数据结构”，同样的数据结构还有“链表”，“栈”，“队列”
+
+7. 与之对立的概念是 “非线性表” 。二叉树，堆，图等。因为这些数据结构的方向不只是“前”，“后”。
+
+8. 数组的原理：在内存地址中找到开始的位置，划定一片连续的内存地址。只存储相同类型的数据，这样方便寻址。
+
+9. 因为是连续的内存地址，所以才能实现随机访问元素
+
+10. 数组复杂度分析
+
+动作	复杂度
+array 增	O(n)
+array 删	O(n)
+array 改	O(1)
+array 查：根据下标	O(1)
+array 查：循环查	O(logn)
