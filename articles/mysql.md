@@ -75,3 +75,47 @@ mysql>delete from MYTABLE;
 ```sql
 mysql>update MYTABLE set sex=”f” where name=’hyq’;
 ```
+
+### 全局管理权限：
+```sql
+FILE: 在MySQL服务器上读写文件。
+PROCESS: 显示或杀死属于其它用户的服务线程。
+RELOAD: 重载访问控制表，刷新日志等。
+SHUTDOWN: 关闭MySQL服务。
+```
+### 数据库/数据表/数据列权限：
+```sql
+ALTER: 修改已存在的数据表(例如增加/删除列)和索引。
+CREATE: 建立新的数据库或数据表。
+DELETE: 删除表的记录。
+DROP: 删除数据表或数据库。
+INDEX: 建立或删除索引。
+INSERT: 增加表的记录。
+SELECT: 显示/搜索表的记录。
+UPDATE: 修改表中已存在的记录。
+```
+### 特别的权限：
+```sql
+ALL: 允许做任何事(和root一样)。
+USAGE: 只允许登录–其它什么也不允许做。
+```
+
+## 数据库导入
+
+在不同操作系统或MySQL版本情况下，直接拷贝文件的方法可能会有不兼容的情况发生。
+
+所以一般推荐用SQL脚本形式导入
+
+### SQL脚本导出
+```sql
+mysqldump -u 用户名 -p 数据库名 > 数据库名.sql
+```
+#### 范例：
+```sql
+mysqldump -u root -p abc > abc.sql
+```
+
+### SQL脚本导入
+```sql
+source abc.sql;
+```
