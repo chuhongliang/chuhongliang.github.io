@@ -57,13 +57,15 @@
             
             <a href="/tag.html#C#">C#<span class="count">×6</span></a>
             
-            <a href="/tag.html#Redis">Redis<span class="count">×4</span></a>
-            
             <a href="/tag.html#MySQL">MySQL<span class="count">×4</span></a>
             
             <a href="/tag.html#Nginx">Nginx<span class="count">×4</span></a>
             
+            <a href="/tag.html#Redis">Redis<span class="count">×3</span></a>
+            
             <a href="/tag.html#算法">算法<span class="count">×2</span></a>
+            
+            <a href="/tag.html#计算机操作系统">计算机操作系统<span class="count">×2</span></a>
             
             <div style="clear:both;"></div>
         </div>
@@ -210,28 +212,8 @@
             </div>
             
             <div class="article-block">
-                <p class="title"><a href="/articles/system-eventloop.html">操作系统的轮询技术演进</a></p>
-                <p class="abstract">&lt;摘要&gt;: 很多I/O设备都有一个状态寄存器，用于描述设备当前的工作状态，每当设备状态发生改变时，设备将修改相应状态寄存器位。通过不断查询设备的状态寄存器，CPU就可以了解设备的状态，从而进行必要的I/O操作。为了节约CPU资源，查询工作往往不是连续的，而是定时进行。轮询方式具有简单、易实现、易控制等优势，在很多小型系统中有大量应用。对那些实时敏感性不高、具有大量CPU资源的系统来说，轮询方式有很广泛的应用。最典型的用途就是在那些任务比较单一的单片机上，嵌入式系统中也有应用。</p>
-                <p class="meta">作者 chuhongliang | 发布于 2020-02-04 | Tags 
-                    
-                    <a class="tag" href="/tag.html#System">System</a>
-                    
-                </p>
-            </div>
-            
-            <div class="article-block">
-                <p class="title"><a href="/articles/redis.html">Redis 简介</a></p>
-                <p class="abstract">&lt;摘要&gt;: Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。 它支持多种类型的数据结构，如 字符串（strings）， 散列（hashes）， 列表（lists）， 集合（sets）， 有序集合（sorted sets） 与范围查询， bitmaps， hyperloglogs 和 地理空间（geospatial） 索引半径查询。 Redis 内置了 复制（replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（transactions） 和不同级别的 磁盘持久化（persistence）， 并通过 Redis哨兵（Sentinel）和自动 分区（Cluster）提供高可用性（high availability）。</p>
-                <p class="meta">作者 chuhongliang | 发布于 2020-02-05 | Tags 
-                    
-                    <a class="tag" href="/tag.html#Redis">Redis</a>
-                    
-                </p>
-            </div>
-            
-            <div class="article-block">
-                <p class="title"><a href="/articles/redis-data.html">Redis 的数据结构</a></p>
-                <p class="abstract">&lt;摘要&gt;: Redis本身采用key-value的方式存储数据， key的类型是string，value的类型包括5种：string set list zset(可排序，打分) hash</p>
+                <p class="title"><a href="/articles/redis.html">Redis 详解</a></p>
+                <p class="abstract">&lt;摘要&gt;: Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。Redis 支持很多特性，例如将内存中的数据持久化到硬盘中，使用复制来扩展读性能，使用分片来扩展写性能。</p>
                 <p class="meta">作者 chuhongliang | 发布于 2020-02-05 | Tags 
                     
                     <a class="tag" href="/tag.html#Redis">Redis</a>
@@ -270,8 +252,8 @@
             </div>
             
             <div class="article-block">
-                <p class="title"><a href="/articles/mysql-basics.html">MySQL 基础知识</a></p>
-                <p class="abstract">&lt;摘要&gt;: 详细介绍了MySQL数据库的基础相关知识</p>
+                <p class="title"><a href="/articles/mysql-sql.html">MySQL SQL</a></p>
+                <p class="abstract">&lt;摘要&gt;: SQL（Structured Query Language)，标准 SQL 由 ANSI 标准委员会管理，从而称为 ANSI SQL。各个 DBMS 都有自己的实现，如 PL/SQL、Transact-SQL 等。SQL 语句不区分大小写，但是数据库表名、列名和值是否区分依赖于具体的 DBMS 以及配置。</p>
                 <p class="meta">作者 chuhongliang | 发布于 2020-02-07 | Tags 
                     
                     <a class="tag" href="/tag.html#MySQL">MySQL</a>
@@ -280,7 +262,7 @@
             </div>
             
             <div class="article-block">
-                <p class="title"><a href="/articles/mysql-index.html">MySQL 索引</a></p>
+                <p class="title"><a href="/articles/mysql2.html">MySQL 详解</a></p>
                 <p class="abstract">&lt;摘要&gt;: 数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用 B_TREE。B_TREE 索引加速了数据访问，因为存储引擎不会再去扫描整张表得到需要的数据；相反，它从根节点开始，根节点保存了子节点的指针，存储引擎会根据指针快速寻找数据。</p>
                 <p class="meta">作者 chuhongliang | 发布于 2020-02-07 | Tags 
                     
@@ -290,8 +272,8 @@
             </div>
             
             <div class="article-block">
-                <p class="title"><a href="/articles/mysql-transaction.html">MySQL 事务</a></p>
-                <p class="abstract">&lt;摘要&gt;: 数据库事务(Database Transaction) ，是指作为单个逻辑工作单元执行的一系列操作，要么完全地执行，要么完全地不执行</p>
+                <p class="title"><a href="/articles/mysql-yuanli.html">MySQL 数据库原理</a></p>
+                <p class="abstract">&lt;摘要&gt;: 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。</p>
                 <p class="meta">作者 chuhongliang | 发布于 2020-02-07 | Tags 
                     
                     <a class="tag" href="/tag.html#MySQL">MySQL</a>
@@ -935,6 +917,26 @@
                 <p class="meta">作者 chuhongliang | 发布于 2020-05-26 | Tags 
                     
                     <a class="tag" href="/tag.html#C#">C#</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/system-eventloop.html">操作系统的轮询技术演进</a></p>
+                <p class="abstract">&lt;摘要&gt;: 很多I/O设备都有一个状态寄存器，用于描述设备当前的工作状态，每当设备状态发生改变时，设备将修改相应状态寄存器位。通过不断查询设备的状态寄存器，CPU就可以了解设备的状态，从而进行必要的I/O操作。为了节约CPU资源，查询工作往往不是连续的，而是定时进行。轮询方式具有简单、易实现、易控制等优势，在很多小型系统中有大量应用。对那些实时敏感性不高、具有大量CPU资源的系统来说，轮询方式有很广泛的应用。最典型的用途就是在那些任务比较单一的单片机上，嵌入式系统中也有应用。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-05-30 | Tags 
+                    
+                    <a class="tag" href="/tag.html#计算机操作系统">计算机操作系统</a>
+                    
+                </p>
+            </div>
+            
+            <div class="article-block">
+                <p class="title"><a href="/articles/linux.html">Linux</a></p>
+                <p class="abstract">&lt;摘要&gt;: 为了便于理解，本文从常用操作和概念开始讲起。虽然已经尽量做到简化，但是涉及到的内容还是有点多。Linux 知识点相对于网络和操作系统等知识点而言不是那么重要，只需要重点掌握一些原理和命令即可。</p>
+                <p class="meta">作者 chuhongliang | 发布于 2020-05-31 | Tags 
+                    
+                    <a class="tag" href="/tag.html#计算机操作系统">计算机操作系统</a>
                     
                 </p>
             </div>
