@@ -50,7 +50,7 @@ info 与 man 类似，但是 info 将文档分成一个个页面，每个页面�
 为了加快对磁盘文件的读写速度，位于内存中的文件数据不会立即同步到磁盘，因此关机之前需要先进行 sync 同步操作。
 
 3. shutdown
-```C
+```linux
 # shutdown [-krhc] 时间 [信息]
 -k ： 不会关机，只是发送警告信息，通知所有在线的用户
 -r ： 将系统的服务停掉后就重新启动
@@ -60,12 +60,12 @@ info 与 man 类似，但是 info 将文档分成一个个页面，每个页面�
 
 ## PATH
 可以在环境变量 PATH 中声明可执行文件的路径，路径之间用 : 分隔。
-```C
+```linux
 /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/dmtsai/.local/bin:/home/dmtsai/bin
 ```
 
 ## sudo
-```C
+```linux
 sudo 允许一般用户使用 root 可执行的命令，不过只有在 /etc/sudoers 配置文件中添加的用户才能使用该指令。
 ```
 
@@ -318,7 +318,7 @@ rmdir [-p] 目录名称
 
 ### 5. touch
 更新文件时间或者建立新文件。
-```
+```linux
 # touch [-acdmt] filename
 -a ： 更新 atime
 -c ： 更新 ctime，若该文件不存在则不建立新文件
@@ -343,14 +343,14 @@ cp [-adfilprsu] source destination
 ### 7. rm
 
 删除文件。
-```
+```linux
 # rm [-fir] 文件或目录
 -r ：递归删除
 ```
 
 ### 8. mv
 移动文件。
-```
+```linux
 # mv [-fiu] source destination
 # mv [options] source1 source2 source3 .... directory
 -f ： force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖
@@ -359,19 +359,19 @@ cp [-adfilprsu] source destination
 ## 修改权限
 可以将一组权限用数字来表示，此时一组权限的 3 个位当做二进制数字的位，从左到右每个位的权值为 4、2、1，即每个权限对应的数字权值为 r : 4、w : 2、x : 1。
 
-```
+```linux
 # chmod [-R] xyz dirname/filename
 ```
 
 示例：将 .bashrc 文件的权限修改为 -rwxr-xr--。
 
-```
+```linux
 # chmod 754 .bashrc
 ```
 
 也可以使用符号来设定权限。
 
-```
+```linux
 # chmod [ugoa]  [+-=] [rwx] dirname/filename
 - u：拥有者
 - g：所属群组
@@ -383,7 +383,7 @@ cp [-adfilprsu] source destination
 ```
 
 示例：为 .bashrc 文件的所有用户添加写权限。
-```
+```linux
 # chmod a+w .bashrc
 ```
 
@@ -402,7 +402,7 @@ cp [-adfilprsu] source destination
 
 ![](../assets/vendor/link.png)
 
-```
+```linux
 # ln [-sf] source_filename dist_filename
 -s ：默认是实体链接，加 -s 为符号链接
 -f ：如果目标文件存在时，先删除目标文件
@@ -416,7 +416,7 @@ cp [-adfilprsu] source destination
 
 有以下限制：不能跨越文件系统、不能对目录进行链接。
 
-```
+```linux
 # ln /etc/crontab .
 # ll -i /etc/crontab crontab
 34474855 -rw-r--r--. 2 root root 451 Jun 10 2014 crontab
@@ -430,7 +430,7 @@ cp [-adfilprsu] source destination
 当源文件被删除了，链接文件就打不开了。
 
 因为记录的是路径，所以可以为目录建立符号链接。
-```
+```linux
 # ll -i /etc/crontab /root/crontab2
 34474855 -rw-r--r--. 2 root root 451 Jun 10 2014 /etc/crontab
 53745909 lrwxrwxrwx. 1 root root 12 Jun 23 22:31 /root/crontab2 -> /etc/crontab
@@ -440,7 +440,7 @@ cp [-adfilprsu] source destination
 ### 1. cat
 
 取得文件内容。
-```
+```linux
 # cat [-AbEnTv] filename
 -n ：打印出行号，连同空白行也会有行号，-b 不会
 ```
@@ -456,7 +456,7 @@ cp [-adfilprsu] source destination
 
 ### 5. head
 取得文件前几行。
-```
+```linux
 # head [-n number] filename
 -n ：后面接数字，代表显示几行的意思
 ```
@@ -471,14 +471,14 @@ cp [-adfilprsu] source destination
 ### 1. which
 指令搜索。
 
-```
+```linux
 # which [-a] command
 -a ：将所有指令列出，而不是只列第一个
 ```
 
 ### 2. whereis
 文件搜索。速度比较快，因为它只搜索几个特定的目录。
-```
+```linux
 # whereis [-bmsu] dirname/filename
 ```
 
@@ -487,7 +487,7 @@ cp [-adfilprsu] source destination
 文件搜索。可以用关键字或者正则表达式进行搜索。
 
 locate 使用 /var/lib/mlocate/ 这个数据库来进行搜索，它存储在内存中，并且每天更新一次，所以无法用 locate 搜索新建的文件。可以使用 updatedb 来立即更新数据库。
-```
+```linux
 # locate [-ir] keyword
 -r：正则表达式
 ```
@@ -495,14 +495,14 @@ locate 使用 /var/lib/mlocate/ 这个数据库来进行搜索，它存储在内
 ### 4. find
 
 文件搜索。可以使用文件的属性和权限进行搜索。
-```
+```linux
 # find [basedir] [option]
 example: find . -name "shadow*"
 ```
 
 ① 与时间有关的选项
 
-```
+```linux
 -mtime  n ：列出在 n 天前的那一天修改过内容的文件
 -mtime +n ：列出在 n 天之前 (不含 n 天本身) 修改过内容的文件
 -mtime -n ：列出在 n 天之内 (含 n 天本身) 修改过内容的文件
@@ -514,7 +514,7 @@ example: find . -name "shadow*"
 ![](../assets/vendor/file-4.png)
 
 ② 与文件拥有者和所属群组有关的选项
-```
+```linux
 -uid n
 -gid n
 -user name
@@ -524,7 +524,7 @@ example: find . -name "shadow*"
 ```
 
 ③ 与文件权限和名称有关的选项
-```
+```linux
 -name filename
 -size [+-]SIZE：搜寻比 SIZE 还要大 (+) 或小 (-) 的文件。这个 SIZE 的规格有：c: 代表 byte，k: 代表 1024bytes。所以，要找比 50KB 还要大的文件，就是 -size +50k
 -type TYPE
@@ -560,7 +560,7 @@ gzip 是 Linux 使用最广的压缩指令，可以解开 compress、zip 与 gzi
 有 9 个不同的压缩等级可以使用。
 
 可以使用 zcat、zmore、zless 来读取压缩文件的内容。
-```
+```linux
 $ gzip [-cdtv#] filename
 -c ：将压缩的数据输出到屏幕上
 -d ：解压缩
@@ -574,7 +574,7 @@ $ gzip [-cdtv#] filename
 提供比 gzip 更高的压缩比。
 
 查看命令：bzcat、bzmore、bzless、bzgrep。
-```
+```linux
 $ bzip2 [-cdkzv#] filename
 -k ：保留源文件
 ```
@@ -586,13 +586,13 @@ $ bzip2 [-cdkzv#] filename
 可以看到，gzip、bzip2、xz 的压缩比不断优化。不过要注意的是，压缩比越高，压缩的时间也越长。
 
 查看命令：xzcat、xzmore、xzless、xzgrep。
-```
+```linux
 $ xz [-dtlkc#] filename
 ```
 
 ## 打包
 压缩指令只能对一个文件进行压缩，而打包能够将多个文件打包成一个大文件。tar 不仅可以用于打包，也可以使用 gzip、bzip2、xz 将打包文件进行压缩。
-```
+```linux
 $ tar [-z|-j|-J] [cv] [-f 新建的 tar 文件] filename...  ==打包压缩
 $ tar [-z|-j|-J] [tv] [-f 已有的 tar 文件]              ==查看
 $ tar [-z|-j|-J] [xv] [-f 已有的 tar 文件] [-C 目录]    ==解压缩
@@ -629,7 +629,7 @@ $ tar [-z|-j|-J] [xv] [-f 已有的 tar 文件] [-C 目录]    ==解压缩
 对变量取用需要在变量前加上 $ ，也可以用 ${} 的形式；
 
 输出变量使用 echo 命令。
-```
+```linux
 $ x=abc
 $ echo $x
 $ echo ${x}
@@ -644,7 +644,7 @@ $ echo ${x}
 可以使用 export 命令将自定义变量转成环境变量，环境变量可以在子程序中使用，所谓子程序就是由当前 Bash 而产生的子 Bash。
 
 Bash 的变量可以声明为数组和整数数字。注意数字类型没有浮点数。如果不进行声明，默认是字符串类型。变量的声明使用 declare 命令：
-```
+```linux
 $ declare [-aixr] variable
 -a ： 定义为数组类型
 -i ： 定义为整数类型
@@ -653,7 +653,7 @@ $ declare [-aixr] variable
 ```
 
 使用 [ ] 来对数组进行索引操作：
-```
+```linux
 $ array[1]=a
 $ array[2]=b
 $ echo ${array[1]}
@@ -679,7 +679,7 @@ $ echo ${array[1]}
 可以将不需要的标准输出以及标准错误输出重定向到 /dev/null，相当于扔进垃圾箱。
 
 如果需要将标准输出以及标准错误输出同时重定向到一个文件，需要将某个输出转换为另一个输出，例如 2>&1 表示将标准错误输出转换为标准输出。
-```
+```linux
 $ find /home -name .bashrc > list 2>&1
 ```
 
@@ -687,7 +687,7 @@ $ find /home -name .bashrc > list 2>&1
 管道是将一个命令的标准输出作为另一个命令的标准输入，在数据需要经过多个步骤的处理之后才能得到我们想要的内容时就可以使用管道。
 
 在命令之间使用 | 分隔各个管道命令。
-```
+```linux
 $ ls -al /etc | less
 ```
 
@@ -695,7 +695,7 @@ $ ls -al /etc | less
 cut 对数据进行切分，取出想要的部分。
 
 切分过程一行一行地进行。
-```
+```linux
 $ cut
 -d ：分隔符
 -f ：经过 -d 分隔后，使用 -f n 取出第 n 个区间
@@ -703,14 +703,14 @@ $ cut
 ```
 
 示例 1：last 显示登入者的信息，取出用户名。
-```
+```linux
 $ last
 root pts/1 192.168.201.101 Sat Feb 7 12:35 still logged in
 root pts/1 192.168.201.101 Fri Feb 6 12:13 - 18:46 (06:33)
 root pts/1 192.168.201.254 Thu Feb 5 22:37 - 23:53 (01:16)
 
 $ last | cut -d ' ' -f 1
-```
+```linux
 示例 2：将 export 输出的信息，取出第 12 字符以后的所有字符串。
 ```
 $ export
@@ -725,7 +725,7 @@ $ export | cut -c 12-
 
 ## 排序指令
 sort 用于排序。
-```
+```linux
 $ sort [-fbMnrtuk] [file or stdin]
 -f ：忽略大小写
 -b ：忽略最前面的空格
@@ -738,7 +738,7 @@ $ sort [-fbMnrtuk] [file or stdin]
 ```
 
 示例：/etc/passwd 文件内容以 : 来分隔，要求以第三列进行排序。
-```
+```linux
 $ cat /etc/passwd | sort -t ':' -k 3
 root:x:0:0:root:/root:/bin/bash
 dmtsai:x:1000:1000:dmtsai:/home/dmtsai:/bin/bash
@@ -747,14 +747,14 @@ arod:x:1002:1003::/home/arod:/bin/bash
 ```
 uniq 可以将重复的数据只取一个。
 
-```
+```linux
 $ uniq [-ic]
 -i ：忽略大小写
 -c ：进行计数
 ```
 
 示例：取得每个人的登录总次数
-```
+```linux
 $ last | cut -d ' ' -f 1 | sort | uniq -c
 1
 6 (unknown
@@ -766,35 +766,35 @@ $ last | cut -d ' ' -f 1 | sort | uniq -c
 
 ## 双向输出重定向
 输出重定向会将输出内容重定向到文件中，而 tee 不仅能够完成这个功能，还能保留屏幕上的输出。也就是说，使用 tee 指令，一个输出会同时传送到文件和屏幕上。
-```
+```linux
 $ tee [-a] file
 ```
 
 ## 字符转换指令
 #### tr 用来删除一行中的字符，或者对字符进行替换。
-```
+```linux
 $ tr [-ds] SET1 ...
 -d ： 删除行中 SET1 这个字符串
 ```
 示例，将 last 输出的信息所有小写转换为大写。
-```
+```linux
 $ last | tr '[a-z]' '[A-Z]'
 ```
 
 #### col 将 tab 字符转为空格字符。
-```
+```linux
 $ col [-xb]
 -x ： 将 tab 键转换成对等的空格键
 ```
 
 #### expand 将 tab 转换一定数量的空格，默认是 8 个。
-```
+```linux
 $ expand [-t] file
 -t ：tab 转为空格的数量
 ```
 
 #### join 将有相同数据的那一行合并在一起。
-```
+```linux
 $ join [-ti12] file1 file2
 -t ：分隔符，默认为空格
 -i ：忽略大小写的差异
@@ -803,14 +803,14 @@ $ join [-ti12] file1 file2
 ```
 
 #### paste 直接将两行粘贴在一起。
-```
+```linux
 $ paste [-d] file1 file2
 -d ：分隔符，默认为 tab
 ```
 
 ## 分区指令
 #### split 将一个文件划分成多个文件。
-```
+```linux
 $ split [-bl] file PREFIX
 -b ：以大小来进行分区，可加单位，例如 b, k, m 等
 -l ：以行数来进行分区。
@@ -820,7 +820,7 @@ $ split [-bl] file PREFIX
 # 九、正则表达式
 ### grep
 g/re/p（globally search a regular expression and print)，使用正则表示式进行全局查找并打印。
-```
+```linux
 $ grep [-acinv] [--color=auto] 搜寻字符串 filename
 -c ： 统计匹配到行的个数
 -i ： 忽略大小写
@@ -830,7 +830,7 @@ $ grep [-acinv] [--color=auto] 搜寻字符串 filename
 ```
 
 示例：把含有 the 字符串的行提取出来（注意默认会有 --color=auto 选项，因此以下内容在 Linux 中有颜色显示 the 字符串）
-```
+```linux
 $ grep -n 'the' regular_express.txt
 8:I can't finish the test.
 12:the symbol '*' is represented as start.
@@ -839,13 +839,13 @@ $ grep -n 'the' regular_express.txt
 18:google is the best tools for search keyword
 ```
 示例：正则表达式 a{m,n} 用来匹配字符 a m~n 次，这里需要将 { 和 } 进行转义，因为它们在 shell 是有特殊意义的。
-```
+```linux
 $ grep -n 'a\{2,5\}' regular_express.txt
 ```
 
 ### printf
 用于格式化输出。它不属于管道命令，在给 printf 传数据时需要使用 $( ) 形式。
-```
+```linux
 $ printf '%10s %5i %5i %5i %8.2f \n' $(cat printf.txt)
     DmTsai    80    60    92    77.33
      VBird    75    55    80    70.00
@@ -859,7 +859,7 @@ awk 每次处理一行，处理的最小单位是字段，每个字段的命名�
 
 示例：取出最近五个登录用户的用户名和 IP。首先用 last -n 5 取出用最近五个登录用户的所有信息，可以看到用户名和 IP 分别在第 1 列和第 3 列，我们用 $1 和 $3 就能取出这两个字段，然后用 print 进行打印。
 
-```
+```linux
 $ last -n 5
 dmtsai pts/0 192.168.1.100 Tue Jul 14 17:32 still logged in
 dmtsai pts/0 192.168.1.100 Thu Jul 9 23:36 - 02:58 (03:22)
@@ -868,18 +868,18 @@ dmtsai pts/0 192.168.1.100 Thu Jul 9 08:02 - 08:17 (00:14)
 dmtsai tty1 Fri May 29 11:55 - 12:11 (00:15)
 ```
 
-```
+```linux
 $ last -n 5 | awk '{print $1 "\t" $3}'
 ```
 
 可以根据字段的某些条件进行匹配，例如匹配字段小于某个值的那一行数据。
 
-```
+```linux
 $ awk '条件类型 1 {动作 1} 条件类型 2 {动作 2} ...' filename
 ```
 
 示例：/etc/passwd 文件第三个字段为 UID，对 UID 小于 10 的数据进行处理。
-```
+```linux
 $ cat /etc/passwd | awk 'BEGIN {FS=":"} $3 < 10 {print $1 "\t " $3}'
 root 0
 bin 1
@@ -894,7 +894,7 @@ daemon 2
 | FS       | 目前的分隔字符，默认是空格键 |
 
 示例：显示正在处理的行号以及每一行有多少字段
-```
+```linux
 $ last -n 5 | awk '{print $1 "\t lines: " NR "\t columns: " NF}'
 dmtsai lines: 1 columns: 10
 dmtsai lines: 2 columns: 10
@@ -909,15 +909,15 @@ dmtsai lines: 5 columns: 9
 查看某个时间点的进程信息。
 
 示例：查看自己的进程
-```
+```linux
 # ps -l
 ```
 示例：查看系统所有进程
-```
+```linux
 # ps aux
 ```
 示例：查看特定的进程
-```
+```linux
 # ps aux | grep threadx
 ```
 
@@ -925,7 +925,7 @@ dmtsai lines: 5 columns: 9
 查看进程树。
 
 示例：查看所有进程树
-```
+```linux
 # pstree -A
 ```
 
@@ -934,7 +934,7 @@ dmtsai lines: 5 columns: 9
 实时显示进程信息。
 
 示例：两秒钟刷新一次
-```
+```linux
 # top -d 2
 ```
 
@@ -943,7 +943,7 @@ dmtsai lines: 5 columns: 9
 查看占用端口的进程
 
 示例：查看特定端口的进程
-```
+```linux
 # netstat -anp | grep port
 ```
 
@@ -969,7 +969,7 @@ dmtsai lines: 5 columns: 9
 在子进程退出时，它的进程描述符不会立即释放，这是为了让父进程得到子进程信息，父进程通过 wait() 和 waitpid() 来获得一个已经退出的子进程的信息。
 
 ### wait()
-```
+```linux
 pid_t wait(int *status)
 ```
 父进程调用 wait() 会一直阻塞，直到收到一个子进程退出的 SIGCHLD 信号，之后 wait() 函数会销毁子进程并返回。
@@ -979,7 +979,7 @@ pid_t wait(int *status)
 参数 status 用来保存被收集的子进程退出时的一些状态，如果对这个子进程是如何死掉的毫不在意，只想把这个子进程消灭掉，可以设置这个参数为 NULL。
 
 ### waitpid()
-```
+```linux
 pid_t waitpid(pid_t pid, int *status, int options)
 ```
 作用和 wait() 完全相同，但是多了两个可由用户控制的参数 pid 和 options。
