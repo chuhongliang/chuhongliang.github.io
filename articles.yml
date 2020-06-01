@@ -691,6 +691,62 @@
     - 计算机操作系统
   abstract: 很多I/O设备都有一个状态寄存器，用于描述设备当前的工作状态，每当设备状态发生改变时，设备将修改相应状态寄存器位。通过不断查询设备的状态寄存器，CPU就可以了解设备的状态，从而进行必要的I/O操作。为了节约CPU资源，查询工作往往不是连续的，而是定时进行。轮询方式具有简单、易实现、易控制等优势，在很多小型系统中有大量应用。对那些实时敏感性不高、具有大量CPU资源的系统来说，轮询方式有很广泛的应用。最典型的用途就是在那些任务比较单一的单片机上，嵌入式系统中也有应用。
 
+- id: system-summary
+  title: 计算机操作系统－概述
+  postedOn: !!str 2020-05-30
+  author: chuhongliang
+  tags:
+    - 计算机操作系统
+  abstract: 
+
+- id: system-process
+  title: 计算机操作系统-进程管理
+  postedOn: !!str 2020-05-30
+  author: chuhongliang
+  tags:
+    - 计算机操作系统
+  abstract: 
+
+- id: system-lock
+  title: 计算机操作系统-死锁
+  postedOn: !!str 2020-05-30
+  author: chuhongliang
+  tags:
+    - 计算机操作系统
+  abstract: 
+
+- id: system-memory
+  title: 计算机操作系统-内存管理
+  postedOn: !!str 2020-05-31
+  author: chuhongliang
+  tags:
+    - 计算机操作系统
+  abstract: 
+
+- id: system-disk
+  title: 计算机操作系统-磁盘管理
+  postedOn: !!str 2020-05-31
+  author: chuhongliang
+  tags:
+    - 计算机操作系统
+  abstract: 
+
+- id: system-disk
+  title: 计算机操作系统-磁盘管理
+  postedOn: !!str 2020-05-31
+  author: chuhongliang
+  tags:
+    - 计算机操作系统
+  abstract: 
+
+- id: system-link
+  title: 计算机操作系统-链接
+  postedOn: !!str 2020-05-31
+  author: chuhongliang
+  tags:
+    - 计算机操作系统
+  abstract: 
+
 - id: linux
   title: Linux
   postedOn: !!str 2020-05-31
@@ -698,3 +754,35 @@
   tags:
     - 计算机操作系统
   abstract: 为了便于理解，本文从常用操作和概念开始讲起。虽然已经尽量做到简化，但是涉及到的内容还是有点多。Linux 知识点相对于网络和操作系统等知识点而言不是那么重要，只需要重点掌握一些原理和命令即可。
+
+- id: system-design
+  title: 系统设计基础
+  postedOn: !!str 2020-06-01
+  author: chuhongliang
+  tags:
+    - 系统设计
+  abstract:
+
+- id: system-design-DCS
+  title: 分布式
+  postedOn: !!str 2020-06-01
+  author: chuhongliang
+  tags:
+    - 系统设计
+  abstract:
+
+- id: system-design-cluster
+  title: 集群
+  postedOn: !!str 2020-06-01
+  author: chuhongliang
+  tags:
+    - 系统设计
+  abstract:
+
+- id: system-design-cache
+  title: 缓存
+  postedOn: !!str 2020-06-01
+  author: chuhongliang
+  tags:
+    - 系统设计
+  abstract:
