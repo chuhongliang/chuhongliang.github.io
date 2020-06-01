@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Wed, 27 May 2020 08:57:23 +0800</lastBuildDate>
+        <lastBuildDate>Sun, 31 May 2020 15:24:35 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -17,40 +17,39 @@
 &lt;p&gt;Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。 &lt;/p&gt;
 &lt;p&gt;Node 是一个让 JavaScript 运行在服务端的开发平台，它让 JavaScript 成为与PHP、Python、Perl、Ruby 等服务端语言平起平坐的脚本语言。 发布于2009年5月，由Ryan Dahl开发，实质是对Chrome V8引擎进行了封装。&lt;/p&gt;
 &lt;p&gt;Node对一些特殊用例进行优化，提供替代的API，使得V8在非浏览器环境下运行得更好。V8引擎执行Javascript的速度非常快，性能非常好。Node是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行数据密集型的实时应用。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h2 id=&quot;发展史&quot;&gt;发展史&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;2009年2月，Ryan Dahl在博客上宣布准备基于V8创建一个轻量级的Web服务器并提供一套库。&lt;/li&gt;
-&lt;li&gt;2009年5月，Ryan Dahl在GitHub上发布了最初版本的部分Node包，随后几个月里，有人开始使用Node开发应用。&lt;/li&gt;
-&lt;li&gt;2009年11月和2010年4月，两届JSConf大会都安排了Node.js的讲座。&lt;/li&gt;
-&lt;li&gt;2010年年底，Node获得云计算服务商Joyent资助，创始人Ryan Dahl加入Joyent全职负责Node的发展。&lt;/li&gt;
-&lt;li&gt;2011年7月，Node在微软的支持下发布Windows版本。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
+&lt;p&gt;2009年2月，Ryan Dahl在博客上宣布准备基于V8创建一个轻量级的Web服务器并提供一套库。&lt;/p&gt;
+&lt;p&gt;2009年5月，Ryan Dahl在GitHub上发布了最初版本的部分Node包，随后几个月里，有人开始使用Node开发应用。&lt;/p&gt;
+&lt;p&gt;2009年11月和2010年4月，两届JSConf大会都安排了Node.js的讲座。&lt;/p&gt;
+&lt;p&gt;2010年年底，Node获得云计算服务商Joyent资助，创始人Ryan Dahl加入Joyent全职负责Node的发展。&lt;/p&gt;
+&lt;p&gt;2011年7月，Node在微软的支持下发布Windows版本。&lt;/p&gt;
 &lt;h2 id=&quot;特性&quot;&gt;特性&lt;/h2&gt;
 &lt;p&gt;V8引擎本身使用了一些最新的编译技术。这使得用Javascript这类脚本语言编写出来的代码运行速度获得了极大提升，又节省了开发成本。对性能的苛求是Node的一个关键因素。 Javascript是一个事件驱动语言，Node利用了这个优点，编写出可扩展性高的服务器。Node采用了一个称为“事件循环(event loop）”的架构，使得编写可扩展性高的服务器变得既容易又安全。提高服务器性能的技巧有多种多样。Node选择了一种既能提高性能，又能减低开发复杂度的架构。这是一个非常重要的特性。并发编程通常很复杂且布满地雷。Node绕过了这些，但仍提供很好的性能。
 Node采用一系列“非阻塞”库来支持事件循环的方式。本质上就是为文件系统、数据库之类的资源提供接口。向文件系统发送一个请求时，无需等待硬盘（寻址并检索文件），硬盘准备好的时候非阻塞接口会通知Node。该模型以可扩展的方式简化了对慢资源的访问， 直观，易懂。&lt;/p&gt;
-&lt;hr&gt;
+&lt;h2 id=&quot;版本发布&quot;&gt;版本发布&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;每6个月发布一个主要版本(即Major号变更)，作为Current版本&lt;/li&gt;
+&lt;li&gt;发布月份: 4月发布偶数版本，10月发布奇数版本&lt;/li&gt;
+&lt;li&gt;每12个月将一个版本转入LTS版本。对，只有偶数版本（一般是在其后续奇数版本发布时）&lt;/li&gt;
+&lt;li&gt;LTS版本要经历两个阶段：活跃期（Active）与维护期（Maintenance)&lt;/li&gt;
+&lt;li&gt;活跃期(Active)共18个月，主要在不改变兼容性的情况下，周期性修改自身Bug与合并其他版本的重要修改&lt;/li&gt;
+&lt;li&gt;维护期（Maintenance)共12个月，只负责修改本版本的Bug以及特别紧急的如安全性问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;版本选择&quot;&gt;版本选择&lt;/h2&gt;
+&lt;p&gt;LTS代表“Long Term Support（长期支持）”，Current代表“当前的”。Current就代表最新发布的版本（每6个月一次的），它可能是奇数版本也可能是偶数版本。因为其是最新的，所以包含Node.js平台的最新特性。而LTS代表了一个被不断修正与改进的版本。每个时刻Current版本只有一个，LTS版本可能有3个，LTS-Active版本可能有2个.&lt;/p&gt;
+&lt;p&gt;在Node.js官网中给出的LTS版本总是处于LTS的最新版本（目前是10.15.1），根据发布计划，该版本处于活跃期(Ative)我们可以看到其MINOR版本在不断升级过程中。&lt;/p&gt;
 &lt;h2 id=&quot;适用场景&quot;&gt;适用场景&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Node.js适合做一些高并发的，I/O密集型的应用。&lt;/li&gt;
-&lt;li&gt;当应用程序需要处理大量并发的I/O，而在向客户端发出响应之前，应用程序内部并不需要进行非常复杂的处理的时候，Node.js非常适合。Node.js也非常适合与web socket配合，开发长连接的实时交互应用程序。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
+&lt;p&gt;Node.js适合做一些高并发的，I/O密集型的应用。&lt;/p&gt;
+&lt;p&gt;当应用程序需要处理大量并发的I/O，而在向客户端发出响应之前，应用程序内部并不需要进行非常复杂的处理的时候，Node.js非常适合。Node.js也非常适合与web socket配合，开发长连接的实时交互应用程序。&lt;/p&gt;
 &lt;h2 id=&quot;nodejs优点&quot;&gt;Node.js优点&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;采用事件驱动、异步编程，为网络服务而设计。其实Javascript的匿名函数和闭包特性非常适合事件驱动、异步编程。而且JavaScript也简单易学，很多前端设计人员可以很快上手做后端设计。&lt;/li&gt;
-&lt;li&gt;Node.js非阻塞模式的IO处理给Node.js带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。&lt;/li&gt;
-&lt;li&gt;Node.js轻量高效，可以认为是数据密集型分布式部署环境下的实时应用系统的完美解决方案。Node非常适合如下情况：在响应客户端之前，您预计可能有很高的流量，但所需的服务器端逻辑和处理不一定很多。&lt;/li&gt;
-&lt;li&gt;单进程，节约资源&lt;/li&gt;
-&lt;li&gt;异步I/O，提升并发量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
+&lt;p&gt;采用事件驱动、异步编程，为网络服务而设计。其实Javascript的匿名函数和闭包特性非常适合事件驱动、异步编程。而且JavaScript也简单易学，很多前端设计人员可以很快上手做后端设计。&lt;/p&gt;
+&lt;p&gt;Node.js非阻塞模式的IO处理给Node.js带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。&lt;/p&gt;
+&lt;p&gt;Node.js轻量高效，可以认为是数据密集型分布式部署环境下的实时应用系统的完美解决方案。Node非常适合如下情况：在响应客户端之前，您预计可能有很高的流量，但所需的服务器端逻辑和处理不一定很多。&lt;/p&gt;
+&lt;p&gt;单进程，节约资源&lt;/p&gt;
+&lt;p&gt;异步I/O，提升并发量&lt;/p&gt;
 &lt;h2 id=&quot;nodejs缺点&quot;&gt;Node.js缺点&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;可靠性低, 一旦出现未捕获的异常将直接导致服务不可用.&lt;/li&gt;
-&lt;li&gt;单进程，单线程，只支持单核CPU，不能充分的利用多核CPU服务器。一旦这个进程崩掉，那么整个web服务就崩掉了。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;可靠性低, 一旦出现未捕获的异常将直接导致服务不可用.&lt;/p&gt;
+&lt;p&gt;单进程，单线程，只支持单核CPU，不能充分的利用多核CPU服务器。一旦这个进程崩掉，那么整个web服务就崩掉了。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;以上缺点可以可以通过代码的健壮性来弥补。使用cluster模式开启多个进程。 设置全局异常捕获器。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -167,16 +166,12 @@ a 结束
             <guid>Homepage link/articles/javascript.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
             <pubDate>Mon, 27 Jan 2020 00:00:00 +0800</pubDate>
-            <description>&lt;h3 id=&quot;javascript&quot;&gt;Javascript&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名的，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。&lt;/li&gt;
-&lt;li&gt;JavaScript在1995年由Netscape公司的Brendan Eich，在网景导航者浏览器上首次设计实现而成。因为Netscape与Sun合作，Netscape管理层希望它外观看起来像Java，因此取名为JavaScript。但实际上它的语法风格与Self及Scheme较为接近。&lt;/li&gt;
-&lt;li&gt;JavaScript的标准是ECMAScript 。截至 2012 年，所有浏览器都完整的支持ECMAScript 5.1，旧版本的浏览器至少支持ECMAScript 3 标准。2015年6月17日，ECMA国际组织发布了ECMAScript 的第六版，该版本正式名称为 ECMAScript 2015，但通常被称为ECMAScript 6 或者ES6。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;基本特点&quot;&gt;基本特点&lt;/h3&gt;
-&lt;blockquote&gt;
+            <description>&lt;h1 id=&quot;javascript&quot;&gt;Javascript&lt;/h1&gt;
+&lt;p&gt;JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名的，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。&lt;/p&gt;
+&lt;p&gt;JavaScript在1995年由Netscape公司的Brendan Eich，在网景导航者浏览器上首次设计实现而成。因为Netscape与Sun合作，Netscape管理层希望它外观看起来像Java，因此取名为JavaScript。但实际上它的语法风格与Self及Scheme较为接近。&lt;/p&gt;
+&lt;p&gt;JavaScript的标准是ECMAScript 。截至 2012 年，所有浏览器都完整的支持ECMAScript 5.1，旧版本的浏览器至少支持ECMAScript 3 标准。2015年6月17日，ECMA国际组织发布了ECMAScript 的第六版，该版本正式名称为 ECMAScript 2015，但通常被称为ECMAScript 6 或者ES6。&lt;/p&gt;
+&lt;h2 id=&quot;基本特点&quot;&gt;基本特点&lt;/h2&gt;
 &lt;p&gt;JavaScript是一种属于网络的脚本语言,已经被广泛用于Web应用开发,常用来为网页添加各式各样的动态功能,为用户提供更流畅美观的浏览效果。通常JavaScript脚本是通过嵌入在HTML中来实现自身的功能的。&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;是一种解释性脚本语言（代码不进行预编译）。 &lt;/li&gt;
 &lt;li&gt;主要用来向HTML（标准通用标记语言下的一个应用）页面添加交互行为。 &lt;/li&gt;
@@ -184,11 +179,74 @@ a 结束
 &lt;li&gt;跨平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行（如Windows、Linux、Mac、Android、iOS等）。&lt;/li&gt;
 &lt;li&gt;Javascript脚本语言同其他语言一样，有它自身的基本数据类型，表达式和算术运算符及程序的基本程序框架。Javascript提供了四种基本的数据类型和两种特殊数据类型用来处理数据和文字。而变量提供存放信息的地方，表达式则可以完成较复杂的信息处理。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;历史&quot;&gt;历史&lt;/h3&gt;
+&lt;h2 id=&quot;历史&quot;&gt;历史&lt;/h2&gt;
+&lt;p&gt;它最初由Netscape的Brendan Eich设计。JavaScript是甲骨文公司的注册商标。Ecma国际以JavaScript为基础制定了ECMAScript标准。JavaScript也可以用于其他场合，如服务器端编程。完整的JavaScript实现包含三个部分：ECMAScript，文档对象模型，浏览器对象模型。  &lt;/p&gt;
+&lt;p&gt;Netscape在最初将其脚本语言命名为LiveScript，后来Netscape在与Sun合作之后将其改名为JavaScript。JavaScript最初受Java启发而开始设计的，目的之一就是“看上去像Java”，因此语法上有类似之处，一些名称和命名规范也借自Java。但JavaScript的主要设计原则源自Self和Scheme。JavaScript与Java名称上的近似，是当时Netscape为了营销考虑与Sun微系统达成协议的结果。为了取得技术优势，微软推出了JScript来迎战JavaScript的脚本语言。为了互用性，Ecma国际（前身为欧洲计算机制造商协会）创建了ECMA-262标准（ECMAScript）。两者都属于ECMAScript的实现。尽管JavaScript作为给非程序人员的脚本语言，而非作为给程序人员的脚本语言来推广和宣传，但是JavaScript具有非常丰富的特性。 &lt;/p&gt;
+&lt;h4 id=&quot;发展初期，javascript的标准并未确定，同期有netscape的javascript，微软的jscript和cenvi的scriptease三足鼎立。1997年，在ecma（欧洲计算机制造商协会）的协调下，由netscape、sun、微软、borland组成的工作组确定统一标准：ecma-262一种名为ecmascript的新脚本语言的标准。&quot;&gt;发展初期，JavaScript的标准并未确定，同期有Netscape的JavaScript，微软的JScript和CEnvi的ScriptEase三足鼎立。1997年，在ECMA（欧洲计算机制造商协会）的协调下，由Netscape、Sun、微软、Borland组成的工作组确定统一标准：ECMA-262一种名为ECMAScript的新脚本语言的标准。&lt;/h4&gt;
+&lt;p&gt;由ECMA-262定义的ECMAScript其实与Web浏览器没有依赖关系。Web浏览器只是ECMAScript实现可能的宿主环境之一。ECMA-262定义的只这门语言的基础，而在此基础上可能构建更完善的脚本语言。说回宿主，它不仅提供基本的JavaScript的实现，同时也会提供该语言的扩展，比如DOM。其他宿主环境还包括Node和Adobe Flash。&lt;/p&gt;
+&lt;p&gt;ECMA-262标准主要规定了这门语言的以下组成部分：&lt;/p&gt;
+&lt;p&gt;1.语法，2.类型，3.语句，4.关键字，5.保留字，6.操作符，7.对象。&lt;/p&gt;
+&lt;h2 id=&quot;ecmascript的版本&quot;&gt;ECMAScript的版本&lt;/h2&gt;
+&lt;h3 id=&quot;ecmascript-1&quot;&gt;ECMAScript 1&lt;/h3&gt;
+&lt;p&gt;1997年6月发布, 本质上与javascript 1.1 相同, 只不过只不过删除了所有针对浏览器的代码并作了一些较小的改动：ECMAScript要求支持Unicode标准，而且对象也变成了平台无关的。&lt;/p&gt;
+&lt;h3 id=&quot;ecmascript-2&quot;&gt;ECMAScript 2&lt;/h3&gt;
+&lt;p&gt;1998年6月发布, 主要是编辑加工的结果。这一版的内容更新是为了与ISO/IEC-16262保持严格一致，没有作任何新增、修改或删节处理。因此，一般不使用第2版来衡量ECMAScript实现的兼容性。&lt;/p&gt;
+&lt;h3 id=&quot;ecmascript-3&quot;&gt;ECMAScript 3&lt;/h3&gt;
+&lt;p&gt;1999年12月发布, 是对ECMAScript标准第一次真正的修改。新增了对正则表达式、新控制语句、try-catch异常处理的支持，修改了字符处理、错误定义和数值输出等内容。
+从各方面综合来看，第3版标志着ECMAScript成为了一门真正的编程语言。也成为JavaScript的通行标准，得到了广泛支持。&lt;/p&gt;
+&lt;h3 id=&quot;ecmascript-4&quot;&gt;ECMAScript 4&lt;/h3&gt;
+&lt;p&gt;2007年10月ECMAScript 4.0版草案发布。对3.0版做了大幅升级，预计次年8月发布正式版本。草案发布后，由于4.0版的目标过于激进，各方对于是否通过这个标准，发生了严重分歧。&lt;/p&gt;
+&lt;p&gt;以Yahoo、Microsoft、Google为首的大公司，反对JavaScript的大幅升级，主张小幅改动；以JavaScript创造者Brendan Eich为首的Mozilla公司，则坚持当前的草案。&lt;/p&gt;
+&lt;h4 id=&quot;2008年7月ecmascript-40发布前被废弃&quot;&gt;2008年7月ECMAScript 4.0发布前被废弃&lt;/h4&gt;
+&lt;p&gt;由于对于下一个版本应该包括哪些功能，各方分歧太大，争论过于激进，ECMA开会决定，中止ECMAScript 4.0的开发（即废除了这个版本）。&lt;/p&gt;
+&lt;p&gt;将其中涉及现有功能改善的一小部分，发布为ECMAScript3.1，而将其他激进的设想扩大范围，放入以后的版本，由于会议的气氛，该版本的项目代号起名为Harmony（和谐）。&lt;/p&gt;
+&lt;p&gt;会后不久，ECMAScript 3.1就改名为ECMAScript 5。&lt;/p&gt;
+&lt;h3 id=&quot;ecmascript-5&quot;&gt;ECMAScript 5&lt;/h3&gt;
+&lt;p&gt;2009年12月发布，Harmony项目则一分为二，一些较为可行的设想定名为JavaScript.next继续开发，后来演变成ECMAScript 6；
+一些不是很成熟的设想，则被视为JavaScript.next.next，在更远的将来再考虑推出。&lt;/p&gt;
+&lt;p&gt;TC39的总体考虑是，ECMAScript5与ECMAScript3基本保持兼容，较大的语法修正和新功能加入，将由JavaScript.next完成。
+(当时，JavaScript.next指的是ECMAScript 6。第六版发布以后，将指ECMAScript 7)
+该版本力求澄清第3版中的歧义，并添加了新的功能。&lt;/p&gt;
+&lt;p&gt;新功能包括：原生JSON对象、继承的方法、高级属性的定义以及引入严格模式。&lt;/p&gt;
+&lt;p&gt;2011年6月发布，ECMAscript 5.1版发布。并且成为ISO国际标准（ISO/IEC16262:2011）。到了2012年底，所有主要浏览器都支持ECMAScript 5.1版的全部功能&lt;/p&gt;
+&lt;h3 id=&quot;ecmascript-6-es6-&quot;&gt;ECMAScript 6 (ES6)&lt;/h3&gt;
+&lt;p&gt;2015年6月发布，ECMAScript 6正式发布，并且更名为“ECMAScript 2015”。这是因为TC39委员会计划，以后每年发布一个ECMAScirpt的版本，下一个版本在2016年发布，称为“ECMAScript 2016”。&lt;/p&gt;
+&lt;p&gt;从现在开始，新版本将按照ECMAScript+年份的形式发布。&lt;/p&gt;
+&lt;p&gt;S6是继S5之后的一次主要改进，语言规范由ES5.1时代的245页扩充至600页。尽管ES6做了大量的更新，但是它依旧完全向后兼容以前的版本。&lt;/p&gt;
+&lt;p&gt;ES6增添了许多必要的特性，新功能包括：模块和类以及一些实用特性，例如Maps、Sets、Promises、生成器（Generators）等。&lt;/p&gt;
+&lt;h3 id=&quot;ecmascript2016-es7-&quot;&gt;ECMAScript2016 (ES7)&lt;/h3&gt;
+&lt;p&gt;2016 年 6 月：ECMAScript 的第 7 个版本。&lt;/p&gt;
+&lt;h3 id=&quot;ecmascript2017-es8-&quot;&gt;ECMAScript2017 (ES8)&lt;/h3&gt;
+&lt;p&gt;2017 年 6 月：ECMAScript 的第 8 个版本。&lt;/p&gt;
+&lt;h2 id=&quot;文档对象模型（dom）&quot;&gt;文档对象模型（DOM）&lt;/h2&gt;
+&lt;p&gt;文档对象模型是针对XML但经过扩展用于HTML的应用程序编程接口。DOM把整个页面映射为一个多层节点结构。HTML或XML页面中的每个组成部分都是某种类型的节点，这些节点又包含着不同类型的数据。&lt;/p&gt;
+&lt;p&gt;比如下面这个页面：&lt;/p&gt;
+&lt;pre class=&quot;prettyprint linenums lang-xml&quot;&gt;&lt;html&gt;
+    &lt;head&gt;        
+        &lt;title&gt;Sample Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Hello World!&lt;/p&gt;   
+    &lt;/body&gt;          
+&lt;/html&gt;    
+&lt;/pre&gt;
+&lt;p&gt;可以通过下面这个分层节点树表示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../assets/vendor/dom.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;通过DOM创建的这个表示文档的树形图（通常也被称作文档树），程序员可以通过DOM提供的API，轻松的对其中的任何节点进行删除、添加、修改等操作。&lt;/p&gt;
+&lt;h3 id=&quot;dom的级别：&quot;&gt;DOM的级别：&lt;/h3&gt;
+&lt;p&gt;DOM正式被统一规划源自微软与网景在开发DHTML(Dynamic HTML,动态HTML)上各持己见，DTHML的出现使得开发人员第一次无需重新加载网页就可以修改其内容。为了控制Netscape和微软在Web开发领域上两强割据，导致浏览器互不兼容的局面，负责制定Web通信标准的W3C（WorldWide Web Consortium,万维网联盟）开始着手规划DOM。&lt;/p&gt;
+&lt;p&gt;DOM 1级于1998年10月成为W3C的推荐标准。DOM 1级由两个部分组成：DOM核心（DOM Core）和DOM HTML。其中，DOM核心是规定如何映射基于XML的文档结构，以便对文档中的节点进行访问和操作。DOM HTML则在DOM的核心的基础上加以扩展，添加了针对HTML的对象和方法。这里需要注意的是，DOM并不是只针对JavaScript的，很多其他语言也都实现了DOM。只不在Web中，DOM已经成了JavaScript中重要的组成部分。&lt;/p&gt;
+&lt;p&gt;DOM 2级在原基础上扩展了鼠标和用户界面整件、范围、遍历等细分模块，而且通过对象接口增加了对CSS（Cascading Style Sheets，层叠样式表）的支持。&lt;/p&gt;
+&lt;p&gt;DOM 3级则进一步扩展了DOM，引入了加载和保存文档的方法。&lt;/p&gt;
+&lt;h2 id=&quot;浏览器对象模型（bom）&quot;&gt;浏览器对象模型（BOM）&lt;/h2&gt;
+&lt;p&gt;开发人员可以使用BOM来控制浏览器显示页面以外的部分。而BOM真正与众不同或者说经常导致问题的地方在于它是JavaScript实现的一部分却不像DOM有着相关的标准。这个问题在HTML5中得到了解决，HTML5致力于把很多BOM功能写入规范。HTML5发布后，很多关于BOM的困惑也就消失了。从根本来讲，BOM只处理浏览器窗口和框架，但人们习惯上也把所有针对浏览器的JavaScript扩展算作BOM的一部分。下面就是一些这样的扩展:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;它最初由Netscape的Brendan Eich设计。JavaScript是甲骨文公司的注册商标。Ecma国际以JavaScript为基础制定了ECMAScript标准。JavaScript也可以用于其他场合，如服务器端编程。完整的JavaScript实现包含三个部分：ECMAScript，文档对象模型，浏览器对象模型。  &lt;/li&gt;
-&lt;li&gt;Netscape在最初将其脚本语言命名为LiveScript，后来Netscape在与Sun合作之后将其改名为JavaScript。JavaScript最初受Java启发而开始设计的，目的之一就是“看上去像Java”，因此语法上有类似之处，一些名称和命名规范也借自Java。但JavaScript的主要设计原则源自Self和Scheme。JavaScript与Java名称上的近似，是当时Netscape为了营销考虑与Sun微系统达成协议的结果。为了取得技术优势，微软推出了JScript来迎战JavaScript的脚本语言。为了互用性，Ecma国际（前身为欧洲计算机制造商协会）创建了ECMA-262标准（ECMAScript）。两者都属于ECMAScript的实现。尽管JavaScript作为给非程序人员的脚本语言，而非作为给程序人员的脚本语言来推广和宣传，但是JavaScript具有非常丰富的特性。 &lt;/li&gt;
-&lt;li&gt;发展初期，JavaScript的标准并未确定，同期有Netscape的JavaScript，微软的JScript和CEnvi的ScriptEase三足鼎立。1997年，在ECMA（欧洲计算机制造商协会）的协调下，由Netscape、Sun、微软、Borland组成的工作组确定统一标准：ECMA-262。&lt;/li&gt;
+&lt;li&gt;弹出新浏览器窗口的功能；移动、缩放和关闭浏览器窗口的功能；&lt;/li&gt;
+&lt;li&gt;提供浏览器详细信息的navigator对象；&lt;/li&gt;
+&lt;li&gt;提供浏览器所加载页面的详细信息的location对象；&lt;/li&gt;
+&lt;li&gt;提供用户显示器分辨率详细信息的screen对象；&lt;/li&gt;
+&lt;li&gt;对cookies的支持；&lt;/li&gt;
+&lt;li&gt;像XMLHttpRequest和IE的ActiveXObject（AJAX的核心实现）这样的自定义对象。&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
