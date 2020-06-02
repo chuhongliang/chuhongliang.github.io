@@ -4,7 +4,7 @@
         <title>RSS feed title</title>
         <link>Homepage link</link>
         <description>RSS feed description</description>
-        <lastBuildDate>Tue, 02 Jun 2020 08:39:22 +0800</lastBuildDate>
+        <lastBuildDate>Tue, 02 Jun 2020 20:08:01 +0800</lastBuildDate>
         <language>zh-cn</language>
         
         <item>
@@ -61,7 +61,7 @@ Node采用一系列“非阻塞”库来支持事件循环的方式。本质上�
             <link>Homepage link/articles/node-module.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/node-module.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
-            <pubDate>Mon, 27 Jan 2020 00:00:00 +0800</pubDate>
+            <pubDate>Sun, 26 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h1 id=&quot;nodejs-模块&quot;&gt;Node.js 模块&lt;/h1&gt;
 &lt;p&gt;在 Node.js 模块系统中，每个文件都被视为一个独立的模块&lt;/p&gt;
 &lt;p&gt;Node.js 模块机制采用了 Commonjs 规范，弥补了当前 JavaScript 开发大型应用没有标准的缺陷，类似于 Java 中的类文件，Python 中的 import 机制，Node.js 中可以通过 module.exports、require 来导出和引入一个模块.&lt;/p&gt;
@@ -256,7 +256,7 @@ a 结束
             <link>Homepage link/articles/javascript-type.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-type.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
-            <pubDate>Tue, 28 Jan 2020 00:00:00 +0800</pubDate>
+            <pubDate>Mon, 27 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;h1 id=&quot;原始类型与引用类型&quot;&gt;原始类型与引用类型&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;JavaScript原始类型: Undefined、Null、Boolean、Number、String、Symbol &lt;/p&gt;
@@ -513,7 +513,7 @@ console.log(result);//CAT, BAT, FAT, SAT
             <link>Homepage link/articles/javascript-object.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-object.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
-            <pubDate>Wed, 29 Jan 2020 00:00:00 +0800</pubDate>
+            <pubDate>Tue, 28 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;blockquote&gt;
 &lt;p&gt;Object类是所有JavaScript类的基类(父类)，并提供了一种创建自定义对象的简单方式，Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。如果参数为空（或者为undefined和null），Object()返回一个空对象。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -907,7 +907,7 @@ console.log(result);// 9
             <link>Homepage link/articles/javascript-math.html?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=rss</link>
             <guid>Homepage link/articles/javascript-math.html</guid>
             <author>chl01003698@126.com chuhongliang</author>
-            <pubDate>Thu, 30 Jan 2020 00:00:00 +0800</pubDate>
+            <pubDate>Wed, 29 Jan 2020 00:00:00 +0800</pubDate>
             <description>&lt;blockquote&gt;
 &lt;p&gt;Math 是一个内置对象， 它具有数学常数和函数的属性和方法。不是一个函数对象。与其他全局对象不同的是，Math 不是一个构造器。 Math 的所有属性与方法都是静态的。&lt;/p&gt;
 &lt;/blockquote&gt;

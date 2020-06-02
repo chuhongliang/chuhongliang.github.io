@@ -720,11 +720,7 @@
   author: chuhongliang
   tags:
     - 计算机操作系统
-<<<<<<< HEAD
-  abstract: 
-=======
   abstract: 磁盘存储器具有容量大、存取速度快、支持随机存取的特点，因此被广泛应用于计算机系统中
->>>>>>> 5e57da1a334a57e3fa751fcd1c68b1e19a9b3ab4
 
 - id: system-link
   title: 链接
@@ -750,22 +746,15 @@
     - 计算机操作系统
   abstract: 很多I/O设备都有一个状态寄存器，用于描述设备当前的工作状态，每当设备状态发生改变时，设备将修改相应状态寄存器位。通过不断查询设备的状态寄存器，CPU就可以了解设备的状态，从而进行必要的I/O操作。为了节约CPU资源，查询工作往往不是连续的，而是定时进行。轮询方式具有简单、易实现、易控制等优势，在很多小型系统中有大量应用。对那些实时敏感性不高、具有大量CPU资源的系统来说，轮询方式有很广泛的应用。最典型的用途就是在那些任务比较单一的单片机上，嵌入式系统中也有应用。
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 5e57da1a334a57e3fa751fcd1c68b1e19a9b3ab4
 - id: system-design
   title: 系统设计基础
   postedOn: !!str 2020-06-01
   author: chuhongliang
   tags:
     - 系统设计
-<<<<<<< HEAD
-  abstract: 
-=======
   abstract: 系统架构设计的相关基本概念。
->>>>>>> 5e57da1a334a57e3fa751fcd1c68b1e19a9b3ab4
 
 - id: system-design-dcs
   title: 分布式
@@ -773,11 +762,7 @@
   author: chuhongliang
   tags:
     - 系统设计
-<<<<<<< HEAD
-  abstract: 
-=======
   abstract: 分布式结构就是将一个完整的系统，按照业务功能，拆分成一个个独立的子系统，在分布式结构中，每个子系统就被称为“服务”。这些子系统能够独立运行在web容器中，它们之间通过RPC方式通信。
->>>>>>> 5e57da1a334a57e3fa751fcd1c68b1e19a9b3ab4
 
 - id: system-design-cluster
   title: 集群
@@ -785,11 +770,7 @@
   author: chuhongliang
   tags:
     - 系统设计
-<<<<<<< HEAD
-  abstract: 
-=======
   abstract: 单机处理到达瓶颈的时候，你就把单机复制几份，这样就构成了一个“集群”。集群中每台服务器就叫做这个集群的一个“节点”，所有节点构成了一个集群。每个节点都提供相同的服务，那么这样系统的处理能力就相当于提升了好几倍。
->>>>>>> 5e57da1a334a57e3fa751fcd1c68b1e19a9b3ab4
 
 - id: system-design-cache
   title: 缓存
@@ -797,9 +778,6 @@
   author: chuhongliang
   tags:
     - 系统设计
-<<<<<<< HEAD
-  abstract: 
-=======
   abstract: 介绍缓存的基本概念和常用的缓存技术
 
 - id: node-ejs
@@ -809,4 +787,3 @@
   tags:
     - Node
   abstract: EJS是一套简单的模板语言，可以利用EJS实现前端后端交互，仅仅用简单JavaScript代码即可生成HTML页面。
->>>>>>> 5e57da1a334a57e3fa751fcd1c68b1e19a9b3ab4
