@@ -778,10 +778,4 @@
     - 系统设计
   abstract: 介绍缓存的基本概念和常用的缓存技术
 
-- id: node-ejs
-  title: Node.js 服务端渲染－EJS框架
-  postedOn: !!str 2020-06-02
-  author: chuhongliang
-  tags:
-    - Node
-  abstract: EJS是一套简单的模板语言，可以利用EJS实现前端后端交互，仅仅用简单JavaScript代码即可生成HTML页面。
+
