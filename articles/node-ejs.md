@@ -68,7 +68,7 @@ app.render(view, [locals], callback)
 
 ## 循环渲染
 ### index.ejs
-```js
+```html
 <!doctype html>
 <html lang="en">
 <head>
