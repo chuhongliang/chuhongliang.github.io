@@ -146,7 +146,7 @@ li {
     <p>接下来我要用ejs渲染后端数据到前端</p>
     <h4>升级版：循环渲染？</h4>
     <ul>
-        <% for(var i=0;i<names.length;i++) {%>
+        <% for(let i=0;i<names.length;i++){ %>
         <li><%= names[i] %></li>
         <% } %>
     </ul>
