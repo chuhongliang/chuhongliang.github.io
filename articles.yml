@@ -786,3 +786,11 @@
   tags:
     - Node
   abstract: EJS是一套简单的模板语言，可以利用EJS实现前端后端交互，仅仅用简单JavaScript代码即可生成HTML页面。
+
+- id: restful
+  title: Restful 设计规则
+  postedOn: !!str 2020-06-22
+  author: chuhongliang
+  tags:
+    - Restful 
+  abstract: REST 是围绕 Resource 来设计的，那么“用户”相关的功能肯定都是以“用户”为 Resource 的，而 REST 提供了一个基本思路就是使用 HTTP 的 method 来代表逻辑上对资源的操作
