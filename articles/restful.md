@@ -6,7 +6,7 @@ REST 是围绕 Resource 来设计的，那么“用户”相关的功能肯定�
 - PUT：修改
 - DELETE：删除
 
-### 那么相应的，用户的 API 有这几个：
+## 那么相应的，用户的 API 有这几个：
 - 创建一个用户：POST /user
 - 获取一个用户：GET /user
 - 修改一个用户：PUT /user
@@ -17,8 +17,8 @@ REST 是围绕 Resource 来设计的，那么“用户”相关的功能肯定�
 DELETE /user?id=123
 ```
 
-### 有时候会有需求一次对多个用户进行操作，那么这时候有两种思路：
-#### 1. 把“一批用户”作为一个独立的 Resource：
+## 有时候会有需求一次对多个用户进行操作，那么这时候有两种思路：
+### 1. 把“一批用户”作为一个独立的 Resource：
 - 创建一批用户：POST /user_batch
 - 获取一批用户：GET /user_batch
 - 修改一批用户：PUT /user_batch
@@ -33,13 +33,13 @@ DELETE /user?id=123
 用哪种思路可以带入你的实际业务来看未来哪种会更好用一些。
 
 
-### 那么对于“登录”、“登出”等特殊逻辑，如果依然在用户 Resource 上考虑，是无法简单使用 HTTP method 来代表的，可以抽象成独立的 Resource：
+## 那么对于“登录”、“登出”等特殊逻辑，如果依然在用户 Resource 上考虑，是无法简单使用 HTTP method 来代表的，可以抽象成独立的 Resource：
 - 登录（创建一个会话）：POST /session
 - 登出（删除一个会话）：DELETE /session
 
-#### 修改用户昵称和修改密码都是 PUT /user，可以通过判断 Request Body 里传入的是 nickname 还是 password 来决定究竟是调用修改昵称的逻辑，还是调用修改密码的逻辑，还是两个都调用。
+### 修改用户昵称和修改密码都是 PUT /user，可以通过判断 Request Body 里传入的是 nickname 还是 password 来决定究竟是调用修改昵称的逻辑，还是调用修改密码的逻辑，还是两个都调用。
 
-### 以上就是 RESTful API 设计的一点皮毛，一些需要注意的点：
+## 以上就是 RESTful API 设计的一点皮毛，一些需要注意的点：
 1. REST 是一种设计风格，本身并未提供 API 的细节设计，需要自己理解 REST 解决痛点的核心思路，再根据实际业务情况来设计 API 。
 2. 如果业务上没有相应的痛点需要 REST，甚至本身与 REST 的思路相矛盾，就不要硬上 REST，例如微服务通信非常适合用 REST，但 BFF 或 API 网关层接口聚合可能更适合用 GraphQL 。
 3. Resource 就像是一个对象，其所有接口都应当使用同一套属性定义，比如修改密码的时候使用 password 字段在代表密码属性，那么在获取用户密码哈希的时候就不应该用 password 字段了，应该用 passwordHash 字段，password 字段应该始终代表用户的密码属性，即便这个属性没有存入数据库无法被 GET 出来。
