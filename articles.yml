@@ -794,3 +794,11 @@
   tags:
     - Restful 
   abstract: REST 是围绕 Resource 来设计的，那么“用户”相关的功能肯定都是以“用户”为 Resource 的，而 REST 提供了一个基本思路就是使用 HTTP 的 method 来代表逻辑上对资源的操作
+
+- id: enterprise
+  title: 企业级管理应用概览 
+  postedOn: !!str 2020-06-22
+  author: chuhongliang
+  tags:
+    - 企业应用 
+  abstract: ERP,CRM,CMS,SCM,BI...
