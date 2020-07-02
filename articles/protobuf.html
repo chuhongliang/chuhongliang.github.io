@@ -60,6 +60,7 @@
 <li>Google开源： <a href="https://github.com/google/protobuf/">https://github.com/google/protobuf/</a></li>
 <li>Golang的官方protobuf支持: <a href="https://github.com/golang/protobuf">https://github.com/golang/protobuf</a></li>
 <li>使用和原理：<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-gpb/">http://www.ibm.com/developerworks/cn/linux/l-cn-gpb/</a></li>
+<li>google protobuf序列化原理解析 : <a href="https://www.cnblogs.com/naci/p/5341433.html">https://www.cnblogs.com/naci/p/5341433.html</a></li>
 </ul>
 <h1 id="protobuf-特点">Protobuf 特点</h1>
 <ul>
@@ -86,6 +87,27 @@
 <p>Protbuf 与 XML 相比也有不足之处。它功能简单，无法用来表示复杂的概念。</p>
 <p>XML 已经成为多种行业标准的编写工具，Protobuf 只是 Google 公司内部使用的工具，在通用性上还差很多。</p>
 <p>由于文本并不适合用来描述数据结构，所以 Protobuf 也不适合用来对基于文本的标记文档（如 HTML）建模。另外，由于 XML 具有某种程度上的自解释性，它可以被人直接读取编辑，在这一点上 Protobuf 不行，它以二进制的方式存储，除非你有 .proto 定义，否则你没法直接读出 Protobuf 的任何内容</p>
+<h1 id="protobuf-的原理实现">Protobuf 的原理实现</h1>
+<p>人们一直在强调，同 XML 相比， Protobuf 的主要优点在于性能高。它以高效的二进制方式存储，比 XML 小 3 到 10 倍，快 20 到 100 倍。</p>
+<p>对于这些 “小 3 到 10 倍”,“快 20 到 100 倍”的说法，严肃的程序员需要一个解释。因此在本文的最后，让我们稍微深入 Protobuf 的内部实现吧。</p>
+<p>有两项技术保证了采用 Protobuf 的程序能获得相对于 XML 极大的性能提高。</p>
+<p>第一点，我们可以考察 Protobuf 序列化后的信息内容。您可以看到 Protocol Buffer 信息的表示非常紧凑，这意味着消息的体积减少，自然需要更少的资源。比如网络上传输的字节数更少，需要的 IO 更少等，从而提高性能。</p>
+<p>第二点我们需要理解 Protobuf 封解包的大致过程，从而理解为什么会比 XML 快很多。</p>
+<h2 id="google-protocol-buffer-的-encoding">Google Protocol Buffer 的 Encoding</h2>
+<p>Protobuf 序列化后所生成的二进制消息非常紧凑，这得益于 Protobuf 采用的非常巧妙的 Encoding 方法。</p>
+<h2 id="varint">Varint</h2>
+<p>考察消息结构之前，让我首先要介绍一个叫做 Varint 的术语。</p>
+<p>Varint 是一种紧凑的表示数字的方法。它用一个或多个字节来表示一个数字，值越小的数字使用越少的字节数。这能减少用来表示数字的字节数。</p>
+<p>比如对于 int32 类型的数字，一般需要 4 个 byte 来表示。但是采用 Varint，对于很小的 int32 类型的数字，则可以用 1 个 byte 来表示。当然凡事都有好的也有不好的一面，采用 Varint 表示法，大的数字则需要 5 个 byte 来表示。从统计的角度来说，一般不会所有的消息中的数字都是大数，因此大多数情况下，采用 Varint 后，可以用更少的字节数来表示数字信息。下面就详细介绍一下 Varint。</p>
+<p>Varint 中的每个 byte 的最高位 bit 有特殊的含义，如果该位为 1，表示后续的 byte 也是该数字的一部分，如果该位为 0，则结束。其他的 7 个 bit 都用来表示数字。因此小于 128 的数字都可以用一个 byte 表示。大于 128 的数字，比如 300，会用两个字节来表示：1010 1100 0000 0010</p>
+<h2 id="zigzag">Zigzag</h2>
+<p>在计算机内，一个负数一般会被表示为一个很大的整数，因为计算机定义负数的符号位为数字的最高位。如果采用 Varint 表示一个负数，那么一定需要 5 个 byte。为此 Google Protocol Buffer 定义了 sint32 这种类型，采用 zigzag 编码。</p>
+<p>Zigzag 编码用无符号数来表示有符号数字，正数和负数交错，这就是 zigzag 这个词的含义了。</p>
+<p>使用 zigzag 编码，绝对值小的数字，无论正负都可以采用较少的 byte 来表示，充分利用了 Varint 这种技术。</p>
+<p>其他的数据类型，比如字符串等则采用类似数据库中的 varchar 的表示方法，即用一个 varint 表示长度，然后将其余部分紧跟在这个长度部分之后即可。</p>
+<h2 id="封解包的速度">封解包的速度</h2>
+<p>首先我们来了解一下 XML 的封解包过程。XML 需要从文件中读取出字符串，再转换为 XML 文档对象结构模型。之后，再从 XML 文档对象结构模型中读取指定节点的字符串，最后再将这个字符串转换成指定类型的变量。这个过程非常复杂，其中将 XML 文件转换为文档对象结构模型的过程通常需要完成词法文法分析等大量消耗 CPU 的复杂计算。</p>
+<p>反观 Protobuf，它只需要简单地将一个二进制序列，按照指定的格式读取到 C++ 对应的结构类型中就可以了。从上一节的描述可以看到消息的 decoding 过程也可以通过几个位移操作组成的表达式计算即可完成。速度非常快。</p>
 <h1 id="protobuf-使用">Protobuf 使用</h1>
 <p>创建.proto文件，定义数据结构</p>
 <pre class="prettyprint linenums lang-txt">//例：在xxx.proto文件中定义Example1 message
