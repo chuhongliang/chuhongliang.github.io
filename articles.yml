@@ -802,3 +802,13 @@
   tags:
     - 企业应用 
   abstract: ERP,CRM,CMS,SCM,BI...
+
+- id: node-pkg
+  title: 使用pkg打包应用
+  postedOn: !!str 2020-07-03
+  author: chuhongliang
+  tags:
+    - Node 
+  abstract: 将Node.js打包为可执行文件的工具有pkg、nexe、node-packer、enclose等，面对项目需要，所以在学习pkg,看到相关文章，觉得这个很不错，自己记录下，以便下次使用便捷。pkg的打包原理简单来说，就是将js代码以及相关的资源文件打包到可执行文件中，然后劫持fs里面的一些函数，使它能够读到可执行文件中的代码和资源文件。例如，原来的require(’./a.js’)会被劫持到一个虚拟目录require(’/snapshot/a.js’)。
+
+
