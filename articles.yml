@@ -803,6 +803,14 @@
     - 企业应用 
   abstract: ERP,CRM,CMS,SCM,BI...
 
+- id: outsource
+  title: 外包项目报价参考与注意事项 
+  postedOn: !!str 2020-07-02
+  author: chuhongliang
+  tags:
+    - 企业应用 
+  abstract: 但在实际的外包中，由于目前是买方的市场，如果你一成不变地照搬这个公式，肯定会在实际承接项目时四处碰壁的。在与客户谈项目时，了解客户对于价格的心理底线是很重要的。一般来说，要先用某一个价格试探一下客户的反应，如果客户对于价格反应比较激烈，就要适当地降低你的价格，直到最后达成一个双方都能接受的价格。
+
 - id: node-pkg
   title: 使用pkg打包应用
   postedOn: !!str 2020-07-03
