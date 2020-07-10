@@ -130,7 +130,7 @@ pkg index.js
 即可打包linux,macos,win3个平台的可执行文件。index.js为你node项目的入口文件。
 
 如果只想打包windows下的exe，则加上-t参数。win即为打包成windows平台下的exe文件，具体可选参数参见项目目录
-```
+```txt
 pkg -t win index.js
 ```
 
