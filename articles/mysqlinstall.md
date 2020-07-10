@@ -19,7 +19,7 @@ doc命令下进入到D:\mysql5.6.31\bin>输入"mysqld -remove"或者"sc delete m
 
 ##  新建my.ini文件放在D:\mysql-5.7.30-winx64文件夹下，将如下代码放入my.ini文件中
 
-#### basedir和datadir，请根据自己的实际安装目录进行修改
+### basedir和datadir，请根据自己的实际安装目录进行修改
 ```txt
 #########################################################
   [client]
