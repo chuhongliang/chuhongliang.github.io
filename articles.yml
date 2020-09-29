@@ -819,4 +819,42 @@
     - Node 
   abstract: 将Node.js打包为可执行文件的工具有pkg、nexe、node-packer、enclose等，面对项目需要，所以在学习pkg,看到相关文章，觉得这个很不错，自己记录下，以便下次使用便捷。pkg的打包原理简单来说，就是将js代码以及相关的资源文件打包到可执行文件中，然后劫持fs里面的一些函数，使它能够读到可执行文件中的代码和资源文件。例如，原来的require(’./a.js’)会被劫持到一个虚拟目录require(’/snapshot/a.js’)。
 
+- id: seo
+  title: 新手SEO需要掌握的几大基本技巧
+  postedOn: !!str 2020-07-24
+  author: chuhongliang
+  tags:
+    - SEO
+  abstract: 网站的首页（home或index页等）应该采用文本的形式，而不是flash等。这个文本里面要包含你的目标关键字或目标短语。
 
+- id: seo-keyword
+  title: 关键词挖掘
+  postedOn: !!str 2020-07-24
+  author: chuhongliang
+  tags:
+    - SEO
+  abstract: 网络营销是现代所有企业整体营销战略的一个重要组成部分，而外推是网络营销的鼻祖，在早期所谓的搜索引擎营销，SEO等等还没出现的时候，企业的推广也就只有外推，所以在那个时候推广找好的平台是非常重要。
+
+- id: seo-keyword2
+  title: 关键词挖掘2
+  postedOn: !!str 2020-07-24
+  author: chuhongliang
+  tags:
+    - SEO
+  abstract: 对于一个站长来说，做SEO是必须会的工作，要想做好SEO，首先就要进行关键词定位，定位好要优化的关键词，这是非常重要的，特别是做产品网站的站长，要优化的关键词可以说是决定着产品的销量和转化，所以说seo关键词挖掘对于站长朋友们来说是非常重要的一个工作。
+
+- id: seo-rank
+  title: 利用平台推广优化使流量词快速排名首页
+  postedOn: !!str 2020-07-24
+  author: chuhongliang
+  tags:
+    - SEO
+  abstract: 做优化、做外推，整理关键词那些就不说了，说到底了，关键还是谁的排名上的多，上的快，上的稳，如果对手跟你发一样的平台，你如何压制对手？今天来讲讲如何把手上流量词快速排名，今天做了哪些词，明天需要做哪些词，如何做到精细化推广，流量词短时间内如何全部排名上升到首页，
+
+- id: seo-new
+  title: 百度排名干货：新网站一样也能干过老网站
+  postedOn: !!str 2020-07-24
+  author: chuhongliang
+  tags:
+    - SEO
+  abstract: 看到这个标题可能很多SEOer心理会冷笑一声，标题党，不知天高地后的后起之秀，新网站你拿什么干的过老网站，老网站经过几年的积累，外部资源丰富，内容量大，网站权重高，你如何跟我老站竞争，这就是很多SEO优化人员心声，这也是摆在面前的事实，因为新站相对老站在一定程度上确实存在着很大的劣势。
