@@ -9,7 +9,7 @@
 解释：342 + 465 = 807.
 ```
 
-### 双指针:
+### 暴力法:
 ```js
 function addTwoNums(l1, l2) {
 	const res = [];
