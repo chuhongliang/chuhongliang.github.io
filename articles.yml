@@ -559,14 +559,6 @@
   tags:
     - Node
   abstract: 在V8的垃圾回收机制下，在通常的代码编写中，很少会出现内存泄漏的情况。但是内存泄漏通常产生于无意间，较难排查。尽管内存泄漏的情况不尽相同，但其实质只有一个，那就是应当回收的对象出现意外而没有被回收，变成了常驻在老生代中的对象
-
-- id: algorithm-interview
-  title:  面试遇到的算法
-  postedOn: !!str 2020-03-30
-  author: chuhongliang
-  tags:
-    - 算法
-  abstract: 面试过程中遇到的算法，仅作记录
   
 - id: javascript-promise
   title:  JavaScript Promise
@@ -858,3 +850,154 @@
   tags:
     - SEO
   abstract: 看到这个标题可能很多SEOer心理会冷笑一声，标题党，不知天高地后的后起之秀，新网站你拿什么干的过老网站，老网站经过几年的积累，外部资源丰富，内容量大，网站权重高，你如何跟我老站竞争，这就是很多SEO优化人员心声，这也是摆在面前的事实，因为新站相对老站在一定程度上确实存在着很大的劣势。
+
+- id: money
+  title: 价值投资
+  postedOn: !!str 2020-10-08
+  author: chuhongliang
+  tags:
+    - 投资理财
+  abstract: "华尔街之父格雷厄姆对于“投资与投机”的定义：投资业务是以深入分析为基础，确保本金的安全，并获得适当的回报；不满足这些要求的业务就是投机。"
+
+- id: money-fund
+  title: 基金
+  postedOn: !!str 2020-10-08
+  author: chuhongliang
+  tags:
+    - 投资理财
+  abstract: "尽管基金本身有一定的风险防御能力，但对证券市场的整体系统性风险也难以完全避免。除此之外，基金本身也会遇到个体的非系统性风险。"
+
+
+- id: algorithm-twosum
+  title: 两数之和
+  postedOn: !!str 2020-12-10
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能
+  使用两遍。你可以按任意顺序返回答案"
+
+- id: algorithm-addtwonumbers
+  title: 两数相加
+  postedOn: !!str 2020-12-10
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，
+并且每个节点只能存储 一位 数字。请你将两个数相加，并以相同形式返回一个表示和的链表。
+可以假设除了数字 0 之外，这两个数都不会以 0 开头。"
+
+- id: algorithm-compressString
+  title: 字符串压缩
+  postedOn: !!str 2020-12-12
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "字符串压缩。利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，
+字符串aabcccccaaa会变为a2b1c5a3。若“压缩”后的字符串没有变短，则返回原先的字符串。
+你可以假设字符串中只包含大小写英文字母（a至z）。"
+
+- id: algorithm-minnumber
+  title: 把数组排成最小的数
+  postedOn: !!str 2020-12-12
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。"
+
+- id: algorithm-maxones
+  title: 最大连续1的个数
+  postedOn: !!str 2020-12-14
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给定一个二进制数组， 计算其中最大连续1的个数。"
+
+- id: algorithm-removeElement
+  title: 移除元素
+  postedOn: !!str 2020-12-14
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，
+并返回移除后数组的新长度。不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地
+修改输入数组。元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。"
+
+- id: algorithm-findDuplicate
+  title: 寻找重复数
+  postedOn: !!str 2020-12-16
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给定一个包含 n + 1 个整数的数组 nums ，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设 nums 只有 一个重复的整数 ，找出 这个重复的数 。"
+  
+- id: algorithm-lengthOfLongestSubstring
+  title: 无重复字符的最长子串
+  postedOn: !!str 2020-12-16
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。"
+
+
+- id: algorithm-fb
+  title: 斐波那契数列
+  postedOn: !!str 2020-12-18
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "斐波那契指的是这样一个数列：1、1、2、3、5、8、13、21、34......在数学上,随着数列项数的增加，前一项与后一项之比越来越逼近黄金分割的数值0.6180339887..…"
+
+
+- id: algorithm-graph
+  title: JS打印各种图形
+  postedOn: !!str 2020-12-20
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "JS打印各种图形"
+  
+- id: algorithm-palindrome
+  title: 回文数
+  postedOn: !!str 2020-12-23
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。例如，121 是回文，而 123 不是。"
+
+- id: algorithm-longestPalindrome
+  title: 最长回文子串
+  postedOn: !!str 2020-12-23
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给你一个字符串 s，找到 s 中最长的回文子串。"
+
+
+- id: data-structure
+  title: 数据结构
+  postedOn: !!str 2020-12-23
+  author: chuhongliang
+  tags:
+    - 数据结构
+  abstract: "数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。通常情况下，精心选择的数据结构可以带来更高的运行或者存储效率。 数据结构往往同高效的检索算法和索引技术有关。"
+
+
+- id: algorithm-isValid
+  title: 有效的括号
+  postedOn: !!str 2021-01-05
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。"
+  
+- id: algorithm-reverse
+  title: 整数反转
+  postedOn: !!str 2021-01-05
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给你一个 32 位的有符号整数 x ，返回 x 中每位上的数字反转后的结果。"
+
+
+  
