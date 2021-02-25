@@ -77,4 +77,4 @@ function mergeSort(arr) {  // 采用自上而下的递归方法
     return merge(mergeSort(left), mergeSort(right));
 }
 
-console.log('arr=>', mergeSort(arr));
+

@@ -1000,4 +1000,18 @@
   abstract: "给你一个 32 位的有符号整数 x ，返回 x 中每位上的数字反转后的结果。"
 
 
-  
+- id: algorithm-romanToInt
+  title: 罗马数字转整数
+  postedOn: !!str 2021-01-05
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。"
+
+- id: algorithm-longestCommonPrefix
+  title: 最长公共前缀
+  postedOn: !!str 2021-01-05
+  author: chuhongliang
+  tags:
+    - 算法
+  abstract: "给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。"
