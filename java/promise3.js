@@ -127,3 +127,4 @@ Promise.race = function (promises) {
 		});
 	});
 }
+
