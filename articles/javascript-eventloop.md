@@ -2,9 +2,9 @@
 
 > 事件循环中的异步队列有两种：macro（宏任务）队列和 micro（微任务）队列。宏任务队列可以有多个，微任务队列只有一个。
 
-常见的 macro-task（宏任务） 比如：setTimeout、setInterval、 setImmediate、script（整体代码）、 I/O 操作、UI 渲染等。
+常见的 macro-task（宏任务） 比如：setTimeout、setInterval、 setImmediate、 I/O 操作、UI 渲染等。
 
-常见的 micro-task（微任务） 比如: process.nextTick、new Promise().then(回调)、MutationObserver(html5 新特性) 等。
+常见的 micro-task（微任务） 比如: new Promise().then(回调)、MutationObserver(html5 新特性) 等。
 
 #### 宏任务每次执行一个，微任务每次执行队列里所有的，直到微任务队列为空
 

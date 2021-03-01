@@ -5,6 +5,7 @@ Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计
 
 #### 根据Node.js官方介绍，每次事件循环都包含了6个阶段，对应到 libuv 源码中的实现，如下图所示
 
+
 ```txt
    ┌───────────────────────┐
 ┌─>│        timers         │
@@ -25,97 +26,60 @@ Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计
 └──┤    close callbacks    │
    └───────────────────────┘
 ```
-- ```timers``` 阶段: 这个阶段执行setTimeout(callback) and setInterval(callback)预定的callback;
-- ```I/O callbacks``` 阶段: 执行除了 close事件的callbacks、被timers(定时器，setTimeout、- setInterval等)设定的callbacks、setImmediate()设定的callbacks之外的callbacks;
-- ```idle, prepare``` 阶段: 仅node内部使用;
-- ```poll``` 阶段: 获取新的I/O事件, 适当的条件下node将阻塞在这里;
-- ```check``` 阶段: 执行setImmediate() 设定的callbacks;
-- ```close``` callbacks 阶段: 比如socket.on(‘close’, callback)的callback会在这个阶段执行.
+- timers: 本阶段执行已经安排的 setTimeout() 和 setInterval() 的回调函数
+- pending / callbacks: 执行 I/O 异常的回调，如TCP 连接遇到 ECONNREFUSED
+- idle, prepare: 仅系统内部使用，只是表达空闲、预备状态(第2阶段结束，poll 未触发之前)
+- poll: 检索新的 I/O 事件；执行与 I/O 相关的回调（几乎所有情况下，除了关闭的回调函数），node 将在此处阻塞。
+- check: setImmediate() 回调函数在这里执行.
+- close callbacks: 一些准备关闭的回调函数，如：socket.on('close', ...)
+
+在每次运行的事件循环之间，Node.js 检查它是否在等待任何异步 I/O 或计时器，如果没有的话，则关闭干净。
   
 #### 每一个阶段都有一个装有callbacks的fifo queue(队列)，当event loop运行到一个指定阶段时，node将执行该阶段的fifo queue(队列)，当队列callback执行完或者执行callbacks数量超过该阶段的上限时，event loop会转入下一下阶段.
 
 
-## ``timers`` 阶段
-timers 是事件循环的第一个阶段，Node 会去检查有无已过期的timer，如果有则把它的回调压入timer的任务队列中等待执行，事实上，Node 并不能保证timer在预设时间到了就会立即执行，因为Node对timer的过期检查不一定靠谱，它会受机器上其它运行程序影响，或者那个时间点主线程不空闲。
-  
-比如下面的代码，setTimeout() 和 setImmediate() 的执行顺序是不确定的
-```js
-setTimeout(() => {
-  console.log('timeout')
-}, 0)
-setImmediate(() => {
-  console.log('immediate')
-})
-```
-但是把它们放到一个I/O回调里面，就一定是 setImmediate() 先执行，因为poll阶段后面就是check阶段。
+## 三大关键阶段
+- timer：执行定时器时，如 setTimeout、setInterval，在 timers 阶段执行
+- poll：异步操作，比如文件I/O，网络I/O等，通过'data'、 'connect'等事件通知 JS 主线程并执行回调的，此阶段就是 poll 轮询阶段
+- check：这是一个比较简单的阶段，直接执行 setImmdiate 的回调。
+
+注意，若 2 阶段结束后，当前存在到时间的定时器，那么拿出来执行，eventLoop 将再回到 timer 阶段
+
+### timers
+timers 指定 可执行所提供回调 的 时间阈值，poll 阶段 控制何时定时器执行。
+
+一旦 poll queue 为空，事件循环将检查 已达到时间阈值的timer计时器。如果一个或多个计时器已准备就绪，则事件循环将回到 timer 阶段以执行这些计时器的回调
+
+### pending callbacks
+此阶段对某些系统操作（如 TCP 错误类型）执行回调。例如，如果 TCP 套接字在尝试连接时接收到 ECONNREFUSED，则某些 *nix 的系统希望等待报告错误。这将被排队以在 pending callbacks 阶段执行。
+
+### poll
+轮询 阶段有两个重要的功能：
+- 计算应该阻塞和 poll I/O 的时间。
+- 然后，处理 poll 队列里的事件。
 
 
-## ```poll``` 阶段
-### poll 阶段主要有2个功能：
-- 处理 poll 队列的事件
-- 当有已超时的 timer，执行它的回调函数
+当事件循环进入 poll阶段且 timers scheduled，将发生以下两种情况之一：
 
-#### event-loop将同步执行poll队列里的回调，直到队列为空或执行的回调达到系统上限（上限具体多少未详），接下来even loop会去检查有无预设的setImmediate()，分两种情况：
+- if the poll queue is not empty, 事件循环将循环访问其回调队列并同步执行它们，直到队列已用尽，或者达到了与系统相关的硬限制
+- if the poll queue is empty，还有两件事发生
+  - 如果脚本已按 setImmediate() 排定，则事件循环将结束 轮询 阶段，并继续 检查 阶段以执行这些计划脚本。
+  - 如果脚本尚未按 setImmediate()排定，则事件循环将等待回调添加到队列中，然后立即执行。
 
-- 若有预设的setImmediate(), event loop将结束poll阶段进入check阶段，并执行check阶段的任务队列
-- 若没有预设的setImmediate()，event loop将阻塞在该阶段等待
-  
-注意一个细节，没有setImmediate()会导致event loop阻塞在poll阶段，这样之前设置的timer岂不是执行不了了？所以咧，在poll阶段event loop会有一个检查机制，检查timer队列是否为空，如果timer队列非空，event loop就开始下一轮事件循环，即重新进入到timer阶段。
+一旦 poll queue 为空，事件循环将检查 已达到时间阈值的timer计时器。如果一个或多个计时器已准备就绪，则事件循环将回到 timer 阶段以执行这些计时器的回调。
 
+### check
+通常，在执行代码时，事件循环最终会命中轮询阶段，等待传入连接、请求等。但是，如果回调已计划为 setImmediate()，并且轮询阶段变为空闲状态，则它将结束并继续到检查阶段而不是等待轮询事件。
 
-## ``check`` 阶段
-setImmediate()的回调会被加入check队列中， 从event loop的阶段图可以知道，check阶段的执行顺序在poll阶段之后。
+setImmediate() 实际上是一个在事件循环的单独阶段运行的特殊计时器。它使用一个 libuv API 来安排回调在 poll 阶段完成后执行。
 
+### close callbacks
+如果套接字或处理函数突然关闭（例如 socket.destroy()），则'close' 事件将在这个阶段发出。否则它将通过 process.nextTick() 发出。
 
-## ``process.nextTick``
-process.nextTick() 会在各个事件阶段之间执行，一旦执行，要直到nextTick队列被清空，才会进入到下一个事件阶段，所以如果递归调用 process.nextTick()，会导致出现I/O starving（饥饿）的问题，比如下面例子的readFile已经完成，但它的回调一直无法执行：
-
-```js
-const fs = require('fs')
-const starttime = Date.now()
-let endtime
-fs.readFile('text.txt', () => {
-  endtime = Date.now()
-  console.log('finish reading time: ', endtime - starttime)
-})
-let index = 0
-function handler () {
-  if (index++ >= 1000) return
-  console.log(`nextTick ${index}`)
-  process.nextTick(handler)
-  // console.log(`setImmediate ${index}`)
-  // setImmediate(handler)
-}
-handler()
-```
-
-process.nextTick()的运行结果：
-```js
-nextTick 1
-nextTick 2
-......
-nextTick 999
-nextTick 1000
-finish reading time: 170
-```
-
-替换成setImmediate()，运行结果：
-```js
-setImmediate 1
-setImmediate 2
-finish reading time: 80
-......
-setImmediate 999
-setImmediate 1000
-```
-这是因为嵌套调用的 setImmediate() 回调，被排到了下一次event loop才执行，所以不会出现阻塞。
+### setImmediate() 对比 setTimeout()
+setImmediate() 和 setTimeout() 很类似，但何时调用行为完全不同。
+- setImmediate() 设计为在当前 轮询 阶段完成后执行脚本。
+- setTimeout() 计划在毫秒的最小阈值经过后运行的脚本。
 
 
-## 总结
-
-- Node.js 的事件循环分为6个阶段
-- 浏览器和Node 环境下，microtask 任务队列的执行时机不同
-- Node.js中，microtask 在事件循环的各个阶段之间执行
-- 浏览器端，microtask 在事件循环的 macrotask 执行完之后执行
-- 递归的调用process.nextTick()会导致I/O starving，官方推荐使用setImmediate()
-
+[官方文档](https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/)
