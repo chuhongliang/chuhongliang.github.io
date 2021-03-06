@@ -1015,3 +1015,19 @@
   tags:
     - 算法
   abstract: "给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。"
+
+- id: mysql-core
+  title: MySQL 核心知识总结
+  postedOn: !!str 2021-03-05
+  author: chuhongliang
+  tags:
+    - MySQL
+  abstract: "MySQL核心知识总结，包括底层索引数据结构，存储引擎，调优，事务，锁机制，日志系统等"
+
+- id: redis-core
+  title: Redis 核心知识总结
+  postedOn: !!str 2021-03-05
+  author: chuhongliang
+  tags:
+    - Redis
+  abstract: "Redis核心知识总结，包括底层数据结构实现，持久化存储，内存过期，内存淘汰策略等。"

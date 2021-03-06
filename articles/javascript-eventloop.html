@@ -58,8 +58,8 @@
 <blockquote>
 <p>事件循环中的异步队列有两种：macro（宏任务）队列和 micro（微任务）队列。宏任务队列可以有多个，微任务队列只有一个。</p>
 </blockquote>
-<p>常见的 macro-task（宏任务） 比如：setTimeout、setInterval、 setImmediate、script（整体代码）、 I/O 操作、UI 渲染等。</p>
-<p>常见的 micro-task（微任务） 比如: process.nextTick、new Promise().then(回调)、MutationObserver(html5 新特性) 等。</p>
+<p>常见的 macro-task（宏任务） 比如：setTimeout、setInterval、 setImmediate、 I/O 操作、UI 渲染等。</p>
+<p>常见的 micro-task（微任务） 比如: new Promise().then(回调)、MutationObserver(html5 新特性) 等。</p>
 <h4 id="宏任务每次执行一个，微任务每次执行队列里所有的，直到微任务队列为空">宏任务每次执行一个，微任务每次执行队列里所有的，直到微任务队列为空</h4>
 <h2 id="event-loop-过程解析">Event Loop 过程解析</h2>
 <p>一开始执行栈空,我们可以把执行栈认为是一个存储函数调用的栈结构，遵循先进后出的原则。micro 队列空，macro 队列里有且只有一个 script 脚本（整体代码）。</p>
