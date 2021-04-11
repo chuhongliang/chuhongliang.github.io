@@ -1031,3 +1031,11 @@
   tags:
     - Redis
   abstract: "Redis核心知识总结，包括底层数据结构实现，持久化存储，内存过期，内存淘汰策略等。"
+
+- id: mongo-core
+  title: Mongo 核心知识总结
+  postedOn: !!str 2021-04-11
+  author: chuhongliang
+  tags:
+    - MongoDB
+  abstract: "从MongoDB 3.2 版本开始，MongoDB 支持多数据存储引擎，MongoDB支持的存储引擎有：WiredTiger，MMAPv1和In-Memory。"

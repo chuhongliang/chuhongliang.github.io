@@ -82,13 +82,13 @@ return SDS_TYPE_64
 - SETBIT KEY_NAME OFFSET VALUE
   - offset(偏移量) 
   - value(0/1)
-```js
-bitcount login:2021:0222 单日日活
+    ```js
+    bitcount login:2021:0222 单日日活
 
-bitop and login:2021:0222 login:2021:0225 连续登录
+    bitop and login:2021:0222 login:2021:0225 连续登录
 
-bitop or login:2021:0222 login:2021:0225 间断登录 月活
-```
+    bitop or login:2021:0222 login:2021:0225 间断登录 月活
+    ```
 
 Redis 6.0之前是单线程模型
 操作顺序 read -> commend -> write

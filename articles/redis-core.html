@@ -142,138 +142,137 @@ return SDS_TYPE_64
 </pre>
 <h3 id="string-类型操作bit位">String 类型操作bit位</h3>
 <ul>
-<li>SETBIT KEY_NAME OFFSET VALUE<ul>
+<li><p>SETBIT KEY_NAME OFFSET VALUE</p>
+<ul>
 <li>offset(偏移量) </li>
-<li>value(0/1)
-<code>`</code>js
-bitcount login:2021:0222 单日日活</li>
+<li><p>value(0/1)</p>
+<pre class="prettyprint linenums lang-js">bitcount login:2021:0222 单日日活
+
+bitop and login:2021:0222 login:2021:0225 连续登录
+
+bitop or login:2021:0222 login:2021:0225 间断登录 月活
+</pre>
+</li>
 </ul>
 </li>
 </ul>
-<p>bitop and login:2021:0222 login:2021:0225 连续登录</p>
-<p>bitop or login:2021:0222 login:2021:0225 间断登录 月活</p>
-<pre>
-Redis 6.0之前是单线程模型
-操作顺序 read -&gt; commend -&gt; write
-
-6.0之后可以设置多线程
-默认是read -&gt; commend -&gt; writes(多个)
-
-手动设置reads(多个) -&gt; commend -&gt; writes(多个)
-
-# List
-List 是一个有序(加入时序)的数据结构，Redis采用quicklist(双端链表)和ziplist作为底层实现
-
-可以通过设置每个ziplist的最大容量，quicklist的数据压缩范围，提取数据存取效率。
-- list-max-ziplist-size -2
-- list-compress-depth 0
-- blpop brpop 阻塞一段时间返会结果 可以实现阻塞队列
-- brpoplpush 会备份数据到另一个列表，更安全的用法。
-
-## 使用场景： 微信公众号 微博消息
-- LPUSH msg{userId}
-- LRANGE msg{userId}
-
-
-
-
-# Hash 
-Hash数据结构底层是一个字典(dict)，也是Redis用来存储K-V的数据结构，当数据量比较小或者单个元素比较小时，底层用ziplist存储。数据大小和元素数量阀值可以通过参数设置。
-- hash-max-ziplist-entries
-- hash-max-ziplist-value
-
-双层结构，可以分片存储用户数据。可以把一个范围内的用户数据集中存到一个key下。
-
-### 优点：
-- 同类数据整合归类存储，方便数据管理
-- 相比string操作消耗内存与cpu更小
-- 相比string储存更节省空间
-
-### 缺点：
-- 过期功能不能使用在field上，只能用在key上
-- Redis集群架构下不适合大规模使用
-
-
-# Set
-Set为无序的，自动去重的集合数据类型。Set底层实现为一个value为null的字典(dict)。当数据可以用整形表示时，Set集合将被编码为intset(有序的)数据结构。
-
-两个条件任意一个不满足时，Set会用字典(dict)存储数据。
-- 1. 元素个数少于 set-max-instset-entries
-- 2. 元素无法用整形表示
-
-
-## intset
-整数集合是一个有序的，存储整型数据的结构。整型集合在Redis中可以保存int16_t, int32_t, int64_t类型的整型数据。并且可以保证集合中不会有重复数据。
-
-
-
-
-## 使用场景：抽奖　
-- 点击参与抽奖加入集合　SADD key {userId}
-- 查看参与抽奖所有用户　SMEMBERES key  
-- 抽取count名中奖者 
-   - SRANDMEMEBER key [count] 
-   - SPOP key [count] 会把随机出来的元素删除
-
-## 使用场景：微信、微博  点赞 收藏
-- 点赞　SADD like:{userId}
-- 取消点赞 SREM like:{userId}
-- 是否点过赞 SISMEMBER like:{userId}
-- 获取点赞用户列表：SMEMBERS like:{userId}
-- 获取点赞用户数: SCARD like:{userId}
-
-## 使用场景 集合操作实现微博微信关注模型 sdiff 求差集 sinter求并集
-- 共同关注 求并集
-- 可能认识的人 求差集
-
-
-# ZSet
-ZSet为有序（优先score排序, score相同则用元素字典序）自动去重的集合数据类型.ZSet数据结构底层实现为字典(dict) + 跳跃表(skiplist),当数据较少时. 用ziplist编码结构存储.
-
-
-
-# Redis之Pipeline
-Pipeline 将一组 Redis 命令进行组装，通过一次传输给 Redis 并返回结果集
-
-redis-cli 的 --pipe参数实际上就是使用 Pipeline 机制
-
-### 批量命令、Pipeline 对比
-- 原生批量命令是原子的，Pipeline 是非原子的。
-- 原生批量命令是一个命令对应多个 key，Pipeline 支持多个命令。
-- 原生批量命令是 Redis 服务端支持实现的，而 Pipeline 需要服务端和客户端的共同实现
-
-### 适用场景
-Peline是 Redis 的一个提高吞吐量的机制，适用于多 key 读写场景，比如同时读取多个key 的value，或者更新多个key的value，并且允许一定比例的写入失败、实时性也没那么高，那么这种场景就可以使用了。比如 10000 条一下进入 redis，可能失败了 2 条无所谓，后期有补偿机制就行了，像短信群发这种场景，这时候用 pipeline 最好了。
-
-### 注意点
-- Pipeline是非原子的，在上面原理解析那里已经说了就是 Redis 实际上还是一条一条的执行的，而执行命令是需要排队执行的，所以就会出现原子性问题。
-- Pipeline中包含的命令不要包含过多。
-- Pipeline每次只能作用在一个 Redis 节点上。
-- Pipeline 不支持事务，因为命令是一条一条执行的。
-
-
-
-
-# Redis 有哪些持久化方式？各自的优缺点?
-Redis提供两种持久化方式，RDB和AOF机制.
-- RDB(Redis DataBase): RDB保存某一个时间点之前的快照数据.
-- AOF(Append-only-file): 指所有的命令行记录，以redis请求协议的格式完全持久化为aof文件. 
-- 混合持久化(4.0之后): 指进行AOF重写时子进程将当前时间点的数据快照保存为RDB文件格式，而后父进程累积命令保存为AOF格式.
-## RDB
-1. 通过配置参数触发。
-  - 通过一定时间周期内命令执行的个数，超过阀值即执行。
-  ```js
-         时间(s) 次数
-    save 900 1
-    save 300 10 
-    save 60 10000
-</pre><ol start="2">
+<p>Redis 6.0之前是单线程模型
+操作顺序 read -&gt; commend -&gt; write</p>
+<p>6.0之后可以设置多线程
+默认是read -&gt; commend -&gt; writes(多个)</p>
+<p>手动设置reads(多个) -&gt; commend -&gt; writes(多个)</p>
+<h1 id="list">List</h1>
+<p>List 是一个有序(加入时序)的数据结构，Redis采用quicklist(双端链表)和ziplist作为底层实现</p>
+<p>可以通过设置每个ziplist的最大容量，quicklist的数据压缩范围，提取数据存取效率。</p>
+<ul>
+<li>list-max-ziplist-size -2</li>
+<li>list-compress-depth 0</li>
+<li>blpop brpop 阻塞一段时间返会结果 可以实现阻塞队列</li>
+<li>brpoplpush 会备份数据到另一个列表，更安全的用法。</li>
+</ul>
+<h2 id="使用场景：-微信公众号-微博消息">使用场景： 微信公众号 微博消息</h2>
+<ul>
+<li>LPUSH msg{userId}</li>
+<li>LRANGE msg{userId}</li>
+</ul>
+<h1 id="hash">Hash</h1>
+<p>Hash数据结构底层是一个字典(dict)，也是Redis用来存储K-V的数据结构，当数据量比较小或者单个元素比较小时，底层用ziplist存储。数据大小和元素数量阀值可以通过参数设置。</p>
+<ul>
+<li>hash-max-ziplist-entries</li>
+<li>hash-max-ziplist-value</li>
+</ul>
+<p>双层结构，可以分片存储用户数据。可以把一个范围内的用户数据集中存到一个key下。</p>
+<h3 id="优点：">优点：</h3>
+<ul>
+<li>同类数据整合归类存储，方便数据管理</li>
+<li>相比string操作消耗内存与cpu更小</li>
+<li>相比string储存更节省空间</li>
+</ul>
+<h3 id="缺点：">缺点：</h3>
+<ul>
+<li>过期功能不能使用在field上，只能用在key上</li>
+<li>Redis集群架构下不适合大规模使用</li>
+</ul>
+<h1 id="set">Set</h1>
+<p>Set为无序的，自动去重的集合数据类型。Set底层实现为一个value为null的字典(dict)。当数据可以用整形表示时，Set集合将被编码为intset(有序的)数据结构。</p>
+<p>两个条件任意一个不满足时，Set会用字典(dict)存储数据。</p>
+<ul>
+<li><ol>
+<li>元素个数少于 set-max-instset-entries</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>元素无法用整形表示</li>
+</ol>
+</li>
+</ul>
+<h2 id="intset">intset</h2>
+<p>整数集合是一个有序的，存储整型数据的结构。整型集合在Redis中可以保存int16_t, int32_t, int64_t类型的整型数据。并且可以保证集合中不会有重复数据。</p>
+<h2 id="使用场景：抽奖　">使用场景：抽奖　</h2>
+<ul>
+<li>点击参与抽奖加入集合　SADD key {userId}</li>
+<li>查看参与抽奖所有用户　SMEMBERES key  </li>
+<li>抽取count名中奖者 <ul>
+<li>SRANDMEMEBER key [count] </li>
+<li>SPOP key [count] 会把随机出来的元素删除</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用场景：微信、微博-点赞-收藏">使用场景：微信、微博  点赞 收藏</h2>
+<ul>
+<li>点赞　SADD like:{userId}</li>
+<li>取消点赞 SREM like:{userId}</li>
+<li>是否点过赞 SISMEMBER like:{userId}</li>
+<li>获取点赞用户列表：SMEMBERS like:{userId}</li>
+<li>获取点赞用户数: SCARD like:{userId}</li>
+</ul>
+<h2 id="使用场景-集合操作实现微博微信关注模型-sdiff-求差集-sinter求并集">使用场景 集合操作实现微博微信关注模型 sdiff 求差集 sinter求并集</h2>
+<ul>
+<li>共同关注 求并集</li>
+<li>可能认识的人 求差集</li>
+</ul>
+<h1 id="zset">ZSet</h1>
+<p>ZSet为有序（优先score排序, score相同则用元素字典序）自动去重的集合数据类型.ZSet数据结构底层实现为字典(dict) + 跳跃表(skiplist),当数据较少时. 用ziplist编码结构存储.</p>
+<h1 id="redis之pipeline">Redis之Pipeline</h1>
+<p>Pipeline 将一组 Redis 命令进行组装，通过一次传输给 Redis 并返回结果集</p>
+<p>redis-cli 的 --pipe参数实际上就是使用 Pipeline 机制</p>
+<h3 id="批量命令、pipeline-对比">批量命令、Pipeline 对比</h3>
+<ul>
+<li>原生批量命令是原子的，Pipeline 是非原子的。</li>
+<li>原生批量命令是一个命令对应多个 key，Pipeline 支持多个命令。</li>
+<li>原生批量命令是 Redis 服务端支持实现的，而 Pipeline 需要服务端和客户端的共同实现</li>
+</ul>
+<h3 id="适用场景">适用场景</h3>
+<p>Peline是 Redis 的一个提高吞吐量的机制，适用于多 key 读写场景，比如同时读取多个key 的value，或者更新多个key的value，并且允许一定比例的写入失败、实时性也没那么高，那么这种场景就可以使用了。比如 10000 条一下进入 redis，可能失败了 2 条无所谓，后期有补偿机制就行了，像短信群发这种场景，这时候用 pipeline 最好了。</p>
+<h3 id="注意点">注意点</h3>
+<ul>
+<li>Pipeline是非原子的，在上面原理解析那里已经说了就是 Redis 实际上还是一条一条的执行的，而执行命令是需要排队执行的，所以就会出现原子性问题。</li>
+<li>Pipeline中包含的命令不要包含过多。</li>
+<li>Pipeline每次只能作用在一个 Redis 节点上。</li>
+<li>Pipeline 不支持事务，因为命令是一条一条执行的。</li>
+</ul>
+<h1 id="redis-有哪些持久化方式？各自的优缺点-">Redis 有哪些持久化方式？各自的优缺点?</h1>
+<p>Redis提供两种持久化方式，RDB和AOF机制.</p>
+<ul>
+<li>RDB(Redis DataBase): RDB保存某一个时间点之前的快照数据.</li>
+<li>AOF(Append-only-file): 指所有的命令行记录，以redis请求协议的格式完全持久化为aof文件. </li>
+<li>混合持久化(4.0之后): 指进行AOF重写时子进程将当前时间点的数据快照保存为RDB文件格式，而后父进程累积命令保存为AOF格式.<h2 id="rdb">RDB</h2>
+</li>
+<li>通过配置参数触发。<ul>
+<li>通过一定时间周期内命令执行的个数，超过阀值即执行。<pre class="prettyprint linenums lang-js">    时间(s) 次数
+save 900 1
+save 300 10 
+save 60 10000
+</pre>
+</li>
+</ul>
+</li>
 <li>通过手动执行 bgsave/save 显式触发生成快照。<ul>
 <li>bgsave和conf配置方式  会fork一个子进程去执行，</li>
 <li>save 方式会阻塞主线程</li>
 </ul>
 </li>
-</ol>
+</ul>
 <h3 id="redis-在发生rdb持久化的过程中有几个问题需要思考">Redis 在发生RDB持久化的过程中有几个问题需要思考</h3>
 <ol>
 <li>RDB快照过程中Redis是否会停止对外提供服务</li>
