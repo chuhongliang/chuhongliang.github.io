@@ -56,9 +56,9 @@
         <div id="article-content">
             <h1 id="mysql-知识点">MySQL 知识点</h1>
 <ul>
+<li><a href="#存储引擎">存储引擎</a></li>
 <li><a href="#索引">索引</a></li>
 <li><a href="#调优">调优</a></li>
-<li><a href="#存储引擎">存储引擎</a></li>
 <li><a href="#事务">事务</a></li>
 <li><a href="#锁">锁</a></li>
 <li><a href="#MVCC">MVCC</a></li>
@@ -67,6 +67,7 @@
 <li><a href="#读写分离">读写分离</a></li>
 <li><a href="#分库分表">分库分表</a></li>
 <li><a href="http://mysql.taobao.org/monthly/2017/12/01/">参考资料:淘宝数据库内核月报</a></li>
+<li><a href="https://www.cs.usfca.edu/~galles/visualization/">数据结构教学网站</a></li>
 </ul>
 <h1 id="mysql-server">MySQL Server</h1>
 <ul>
@@ -78,6 +79,22 @@
 </ul>
 </li>
 <li>执行器: 用来跟存储引擎直接交互。</li>
+</ul>
+<h2 id="存储引擎">存储引擎</h2>
+<p>定义：不同的数据文件在磁盘的不同组织形式。</p>
+<p>分类：</p>
+<ul>
+<li>innodb</li>
+<li>myisam</li>
+<li>memory(Heap)</li>
+</ul>
+<h3 id="innodb-和-myisam-的区别">innodb 和 myisam 的区别</h3>
+<ul>
+<li>innodb 支持事务，myisam不支持</li>
+<li>innodb 支持外键，myisam不支持</li>
+<li>innodb 支持表锁和行锁，myisam只支持表锁</li>
+<li>innodb 在5.6版本之后支持全文索引， myisam 一直支持全文索引</li>
+<li>innodb 索引的叶子节点直接存放数据（聚簇索引），myisam 存放地址（非聚簇索引: 就是索引与行数据分开存储）。</li>
 </ul>
 <h2 id="索引">索引</h2>
 <p>索引是帮助MySQL高效获取数据的排好序的数据结构</p>
@@ -448,22 +465,6 @@ load data 比 insert 快约20倍； </p>
 </ul>
 </li>
 </ol>
-<h2 id="存储引擎">存储引擎</h2>
-<p>定义：不同的数据文件在磁盘的不同组织形式。</p>
-<p>分类：</p>
-<ul>
-<li>innodb</li>
-<li>myisam</li>
-<li>memory(Heap)</li>
-</ul>
-<h3 id="innodb-和-myisam-的区别">innodb 和 myisam 的区别</h3>
-<ul>
-<li>innodb 支持事务，myisam不支持</li>
-<li>innodb 支持外键，myisam不支持</li>
-<li>innodb 支持表锁和行锁，myisam只支持表锁</li>
-<li>innodb 在5.6版本之后支持全文索引， myisam 一直支持全文索引</li>
-<li>innodb 索引的叶子节点直接存放数据（聚簇索引），myisam 存放地址（非聚簇索引: 就是索引与行数据分开存储）。</li>
-</ul>
 <h2 id="事务">事务</h2>
 <ul>
 <li>原子性：undo log 　保存的是跟执行操作相反的操作，用于回滚。保证原子性，参与部分的mvcc(多版本并发控制)操作。</li>

@@ -10,6 +10,7 @@
 - [读写分离](#读写分离)
 - [分库分表](#分库分表)
 - [参考资料:淘宝数据库内核月报](http://mysql.taobao.org/monthly/2017/12/01/)
+- [数据结构教学网站](https://www.cs.usfca.edu/~galles/visualization/)
 
 # MySQL Server
 - 连接器: 管理连接，验证权限
@@ -35,7 +36,7 @@
 - innodb 在5.6版本之后支持全文索引， myisam 一直支持全文索引
 - innodb 索引的叶子节点直接存放数据（聚簇索引），myisam 存放地址（非聚簇索引: 就是索引与行数据分开存储）。
   
-  
+
 ## 索引
 索引是帮助MySQL高效获取数据的排好序的数据结构
 
