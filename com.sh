@@ -1,4 +1,5 @@
 git add .
-git commit -m "auto"
+read -p "请输入提交记录：" commitLog
+git commit -m "$commitLog"
 git pull
 git push
